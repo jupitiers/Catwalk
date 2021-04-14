@@ -1,0 +1,42 @@
+.reviewCardContainer {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: .9rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.reviewCardContainer h3 {
+  font-size:  1.2rem;
+  font-weight: bold;
+  padding: .5em 0;
+}
+
+.cardBody {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  padding-bottom: .5em;
+}
+
+.cardActions {
+  font-size: .9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.cardActions p {
+  margin: .5em .5em 0 0;
+}
+
+.action {
+  text-decoration: underline;
+}
