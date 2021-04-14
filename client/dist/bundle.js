@@ -157,11 +157,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.module.css */ "./client/src/components/app.module.css");
 /* harmony import */ var _state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../state/contexts/ProductContext */ "./client/src/state/contexts/ProductContext.js");
 /* harmony import */ var _Header_index_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Header/index.jsx */ "./client/src/components/Header/index.jsx");
+/* harmony import */ var _Reviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Reviews/RatingsAndReviews.jsx */ "./client/src/components/Reviews/RatingsAndReviews.jsx");
 
 
  // context imports
 
  // import components
+
 
 
 
@@ -181,7 +183,9 @@ var App = function App() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _app_module_css__WEBPACK_IMPORTED_MODULE_2__.default.appContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_index_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "App.js is connected"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_index_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _app_module_css__WEBPACK_IMPORTED_MODULE_2__.default.componentContainer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Reviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_5__.default, null)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -244,6 +248,73 @@ var Header = function Header() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
+
+/***/ }),
+
+/***/ "./client/src/components/Reviews/Ratings.jsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/Reviews/Ratings.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Ratings = function Ratings() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Ratings");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Ratings);
+
+/***/ }),
+
+/***/ "./client/src/components/Reviews/RatingsAndReviews.jsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/Reviews/RatingsAndReviews.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Ratings_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Ratings.jsx */ "./client/src/components/Reviews/Ratings.jsx");
+/* harmony import */ var _Reviews_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Reviews.jsx */ "./client/src/components/Reviews/Reviews.jsx");
+
+
+
+
+var RatingsAndReviews = function RatingsAndReviews() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Ratings_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Reviews_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingsAndReviews);
+
+/***/ }),
+
+/***/ "./client/src/components/Reviews/Reviews.jsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/Reviews/Reviews.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Reviews = function Reviews() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Reviews");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);
 
 /***/ }),
 
@@ -468,10 +539,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n}", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;AACA","sourcesContent":[".appContainer {\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 3em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 3em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"appContainer": "_1c7sECL7zjNlFLEzIK-Q4m"
+	"appContainer": "_1c7sECL7zjNlFLEzIK-Q4m",
+	"componentContainer": "_2J00tR5jYQgfXrTQI5Nso3"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
