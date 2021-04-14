@@ -1,0 +1,12 @@
+.ratingsAndReviewsContainer {
+  width: 100%;
+  height: 650px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 1px solid;
+  grid-gap: 15px;
+}
+
+.ratings, .reviews {
+  border: 1px solid;
+}
