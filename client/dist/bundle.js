@@ -266,7 +266,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QA = function QA(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Q: ", props.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where related images would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Q: ", props.question)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAEntryAnswers_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    answer: 'Answer 1'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAEntryAnswers_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    answer: 'Answer 2'
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.feedbutton
   }, "Load more answers"));
 };
@@ -291,8 +295,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Answer = function Answer(props) {
-  /*#__PURE__*/
-  react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "A: ", props.answer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "by User, date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Report")));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answerentry
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answer
+  }, "A: ", props.answer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answerlogistics
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answerauthor
+  }, "by User, date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answeractions
+  }, "Helpful? Yes"), " |", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.answeractions
+  }, "Report")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where related images would go"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Answer);
@@ -570,7 +585,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._12EdSXn2vpvBdogw5J1DcP {\n  background-color: #FAEBD2;\n  width: 90%;\n  margin: 0 auto;\n  color: #4D3C20;\n  font-size: 100%;\n  border: 3px solid #5FD9BD;\n}\n\n.E5hJcvAhA9IXh4fiVicvY{\n  padding-left: 3%;\n  padding-top: 3%;\n}\n\n.RTgMXOuWkn0DGCfMV3h5_ {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n._4Lqos1a_vevfbrCXhvN6y {\n  width: 80%;\n  height: 30px;\n  margin: 2%;\n}\n\n.lkLE0Mob05y3cASNbAzm8 {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n._3GSbaXW1m1YsmQxXP2FyUc{\n  margin: 5px;\n  background-color: #FAEBD2;\n  border-width: 1px;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t{\n  width: 20%;\n  height: 30px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #4D3C20;\n  margin: 15px;\n  padding: 5px;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t:active, ._3GSbaXW1m1YsmQxXP2FyUc:active{\n  transform: scale(0.95);\n}", "",{"version":3,"sources":["webpack://./client/src/components/QA/qa.module.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,UAAU;EACV,cAAc;EACd,cAAc;EACd,eAAe;EACf,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;AAChB;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,UAAU;AACZ;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,yBAAyB;EACzB,iBAAiB;AACnB;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,YAAY;EACZ,YAAY;AACd;;AAEA;EACE,sBAAsB;AACxB","sourcesContent":[".section {\n  background-color: #FAEBD2;\n  width: 90%;\n  margin: 0 auto;\n  color: #4D3C20;\n  font-size: 100%;\n  border: 3px solid #5FD9BD;\n}\n\n.title{\n  padding-left: 3%;\n  padding-top: 3%;\n}\n\n.searchdiv {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n.searchbar {\n  width: 80%;\n  height: 30px;\n  margin: 2%;\n}\n\n.feed {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n.feedbutton{\n  margin: 5px;\n  background-color: #FAEBD2;\n  border-width: 1px;\n}\n\n.button{\n  width: 20%;\n  height: 30px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #4D3C20;\n  margin: 15px;\n  padding: 5px;\n}\n\n.button:active, .feedbutton:active{\n  transform: scale(0.95);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._12EdSXn2vpvBdogw5J1DcP {\n  background-color: #FAEBD2;\n  width: 90%;\n  margin: 0 auto;\n  color: #4D3C20;\n  font-size: 100%;\n  border: 3px solid #5FD9BD;\n}\n\n.E5hJcvAhA9IXh4fiVicvY{\n  padding-left: 3%;\n  padding-top: 3%;\n}\n\n.RTgMXOuWkn0DGCfMV3h5_ {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n._4Lqos1a_vevfbrCXhvN6y {\n  width: 100%;\n  height: 30px;\n}\n\n.lkLE0Mob05y3cASNbAzm8 {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n._3GSbaXW1m1YsmQxXP2FyUc{\n  margin: 5px;\n  background-color: #FAEBD2;\n  border-width: 1px;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t{\n  width: 20%;\n  height: 30px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #4D3C20;\n  margin: 15px;\n  padding: 5px;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t:active, ._3GSbaXW1m1YsmQxXP2FyUc:active{\n  transform: scale(0.95);\n}\n\n.GBsCxikuhHI2wzRz6UwXb {\n  margin-bottom: 10px;\n}\n\n._1E8QDF2zKy8kPwzlYqN_7X {\n  padding-bottom: 1%;\n}\n\n._3s6rYsaGdSDunPi6A6dqd6 {\n  width: 100%;\n  display: inline-block;\n}\n\n.Fkm25SByN_u69WhKlQCX2 {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 40%;\n}\n\n._1dE_SKwnmhgmESq9QpBYBc {\n  font-size: 75%;\n  display: inline-block;\n  align-items: right;\n}", "",{"version":3,"sources":["webpack://./client/src/components/QA/qa.module.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,UAAU;EACV,cAAc;EACd,cAAc;EACd,eAAe;EACf,yBAAyB;AAC3B;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,YAAY;AACd;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,yBAAyB;EACzB,iBAAiB;AACnB;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,YAAY;EACZ,YAAY;AACd;;AAEA;EACE,sBAAsB;AACxB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,WAAW;EACX,qBAAqB;AACvB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,iBAAiB;AACnB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,kBAAkB;AACpB","sourcesContent":[".section {\n  background-color: #FAEBD2;\n  width: 90%;\n  margin: 0 auto;\n  color: #4D3C20;\n  font-size: 100%;\n  border: 3px solid #5FD9BD;\n}\n\n.title{\n  padding-left: 3%;\n  padding-top: 3%;\n}\n\n.searchdiv {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n.searchbar {\n  width: 100%;\n  height: 30px;\n}\n\n.feed {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n}\n\n.feedbutton{\n  margin: 5px;\n  background-color: #FAEBD2;\n  border-width: 1px;\n}\n\n.button{\n  width: 20%;\n  height: 30px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #4D3C20;\n  margin: 15px;\n  padding: 5px;\n}\n\n.button:active, .feedbutton:active{\n  transform: scale(0.95);\n}\n\n.answerentry {\n  margin-bottom: 10px;\n}\n\n.answer {\n  padding-bottom: 1%;\n}\n\n.answerlogistics {\n  width: 100%;\n  display: inline-block;\n}\n\n.answerauthor {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 40%;\n}\n\n.answeractions {\n  font-size: 75%;\n  display: inline-block;\n  align-items: right;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"section": "_12EdSXn2vpvBdogw5J1DcP",
@@ -579,7 +594,12 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"searchbar": "_4Lqos1a_vevfbrCXhvN6y",
 	"feed": "lkLE0Mob05y3cASNbAzm8",
 	"feedbutton": "_3GSbaXW1m1YsmQxXP2FyUc",
-	"button": "_2qNGbitDivVZ8_Y6NnG16t"
+	"button": "_2qNGbitDivVZ8_Y6NnG16t",
+	"answerentry": "GBsCxikuhHI2wzRz6UwXb",
+	"answer": "_1E8QDF2zKy8kPwzlYqN_7X",
+	"answerlogistics": "_3s6rYsaGdSDunPi6A6dqd6",
+	"answerauthor": "Fkm25SByN_u69WhKlQCX2",
+	"answeractions": "_1dE_SKwnmhgmESq9QpBYBc"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

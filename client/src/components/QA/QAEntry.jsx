@@ -5,14 +5,11 @@ import styles from './qa.module.css';
 var QA = (props) => (
   <div>
     <div>
-      Q: {props.question}
+      <h4>Q: {props.question}</h4>
     </div>
     <div>
-      {/* <Answer answer={'Answer 1'}/>
-      <Answer answer={'Answer 2'}/> */}
-    </div>
-    <div>
-      This is where related images would go
+      <Answer answer={'Answer 1'}/>
+      <Answer answer={'Answer 2'}/>
     </div>
     <button className={styles.feedbutton}>Load more answers</button>
   </div>
