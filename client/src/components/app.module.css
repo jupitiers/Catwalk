@@ -1,2 +1,7 @@
 .appContainer {
+  color: #2f2f2f;
+}
+
+.componentContainer {
+  padding: 3em;
 }
