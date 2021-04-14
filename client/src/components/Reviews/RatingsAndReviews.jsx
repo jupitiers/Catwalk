@@ -9,6 +9,7 @@ const RatingsAndReviews = () => {
     <div className={styles.ratingsAndReviewsContainer}>
     <div className={styles.ratings}><Ratings/></div>
     <div className={styles.reviews}><Reviews/></div>
+    <div className={styles.reviewActions}>Review Actions</div>
     </div>
   )
 
