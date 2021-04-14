@@ -4,6 +4,10 @@ import styles from './app.module.css';
 // context imports
 import {ProductContext} from '../state/contexts/ProductContext';
 
+
+// import components
+import Header from './Header/index.jsx'
+
 const App = () => {
   const {
     sampleProduct,
@@ -20,6 +24,7 @@ const App = () => {
 
     return (
       <div className={styles.appContainer}>
+        <Header />
         <h1>App.js is connected</h1>
       </div>
     )

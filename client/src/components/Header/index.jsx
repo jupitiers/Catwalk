@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './header.module.css';
 
 const Header = () => {
+
   const [inputs, setInputs] = useState({
     search: '',
   })
@@ -16,13 +17,20 @@ const Header = () => {
   }
   return (
     <header className={styles.header}>
-      <div className='div-logo'>
-        <h1 className='header'>Logo</h1>
+      <div className={styles.divHeader}>
+        <h1 className={styles.h1}>Logo</h1>
       </div>
-      <div className='div-input'>
+      <div className={styles.divForm}>
         <form onSubmit={search}>
-          <input type='text' name='search' value={inputs.search} onChange={inputHandleChange}/>
+          <input
+            type='text'
+            name='search'
+            value={inputs.search}
+            onChange={inputHandleChange}
+            className={styles.input}
+            />
         </form>
+        <i className={`fas fa-search ${styles.icon}`}></i>
       </div>
     </header>
   )
