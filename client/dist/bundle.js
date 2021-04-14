@@ -310,7 +310,11 @@ var RatingsAndReviews = function RatingsAndReviews() {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviews
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Reviews_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewActions
-  }, "Review Actions"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewButton
+  }, "More Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewButton
+  }, "Add A Review +")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingsAndReviews);
@@ -728,12 +732,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._3F6jun7NHrJiK6ApHA64oX {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  height: 650px;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  border: 1px solid;\n  grid-gap: 15px;\n}\n\n.Q1l3qsPXIMuHWpIFVM-vm {\n  border: 1px solid;\n}\n._2PgO9GTOOvkm1EGHFA_o3m {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  border: 1px solid;\n}", "",{"version":3,"sources":["webpack://./client/src/components/Reviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,aAAa;EACb,8BAA8B;EAC9B,6BAA6B;EAC7B,iBAAiB;EACjB,cAAc;AAChB;;AAEA;EACE,iBAAiB;AACnB;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,iBAAiB;AACnB","sourcesContent":[".ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  height: 650px;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  border: 1px solid;\n  grid-gap: 15px;\n}\n\n.ratings {\n  border: 1px solid;\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  border: 1px solid;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._3F6jun7NHrJiK6ApHA64oX {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  height: 650px;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  border: 1px solid;\n  grid-gap: 15px;\n}\n\n.Q1l3qsPXIMuHWpIFVM-vm {\n  border: 1px solid;\n}\n._2PgO9GTOOvkm1EGHFA_o3m {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2by48JNoaDzIkr00atGKSu {\n  height: 60px;\n  margin-right: 1em;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/Reviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,aAAa;EACb,8BAA8B;EAC9B,6BAA6B;EAC7B,iBAAiB;EACjB,cAAc;AAChB;;AAEA;EACE,iBAAiB;AACnB;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  height: 650px;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  border: 1px solid;\n  grid-gap: 15px;\n}\n\n.ratings {\n  border: 1px solid;\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"ratingsAndReviewsContainer": "_3F6jun7NHrJiK6ApHA64oX",
 	"ratings": "Q1l3qsPXIMuHWpIFVM-vm",
-	"reviewActions": "_2PgO9GTOOvkm1EGHFA_o3m"
+	"reviewActions": "_2PgO9GTOOvkm1EGHFA_o3m",
+	"reviewButton": "_2by48JNoaDzIkr00atGKSu"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

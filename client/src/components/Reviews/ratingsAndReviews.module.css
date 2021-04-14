@@ -15,5 +15,19 @@
 .reviewActions {
   grid-column-start: 2;
   grid-row-start: 2;
-  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.reviewButton {
+  height: 60px;
+  margin-right: 1em;
+  background-color: #5fD9BD;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 .5em;
 }
