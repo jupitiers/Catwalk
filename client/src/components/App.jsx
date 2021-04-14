@@ -1,4 +1,6 @@
 import React from 'react';
+import '../index.css'
+import styles from './app.module.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +9,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.appContainer}>
         <h1>App.js is connected</h1>
       </div>
     )
