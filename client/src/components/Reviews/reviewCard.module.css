@@ -25,6 +25,20 @@
   padding-bottom: .5em;
 }
 
+.cardResponse {
+  background-color: #eeeeee;
+  padding: 1em;
+}
+
+.cardResponse h6 {
+  font-weight: bold;
+  padding-bottom: 1em;
+}
+
+.cardResponse p {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .cardActions {
   font-size: .9rem;
   display: flex;
