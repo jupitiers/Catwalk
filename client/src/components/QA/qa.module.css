@@ -1,0 +1,51 @@
+.section {
+  background-color: #FAEBD2;
+  width: 90%;
+  margin: 0 auto;
+  color: #4D3C20;
+  font-size: 100%;
+  border: 3px solid #5FD9BD;
+}
+
+.title{
+  padding-left: 3%;
+  padding-top: 3%;
+}
+
+.searchdiv {
+  width: 90%;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+.searchbar {
+  width: 80%;
+  height: 30px;
+  margin: 2%;
+}
+
+.feed {
+  width: 90%;
+  padding: 2%;
+  margin: 0 auto;
+}
+
+.feedbutton{
+  margin: 5px;
+  background-color: #FAEBD2;
+  border-width: 1px;
+}
+
+.button{
+  width: 20%;
+  height: 30px;
+  background-color: #5FD9BD;
+  border: 1px solid #15332C;
+  color: #4D3C20;
+  margin: 15px;
+  padding: 5px;
+}
+
+.button:active, .feedbutton:active{
+  transform: scale(0.95);
+}

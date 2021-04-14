@@ -1,9 +1,9 @@
 import React, {useEffect, useContext} from 'react';
-import QA from './QA.jsx';
+import QAEntry from './QAEntry.jsx';
 
 var QAList = () => (
     <div>
-      <QA/>
+      <QAEntry/>
     </div>
 )
 

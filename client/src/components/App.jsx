@@ -1,12 +1,12 @@
 import React, {useEffect, useContext} from 'react';
-import '../index.css'
+// import '../index.css'
 import styles from './app.module.css';
 // context imports
 import {ProductContext} from '../state/contexts/ProductContext';
 
 // import components
 import Header from './Header/index.jsx'
-import QASection from './QA/QASection.jsx';
+import QASection from './QA/index.jsx';
 
 
 const App = () => {
