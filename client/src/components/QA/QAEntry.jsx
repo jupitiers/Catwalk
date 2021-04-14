@@ -1,13 +1,15 @@
 import React, {useEffect, useContext} from 'react';
+import Answer from './QAEntryAnswers.jsx';
 import styles from './qa.module.css';
 
-var QA = () => (
+var QA = (props) => (
   <div>
     <div>
-      Q: This is where the question would go
+      Q: {props.question}
     </div>
     <div>
-      A: This is where the most helpful answers would go
+      {/* <Answer answer={'Answer 1'}/>
+      <Answer answer={'Answer 2'}/> */}
     </div>
     <div>
       This is where related images would go

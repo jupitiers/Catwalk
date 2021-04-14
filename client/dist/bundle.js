@@ -259,17 +259,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _QAEntryAnswers_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QAEntryAnswers.jsx */ "./client/src/components/QA/QAEntryAnswers.jsx");
+/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
 
 
 
-var QA = function QA() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Q: This is where the question would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "A: This is where the most helpful answers would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where related images would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.feedbutton
+
+var QA = function QA(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Q: ", props.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where related images would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.feedbutton
   }, "Load more answers"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QA);
+
+/***/ }),
+
+/***/ "./client/src/components/QA/QAEntryAnswers.jsx":
+/*!*****************************************************!*\
+  !*** ./client/src/components/QA/QAEntryAnswers.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+
+
+
+var Answer = function Answer(props) {
+  /*#__PURE__*/
+  react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "A: ", props.answer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "by User, date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Report")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Answer);
 
 /***/ }),
 
@@ -288,8 +314,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var QAList = function QAList() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAEntry_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
+var QAList = function QAList(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAEntry_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    question: props.question
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QAList);
@@ -326,7 +354,15 @@ var QASection = function QASection() {
     placeholder: "Have a question? Search for answers..."
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.feed
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    question: 'Question 1'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    question: 'Question 2'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    question: 'Question 3'
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {
+    question: 'Question 4'
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "QA-button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.button

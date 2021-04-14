@@ -14,7 +14,10 @@ const QASection = () => {
         <input className={styles.searchbar} type='text' placeholder='Have a question? Search for answers...'/>
       </div>
       <div className={styles.feed}>
-        <QAList/>
+        <QAList question={'Question 1'}/>
+        <QAList question={'Question 2'}/>
+        <QAList question={'Question 3'}/>
+        <QAList question={'Question 4'}/>
       </div>
       <div className='QA-button'>
         <button className={styles.button}>More Answered Questions</button>
