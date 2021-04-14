@@ -7,6 +7,7 @@ import {ProductContext} from '../state/contexts/ProductContext';
 // import components
 import Header from './Header/index.jsx'
 import QASection from './QA/index.jsx';
+import RatingsAndReviews from './Reviews/RatingsAndReviews.jsx';
 
 
 const App = () => {
@@ -28,6 +29,9 @@ const App = () => {
         <Header />
         <h1>App.js is connected</h1>
         <QASection/>
+        <div className={styles.componentContainer}>
+        <RatingsAndReviews/>
+        </div>
       </div>
 
     )
