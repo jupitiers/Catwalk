@@ -156,9 +156,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../index.css */ "./client/src/index.css");
 /* harmony import */ var _app_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.module.css */ "./client/src/components/app.module.css");
 /* harmony import */ var _state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../state/contexts/ProductContext */ "./client/src/state/contexts/ProductContext.js");
+/* harmony import */ var _QASection_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QASection.jsx */ "./client/src/components/QASection.jsx");
 
 
  // context imports
+
 
 
 
@@ -178,10 +180,90 @@ var App = function App() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _app_module_css__WEBPACK_IMPORTED_MODULE_2__.default.appContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "App.js is connected"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "App.js is connected"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QASection_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./client/src/components/QA.jsx":
+/*!**************************************!*\
+  !*** ./client/src/components/QA.jsx ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var QA = function QA() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where the question would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where the most helpful answers would go"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "This is where related images would go"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QA);
+
+/***/ }),
+
+/***/ "./client/src/components/QAList.jsx":
+/*!******************************************!*\
+  !*** ./client/src/components/QAList.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _QA_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QA.jsx */ "./client/src/components/QA.jsx");
+
+
+
+var QAList = function QAList() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QA_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QAList);
+
+/***/ }),
+
+/***/ "./client/src/components/QASection.jsx":
+/*!*********************************************!*\
+  !*** ./client/src/components/QASection.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _QAList_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QAList.jsx */ "./client/src/components/QAList.jsx");
+
+
+
+var QASection = function QASection() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QA-section"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QA-title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Questions & Answers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QA-search"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    placeholder: "Have a question? Search for answers..."
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QA-feed"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Feed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "QA-button"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "More Answered Questions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Add a Question +")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QASection);
 
 /***/ }),
 
