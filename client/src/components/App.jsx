@@ -19,6 +19,10 @@ const App = () => {
     someFunc,
     } = useContext(ProductContext)
 
+  testFunc = async () => {
+    await console.log('working')
+  }
+
   useEffect(() => {
     console.log({sampleProduct})
     someFunc();
