@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+}
+
+.secOne {
+  width: 60%;
+}
+
+.secTwo {
+  width: 40%;
+}
