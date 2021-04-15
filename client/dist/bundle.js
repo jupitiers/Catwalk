@@ -363,11 +363,15 @@ __webpack_require__.r(__webpack_exports__);
 var OverView = function OverView() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _overview_module_css__WEBPACK_IMPORTED_MODULE_3__.default.wrapper
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: _overview_module_css__WEBPACK_IMPORTED_MODULE_3__.default.messageP
+  }, "site-wide announcement message! - sale / discount ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "offer"), " - ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("u", null, "new product hightlight")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _overview_module_css__WEBPACK_IMPORTED_MODULE_3__.default.secWrapper
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
     className: _overview_module_css__WEBPACK_IMPORTED_MODULE_3__.default.secOne
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ImageGallery_index_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
     className: _overview_module_css__WEBPACK_IMPORTED_MODULE_3__.default.secTwo
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Product_index_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Product_index_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OverView);
@@ -392,7 +396,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Product = function Product() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "wrapper"
+    className: _product_module_css__WEBPACK_IMPORTED_MODULE_1__.default.wrapper
   });
 };
 
@@ -635,7 +639,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviewCard.module.css */ "./client/src/components/Reviews/reviewCard.module.css");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _starRatings_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./starRatings.js */ "./client/src/components/Reviews/starRatings.js");
+/* harmony import */ var _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helper/starRatings.js */ "./client/src/helper/starRatings.js");
 
 
 
@@ -649,34 +653,34 @@ var ReviewCard = function ReviewCard(_ref) {
   var partialStar; // 0-1 = no star
 
   if (decimal < 2) {
-    partialStar = _starRatings_js__WEBPACK_IMPORTED_MODULE_3__.emptyStar;
+    partialStar = _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.emptyStar;
   } // 2-3 = 1/4 star
 
 
   if (decimal > 1 && decimal < 4) {
-    partialStar = _starRatings_js__WEBPACK_IMPORTED_MODULE_3__.quarterStar;
+    partialStar = _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.quarterStar;
   } // 4-6 = 1/2 star
 
 
   if (decimal > 3 && decimal < 7) {
-    partialStar = _starRatings_js__WEBPACK_IMPORTED_MODULE_3__.halfStar;
+    partialStar = _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.halfStar;
   } // 7-8 = 3/4 star
 
 
   if (decimal > 6 && decimal < 9) {
-    partialStar = _starRatings_js__WEBPACK_IMPORTED_MODULE_3__.threeQuarterStar;
+    partialStar = _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.threeQuarterStar;
   } // 9 = full star
 
 
   if (decimal > 8) {
-    partialStar = _starRatings_js__WEBPACK_IMPORTED_MODULE_3__.fullStar;
+    partialStar = _helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.fullStar;
   } // create array for displaying full stars dynamically
 
 
   var stars = [];
 
   for (var i = 1; i < fullStars; i++) {
-    stars.push(_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.fullStar);
+    stars.push(_helper_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.fullStar);
   } // create a max 60 char substring for summary
 
 
@@ -809,10 +813,10 @@ var sampleReviews = {
 
 /***/ }),
 
-/***/ "./client/src/components/Reviews/starRatings.js":
-/*!******************************************************!*\
-  !*** ./client/src/components/Reviews/starRatings.js ***!
-  \******************************************************/
+/***/ "./client/src/helper/starRatings.js":
+/*!******************************************!*\
+  !*** ./client/src/helper/starRatings.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1249,7 +1253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1Nzk84sD5BpvieSk6xQqe9 {\n  position: relative;\n  background: gray;\n  height: 100%;\n}\n\n._2CVgKoWL0nbaoT7ENXt9HN {\n  position: absolute;\n  position: absolute;\n  right: 12px;\n  top: 8px;\n}\n\n.Vb0spXBAh5k576aePI4zm {\n  display: flex;\n  height: 100%;\n}\n\n._1zMK4T-hsZlFTvmdo_Q-Nc {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n  border: 0px;\n  border-bottom: 2px solid black;\n}\n\n._1i2_TR7jbRoSnBlxURsXUv {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n}\n\n._2EPeCnfODOnzloF0nhQ9YH {\n  width: 81%;\n}\n\n.rGJMsDMXAKf9jTK6YDYyf {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 76%;\n  justify-content: center;\n}\n\n._21FoNtPmSmXSNTbnBq2y5G {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n._2D0ABOEEo1wadiIM-wG5af {\n  margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./client/src/components/ImageGallery/image.module.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,kBAAkB;EAClB,WAAW;EACX,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;EAClB,WAAW;EACX,8BAA8B;AAChC;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,UAAU;EACV,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;AACrB;;AAEA;EACE,gBAAgB;AAClB","sourcesContent":[".wrapper {\n  position: relative;\n  background: gray;\n  height: 100%;\n}\n\n.expand {\n  position: absolute;\n  position: absolute;\n  right: 12px;\n  top: 8px;\n}\n\n.imgDiv {\n  display: flex;\n  height: 100%;\n}\n\n.active {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n  border: 0px;\n  border-bottom: 2px solid black;\n}\n\n.thumbNailImg {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n}\n\n.mainImg {\n  width: 81%;\n}\n\n.thumbNailDiv {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 76%;\n  justify-content: center;\n}\n\n.arrowDiv {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n.arrowDown {\n  margin-top: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1Nzk84sD5BpvieSk6xQqe9 {\n  position: relative;\n  background: gray;\n  height: 100%;\n}\n\n._2CVgKoWL0nbaoT7ENXt9HN {\n  position: absolute;\n  position: absolute;\n  right: 12px;\n  top: 8px;\n}\n\n.Vb0spXBAh5k576aePI4zm {\n  display: flex;\n  height: 100%;\n}\n\n._1zMK4T-hsZlFTvmdo_Q-Nc {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n  border: 0px;\n  border-bottom: 2px solid black;\n}\n\n._1i2_TR7jbRoSnBlxURsXUv {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n}\n\n._2EPeCnfODOnzloF0nhQ9YH {\n  width: 81%;\n}\n\n.rGJMsDMXAKf9jTK6YDYyf {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 76%;\n  justify-content: center;\n}\n\n._21FoNtPmSmXSNTbnBq2y5G {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n", "",{"version":3,"sources":["webpack://./client/src/components/ImageGallery/image.module.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;EAClB,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,kBAAkB;EAClB,WAAW;EACX,QAAQ;AACV;;AAEA;EACE,aAAa;EACb,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;EAClB,WAAW;EACX,8BAA8B;AAChC;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,UAAU;EACV,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB;AACrB","sourcesContent":[".wrapper {\n  position: relative;\n  background: gray;\n  height: 100%;\n}\n\n.expand {\n  position: absolute;\n  position: absolute;\n  right: 12px;\n  top: 8px;\n}\n\n.imgDiv {\n  display: flex;\n  height: 100%;\n}\n\n.active {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n  border: 0px;\n  border-bottom: 2px solid black;\n}\n\n.thumbNailImg {\n  width: 50px;\n  height: 50px;\n  padding-bottom: 3px;\n  margin-bottom: 5px;\n}\n\n.mainImg {\n  width: 81%;\n}\n\n.thumbNailDiv {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  width: 76%;\n  justify-content: center;\n}\n\n.arrowDiv {\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"wrapper": "_1Nzk84sD5BpvieSk6xQqe9",
@@ -1259,8 +1263,7 @@ ___CSS_LOADER_EXPORT___.locals = {
 	"thumbNailImg": "_1i2_TR7jbRoSnBlxURsXUv",
 	"mainImg": "_2EPeCnfODOnzloF0nhQ9YH",
 	"thumbNailDiv": "rGJMsDMXAKf9jTK6YDYyf",
-	"arrowDiv": "_21FoNtPmSmXSNTbnBq2y5G",
-	"arrowDown": "_2D0ABOEEo1wadiIM-wG5af"
+	"arrowDiv": "_21FoNtPmSmXSNTbnBq2y5G"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1287,10 +1290,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._19mHT6e8ZPiJQiK-9_Low6 {\n  display: flex;\n  margin-top: 10px;\n  height: 425px;\n}\n\n._1TEhAnKUjgrcjMm6lmlcQ {\n  width: 60%;\n}\n\n._26p1VhrYnoMIfZCmrNx9LA {\n  width: 40%;\n}", "",{"version":3,"sources":["webpack://./client/src/components/OverView/overview.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,gBAAgB;EAChB,aAAa;AACf;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,UAAU;AACZ","sourcesContent":[".wrapper {\n  display: flex;\n  margin-top: 10px;\n  height: 425px;\n}\n\n.secOne {\n  width: 60%;\n}\n\n.secTwo {\n  width: 40%;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._19mHT6e8ZPiJQiK-9_Low6 {\n  display: flex;\n  flex-direction: column;\n  margin-top: 10px;\n  height: 425px;\n}\n\n._2CdcL64obbJU5jBiBJ8F3P {\n  text-transform: uppercase;\n  width: 100%;\n  text-align: center;\n  margin: 0px;\n}\n\n._1TuqUdXCBu32a-VyDB0wUr {\n  display: flex;\n  height: 100%;\n}\n\n._1TEhAnKUjgrcjMm6lmlcQ {\n  width: 60%;\n  height: 100%;\n}\n\n._26p1VhrYnoMIfZCmrNx9LA {\n  width: 40%;\n  height: 100%;\n}", "",{"version":3,"sources":["webpack://./client/src/components/OverView/overview.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,gBAAgB;EAChB,aAAa;AACf;;AAEA;EACE,yBAAyB;EACzB,WAAW;EACX,kBAAkB;EAClB,WAAW;AACb;;AAEA;EACE,aAAa;EACb,YAAY;AACd;;AAEA;EACE,UAAU;EACV,YAAY;AACd;;AAEA;EACE,UAAU;EACV,YAAY;AACd","sourcesContent":[".wrapper {\n  display: flex;\n  flex-direction: column;\n  margin-top: 10px;\n  height: 425px;\n}\n\n.messageP {\n  text-transform: uppercase;\n  width: 100%;\n  text-align: center;\n  margin: 0px;\n}\n\n.secWrapper {\n  display: flex;\n  height: 100%;\n}\n\n.secOne {\n  width: 60%;\n  height: 100%;\n}\n\n.secTwo {\n  width: 40%;\n  height: 100%;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"wrapper": "_19mHT6e8ZPiJQiK-9_Low6",
+	"messageP": "_2CdcL64obbJU5jBiBJ8F3P",
+	"secWrapper": "_1TuqUdXCBu32a-VyDB0wUr",
 	"secOne": "_1TEhAnKUjgrcjMm6lmlcQ",
 	"secTwo": "_26p1VhrYnoMIfZCmrNx9LA"
 };

@@ -4,7 +4,7 @@ import styles from './product.module.css';
 
 const Product = () => {
   return (
-    <div className='wrapper'>
+    <div className={styles.wrapper}>
 
     </div>
   )

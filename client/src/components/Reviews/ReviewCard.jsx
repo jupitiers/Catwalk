@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './reviewCard.module.css';
 import moment from 'moment';
-import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from './starRatings.js'
+import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from '../../helper/starRatings.js'
 
 const ReviewCard = ({review}) => {
   // get whole number and percent number
