@@ -2,7 +2,6 @@ import React, {useEffect, useContext} from 'react';
 import styles from './qa.module.css';
 
 var Answer = (props) => {
-  console.log(props);
   return(
     <div className={styles.answerentry}>
       <div className={styles.answer}>

@@ -41,6 +41,14 @@ var qaSampleData = {
             "answerer_name": "iluvdogz",
             "helpfulness": 31,
             "photos": [],
+          },
+          79: {
+            "id": 79,
+            "body": "Additional answer to test rendering of 'Load more answers' button",
+            "date": "2019-11-12T00:00:00.000Z",
+            "answerer_name": "daniel",
+            "helpfulness": 100000000000000,
+            "photos": [],
           }
         }
       },
