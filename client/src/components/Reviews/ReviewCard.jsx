@@ -3,10 +3,20 @@ import styles from './reviewCard.module.css';
 import moment from 'moment';
 
 const ReviewCard = ({review}) => {
+  // create array for displaying stars dynamically
+  const stars = []
+  for (let i = 1; i < review.rating; i++) {
+    stars.push(<i class="fas fa-star"></i>)
+  }
+
   return (
     <div className={styles.reviewCardContainer}>
       <div className={styles.cardHeader}>
-        <div>Stars</div>
+        <div>
+        {stars.map(star => {
+          return star
+        })}
+        </div>
         <div className={styles.reviewUserDate}>
         <p>
         <i class="fas fa-check-circle"></i>
@@ -16,8 +26,8 @@ const ReviewCard = ({review}) => {
         {moment(review.date).format('MMMM Do YYYY')}</p>
         </div>
       </div>
-      <h3> Review title with word-break truncation to prevent wrapping onto the next...</h3>
-      <p className={styles.cardBody}>While happily ignoring when being called take a deep sniff of sock then walk around with mouth half open so i like cats because they are fat and fluffy lick yarn hanging out of own butt so spend six hours per day washing,</p>
+      <h3>{review.summary}.</h3>
+      <p className={styles.cardBody}>{review.body}</p>
       <div className={styles.cardResponse}>
       <h6>Response:</h6>
       <p>While happily ignoring when being called take a deep sniff of sock then walk around.</p>

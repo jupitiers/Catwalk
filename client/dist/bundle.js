@@ -500,17 +500,28 @@ __webpack_require__.r(__webpack_exports__);
 
 var ReviewCard = function ReviewCard(_ref) {
   var review = _ref.review;
+  // create array for displaying stars dynamically
+  var stars = [];
+
+  for (var i = 1; i < review.rating; i++) {
+    stars.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+      "class": "fas fa-star"
+    }));
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewCardContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardHeader
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, stars.map(function (star) {
+    return star;
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewUserDate
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     "class": "fas fa-check-circle"
-  }), review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_2___default()(review.date).format('MMMM Do YYYY')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, " Review title with word-break truncation to prevent wrapping onto the next..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }), review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_2___default()(review.date).format('MMMM Do YYYY')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, review.summary, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardBody
-  }, "While happily ignoring when being called take a deep sniff of sock then walk around with mouth half open so i like cats because they are fat and fluffy lick yarn hanging out of own butt so spend six hours per day washing,"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardResponse
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Response:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "While happily ignoring when being called take a deep sniff of sock then walk around.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardActions
