@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  margin-top: 10px;
+  height: 425px;
+}
+
+.secOne {
+  width: 60%;
+}
+
+.secTwo {
+  width: 40%;
+}
