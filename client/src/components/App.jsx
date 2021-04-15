@@ -27,9 +27,8 @@ const App = () => {
     return (
       <div className={styles.appContainer}>
         <Header />
-        <h1>App.js is connected</h1>
-        <QASection/>
         <div className={styles.componentContainer}>
+        <QASection/>
         <RatingsAndReviews/>
         </div>
       </div>
