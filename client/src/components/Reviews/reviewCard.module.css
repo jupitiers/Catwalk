@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   font-size: .9rem;
   font-family: 'Open Sans', sans-serif;
 }
@@ -16,23 +17,24 @@
 .reviewCardContainer h3 {
   font-size:  1.2rem;
   font-weight: bold;
-  padding: .5em 0;
+  margin: 0 0 .5em;
 }
 
 .cardBody {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  padding-bottom: .5em;
+  margin: 0
 }
 
 .cardResponse {
   background-color: #eeeeee;
-  padding: 1em;
+  padding: 1em 1em 0;
 }
 
 .cardResponse h6 {
   font-weight: bold;
-  padding-bottom: 1em;
+  font-size: 1rem;
+  margin: 0;
 }
 
 .cardResponse p {
