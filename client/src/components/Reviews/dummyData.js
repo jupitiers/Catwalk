@@ -5,7 +5,7 @@ const sampleReviews = {
   "results": [
     {
       "review_id": 5,
-      "rating": 3,
+      "rating": 3.2,
       "summary": "I'm enjoying wearing these shades",
       "recommend": false,
       "response": null,
@@ -26,7 +26,7 @@ const sampleReviews = {
     },
     {
       "review_id": 3,
-      "rating": 4,
+      "rating": 4.7,
       "summary": "I am liking these glasses",
       "recommend": false,
       "response": "Glad you're enjoying the product!",
