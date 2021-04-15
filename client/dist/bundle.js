@@ -2683,7 +2683,10 @@ var APIContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.createContex
 
 var APIProvider = function APIProvider(_ref) {
   var children = _ref.children;
-  var baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'; // sample request to get all products
+  var baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'; // sample endpoints
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17067
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
+  // sample request to get all products
 
   var getAllProducts = /*#__PURE__*/function () {
     var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
