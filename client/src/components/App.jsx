@@ -5,7 +5,8 @@ import styles from './app.module.css';
 import {ProductContext} from '../state/contexts/ProductContext';
 
 // import components
-import Header from './Header/index.jsx'
+import Header from './Header/index.jsx';
+import OverView from './OverView/index.jsx';
 import QASection from './QA/index.jsx';
 import RatingsAndReviews from './Reviews/RatingsAndReviews.jsx';
 
@@ -27,6 +28,7 @@ const App = () => {
     return (
       <div className={styles.appContainer}>
         <Header />
+        <OverView />
         <div className={styles.componentContainer}>
         <QASection/>
         <RatingsAndReviews/>
