@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
+  color: #525252;
 }
 
 .cardHeader {
@@ -12,6 +13,20 @@
   align-items: center;
   font-size: .9rem;
   font-family: 'Open Sans', sans-serif;
+}
+
+.reviewUserDate {
+  display: flex;
+  flex-direction: row;
+}
+.reviewUserDate p {
+  font-size: .9rem;
+  margin-left: .5em;
+  text-transform: capitalize;
+}
+
+.reviewUserDate p i {
+  margin-right: .5em;
 }
 
 .reviewCardContainer h3 {

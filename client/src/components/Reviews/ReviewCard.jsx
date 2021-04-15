@@ -1,12 +1,20 @@
 import React from 'react';
-import styles from './reviewCard.module.css'
+import styles from './reviewCard.module.css';
+import moment from 'moment';
 
 const ReviewCard = ({review}) => {
   return (
     <div className={styles.reviewCardContainer}>
       <div className={styles.cardHeader}>
         <div>Stars</div>
-        <p>User and Date</p>
+        <div className={styles.reviewUserDate}>
+        <p>
+        <i class="fas fa-check-circle"></i>
+        {review.reviewer_name}
+        </p>
+        <p>
+        {moment(review.date).format('MMMM Do YYYY')}</p>
+        </div>
       </div>
       <h3> Review title with word-break truncation to prevent wrapping onto the next...</h3>
       <p className={styles.cardBody}>While happily ignoring when being called take a deep sniff of sock then walk around with mouth half open so i like cats because they are fat and fluffy lick yarn hanging out of own butt so spend six hours per day washing,</p>
