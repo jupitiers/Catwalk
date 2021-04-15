@@ -1049,7 +1049,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 7em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 7em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 7em;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 7em;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"appContainer": "_1c7sECL7zjNlFLEzIK-Q4m",
