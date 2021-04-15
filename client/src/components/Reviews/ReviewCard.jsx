@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './reviewCard.module.css'
 
-const ReviewCard = () => {
-
+const ReviewCard = ({review}) => {
   return (
     <div className={styles.reviewCardContainer}>
       <div className={styles.cardHeader}>

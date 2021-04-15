@@ -184,9 +184,9 @@ var App = function App() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _app_module_css__WEBPACK_IMPORTED_MODULE_1__.default.appContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_index_jsx__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "App.js is connected"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QA_index_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_index_jsx__WEBPACK_IMPORTED_MODULE_3__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _app_module_css__WEBPACK_IMPORTED_MODULE_1__.default.componentContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Reviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_5__.default, null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QA_index_jsx__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Reviews_RatingsAndReviews_jsx__WEBPACK_IMPORTED_MODULE_5__.default, null)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -481,7 +481,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ReviewCard = function ReviewCard() {
+var ReviewCard = function ReviewCard(_ref) {
+  var review = _ref.review;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewCardContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -518,6 +519,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviews.module.css */ "./client/src/components/Reviews/reviews.module.css");
 /* harmony import */ var _ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewCard.jsx */ "./client/src/components/Reviews/ReviewCard.jsx");
+/* harmony import */ var _dummyData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dummyData */ "./client/src/components/Reviews/dummyData.js");
+
 
 
 
@@ -527,14 +530,67 @@ var Reviews = function Reviews() {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsSorter
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "248 Reviews, sorted by"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "relevance")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.review
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.review
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "248 Reviews, sorted by"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "relevance")), _dummyData__WEBPACK_IMPORTED_MODULE_3__.default.results.map(function (review) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: review.review_id,
+      className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.review
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewCard_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
+      review: review
+    }));
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);
+
+/***/ }),
+
+/***/ "./client/src/components/Reviews/dummyData.js":
+/*!****************************************************!*\
+  !*** ./client/src/components/Reviews/dummyData.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var sampleReviews = {
+  "product": "2",
+  "page": 0,
+  "count": 5,
+  "results": [{
+    "review_id": 5,
+    "rating": 3,
+    "summary": "I'm enjoying wearing these shades",
+    "recommend": false,
+    "response": null,
+    "body": "Comfortable and practical.",
+    "date": "2019-04-14T00:00:00.000Z",
+    "reviewer_name": "shortandsweeet",
+    "helpfulness": 5,
+    "photos": [{
+      "id": 1,
+      "url": "urlplaceholder/review_5_photo_number_1.jpg"
+    }, {
+      "id": 2,
+      "url": "urlplaceholder/review_5_photo_number_2.jpg"
+    } // ...
+    ]
+  }, {
+    "review_id": 3,
+    "rating": 4,
+    "summary": "I am liking these glasses",
+    "recommend": false,
+    "response": "Glad you're enjoying the product!",
+    "body": "They are very dark. But that's good because I'm in very sunny spots",
+    "date": "2019-06-23T00:00:00.000Z",
+    "reviewer_name": "bigbrotherbenjamin",
+    "helpfulness": 5,
+    "photos": []
+  } // ...
+  ]
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sampleReviews);
 
 /***/ }),
 
@@ -993,7 +1049,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 3em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 3em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 7em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 7em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"appContainer": "_1c7sECL7zjNlFLEzIK-Q4m",
