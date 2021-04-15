@@ -1,5 +1,7 @@
 .wrapper {
   display: flex;
+  margin-top: 10px;
+  height: 425px;
 }
 
 .secOne {

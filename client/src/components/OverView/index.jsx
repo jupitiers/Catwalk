@@ -7,7 +7,7 @@ import styles from './overview.module.css';
 
 const OverView = () => {
   return (
-    <div className='wrapper'>
+    <div className={styles.wrapper}>
       <section className={styles.secOne}>
         <ImageGallery />
       </section>

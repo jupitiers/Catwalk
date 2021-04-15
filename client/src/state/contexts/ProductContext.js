@@ -6,11 +6,13 @@ const ProductProvider = ({children}) => {
   const [sampleProduct, setSampleProduct] = useState({
     name: 'a product', id: 1
     });
+
   const [productList, setProductList] = useState([])
 
   const someFunc = () => {
     console.log('hello from context')
   }
+
 
 
   return (

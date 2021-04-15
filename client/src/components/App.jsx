@@ -29,8 +29,8 @@ const App = () => {
       <div className={styles.appContainer}>
         <Header />
         <OverView />
-        <QASection/>
         <div className={styles.componentContainer}>
+        <QASection/>
         <RatingsAndReviews/>
         </div>
       </div>
