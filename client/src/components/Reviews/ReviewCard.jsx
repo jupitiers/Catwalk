@@ -28,14 +28,16 @@ const ReviewCard = ({review}) => {
       </div>
       <h3>{review.summary}.</h3>
       <p className={styles.cardBody}>{review.body}</p>
-      <div className={styles.cardResponse}>
-      <h6>Response:</h6>
-      <p>While happily ignoring when being called take a deep sniff of sock then walk around.</p>
-      </div>
+      {review.response && (
+        <div className={styles.cardResponse}>
+        <h6>Response:</h6>
+        <p>{review.response}</p>
+        </div>
+      )}
       <div className={styles.cardActions}>
       <p>Helpful?</p>
       <p className={styles.action}>Yes</p>
-      <p className={styles.yesCount}>(10)</p>
+      <p className={styles.yesCount}>({review.helpfulness || 0})</p>
       <p>|</p>
       <p className={styles.action}>Report</p>
       </div>

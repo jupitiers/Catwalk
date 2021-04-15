@@ -521,15 +521,15 @@ var ReviewCard = function ReviewCard(_ref) {
     "class": "fas fa-check-circle"
   }), review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_2___default()(review.date).format('MMMM Do YYYY')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, review.summary, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardBody
-  }, review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, review.body), review.response && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardResponse
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Response:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "While happily ignoring when being called take a deep sniff of sock then walk around.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Response:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, review.response)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardActions
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.action
   }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.yesCount
-  }, "(10)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "|"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "(", review.helpfulness || 0, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "|"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_1__.default.action
   }, "Report")));
 };
