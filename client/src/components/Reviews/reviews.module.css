@@ -3,10 +3,24 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 25px 1fr;
   grid-gap: 15px;
 }
 
+.ratingsSorter {
+  padding-left: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.ratingsSorter p {
+  margin-right: .5em;
+}
+
 .review  {
-  border: 1px solid
+  border-bottom: 1px solid;
 }
 
