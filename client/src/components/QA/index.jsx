@@ -11,16 +11,13 @@ const QASection = () => {
   return(
     <div className={styles.section}>
       <div className={styles.title}>
-        <span>Questions & Answers</span>
+        <h2>Questions & Answers</h2>
       </div>
       <div className={styles.searchdiv}>
         <input className={styles.searchbar} type='text' placeholder='Have a question? Search for answers...'/>
       </div>
       <div className={styles.feed}>
         <QAList data={qaSampleData.results}/>
-        {/* <QAList question={'Question 2'}/>
-        <QAList question={'Question 3'}/>
-        <QAList question={'Question 4'}/> */}
       </div>
       <div className='QA-button'>
         <button className={styles.button}>More Answered Questions</button>

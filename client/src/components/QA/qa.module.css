@@ -1,8 +1,8 @@
 .section {
-  background-color: #FAEBD2;
+  /* background-color: #FAEBD2; */
   width: 90%;
   margin: 0 auto;
-  color: #4D3C20;
+  color: #525252;
   font-size: 100%;
   border: 3px solid #5FD9BD;
 }
@@ -14,7 +14,7 @@
 
 .searchdiv {
   width: 90%;
-  padding: 2%;
+  /* padding: 2%; */
   margin: 0 auto;
   margin-top: 2%;
 }
@@ -32,7 +32,7 @@
 
 .feedbutton{
   margin: 5px;
-  background-color: #FAEBD2;
+  /* background-color: #FAEBD2; */
   border-width: 1px;
 }
 
@@ -41,7 +41,7 @@
   height: 30px;
   background-color: #5FD9BD;
   border: 1px solid #15332C;
-  color: #4D3C20;
+  color: #525252;
   margin: 15px;
   padding: 5px;
 }
@@ -66,11 +66,13 @@
 .answerauthor {
   font-size: 80%;
   display: inline-block;
-  margin-right: 40%;
+  margin-right: 10px;
+  margin-left: 2%;
 }
 
 .answeractions {
   font-size: 75%;
   display: inline-block;
   align-items: right;
+  margin: 4px;
 }

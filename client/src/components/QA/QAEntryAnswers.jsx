@@ -10,11 +10,14 @@ var Answer = (props) => {
       </div>
       <div className={styles.answerlogistics}>
         <div className={styles.answerauthor}>
-          by {props.author} {props.date}
+          by {props.author}, {props.date}
+        </div>|
+        <div className={styles.answeractions}>
+          Helpful?
         </div>
         <div className={styles.answeractions}>
-          Helpful? ({props.helpfulness}) Yes
-        </div> |
+          Yes ({props.helpfulness})
+        </div>|
         <div className={styles.answeractions}>
           Report
         </div>
