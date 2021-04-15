@@ -46,7 +46,7 @@ const ReviewCard = ({review}) => {
       <div className={styles.cardHeader}>
         <div>
         {stars.map((star, idx) => {
-          return <div key={idx}>{star}</div>
+          return <span key={idx}>{star}</span>
         })}
         </div>
         <div className={styles.reviewUserDate}>
