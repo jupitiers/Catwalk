@@ -8,7 +8,7 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { createStarArray, truncateSummary } from '../../helpers/reviewCardHelpers';
 
 const ReviewCard = ({ review }) => {
-  const { getAllProducts } = useContext(APIContext);
+  const { getAllProducts, markReviewAsHelpful } = useContext(APIContext);
 
   useEffect(() => {
     getAllProducts();
@@ -38,13 +38,18 @@ const ReviewCard = ({ review }) => {
       <p className={styles.cardBody}>{review.body}</p>
       {review.response && (
         <div className={styles.cardResponse}>
-          <h6>Response:</h6>
+          <h6>Response from seller:</h6>
           <p>{review.response}</p>
         </div>
       )}
       <div className={styles.cardActions}>
         <p>Helpful?</p>
-        <p className={styles.action}>Yes</p>
+        <p
+          onClick={() => { markReviewAsHelpful(review.review_id); }}
+          className={styles.action}
+        >
+          Yes
+        </p>
         <p className={styles.yesCount}>
           (
           {review.helpfulness || 0}
