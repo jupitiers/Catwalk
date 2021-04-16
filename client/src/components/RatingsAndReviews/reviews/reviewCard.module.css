@@ -42,6 +42,32 @@
   margin: 0
 }
 
+.expandBodyButton {
+  background-color: white;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #641373;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.recommended {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.recommended i {
+  font-size: 1.2rem;
+  color:#641373;
+}
+
+.recommended p {
+  margin-left: 1em;
+  font-size: 1rem;
+}
+
 .cardResponse {
   background-color: #eeeeee;
   padding: 1em 1em 0;
@@ -67,6 +93,10 @@
 
 .cardActions p {
   margin: .5em .5em 0 0;
+}
+
+.cardActions p span {
+  color: #641373;
 }
 
 .action {
