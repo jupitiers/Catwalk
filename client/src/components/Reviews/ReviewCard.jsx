@@ -75,7 +75,7 @@ const ReviewCard = ({review}) => {
       <p className={styles.cardBody}>{review.body}</p>
       {review.response && (
         <div className={styles.cardResponse}>
-        <h6>Response:</h6>
+        <h6>Response from seller:</h6>
         <p>{review.response}</p>
         </div>
       )}
