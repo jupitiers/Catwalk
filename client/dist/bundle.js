@@ -2806,6 +2806,22 @@ var sampleReviews = {
 
 /***/ }),
 
+/***/ "./client/src/config/config.js":
+/*!*************************************!*\
+  !*** ./client/src/config/config.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REACT_APP_API_KEY": () => (/* binding */ REACT_APP_API_KEY)
+/* harmony export */ });
+var REACT_APP_API_KEY = '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';
+
+
+/***/ }),
+
 /***/ "./client/src/helpers/reviewCardHelpers.js":
 /*!*************************************************!*\
   !*** ./client/src/helpers/reviewCardHelpers.js ***!
@@ -2972,7 +2988,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../config/config'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/config */ "./client/src/config/config.js");
 /* harmony import */ var _ReviewsContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReviewsContext */ "./client/src/state/contexts/ReviewsContext.js");
 
 
@@ -3009,7 +3025,7 @@ var APIProvider = function APIProvider(_ref) {
               _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/products"), {
                 headers: {
-                  'Authorization': Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../config/config'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+                  'Authorization': _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
               });
 
@@ -3052,7 +3068,7 @@ var APIProvider = function APIProvider(_ref) {
               _context2.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=17067"), {
                 headers: {
-                  'Authorization': Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../config/config'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+                  'Authorization': _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
               });
 
@@ -3090,7 +3106,7 @@ var APIProvider = function APIProvider(_ref) {
               _context3.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/reviews/").concat(reviewId, "/helpful"), null, {
                 headers: {
-                  'Authorization': Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../config/config'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+                  'Authorization': _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
               });
 
