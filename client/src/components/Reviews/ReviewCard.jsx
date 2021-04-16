@@ -6,9 +6,11 @@ import {
 } from '../../helpers/starRatings';
 import { APIContext } from '../../state/contexts/APIContext';
 import { createStarArray, truncateSummary } from '../../helpers/reviewCardHelpers';
+import { ReviewContext } from '../../state/contexts/ReviewsContext';
 
 const ReviewCard = ({ review }) => {
-  const { getAllProducts, markReviewAsHelpful } = useContext(APIContext);
+  const { getAllProducts, markReviewAsHelpful, reportReview} = useContext(APIContext);
+  const { alreadyGaveFeedback } = useContext(ReviewContext);
 
   useEffect(() => {
     getAllProducts();
@@ -55,7 +57,11 @@ const ReviewCard = ({ review }) => {
       <div className={styles.cardActions}>
         <p>Helpful?</p>
         <p
-          onClick={() => { markReviewAsHelpful(review.review_id); }}
+          onClick={() => {
+            if (!alreadyGaveFeedback) {
+              markReviewAsHelpful(review.review_id);
+            }
+          }}
           className={styles.action}
         >
           Yes
@@ -66,7 +72,16 @@ const ReviewCard = ({ review }) => {
           )
         </p>
         <p>|</p>
-        <p className={styles.action}>Report</p>
+        <p
+          onClick={() => {
+            if (!alreadyGaveFeedback) {
+              reportReview(review.review_id);
+            }
+          }}
+          className={styles.action}
+        >
+          Report
+        </p>
       </div>
     </div>
   );

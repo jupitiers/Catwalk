@@ -6,7 +6,7 @@ import { ReviewContext } from './ReviewsContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-  const { reviews, setReviews } = useContext(ReviewContext);
+  const { reviews, setReviews, setAlreadyGaveFeedback } = useContext(ReviewContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
@@ -49,6 +49,18 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
+      setAlreadyGaveFeedback(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const reportReview = async (reviewId) => {
+    try {
+      await axios.put(`${baseURL}/reviews/${reviewId}/report`, null, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      getReviewsByProductId();
+      setAlreadyGaveFeedback(true);
     } catch (err) {
       console.log(err);
     }
@@ -60,6 +72,7 @@ const APIProvider = ({ children }) => {
         getAllProducts,
         getReviewsByProductId,
         markReviewAsHelpful,
+        reportReview,
       }}
     >
       {children}
