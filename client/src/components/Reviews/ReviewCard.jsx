@@ -9,8 +9,8 @@ import { createStarArray, truncateSummary } from '../../helpers/reviewCardHelper
 import { ReviewContext } from '../../state/contexts/ReviewsContext';
 
 const ReviewCard = ({ review }) => {
-  const { getAllProducts, markReviewAsHelpful, reportReview} = useContext(APIContext);
-  const { alreadyGaveFeedback } = useContext(ReviewContext);
+  const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
+  const { feedbackGiven } = useContext(ReviewContext);
 
   useEffect(() => {
     getAllProducts();
@@ -58,7 +58,7 @@ const ReviewCard = ({ review }) => {
         <p>Helpful?</p>
         <p
           onClick={() => {
-            if (!alreadyGaveFeedback) {
+            if (!feedbackGiven) {
               markReviewAsHelpful(review.review_id);
             }
           }}
@@ -74,7 +74,7 @@ const ReviewCard = ({ review }) => {
         <p>|</p>
         <p
           onClick={() => {
-            if (!alreadyGaveFeedback) {
+            if (!feedbackGiven) {
               reportReview(review.review_id);
             }
           }}

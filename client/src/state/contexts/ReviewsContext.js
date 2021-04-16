@@ -4,15 +4,15 @@ export const ReviewContext = createContext({});
 
 const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([]);
-  const [alreadyGaveFeedback, setAlreadyGaveFeedback] = useState(false);
+  const [feedbackGiven, setFeedbackGiven] = useState(false);
 
   return (
     <ReviewContext.Provider
       value={{
         reviews,
         setReviews,
-        alreadyGaveFeedback,
-        setAlreadyGaveFeedback,
+        feedbackGiven,
+        setFeedbackGiven,
       }}
     >
       {children}
