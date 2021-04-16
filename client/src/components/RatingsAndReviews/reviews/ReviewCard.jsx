@@ -22,7 +22,6 @@ const ReviewCard = ({ review }) => {
   const truncatedSummary = truncateSummary(review);
   const stars = createStarArray(review);
   const [truncatedBody, restOfBody] = truncateBody(review);
-  console.log(truncatedBody, restOfBody);
 
   return (
     <div className={styles.reviewCardContainer}>
