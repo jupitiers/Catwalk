@@ -45,12 +45,14 @@ const ReviewCard = ({ review }) => {
       </div>
       <h3>{truncatedSummary}</h3>
       <p className={styles.cardBody}>{truncatedBody}</p>
-      <button
-        className={styles.expandBodyButton}
-        onClick={() => setShowMoreBody(!showMoreBody)}
-      >
-      {showMoreBody ? 'Show Less' : 'Show More'}
-      </button>
+      {restOfBody && (
+        <button
+          className={styles.expandBodyButton}
+          onClick={() => setShowMoreBody(!showMoreBody)}
+        >
+        {showMoreBody ? 'Show Less' : 'Show More'}
+        </button>
+      )}
       {showMoreBody && (
         restOfBody
       )}
