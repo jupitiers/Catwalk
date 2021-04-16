@@ -3,8 +3,9 @@ import moment from 'moment';
 import styles from './reviewCard.module.css';
 import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
-} from './starRatings';
+} from '../../helpers/starRatings';
 import { APIContext } from '../../state/contexts/APIContext';
+import { createStarArray, truncateSummary } from '../../helpers/reviewCardHelpers';
 
 const ReviewCard = ({ review }) => {
   const { getAllProducts } = useContext(APIContext);
@@ -12,42 +13,10 @@ const ReviewCard = ({ review }) => {
   useEffect(() => {
     getAllProducts();
   }, []);
-  // get whole number and percent number
-  const fullStars = Math.floor(review.rating);
-  const decimal = (review.rating % 1).toFixed(1);
-  let partialStar;
-  // 0-1 = no star
-  if (decimal < 2) {
-    partialStar = (emptyStar);
-  }
-  // 2-3 = 1/4 star
-  if (decimal > 1 && decimal < 4) {
-    partialStar = (quarterStar);
-  }
-  // 4-6 = 1/2 star
-  if (decimal > 3 && decimal < 7) {
-    partialStar = (halfStar);
-  }
-  // 7-8 = 3/4 star
-  if (decimal > 6 && decimal < 9) {
-    partialStar = (threeQuarterStar);
-  }
-  // 9 = full star
-  if (decimal > 8) {
-    partialStar = (fullStar);
-  }
-  // create array for displaying full stars dynamically
-  const stars = [];
-  for (let i = 1; i < fullStars; i++) {
-    stars.push(fullStar);
-  }
-  // create a max 60 char substring for summary
-  let truncatedSummary;
-  if (review.summary.length > 60) {
-    truncatedSummary = `${review.summary.substring(0, 60)}...`;
-  } else {
-    truncatedSummary = review.summary;
-  }
+
+  // helper functions for review formatting
+  const truncatedSummary = truncateSummary(review);
+  const stars = createStarArray(review);
 
   return (
     <div className={styles.reviewCardContainer}>
