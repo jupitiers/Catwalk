@@ -9,6 +9,7 @@ import Header from './Header/index.jsx';
 import OverView from './OverView/index.jsx';
 import QASection from './QA/index.jsx';
 import RatingsAndReviews from './Reviews/RatingsAndReviews.jsx';
+import RelatedItemsAndOutfit from './Related/index.jsx';
 
 
 const App = () => {
@@ -30,8 +31,9 @@ const App = () => {
         <Header />
         <OverView />
         <div className={styles.componentContainer}>
-        <QASection/>
-        <RatingsAndReviews/>
+          <RelatedItemsAndOutfit />
+          <QASection/>
+          <RatingsAndReviews/>
         </div>
       </div>
 

@@ -1,15 +1,16 @@
 import React, {useEffect, useContext} from 'react';
-import RelatedItemCard from './RelatedItem.jsx';
+import RelatedItemCard from './RelatedItemCard.jsx';
+import styles from './relatedItemsCarousel.module.css';
 
 const RelatedItemsCarousel = () => {
   return (
-    <div>
-      <button>Left</button>
+    <div className={styles.carousel}>
+      <button className={styles.carouselButton}>Left</button>
       <RelatedItemCard />
       <RelatedItemCard />
       <RelatedItemCard />
       <RelatedItemCard />
-      <button>Right</button>
+      <button className={styles.carouselButton}>Right</button>
     </div>
   )
 }

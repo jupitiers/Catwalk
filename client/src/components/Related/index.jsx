@@ -1,13 +1,12 @@
 import React, {useEffect, useContext} from 'react';
 import RelatedItemsCarousel from './RelatedItems/RelatedItemsCarousel.jsx';
 import YourOutfitCarousel from './YourOutfit/YourOutfitCarousel.jsx';
+import styles from './index.module.css';
 
 const RelatedItemsAndOutfit = () => {
   return (
-    <div>
+    <div className={styles.CarouselsContainer}>
       <RelatedItemsCarousel />
-    </div>
-    <div>
       <YourOutfitCarousel />
     </div>
   )

@@ -2,8 +2,10 @@ import React from 'react';
 
 const CardImage = () => {
   return (
-    <img></img>
-    <button>x</button>
+    <div>
+      <img></img>
+      <button>x</button>
+    </div>
   )
 }
 
