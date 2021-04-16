@@ -2,11 +2,14 @@ import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
+import { QuestionContext } from './QuestionsContext';
 
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const { reviews, setReviews, setFeedbackGiven } = useContext(ReviewContext);
+  const { questions, setQuestions, setFeedbackGiven } = useContext(QuestionContext);
+
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
@@ -24,6 +27,33 @@ const APIProvider = ({ children }) => {
       const products = await axios.get(`${baseURL}/products`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /** ****************************************************************************
+  *                      API calls for QAs
+  ***************************************************************************** */
+
+   const getQuestionsByProductId = async () => {
+    try {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=17069`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setQuestions(allQuestions.data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const markQuestionAsHelpful = async (questionId) => {
+    try {
+      await axios.put(`${baseURL}/qa/questions/${reviewId}/helpful`, null, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      getQuestionsByProductId();
+      setFeedbackGiven(true);
     } catch (err) {
       console.log(err);
     }
@@ -73,6 +103,7 @@ const APIProvider = ({ children }) => {
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,
+        getQuestionsByProductId,
       }}
     >
       {children}

@@ -19,11 +19,20 @@ var QA = (props) => {
 
   return (
     <div>
-      <div>
-        <h4>Q: {props.question}</h4>
+      <div className={styles.qasection}>
+        <div className={styles.qatitle}>
+          <h4>Q: </h4>
+        </div>
+        <div className={styles.qacontent}>
+          <h4>{props.question}</h4>
+        </div>
       </div>
-      <div>
-        A: {usedAnswers.map(entry =>
+      <div className={styles.qasection}>
+        <div className={styles.qatitle}>
+          <h4>A: </h4>
+        </div>
+        <div className={styles.qacontent}></div>
+          {usedAnswers.map(entry =>
           <Answer key={entry[1].id} answer={entry[1].body} date={entry[1].date} author={entry[1].answerer_name} helpfulness={entry[1].helpfulness} photos={entry[1].photos}/>
           )}
       </div>

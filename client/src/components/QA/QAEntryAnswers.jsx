@@ -22,7 +22,9 @@ var Answer = (props) => {
         </div>
       </div>
       <div>
-        This is where related images would go {props.photos}
+        {props.photos.map(photo =>
+          <img className={styles.answerimage} src={photo}/>
+        )}
       </div>
     </div>
   )
