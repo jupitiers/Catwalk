@@ -3,10 +3,10 @@ import moment from 'moment';
 import styles from './reviewCard.module.css';
 import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
-} from '../../helpers/starRatings';
-import { APIContext } from '../../state/contexts/APIContext';
-import { createStarArray, truncateSummary } from '../../helpers/reviewCardHelpers';
-import { ReviewContext } from '../../state/contexts/ReviewsContext';
+} from '../../../helpers/starRatings';
+import { APIContext } from '../../../state/contexts/APIContext';
+import { createStarArray, truncateSummary } from '../../../helpers/reviewCardHelpers';
+import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const ReviewCard = ({ review }) => {
   const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);

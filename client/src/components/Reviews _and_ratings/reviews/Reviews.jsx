@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './reviews.module.css';
 import ReviewCard from './ReviewCard';
-import { APIContext } from '../../state/contexts/APIContext';
-import { ReviewContext } from '../../state/contexts/ReviewsContext';
+import { APIContext } from '../../../state/contexts/APIContext';
+import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
   const { getReviewsByProductId } = useContext(APIContext);
