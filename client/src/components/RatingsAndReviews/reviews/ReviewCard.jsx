@@ -50,14 +50,14 @@ const ReviewCard = ({ review }) => {
           className={styles.expandBodyButton}
           onClick={() => setShowMoreBody(!showMoreBody)}
         >
-        {showMoreBody ? 'Show Less' : 'Show More'}
+          {showMoreBody ? 'Show Less' : 'Show More'}
         </button>
       )}
       {showMoreBody && (
         restOfBody
       )}
       {review.photos.length > 0 && (
-        <ReviewImages images={review.photos}/>
+        <ReviewImages images={review.photos} />
       )}
       {review.recommend && (
         <div className={styles.recommended}>

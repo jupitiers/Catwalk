@@ -6,12 +6,23 @@
   align-items: center;
 }
 
+.image {
+  margin: 0 auto;
+  margin-top: 200px;
+  height: 50vh;
+  width: 50vw;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .imageWrapper {
   height: 50px;
   width: 50px;
   margin: 0 .5em;
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .imageOverlay {
@@ -23,7 +34,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  background-color: rgba(0,0,0,0.8); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
