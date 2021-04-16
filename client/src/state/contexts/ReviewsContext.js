@@ -7,7 +7,9 @@ const ReviewProvider = ({ children }) => {
   const [feedbackGiven, setFeedbackGiven] = useState(false);
   const [display, setDisplay] = useState('none');
   const [selectedImage, setSelectedImage] = useState('');
+  const [reviewsShowing, setReviewsShowing] = useState(2);
 
+  // reviewImages logic
   const openOverlay = (imageUrl) => {
     setDisplay('block');
     setSelectedImage(imageUrl);
@@ -15,6 +17,11 @@ const ReviewProvider = ({ children }) => {
   const closeOverlay = () => {
     setDisplay('none');
     setSelectedImage('');
+  };
+
+  // ratingsAndReviews logic
+  const showMoreReviews = () => {
+    setReviewsShowing(reviewsShowing + 2);
   };
 
   return (
@@ -30,6 +37,9 @@ const ReviewProvider = ({ children }) => {
         closeOverlay,
         selectedImage,
         setSelectedImage,
+        reviewsShowing,
+        setReviewsShowing,
+        showMoreReviews,
       }}
     >
       {children}

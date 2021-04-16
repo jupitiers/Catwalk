@@ -3,8 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 25px 1fr;
-  grid-gap: 15px;
+  grid-template-rows: 25px 600px;
   color: #525252;
 }
 
@@ -41,6 +40,10 @@
 .ratingsSorter select:focus {
   border: none;
   outline: none;
+}
+
+.cardList {
+overflow-y: auto;
 }
 
 .review  {
