@@ -1,11 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD:client/src/components/Reviews/RatingsAndReviews.jsx
-import Ratings from './Ratings.jsx';
-import Reviews from './Reviews.jsx';
-=======
 import Ratings from './ratings/Ratings';
 import Reviews from './reviews/Reviews';
->>>>>>> 3aea8f8cd356f01d57e2f49e24fc956deef7bf50:client/src/components/RatingsAndReviews/RatingsAndReviews.jsx
 import styles from './ratingsAndReviews.module.css';
 
 const RatingsAndReviews = () => (
