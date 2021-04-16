@@ -20,7 +20,11 @@ const Reviews = () => {
     <div className={styles.reviewsContainer}>
       <div className={styles.ratingsSorter}>
         <p>248 Reviews, sorted by</p>
-        <p>relevance</p>
+        <select name='sort-by' id='sort-by'>
+        <option value='relevance'>Relevance</option>
+        <option value='helpful'>Helpful</option>
+        <option value='newest'>Newest</option>
+        </select>
       </div>
       {/* TODO these will not be hardcoded they will be dynamic */}
       {reviews.length > 0 && reviews.slice(0, 2).map((review, idx) => {
