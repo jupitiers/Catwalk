@@ -5,7 +5,7 @@ var Answer = (props) => {
   return(
     <div className={styles.answerentry}>
       <div className={styles.answer}>
-        A: {props.answer}
+        {props.answer}
       </div>
       <div className={styles.answerlogistics}>
         <div className={styles.answerauthor}>

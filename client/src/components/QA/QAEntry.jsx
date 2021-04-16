@@ -23,7 +23,7 @@ var QA = (props) => {
         <h4>Q: {props.question}</h4>
       </div>
       <div>
-        {usedAnswers.map(entry =>
+        A: {usedAnswers.map(entry =>
           <Answer key={entry[1].id} answer={entry[1].body} date={entry[1].date} author={entry[1].answerer_name} helpfulness={entry[1].helpfulness} photos={entry[1].photos}/>
           )}
       </div>
