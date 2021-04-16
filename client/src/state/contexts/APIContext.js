@@ -44,7 +44,6 @@ const getReviewsByProductId = async() => {
 }
 
 const markReviewAsHelpful = async(reviewId) => {
-  console.log(reviewId)
     try {
     await axios.put(`${baseURL}/reviews/${reviewId}/helpful`, null, {
       headers: {'Authorization': REACT_APP_API_KEY}
