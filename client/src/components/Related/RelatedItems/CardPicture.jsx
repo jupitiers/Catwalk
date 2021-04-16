@@ -1,13 +1,13 @@
 import React, {useEffect, useContext} from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const RelatedItem = () => {
+const CardPicture = () => {
   return (
     <div>
-      {/* <ComparisonModal /> */}
-      <img src=""></img>
+      <img></img>
+      <ComparisonModal />
     </div>
   )
 }
 
-export default RelatedItem;
+export default CardPicture;

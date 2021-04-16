@@ -1,14 +1,14 @@
 import React, {useEffect, useContext} from 'react';
-import RelatedItem from './RelatedItem.jsx';
+import RelatedItemCard from './RelatedItem.jsx';
 
 const RelatedItemsCarousel = () => {
   return (
     <div>
       <button>Left</button>
-      <RelatedItem />
-      <RelatedItem />
-      <RelatedItem />
-      <RelatedItem />
+      <RelatedItemCard />
+      <RelatedItemCard />
+      <RelatedItemCard />
+      <RelatedItemCard />
       <button>Right</button>
     </div>
   )
