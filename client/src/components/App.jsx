@@ -1,15 +1,14 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 // import '../index.css'
 import styles from './app.module.css';
 // context imports
-import {ProductContext} from '../state/contexts/ProductContext';
+import { ProductContext } from '../state/contexts/ProductContext';
 
 // import components
-import Header from './Header/index.jsx';
-import OverView from './OverView/index.jsx';
-import QASection from './QA/index.jsx';
-import RatingsAndReviews from './Reviews/RatingsAndReviews.jsx';
-
+import Header from './Header/index';
+import OverView from './OverView/index';
+import QASection from './QA/index';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 
 const App = () => {
   const {
@@ -18,24 +17,24 @@ const App = () => {
     productList,
     setProductList,
     someFunc,
-    } = useContext(ProductContext)
+  } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log({sampleProduct})
+    console.log({ sampleProduct });
     someFunc();
-  }, [])
+  }, []);
 
-    return (
-      <div className={styles.appContainer}>
-        <Header />
-        <OverView />
-        <div className={styles.componentContainer}>
-        <QASection/>
-        <RatingsAndReviews/>
-        </div>
+  return (
+    <div className={styles.appContainer}>
+      <Header />
+      <OverView />
+      <div className={styles.componentContainer}>
+        <QASection />
+        <RatingsAndReviews />
       </div>
+    </div>
 
-    )
-}
+  );
+};
 
 export default App;

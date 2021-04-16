@@ -1,6 +1,6 @@
 import React from 'react';
-import Ratings from './Ratings';
-import Reviews from './Reviews';
+import Ratings from './ratings/Ratings';
+import Reviews from './reviews/Reviews';
 import styles from './ratingsAndReviews.module.css';
 
 const RatingsAndReviews = () => (
