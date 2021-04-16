@@ -7,6 +7,7 @@ import {
 import { APIContext } from '../../../state/contexts/APIContext';
 import { createStarArray, truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
+import ReviewImages from './ReviewImages';
 
 const ReviewCard = ({ review }) => {
   const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
@@ -52,6 +53,9 @@ const ReviewCard = ({ review }) => {
       </button>
       {showMoreBody && (
         restOfBody
+      )}
+      {review.photos.length > 0 && (
+        <ReviewImages images={review.photos}/>
       )}
       {review.recommend && (
         <div className={styles.recommended}>

@@ -1,0 +1,15 @@
+.imagesContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.imageWrapper {
+  height: 50px;
+  width: 50px;
+  margin: 0 .5em;
+  background-position: center;
+  background-size: contain;
+}
