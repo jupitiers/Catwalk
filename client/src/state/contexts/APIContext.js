@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState} from 'react';
 import axios from 'axios'
-import {REACT_APP_API_KEY} from '../../config/config.js';
+import {REACT_APP_API_KEY} from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
 
 export const APIContext = createContext({});
@@ -55,7 +55,6 @@ const markReviewAsHelpful = async(reviewId) => {
 }
 
 
-
   return (
     <APIContext.Provider
       value={{
@@ -64,7 +63,7 @@ const markReviewAsHelpful = async(reviewId) => {
         markReviewAsHelpful,
       }}
     >
-    {children}
+      {children}
     </APIContext.Provider>
   );
 };
