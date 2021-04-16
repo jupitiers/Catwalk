@@ -7,9 +7,6 @@ import { APIContext } from '../../state/contexts/APIContext.js';
 const ReviewCard = ({review}) => {
   const {getAllProducts} = useContext(APIContext)
 
-  useEffect(() => {
-    getAllProducts();
-  }, [])
   // get whole number and percent number
   let fullStars = Math.floor(review.rating);
   let decimal = (review.rating % 1).toFixed(1);
@@ -39,6 +36,15 @@ const ReviewCard = ({review}) => {
   for (let i = 1; i < fullStars; i++) {
     stars.push(fullStar)
   }
+  stars.push(partialStar)
+  // check to see if any empty stars need to be added
+  if (stars.length < 5) {
+    const starsToAdd = 5 - stars.length
+    for (let i = 0; i < starsToAdd; i++) {
+    stars.push(emptyStar)
+  }
+  }
+
   // create a max 60 char substring for summary
   let truncatedSummary;
   if (review.summary.length > 60) {

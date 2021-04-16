@@ -2539,11 +2539,8 @@ var ReviewCard = function ReviewCard(_ref) {
   var review = _ref.review;
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_APIContext_js__WEBPACK_IMPORTED_MODULE_4__.APIContext),
-      getAllProducts = _useContext.getAllProducts;
+      getAllProducts = _useContext.getAllProducts; // get whole number and percent number
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getAllProducts();
-  }, []); // get whole number and percent number
 
   var fullStars = Math.floor(review.rating);
   var decimal = (review.rating % 1).toFixed(1);
@@ -2578,6 +2575,16 @@ var ReviewCard = function ReviewCard(_ref) {
 
   for (var i = 1; i < fullStars; i++) {
     stars.push(_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.fullStar);
+  }
+
+  stars.push(partialStar); // check to see if any empty stars need to be added
+
+  if (stars.length < 5) {
+    var starsToAdd = 5 - stars.length;
+
+    for (var _i = 0; _i < starsToAdd; _i++) {
+      stars.push(_starRatings_js__WEBPACK_IMPORTED_MODULE_3__.emptyStar);
+    }
   } // create a max 60 char substring for summary
 
 
