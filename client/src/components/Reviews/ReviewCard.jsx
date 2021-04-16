@@ -10,6 +10,7 @@ const ReviewCard = ({review}) => {
   // get whole number and percent number
   let fullStars = Math.floor(review.rating);
   let decimal = (review.rating % 1).toFixed(1);
+  decimal = parseInt(decimal.split('.')[1])
   let partialStar;
   // 0-1 = no star
   if (decimal < 2) {
