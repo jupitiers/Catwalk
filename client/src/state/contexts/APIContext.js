@@ -34,7 +34,7 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
   const getReviewsByProductId = async () => {
     try {
-      const allReviews = await axios.get(`${baseURL}/reviews?product_id=17070`, {
+      const allReviews = await axios.get(`${baseURL}/reviews?product_id=17069`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setReviews(allReviews.data.results);

@@ -8,7 +8,7 @@ import { ProductContext } from '../state/contexts/ProductContext';
 import Header from './Header/index';
 import OverView from './OverView/index';
 import QASection from './QA/index';
-import RatingsAndReviews from './Reviews _and_ratings/RatingsAndReviews';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 
 const App = () => {
   const {

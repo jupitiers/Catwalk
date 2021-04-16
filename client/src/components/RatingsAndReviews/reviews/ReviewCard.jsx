@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import moment from 'moment';
 import styles from './reviewCard.module.css';
 import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from '../../../helpers/starRatings';
 import { APIContext } from '../../../state/contexts/APIContext';
-import { createStarArray, truncateSummary } from '../../../helpers/reviewCardHelpers';
+import { createStarArray, truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const ReviewCard = ({ review }) => {
   const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
   const { feedbackGiven } = useContext(ReviewContext);
+  const [showMoreBody, setShowMoreBody] = useState(false);
 
   useEffect(() => {
     getAllProducts();
@@ -19,6 +20,8 @@ const ReviewCard = ({ review }) => {
   // helper functions for review formatting
   const truncatedSummary = truncateSummary(review);
   const stars = createStarArray(review);
+  const [truncatedBody, restOfBody] = truncateBody(review);
+  console.log(truncatedBody, restOfBody);
 
   return (
     <div className={styles.reviewCardContainer}>
@@ -40,7 +43,16 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
       <h3>{truncatedSummary}</h3>
-      <p className={styles.cardBody}>{review.body}</p>
+      <p className={styles.cardBody}>{truncatedBody}</p>
+      <button
+        className={styles.expandBodyButton}
+        onClick={() => setShowMoreBody(!showMoreBody)}
+      >
+      {showMoreBody ? 'Show Less' : 'Show More'}
+      </button>
+      {showMoreBody && (
+        restOfBody
+      )}
       {review.recommend && (
         <div className={styles.recommended}>
           <i className="fas fa-check-double" />
@@ -64,7 +76,7 @@ const ReviewCard = ({ review }) => {
           }}
           className={styles.action}
         >
-          Yes
+          <span>Yes</span>
         </p>
         <p className={styles.yesCount}>
           (
@@ -80,7 +92,7 @@ const ReviewCard = ({ review }) => {
           }}
           className={styles.action}
         >
-          Report
+          <span>Report</span>
         </p>
       </div>
     </div>
