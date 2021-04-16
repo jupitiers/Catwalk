@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ImageGallery from '../ImageGallery/index.jsx';
-import Product from '../Product/index.jsx';
+import ProductForm from '../ProductForm/index.jsx';
 
 import styles from './overview.module.css';
 
@@ -14,7 +14,7 @@ const OverView = () => {
           <ImageGallery />
         </section>
         <section className={styles.secTwo}>
-          <Product />
+          <ProductForm />
         </section>
       </div>
     </div>
