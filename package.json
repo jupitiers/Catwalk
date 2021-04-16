@@ -1,5 +1,5 @@
 {
-  "name": "Catwalk",
+  "name": "catwalk",
   "version": "1.0.0",
   "description": "FEC Catwalk",
   "main": "server/index.js",
@@ -29,6 +29,12 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "css-loader": "^5.2.1",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "nodemon": "^2.0.7",
     "style-loader": "^2.0.0"
   }
