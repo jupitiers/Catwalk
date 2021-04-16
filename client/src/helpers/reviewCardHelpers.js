@@ -59,10 +59,10 @@ export const truncateBody = (review) => {
   let truncatedBody;
   let restOfBody;
   if (review.body.length > 250) {
-    truncatedBody = `${review.summary.substring(0, 250)}...`;
-    restOfBody = review.summary.substring(250);
+    truncatedBody = `${review.body.substring(0, 250)}...`;
+    restOfBody = review.body.substring(250);
   } else {
-    truncatedBody = review.summary;
+    truncatedBody = review.body;
   }
   return [truncatedBody, restOfBody];
 };

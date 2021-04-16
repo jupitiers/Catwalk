@@ -1,8 +1,7 @@
 .reviewCardContainer {
-  padding: 1em;
+  padding: .5em;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
   color: #525252;
 }
 

@@ -6,7 +6,7 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
   const { getReviewsByProductId } = useContext(APIContext);
-  const { reviews } = useContext(ReviewContext);
+  const { reviews, reviewsShowing } = useContext(ReviewContext);
 
   // get reviews on load
   // TODO change the api call to use dynamic id
@@ -25,9 +25,11 @@ const Reviews = () => {
         </select>
       </div>
       {/* TODO these will not be hardcoded they will be dynamic */}
-      {reviews.length > 0 && reviews.slice(0, 2).map((review, idx) => (
-        <div key={idx} className={styles.review}><ReviewCard review={review} /></div>
-      ))}
+      <div className={styles.cardList}>
+        {reviews.length > 0 && reviews.slice(0, reviewsShowing).map((review, idx) => (
+          <div key={idx} className={styles.review}><ReviewCard review={review} /></div>
+        ))}
+      </div>
     </div>
   );
 };

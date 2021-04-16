@@ -1,19 +1,17 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export const ProductContext = createContext({});
 
-const ProductProvider = ({children}) => {
+const ProductProvider = ({ children }) => {
   const [sampleProduct, setSampleProduct] = useState({
-    name: 'a product', id: 1
-    });
+    name: 'a product', id: 1,
+  });
 
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState([]);
 
   const someFunc = () => {
-    console.log('hello from context')
-  }
-
-
+    console.log('hello from context');
+  };
 
   return (
     <ProductContext.Provider
@@ -25,7 +23,7 @@ const ProductProvider = ({children}) => {
         someFunc,
       }}
     >
-    {children}
+      {children}
     </ProductContext.Provider>
   );
 };
