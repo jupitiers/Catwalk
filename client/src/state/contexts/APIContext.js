@@ -16,7 +16,7 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'
 
 // sample request to get all products
 
- /******************************************************************************
+  /******************************************************************************
   *                      API calls for products
   ******************************************************************************/
 const getAllProducts = async () => {
@@ -29,7 +29,7 @@ const getAllProducts = async () => {
   }
 }
 
- /******************************************************************************
+  /******************************************************************************
   *                      API calls for reviews
   ******************************************************************************/
 const getReviewsByProductId = async() => {
@@ -43,6 +43,18 @@ const getReviewsByProductId = async() => {
   }
 }
 
+const markReviewAsHelpful = async(reviewId) => {
+  console.log(reviewId)
+    try {
+    await axios.put(`${baseURL}/reviews/${reviewId}/helpful`, null, {
+      headers: {'Authorization': REACT_APP_API_KEY}
+    })
+    getReviewsByProductId();
+  }catch (err) {
+    console.log(err)
+  }
+}
+
 
 
   return (
@@ -50,6 +62,7 @@ const getReviewsByProductId = async() => {
       value={{
         getAllProducts,
         getReviewsByProductId,
+        markReviewAsHelpful,
       }}
     >
     {children}

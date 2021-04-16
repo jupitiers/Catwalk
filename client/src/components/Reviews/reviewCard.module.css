@@ -89,4 +89,5 @@
 
 .action {
   text-decoration: underline;
+  cursor: pointer;
 }

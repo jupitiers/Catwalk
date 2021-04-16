@@ -5,7 +5,7 @@ import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from './st
 import { APIContext } from '../../state/contexts/APIContext.js';
 
 const ReviewCard = ({review}) => {
-  const {getAllProducts} = useContext(APIContext)
+  const {markReviewAsHelpful} = useContext(APIContext)
 
   // get whole number and percent number
   let fullStars = Math.floor(review.rating);
@@ -81,7 +81,7 @@ const ReviewCard = ({review}) => {
       )}
       <div className={styles.cardActions}>
       <p>Helpful?</p>
-      <p className={styles.action}>Yes</p>
+      <p onClick={() => {markReviewAsHelpful(review.review_id)}} className={styles.action}>Yes</p>
       <p className={styles.yesCount}>({review.helpfulness || 0})</p>
       <p>|</p>
       <p className={styles.action}>Report</p>
