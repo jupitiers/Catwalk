@@ -5,14 +5,12 @@ import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from './st
 import { APIContext } from '../../state/contexts/APIContext.js';
 
 const ReviewCard = ({review}) => {
-  const {getAllProducts} = useContext(APIContext)
+  const {markReviewAsHelpful} = useContext(APIContext)
 
-  useEffect(() => {
-    getAllProducts();
-  }, [])
   // get whole number and percent number
   let fullStars = Math.floor(review.rating);
   let decimal = (review.rating % 1).toFixed(1);
+  decimal = parseInt(decimal.split('.')[1])
   let partialStar;
   // 0-1 = no star
   if (decimal < 2) {
@@ -39,6 +37,15 @@ const ReviewCard = ({review}) => {
   for (let i = 1; i < fullStars; i++) {
     stars.push(fullStar)
   }
+  stars.push(partialStar)
+  // check to see if any empty stars need to be added
+  if (stars.length < 5) {
+    const starsToAdd = 5 - stars.length
+    for (let i = 0; i < starsToAdd; i++) {
+    stars.push(emptyStar)
+  }
+  }
+
   // create a max 60 char substring for summary
   let truncatedSummary;
   if (review.summary.length > 60) {
@@ -68,13 +75,13 @@ const ReviewCard = ({review}) => {
       <p className={styles.cardBody}>{review.body}</p>
       {review.response && (
         <div className={styles.cardResponse}>
-        <h6>Response:</h6>
+        <h6>Response from seller:</h6>
         <p>{review.response}</p>
         </div>
       )}
       <div className={styles.cardActions}>
       <p>Helpful?</p>
-      <p className={styles.action}>Yes</p>
+      <p onClick={() => {markReviewAsHelpful(review.review_id)}} className={styles.action}>Yes</p>
       <p className={styles.yesCount}>({review.helpfulness || 0})</p>
       <p>|</p>
       <p className={styles.action}>Report</p>
