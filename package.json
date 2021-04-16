@@ -1,5 +1,5 @@
 {
-  "name": "Catwalk",
+  "name": "catwalk",
   "version": "1.0.0",
   "description": "FEC Catwalk",
   "main": "server/index.js",
