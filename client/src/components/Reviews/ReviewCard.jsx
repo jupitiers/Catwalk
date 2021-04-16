@@ -1,8 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import moment from 'moment';
-<<<<<<< HEAD
-import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from '../../helper/starRatings.js'
-=======
 import styles from './reviewCard.module.css';
 import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
@@ -16,7 +13,6 @@ const ReviewCard = ({ review }) => {
   useEffect(() => {
     getAllProducts();
   }, []);
->>>>>>> master
 
   // helper functions for review formatting
   const truncatedSummary = truncateSummary(review);
