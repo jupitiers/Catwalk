@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import styles from './reviews.module.css'
-import ReviewCard from './ReviewCard';
+import ReviewCard from './ReviewCard.jsx';
 import sampleReviews from './dummyData';
 import { APIContext } from '../../state/contexts/APIContext';
 import { ReviewContext } from '../../state/contexts/ReviewsContext';

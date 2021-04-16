@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState} from 'react';
 import axios from 'axios'
-import {REACT_APP_API_KEY} from '../../config/config';
+import {REACT_APP_API_KEY} from '../../../../config/config';
 import { ReviewContext } from './ReviewsContext';
 
 export const APIContext = createContext({});
