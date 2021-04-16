@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import styles from './reviewCard.module.css';
 import moment from 'moment';
 import {emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar} from './starRatings.js'
+import { APIContext } from '../../state/contexts/APIContext.js';
 
 const ReviewCard = ({review}) => {
+  const {getAllProducts} = useContext(APIContext)
+
+  useEffect(() => {
+    getAllProducts();
+  }, [])
   // get whole number and percent number
   let fullStars = Math.floor(review.rating);
   let decimal = (review.rating % 1).toFixed(1);
