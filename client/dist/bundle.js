@@ -2780,22 +2780,6 @@ var emptyStar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("s
 
 /***/ }),
 
-/***/ "./client/src/config/config.js":
-/*!*************************************!*\
-  !*** ./client/src/config/config.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "REACT_APP_API_KEY": () => (/* binding */ REACT_APP_API_KEY)
-/* harmony export */ });
-var REACT_APP_API_KEY = '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';
-
-
-/***/ }),
-
 /***/ "./client/src/state/contexts/APIContext.js":
 /*!*************************************************!*\
   !*** ./client/src/state/contexts/APIContext.js ***!
@@ -2814,7 +2798,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _config_config_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/config.js */ "./client/src/config/config.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../config/config.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 
@@ -2840,7 +2824,7 @@ var APIProvider = function APIProvider(_ref) {
               _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/products"), {
                 headers: {
-                  'Authorization': _config_config_js__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                  'Authorization': Object(function webpackMissingModule() { var e = new Error("Cannot find module '../../config/config.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
                 }
               });
 
