@@ -26,7 +26,9 @@ const ReviewCard = ({ review }) => {
         </div>
         <div className={styles.reviewUserDate}>
           <p>
+            {review.recommend && (
             <i className="fas fa-check-circle" />
+            )}
             {review.reviewer_name}
           </p>
           <p>
@@ -36,6 +38,13 @@ const ReviewCard = ({ review }) => {
       </div>
       <h3>{truncatedSummary}</h3>
       <p className={styles.cardBody}>{review.body}</p>
+      {review.recommend && (
+        <div className={styles.recommended}>
+          <i className="fas fa-check-double" />
+          <p>I recommend this Product</p>
+        </div>
+      )}
+
       {review.response && (
         <div className={styles.cardResponse}>
           <h6>Response from seller:</h6>
