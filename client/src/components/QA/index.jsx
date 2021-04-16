@@ -2,22 +2,22 @@ import React, {useEffect, useContext} from 'react';
 import QAList from './QAList.jsx';
 import styles from './qa.module.css';
 
+//sample data
+import qaSampleData from './qaSampleData.js';
+
 
 const QASection = () => {
 
   return(
     <div className={styles.section}>
       <div className={styles.title}>
-        <span>Questions & Answers</span>
+        <h2>Questions & Answers</h2>
       </div>
       <div className={styles.searchdiv}>
         <input className={styles.searchbar} type='text' placeholder='Have a question? Search for answers...'/>
       </div>
       <div className={styles.feed}>
-        <QAList question={'Question 1'}/>
-        <QAList question={'Question 2'}/>
-        <QAList question={'Question 3'}/>
-        <QAList question={'Question 4'}/>
+        <QAList data={qaSampleData.results}/>
       </div>
       <div className='QA-button'>
         <button className={styles.button}>More Answered Questions</button>
