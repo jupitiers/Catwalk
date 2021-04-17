@@ -5,7 +5,7 @@ const RatingsFactors = () => (
   <div className={styles.factorsContainer}>
     <div className={styles.factorItem}>
       <p><b>Size</b></p>
-      <input type="range" className={styles.range} disabled="true" value="65" />
+      <input type="range" className={styles.range} disabled={true} value="6" min="0" max="10" />
       <div className={styles.rangeDescriptions}>
         <p>Too small</p>
         <p>Perfect</p>
@@ -14,7 +14,7 @@ const RatingsFactors = () => (
     </div>
     <div className={styles.factorItem}>
       <p><b>Width</b></p>
-      <input type="range" className={styles.range} disabled="true" value="50" />
+      <input type="range" className={styles.range} disabled={true} value="5" min="0" max="10" />
       <div className={styles.rangeDescriptions}>
         <p>Too narrow</p>
         <p>Perfect</p>
@@ -23,7 +23,7 @@ const RatingsFactors = () => (
     </div>
     <div className={styles.factorItem}>
       <p><b>Comfort</b></p>
-      <input type="range" className={styles.range} disabled="true" value="70" />
+      <input type="range" className={styles.range} disabled={true} value="7" min="0" max="10" />
       <div className={styles.rangeDescriptions}>
         <p>Uncomfortable</p>
         <p>OK</p>
@@ -32,7 +32,7 @@ const RatingsFactors = () => (
     </div>
     <div className={styles.factorItem}>
       <p><b>Quality</b></p>
-      <input type="range" className={styles.range} disabled="true" value="60" />
+      <input type="range" className={styles.range} disabled={true} value="6" min="0" max="10" />
       <div className={styles.rangeDescriptions}>
         <p>Poor</p>
         <p>What I expected</p>
@@ -41,7 +41,7 @@ const RatingsFactors = () => (
     </div>
     <div className={styles.factorItem}>
       <p><b>Length</b></p>
-      <input type="range" className={styles.range} disabled="true" value="40" />
+      <input type="range" className={styles.range} disabled={true} value="4" min="0" max="10" />
       <div className={styles.rangeDescriptions}>
         <p>Runs short</p>
         <p>Perfect</p>
@@ -50,7 +50,7 @@ const RatingsFactors = () => (
     </div>
     <div className={styles.factorItem}>
       <p><b>Fit</b></p>
-      <input type="range" className={styles.range} disabled="true" value="55" />
+      <input type="range" className={styles.range} disabled={true} value="5" min="0" max="10 " />
       <div className={styles.rangeDescriptions}>
         <p>Runs tight</p>
         <p>Perfect</p>

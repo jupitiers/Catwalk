@@ -7,13 +7,12 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackGiven, sortTerm,
+    reviews, setReviews, setFeedbackGiven, sortTerm, setMetaData,
   } = useContext(ReviewContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
   // sample endpoints
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
 
   // sample request to get all products
@@ -34,6 +33,10 @@ const APIProvider = ({ children }) => {
   /** ****************************************************************************
   *                      API calls for reviews
   ***************************************************************************** */
+  // example urls
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
+
   const getReviewsByProductId = async () => {
     try {
       const allReviews = await axios.get(`${baseURL}/reviews?product_id=17069&count=100&sort=${sortTerm}`, {
@@ -68,6 +71,17 @@ const APIProvider = ({ children }) => {
     }
   };
 
+  const getReviewMetaDataByProductId = async (reviewId) => {
+    try {
+      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${'17069'}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setMetaData(data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <APIContext.Provider
       value={{
@@ -75,6 +89,7 @@ const APIProvider = ({ children }) => {
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,
+        getReviewMetaDataByProductId,
       }}
     >
       {children}

@@ -5,7 +5,8 @@ import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from '../../../helpers/starRatings';
 import { APIContext } from '../../../state/contexts/APIContext';
-import { createStarArray, truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
+import { truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
+import { createStarArray } from '../../../helpers/ratingsHelpers';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import ReviewImages from './ReviewImages';
 

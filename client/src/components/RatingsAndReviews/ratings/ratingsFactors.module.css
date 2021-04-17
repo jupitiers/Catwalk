@@ -1,7 +1,7 @@
 .factorsContainer {
   display: grid;
   grid-template-rows: repeat(6, 25px);
-  grid-row-gap: 35%;
+  grid-row-gap: 30%;
 }
 
 .factorItem {
