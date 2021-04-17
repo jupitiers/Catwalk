@@ -9,7 +9,9 @@ const ReviewImages = ({ images }) => {
 
   return (
     <>
-      <p>Reviewer Images: </p>
+      <p>
+        <b>Reviewer Images:</b>
+      </p>
       <div
         onClick={closeOverlay}
         style={{ display }}
