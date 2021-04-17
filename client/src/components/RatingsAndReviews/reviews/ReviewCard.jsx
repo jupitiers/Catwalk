@@ -39,18 +39,33 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
       <h3>{truncatedSummary}</h3>
-      <p className={styles.cardBody}>{truncatedBody}</p>
-      {restOfBody && (
+
+      <p className={styles.cardBody}>
+        {truncatedBody}
+        {(restOfBody && !showMoreBody) && (
+          <>
+            ...
+            <button
+              className={styles.expandBodyButton}
+              onClick={() => setShowMoreBody(!showMoreBody)}
+            >
+              Show More
+            </button>
+          </>
+        )}
+        {showMoreBody && (
+          restOfBody
+        )}
+        {(showMoreBody) && (
         <button
           className={styles.expandBodyButton}
           onClick={() => setShowMoreBody(!showMoreBody)}
         >
-          {showMoreBody ? 'Show Less' : 'Show More'}
+          Show Less
         </button>
-      )}
-      {showMoreBody && (
-        restOfBody
-      )}
+        )}
+      </p>
+
       {review.photos.length > 0 && (
         <ReviewImages images={review.photos} />
       )}

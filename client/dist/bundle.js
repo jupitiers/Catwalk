@@ -2766,12 +2766,17 @@ var ReviewCard = function ReviewCard(_ref) {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewUserDate
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_2___default()(review.date).format('MMMM Do YYYY')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, truncatedSummary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_3__.default.cardBody
-  }, truncatedBody), restOfBody && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+  }, truncatedBody, restOfBody && !showMoreBody && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, "...", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_3__.default.expandBodyButton,
     onClick: function onClick() {
       return setShowMoreBody(!showMoreBody);
     }
-  }, showMoreBody ? 'Show Less' : 'Show More'), showMoreBody && restOfBody, review.photos.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ReviewImages__WEBPACK_IMPORTED_MODULE_8__.default, {
+  }, "Show More")), showMoreBody && restOfBody, showMoreBody && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_3__.default.expandBodyButton,
+    onClick: function onClick() {
+      return setShowMoreBody(!showMoreBody);
+    }
+  }, "Show Less")), review.photos.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ReviewImages__WEBPACK_IMPORTED_MODULE_8__.default, {
     images: review.photos
   }), review.recommend && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: _reviewCard_module_css__WEBPACK_IMPORTED_MODULE_3__.default.recommended
@@ -3023,7 +3028,7 @@ var truncateBody = function truncateBody(review) {
   var restOfBody;
 
   if (review.body.length > 250) {
-    truncatedBody = "".concat(review.body.substring(0, 250), "...");
+    truncatedBody = "".concat(review.body.substring(0, 250));
     restOfBody = review.body.substring(250);
   } else {
     truncatedBody = review.body;
