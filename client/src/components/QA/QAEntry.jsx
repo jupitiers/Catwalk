@@ -2,11 +2,19 @@ import React, {useEffect, useContext, useState} from 'react';
 import Answer from './QAEntryAnswers.jsx';
 import styles from './qa.module.css';
 
+import { APIContext } from '../../state/contexts/APIContext';
+import { AnswerContext } from '../../state/contexts/AnswersContext';
+
 var QA = (props) => {
+  const { getAnswersByQuestionId } = useContext(APIContext);
+  const { answers, setAnswers } = useContext(AnswerContext);
 
   const[clicked, setClicked] = useState(false);
 
-  var answers = Object.entries(props.answers);
+  useEffect(() => {
+    getAnswersByQuestionId(props.id);
+  }, []);
+
   var initialAnswers = answers.slice(0, 2);
 
   var enoughAnswers = (answers.length > 2);
@@ -33,7 +41,7 @@ var QA = (props) => {
         </div>
         <div className={styles.qacontent}></div>
           {usedAnswers.map(entry =>
-          <Answer key={entry[1].id} answer={entry[1].body} date={entry[1].date} author={entry[1].answerer_name} helpfulness={entry[1].helpfulness} photos={entry[1].photos}/>
+          <Answer key={entry.answer_id} answer={entry.body} date={entry.date} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos}/>
           )}
       </div>
       {enoughAnswers ?

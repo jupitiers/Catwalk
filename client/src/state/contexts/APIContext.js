@@ -3,12 +3,16 @@ import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
+import { AnswerContext } from './AnswersContext';
+
 
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const { reviews, setReviews, setFeedbackGiven } = useContext(ReviewContext);
-  const { questions, setQuestions, setFeedbackGiven } = useContext(QuestionContext);
+  const { questions, setQuestions, setqHelpfulnessMarked } = useContext(QuestionContext);
+  const { answers, setAnswers, setaHelpfulnessMarked } = useContext(AnswerContext);
+
 
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
@@ -47,13 +51,36 @@ const APIProvider = ({ children }) => {
     }
   };
 
+  const getAnswersByQuestionId = async (questionId) => {
+    try {
+      const allAnswers = await axios.get(`${baseURL}/qa/questions/${questionId}/answers`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setAnswers(allAnswers.data.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const markQuestionAsHelpful = async (questionId) => {
     try {
-      await axios.put(`${baseURL}/qa/questions/${reviewId}/helpful`, null, {
+      await axios.put(`${baseURL}/qa/questions/${questionId}/helpful`, null, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getQuestionsByProductId();
-      setFeedbackGiven(true);
+      setqHelpfulnessMarked(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const markAnswerAsHelpful = async (answerId) => {
+    try {
+      await axios.put(`${baseURL}/qa/questions/${answerId}/helpful`, null, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      getAnswersByQuestionId();
+      setaHelpfulnessMarked(true);
     } catch (err) {
       console.log(err);
     }
@@ -99,11 +126,17 @@ const APIProvider = ({ children }) => {
   return (
     <APIContext.Provider
       value={{
+        //Products
         getAllProducts,
+        //QAs
+        getQuestionsByProductId,
+        getAnswersByQuestionId,
+        markQuestionAsHelpful,
+        markAnswerAsHelpful,
+        //Reviews
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,
-        getQuestionsByProductId,
       }}
     >
       {children}
