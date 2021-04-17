@@ -58,3 +58,27 @@ export const getAvgRating = (allRatings) => {
   avg /= divisor;
   return avg.toFixed(1);
 };
+
+export const getRecommendPercent = (totals = {}) => {
+  if (Object.keys(totals).length) {
+    const total = parseInt(totals.true) + parseInt(totals.false);
+    const recommended = parseInt(totals.true);
+    return ((recommended / total) * 100).toFixed(0);
+  }
+  return 0;
+};
+
+export const getStarPercents = (ratings) => {
+  const totals = [];
+  let avg = 0;
+  for (const key in ratings) {
+    avg += parseInt(key) + parseInt(ratings[key]);
+    totals.push(parseInt(ratings[key]));
+  }
+  const total = totals.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+  const percents = {};
+  for (const key in ratings) {
+    percents[key] = ((ratings[key] / total) * 100).toFixed(0);
+  }
+  return percents;
+};

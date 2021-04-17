@@ -14,8 +14,6 @@
   grid-gap: 15px;
 }
 
-.ratings {
-}
 .reviewActions {
   grid-column-start: 2;
   grid-row-start: 2;

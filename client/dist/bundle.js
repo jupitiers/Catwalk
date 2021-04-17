@@ -2686,17 +2686,20 @@ var RatingSummary = function RatingSummary() {
 
   var avgRating = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getAvgRating)(metaData.ratings);
   var stars = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.createStarArray)(avgRating);
+  var percent = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getRecommendPercent)(metaData.recommended);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.summaryContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.avgRating
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "3.5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.starsContainer
-  }, stars.map(function (star) {
-    return star;
+  }, stars.map(function (star, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: idx
+    }, star);
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.recommendPercent
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " 100% of reviews recommend this product")));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, ' ', "".concat(percent, "% of reviews recommend this product"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingSummary);
@@ -2764,10 +2767,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ratingsBreakdown.module.css */ "./client/src/components/RatingsAndReviews/ratings/ratingsBreakdown.module.css");
+/* harmony import */ var _state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../state/contexts/ReviewsContext */ "./client/src/state/contexts/ReviewsContext.js");
+/* harmony import */ var _helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/ratingsHelpers */ "./client/src/helpers/ratingsHelpers.js");
+
+
 
 
 
 var RatingsBreakdown = function RatingsBreakdown() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
+      metaData = _useContext.metaData;
+
+  var percents = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getStarPercents)(metaData.ratings);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2777,7 +2788,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
     style: {
-      width: '80%'
+      width: "".concat(percents['5'], "%")
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -2786,7 +2797,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
     style: {
-      width: '75%'
+      width: "".concat(percents['4'], "%")
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -2795,7 +2806,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
     style: {
-      width: '65%'
+      width: "".concat(percents['3'], "%")
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -2804,7 +2815,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
     style: {
-      width: '15%'
+      width: "".concat(percents['2'], "%")
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -2813,7 +2824,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
     style: {
-      width: '25%'
+      width: "".concat(percents['1'], "%")
     }
   }))));
 };
@@ -3129,7 +3140,7 @@ var Reviews = function Reviews() {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsSorter
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "248 Reviews, sorted by"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Viewing", ' ', reviewsShowing <= reviews.length ? reviewsShowing : reviews.length, ' ', "of", ' ', reviews.length, ' ', "Reviews, sorted by"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     name: "sort-by",
     id: "sort-by",
     onChange: function onChange(e) {
@@ -3183,7 +3194,9 @@ var REACT_APP_API_KEY = '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';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createStarArray": () => (/* binding */ createStarArray),
-/* harmony export */   "getAvgRating": () => (/* binding */ getAvgRating)
+/* harmony export */   "getAvgRating": () => (/* binding */ getAvgRating),
+/* harmony export */   "getRecommendPercent": () => (/* binding */ getRecommendPercent),
+/* harmony export */   "getStarPercents": () => (/* binding */ getStarPercents)
 /* harmony export */ });
 /* harmony import */ var _starRatings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starRatings */ "./client/src/helpers/starRatings.js");
 
@@ -3254,6 +3267,37 @@ var getAvgRating = function getAvgRating(allRatings) {
   }, 0);
   avg /= divisor;
   return avg.toFixed(1);
+};
+var getRecommendPercent = function getRecommendPercent() {
+  var totals = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  if (Object.keys(totals).length) {
+    var total = parseInt(totals["true"]) + parseInt(totals["false"]);
+    var recommended = parseInt(totals["true"]);
+    return (recommended / total * 100).toFixed(0);
+  }
+
+  return 0;
+};
+var getStarPercents = function getStarPercents(ratings) {
+  var totals = [];
+  var avg = 0;
+
+  for (var key in ratings) {
+    avg += parseInt(key) + parseInt(ratings[key]);
+    totals.push(parseInt(ratings[key]));
+  }
+
+  var total = totals.reduce(function (a, b) {
+    return parseInt(a) + parseInt(b);
+  }, 0);
+  var percents = {};
+
+  for (var _key in ratings) {
+    percents[_key] = (ratings[_key] / total * 100).toFixed(0);
+  }
+
+  return percents;
 };
 
 /***/ }),
@@ -4410,7 +4454,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._3Oqa53gcnork0jnZJeX07n {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n._1_CL8AslwfH9JzjJhtPenK {\n  margin: .5em 1em;\n}\n\n.edPpBMRLgEh5QRs0tZus9 p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,gBAAgB;EAChB,UAAU;EACV;;AAEF;EACE,gBAAgB;AAClB;;AAEA;EACE,SAAS;EACT,kCAAkC;AACpC","sourcesContent":[".summaryContainer {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n.avgRating {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.avgRating h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n.starsContainer {\n  margin: .5em 1em;\n}\n\n.recommendPecent p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._3Oqa53gcnork0jnZJeX07n {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n._1_CL8AslwfH9JzjJhtPenK {\n  display: flex;\n  flex-direction: row;\n  margin: .5em 1em;\n}\n\n.edPpBMRLgEh5QRs0tZus9 p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,gBAAgB;EAChB,UAAU;EACV;;AAEF;EACE,aAAa;EACb,mBAAmB;EACnB,gBAAgB;AAClB;;AAEA;EACE,SAAS;EACT,kCAAkC;AACpC","sourcesContent":[".summaryContainer {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n.avgRating {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.avgRating h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n.starsContainer {\n  display: flex;\n  flex-direction: row;\n  margin: .5em 1em;\n}\n\n.recommendPecent p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"summaryContainer": "_3Oqa53gcnork0jnZJeX07n",
@@ -4539,12 +4583,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.il07vw6f6deAqBFQPW6Vs {\n}\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,+DAA+D;EAC/D,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;AACA;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.ratings {\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,+DAA+D;EAC/D,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"sectionTitle": "iL5xknovbtOxnnVpkH10g",
 	"ratingsAndReviewsContainer": "_3pJwS3Gh8QGk0PNabn6Sjc",
-	"ratings": "il07vw6f6deAqBFQPW6Vs",
 	"reviewActions": "_2kajcP-Qieow68EreAdr_z",
 	"reviewButton": "_2hVaR2c6vxQD-K2XFGuhPX"
 };

@@ -19,7 +19,18 @@ const Reviews = () => {
   return (
     <div className={styles.reviewsContainer}>
       <div className={styles.ratingsSorter}>
-        <p>248 Reviews, sorted by</p>
+        <p>
+          Viewing
+          {' '}
+          {reviewsShowing <= reviews.length
+            ? reviewsShowing : reviews.length}
+          {' '}
+          of
+          {' '}
+          {reviews.length}
+          {' '}
+          Reviews, sorted by
+        </p>
         <select name="sort-by" id="sort-by" onChange={(e) => { setSortTerm(e.target.value); }}>
           <option value="relevant">Relevance</option>
           <option value="helpful">Helpful</option>
