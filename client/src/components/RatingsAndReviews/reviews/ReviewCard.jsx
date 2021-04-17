@@ -31,10 +31,6 @@ const ReviewCard = ({ review }) => {
         </div>
         <div className={styles.reviewUserDate}>
           <p>
-            {/* there is no way to tell if a user is verified in the system that I know of */}
-            {/* {review.recommend && (
-            <i className="fas fa-check-circle" />
-            )} */}
             {review.reviewer_name}
           </p>
           <p>

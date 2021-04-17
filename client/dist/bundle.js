@@ -2619,12 +2619,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ratings_Ratings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ratings/Ratings */ "./client/src/components/RatingsAndReviews/ratings/Ratings.jsx");
 /* harmony import */ var _reviews_Reviews__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reviews/Reviews */ "./client/src/components/RatingsAndReviews/reviews/Reviews.jsx");
 /* harmony import */ var _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ratingsAndReviews.module.css */ "./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css");
+/* harmony import */ var _state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../state/contexts/ReviewsContext */ "./client/src/state/contexts/ReviewsContext.js");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+
+
 
 
 
 
 
 var RatingsAndReviews = function RatingsAndReviews() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_4__.ReviewContext),
+      reviews = _useContext.reviews,
+      reviewsShowing = _useContext.reviewsShowing,
+      setReviewsShowing = _useContext.setReviewsShowing,
+      showMoreReviews = _useContext.showMoreReviews;
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__.APIContext),
+      getReviewsByProductId = _useContext2.getReviewsByProductId;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getReviewsByProductId();
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.sectionTitle
   }, "RATINGS & REVIEWS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2635,7 +2651,8 @@ var RatingsAndReviews = function RatingsAndReviews() {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviews
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviews_Reviews__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewActions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, reviews.length > 2 && reviews.length > reviewsShowing && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: showMoreReviews,
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewButton
   }, "More Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: _ratingsAndReviews_module_css__WEBPACK_IMPORTED_MODULE_3__.default.reviewButton
@@ -2798,9 +2815,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reviewImages.module.css */ "./client/src/components/RatingsAndReviews/reviews/reviewImages.module.css");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reviewImages.module.css */ "./client/src/components/RatingsAndReviews/reviews/reviewImages.module.css");
+/* harmony import */ var _state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../state/contexts/ReviewsContext */ "./client/src/state/contexts/ReviewsContext.js");
 
 
 
@@ -2808,46 +2825,32 @@ __webpack_require__.r(__webpack_exports__);
 var ReviewImages = function ReviewImages(_ref) {
   var images = _ref.images;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('none'),
-      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
-      display = _useState2[0],
-      setDisplay = _useState2[1];
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
+      display = _useContext.display,
+      selectedImage = _useContext.selectedImage,
+      openOverlay = _useContext.openOverlay,
+      closeOverlay = _useContext.closeOverlay;
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
-      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
-      selectedImage = _useState4[0],
-      setSelectedImage = _useState4[1];
-
-  var openOverlay = function openOverlay(imageUrl) {
-    setDisplay('block');
-    setSelectedImage(imageUrl);
-  };
-
-  var closeOverlay = function closeOverlay() {
-    setDisplay('none');
-    setSelectedImage('');
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, "Reviewer Images: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Reviewer Images: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     onClick: closeOverlay,
     style: {
       display: display
     },
-    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_2__.default.imageOverlay
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_2__.default.image,
+    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_1__.default.imageOverlay
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_1__.default.image,
     style: {
       backgroundImage: "url(".concat(selectedImage, ")")
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_2__.default.imagesContainer
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_1__.default.imagesContainer
   }, images.map(function (image) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       onClick: function onClick() {
         return openOverlay(image.url);
       },
       key: image.id,
-      className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_2__.default.imageWrapper,
+      className: _reviewImages_module_css__WEBPACK_IMPORTED_MODULE_1__.default.imageWrapper,
       style: {
         backgroundImage: "url(".concat(image.url, ")")
       }
@@ -2886,7 +2889,8 @@ var Reviews = function Reviews() {
       getReviewsByProductId = _useContext.getReviewsByProductId;
 
   var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_4__.ReviewContext),
-      reviews = _useContext2.reviews; // get reviews on load
+      reviews = _useContext2.reviews,
+      reviewsShowing = _useContext2.reviewsShowing; // get reviews on load
   // TODO change the api call to use dynamic id
 
 
@@ -2906,14 +2910,16 @@ var Reviews = function Reviews() {
     value: "helpful"
   }, "Helpful"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     value: "newest"
-  }, "Newest"))), reviews.length > 0 && reviews.slice(0, 2).map(function (review, idx) {
+  }, "Newest"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardList
+  }, reviews.length > 0 && reviews.slice(0, reviewsShowing).map(function (review, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: idx,
       className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.review
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewCard__WEBPACK_IMPORTED_MODULE_2__.default, {
       review: review
     }));
-  }));
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);
@@ -2931,7 +2937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "REACT_APP_API_KEY": () => (/* binding */ REACT_APP_API_KEY)
 /* harmony export */ });
-var REACT_APP_API_KEY = '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';
+var REACT_APP_API_KEY = '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';
 
 
 /***/ }),
@@ -3017,10 +3023,10 @@ var truncateBody = function truncateBody(review) {
   var restOfBody;
 
   if (review.body.length > 250) {
-    truncatedBody = "".concat(review.summary.substring(0, 250), "...");
-    restOfBody = review.summary.substring(250);
+    truncatedBody = "".concat(review.body.substring(0, 250), "...");
+    restOfBody = review.body.substring(250);
   } else {
-    truncatedBody = review.summary;
+    truncatedBody = review.body;
   }
 
   return [truncatedBody, restOfBody];
@@ -3135,7 +3141,7 @@ var APIProvider = function APIProvider(_ref) {
       setFeedbackGiven = _useContext.setFeedbackGiven;
 
   var baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'; // sample endpoints
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17067
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
   // sample request to get all products
 
@@ -3194,7 +3200,7 @@ var APIProvider = function APIProvider(_ref) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=17069"), {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=17069&count=100"), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
@@ -3398,12 +3404,52 @@ var ReviewProvider = function ReviewProvider(_ref) {
       feedbackGiven = _useState4[0],
       setFeedbackGiven = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('none'),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+      display = _useState6[0],
+      setDisplay = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState7, 2),
+      selectedImage = _useState8[0],
+      setSelectedImage = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(2),
+      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState9, 2),
+      reviewsShowing = _useState10[0],
+      setReviewsShowing = _useState10[1]; // reviewImages logic
+
+
+  var openOverlay = function openOverlay(imageUrl) {
+    setDisplay('block');
+    setSelectedImage(imageUrl);
+  };
+
+  var closeOverlay = function closeOverlay() {
+    setDisplay('none');
+    setSelectedImage('');
+  }; // ratingsAndReviews logic
+
+
+  var showMoreReviews = function showMoreReviews() {
+    setReviewsShowing(reviewsShowing + 2);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ReviewContext.Provider, {
     value: {
       reviews: reviews,
       setReviews: setReviews,
       feedbackGiven: feedbackGiven,
-      setFeedbackGiven: setFeedbackGiven
+      setFeedbackGiven: setFeedbackGiven,
+      display: display,
+      setDisplay: setDisplay,
+      openOverlay: openOverlay,
+      closeOverlay: closeOverlay,
+      selectedImage: selectedImage,
+      setSelectedImage: setSelectedImage,
+      reviewsShowing: reviewsShowing,
+      setReviewsShowing: setReviewsShowing,
+      showMoreReviews: showMoreReviews
     }
   }, children);
 };
@@ -3980,7 +4026,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1-n1E-2mScuqZtk6XVVnKb {\n  padding: 1em;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-gap: 10px;\n  color: #525252;\n}\n\n._3GzXbAblT-Jld4ycQceNC0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: .9rem;\n  font-family: 'Open Sans', sans-serif;\n}\n\n\n._1foi1YhaM60-jK6L99eTtl {\n  display: flex;\n  flex-direction: row;\n}\n._1foi1YhaM60-jK6L99eTtl p {\n  font-size: .9rem;\n  margin-left: .5em;\n  text-transform: capitalize;\n}\n\n._1foi1YhaM60-jK6L99eTtl p i {\n  margin-right: .5em;\n}\n\n._1-n1E-2mScuqZtk6XVVnKb h3 {\n  font-size:  1.2rem;\n  font-weight: bold;\n  margin: 0 0 .5em;\n}\n\n._2nyVTw-jorKof-BJDK2vBT {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1rem;\n  margin: 0\n}\n\n._1N6Vgchqq3_5CBSJ41EFB2 {\n  background-color: white;\n  border: none;\n  outline: none;\n  text-decoration: underline;\n  cursor: pointer;\n  color: #641373;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ i {\n  font-size: 1.2rem;\n  color:#641373;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ p {\n  margin-left: 1em;\n  font-size: 1rem;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B {\n  background-color: #eeeeee;\n  padding: 1em 1em 0;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B h6 {\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 0;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B p {\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn {\n  font-size: .9rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn p {\n  margin: .5em .5em 0 0;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn p span {\n  color: #641373;\n}\n\n._2DwuaGmEV-s4wt83S2TXqr {\n  text-decoration: underline;\n  cursor: pointer;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviewCard.module.css"],"names":[],"mappings":"AAAA;EACE,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;EACnB,gBAAgB;EAChB,oCAAoC;AACtC;;;AAGA;EACE,aAAa;EACb,mBAAmB;AACrB;AACA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,iBAAiB;EACjB,gBAAgB;AAClB;;AAEA;EACE,oCAAoC;EACpC,eAAe;EACf;AACF;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,eAAe;EACf,cAAc;EACd,oCAAoC;AACtC;;AAEA;EACE,aAAa;EACb,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;EACjB,aAAa;AACf;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,yBAAyB;EACzB,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;EACjB,eAAe;EACf,SAAS;AACX;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,0BAA0B;EAC1B,eAAe;AACjB","sourcesContent":[".reviewCardContainer {\n  padding: 1em;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-gap: 10px;\n  color: #525252;\n}\n\n.cardHeader {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: .9rem;\n  font-family: 'Open Sans', sans-serif;\n}\n\n\n.reviewUserDate {\n  display: flex;\n  flex-direction: row;\n}\n.reviewUserDate p {\n  font-size: .9rem;\n  margin-left: .5em;\n  text-transform: capitalize;\n}\n\n.reviewUserDate p i {\n  margin-right: .5em;\n}\n\n.reviewCardContainer h3 {\n  font-size:  1.2rem;\n  font-weight: bold;\n  margin: 0 0 .5em;\n}\n\n.cardBody {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1rem;\n  margin: 0\n}\n\n.expandBodyButton {\n  background-color: white;\n  border: none;\n  outline: none;\n  text-decoration: underline;\n  cursor: pointer;\n  color: #641373;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.recommended {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.recommended i {\n  font-size: 1.2rem;\n  color:#641373;\n}\n\n.recommended p {\n  margin-left: 1em;\n  font-size: 1rem;\n}\n\n.cardResponse {\n  background-color: #eeeeee;\n  padding: 1em 1em 0;\n}\n\n.cardResponse h6 {\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 0;\n}\n\n.cardResponse p {\n  font-family: 'Open Sans', sans-serif;\n}\n\n.cardActions {\n  font-size: .9rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.cardActions p {\n  margin: .5em .5em 0 0;\n}\n\n.cardActions p span {\n  color: #641373;\n}\n\n.action {\n  text-decoration: underline;\n  cursor: pointer;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1-n1E-2mScuqZtk6XVVnKb {\n  padding: .5em;\n  display: grid;\n  grid-template-columns: 1fr;\n  color: #525252;\n}\n\n._3GzXbAblT-Jld4ycQceNC0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: .9rem;\n  font-family: 'Open Sans', sans-serif;\n}\n\n\n._1foi1YhaM60-jK6L99eTtl {\n  display: flex;\n  flex-direction: row;\n}\n._1foi1YhaM60-jK6L99eTtl p {\n  font-size: .9rem;\n  margin-left: .5em;\n  text-transform: capitalize;\n}\n\n._1foi1YhaM60-jK6L99eTtl p i {\n  margin-right: .5em;\n}\n\n._1-n1E-2mScuqZtk6XVVnKb h3 {\n  font-size:  1.2rem;\n  font-weight: bold;\n  margin: 0 0 .5em;\n}\n\n._2nyVTw-jorKof-BJDK2vBT {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1rem;\n  margin: 0\n}\n\n._1N6Vgchqq3_5CBSJ41EFB2 {\n  background-color: white;\n  border: none;\n  outline: none;\n  text-decoration: underline;\n  cursor: pointer;\n  color: #641373;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ i {\n  font-size: 1.2rem;\n  color:#641373;\n}\n\n._3EjNzbgEVxjSPKXAuEXFb_ p {\n  margin-left: 1em;\n  font-size: 1rem;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B {\n  background-color: #eeeeee;\n  padding: 1em 1em 0;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B h6 {\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 0;\n}\n\n._2NTpLaXLyBFWCDxKXoiH7B p {\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn {\n  font-size: .9rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn p {\n  margin: .5em .5em 0 0;\n}\n\n._2Sd-Vrzyb6Sx4otRWaxCyn p span {\n  color: #641373;\n}\n\n._2DwuaGmEV-s4wt83S2TXqr {\n  text-decoration: underline;\n  cursor: pointer;\n}\n\n::-webkit-scrollbar {\n  width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 2px grey;\n  border-radius: 10px;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n  background: #5FD9BD;\n  border-radius: 10px;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n  background: #5FD9BD;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviewCard.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,aAAa;EACb,0BAA0B;EAC1B,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;EACnB,gBAAgB;EAChB,oCAAoC;AACtC;;;AAGA;EACE,aAAa;EACb,mBAAmB;AACrB;AACA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,0BAA0B;AAC5B;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,iBAAiB;EACjB,gBAAgB;AAClB;;AAEA;EACE,oCAAoC;EACpC,eAAe;EACf;AACF;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,eAAe;EACf,cAAc;EACd,oCAAoC;AACtC;;AAEA;EACE,aAAa;EACb,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;EACjB,aAAa;AACf;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;;AAEA;EACE,yBAAyB;EACzB,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;EACjB,eAAe;EACf,SAAS;AACX;;AAEA;EACE,oCAAoC;AACtC;;AAEA;EACE,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,oCAAoC;AACtC;;AAEA;EACE,qBAAqB;AACvB;;AAEA;EACE,cAAc;AAChB;;AAEA;EACE,0BAA0B;EAC1B,eAAe;AACjB;;AAEA;EACE,UAAU;AACZ;;AAEA,UAAU;AACV;EACE,8BAA8B;EAC9B,mBAAmB;AACrB;;AAEA,WAAW;AACX;EACE,mBAAmB;EACnB,mBAAmB;AACrB;;AAEA,oBAAoB;AACpB;EACE,mBAAmB;AACrB","sourcesContent":[".reviewCardContainer {\n  padding: .5em;\n  display: grid;\n  grid-template-columns: 1fr;\n  color: #525252;\n}\n\n.cardHeader {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: .9rem;\n  font-family: 'Open Sans', sans-serif;\n}\n\n\n.reviewUserDate {\n  display: flex;\n  flex-direction: row;\n}\n.reviewUserDate p {\n  font-size: .9rem;\n  margin-left: .5em;\n  text-transform: capitalize;\n}\n\n.reviewUserDate p i {\n  margin-right: .5em;\n}\n\n.reviewCardContainer h3 {\n  font-size:  1.2rem;\n  font-weight: bold;\n  margin: 0 0 .5em;\n}\n\n.cardBody {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1rem;\n  margin: 0\n}\n\n.expandBodyButton {\n  background-color: white;\n  border: none;\n  outline: none;\n  text-decoration: underline;\n  cursor: pointer;\n  color: #641373;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.recommended {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.recommended i {\n  font-size: 1.2rem;\n  color:#641373;\n}\n\n.recommended p {\n  margin-left: 1em;\n  font-size: 1rem;\n}\n\n.cardResponse {\n  background-color: #eeeeee;\n  padding: 1em 1em 0;\n}\n\n.cardResponse h6 {\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 0;\n}\n\n.cardResponse p {\n  font-family: 'Open Sans', sans-serif;\n}\n\n.cardActions {\n  font-size: .9rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.cardActions p {\n  margin: .5em .5em 0 0;\n}\n\n.cardActions p span {\n  color: #641373;\n}\n\n.action {\n  text-decoration: underline;\n  cursor: pointer;\n}\n\n::-webkit-scrollbar {\n  width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 2px grey;\n  border-radius: 10px;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n  background: #5FD9BD;\n  border-radius: 10px;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n  background: #5FD9BD;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"reviewCardContainer": "_1-n1E-2mScuqZtk6XVVnKb",
@@ -4051,11 +4097,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ZbIT1USN53eQBS79ZfgtW {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW p {\n  margin-right: .5em;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:active {\n  border: none;\n  outline: none;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:focus {\n  border: none;\n  outline: none;\n}\n\n._3gqYfWX5Xam-afK3r6vx5u  {\n  border-bottom: 1px solid;\n}\n\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviews.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,4BAA4B;EAC5B,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,YAAY;EACZ,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,oCAAoC;EACpC,gCAAgC;;AAElC;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":[".reviewsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n\n.ratingsSorter {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.ratingsSorter p {\n  margin-right: .5em;\n}\n\n.ratingsSorter select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.ratingsSorter select:active {\n  border: none;\n  outline: none;\n}\n\n.ratingsSorter select:focus {\n  border: none;\n  outline: none;\n}\n\n.review  {\n  border-bottom: 1px solid;\n}\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".ZbIT1USN53eQBS79ZfgtW {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 600px;\n  color: #525252;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW p {\n  margin-right: .5em;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:active {\n  border: none;\n  outline: none;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:focus {\n  border: none;\n  outline: none;\n}\n\n.CuQFfbsctueZ4Ps1g_DOh {\noverflow-y: auto;\n}\n\n._3gqYfWX5Xam-afK3r6vx5u  {\n  border-bottom: 1px solid;\n}\n\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviews.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,8BAA8B;EAC9B,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,YAAY;EACZ,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,oCAAoC;EACpC,gCAAgC;;AAElC;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;AACA,gBAAgB;AAChB;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":[".reviewsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 600px;\n  color: #525252;\n}\n\n.ratingsSorter {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.ratingsSorter p {\n  margin-right: .5em;\n}\n\n.ratingsSorter select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.ratingsSorter select:active {\n  border: none;\n  outline: none;\n}\n\n.ratingsSorter select:focus {\n  border: none;\n  outline: none;\n}\n\n.cardList {\noverflow-y: auto;\n}\n\n.review  {\n  border-bottom: 1px solid;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"reviewsContainer": "ZbIT1USN53eQBS79ZfgtW",
 	"ratingsSorter": "fv9GwTjDDgcKZxRNn-1MW",
+	"cardList": "CuQFfbsctueZ4Ps1g_DOh",
 	"review": "_3gqYfWX5Xam-afK3r6vx5u"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -56593,14 +56640,14 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _components_App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App.jsx */ "./client/src/components/App.jsx");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./client/src/components/App.jsx");
 /* harmony import */ var _state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./state/contexts/RootContext */ "./client/src/state/contexts/RootContext.js");
 
 
  // context import
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__.RootProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_App_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null)), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__.RootProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__.default, null)), document.getElementById('app'));
 })();
 
 /******/ })()
