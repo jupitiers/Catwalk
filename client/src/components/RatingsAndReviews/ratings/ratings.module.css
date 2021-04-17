@@ -3,10 +3,11 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-rows: 150px 2fr 1fr;
   grid-gap: 15px;
+  color: #525252;
 }
 
 .ratingsItem {
-  border: 1px solid;
+  border-bottom: 1px solid;
 }

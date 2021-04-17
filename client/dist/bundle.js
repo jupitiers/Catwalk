@@ -2660,6 +2660,36 @@ var RatingsAndReviews = function RatingsAndReviews() {
 
 /***/ }),
 
+/***/ "./client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx":
+/*!***************************************************************************!*\
+  !*** ./client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ratingSummary.module.css */ "./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css");
+
+
+
+var RatingSummary = function RatingSummary() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.summaryContainer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.avgRating
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "3.5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Stars")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.recommendPercent
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " 100% of reviews recommend this product")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingSummary);
+
+/***/ }),
+
 /***/ "./client/src/components/RatingsAndReviews/ratings/Ratings.jsx":
 /*!*********************************************************************!*\
   !*** ./client/src/components/RatingsAndReviews/ratings/Ratings.jsx ***!
@@ -2673,6 +2703,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _ratings_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ratings.module.css */ "./client/src/components/RatingsAndReviews/ratings/ratings.module.css");
+/* harmony import */ var _RatingSummary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RatingSummary */ "./client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx");
+
 
  // Rating summary
 
@@ -2681,7 +2713,7 @@ var Ratings = function Ratings() {
     className: _ratings_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratings_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsItem
-  }, "Rating Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RatingSummary__WEBPACK_IMPORTED_MODULE_2__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratings_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsItem
   }, "Breakdown & Recommendations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratings_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsItem
@@ -3622,6 +3654,30 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css":
+/*!**********************************************************************************!*\
+  !*** ./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./ratingSummary.module.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css");
+
+
+var options = {};
+options.insert = "head";
+options.singleton = false;
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./client/src/components/RatingsAndReviews/ratings/ratings.module.css":
 /*!****************************************************************************!*\
   !*** ./client/src/components/RatingsAndReviews/ratings/ratings.module.css ***!
@@ -3959,6 +4015,38 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css":
+/*!****************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css ***!
+  \****************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "._3Oqa53gcnork0jnZJeX07n {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 {\n  display: flex;\n  flex-direction: row;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 1em;\n  padding: 0;\n  }\n\n.edPpBMRLgEh5QRs0tZus9 {\nfont-family: 'Raleway', sans-serif;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,eAAe;EACf,UAAU;EACV;;AAEF;AACA,kCAAkC;AAClC","sourcesContent":[".summaryContainer {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n.avgRating {\n  display: flex;\n  flex-direction: row;\n}\n\n.avgRating h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 1em;\n  padding: 0;\n  }\n\n.recommendPecent {\nfont-family: 'Raleway', sans-serif;\n}"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"summaryContainer": "_3Oqa53gcnork0jnZJeX07n",
+	"avgRating": "_225DT6fbV0_-vKZagq1Vl4",
+	"recommendPecent": "edPpBMRLgEh5QRs0tZus9"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/RatingsAndReviews/ratings/ratings.module.css":
 /*!**********************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/RatingsAndReviews/ratings/ratings.module.css ***!
@@ -3979,7 +4067,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._2n_ABqNAEv395iuSbao33L {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 2fr 1fr;\n  grid-gap: 15px;\n}\n\n._204QerKpO4aLzXUrLA-YCj {\n  border: 1px solid;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratings.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,+BAA+B;EAC/B,cAAc;AAChB;;AAEA;EACE,iBAAiB;AACnB","sourcesContent":[".ratingsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 1fr 2fr 1fr;\n  grid-gap: 15px;\n}\n\n.ratingsItem {\n  border: 1px solid;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._2n_ABqNAEv395iuSbao33L {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 150px 2fr 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n\n._204QerKpO4aLzXUrLA-YCj {\n  border-bottom: 1px solid;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratings.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,iCAAiC;EACjC,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":[".ratingsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 150px 2fr 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n\n.ratingsItem {\n  border-bottom: 1px solid;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"ratingsContainer": "_2n_ABqNAEv395iuSbao33L",
@@ -4010,7 +4098,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.il07vw6f6deAqBFQPW6Vs {\n  border: 1px solid;\n}\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;EACE,iBAAiB;AACnB;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.ratings {\n  border: 1px solid;\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.il07vw6f6deAqBFQPW6Vs {\n}\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,8BAA8B;EAC9B,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;AACA;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.ratings {\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"sectionTitle": "iL5xknovbtOxnnVpkH10g",
@@ -4115,7 +4203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ZbIT1USN53eQBS79ZfgtW {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 600px;\n  color: #525252;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW p {\n  margin-right: .5em;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:active {\n  border: none;\n  outline: none;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:focus {\n  border: none;\n  outline: none;\n}\n\n.CuQFfbsctueZ4Ps1g_DOh {\noverflow-y: auto;\n}\n\n._3gqYfWX5Xam-afK3r6vx5u  {\n  border-bottom: 1px solid;\n}\n\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviews.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,8BAA8B;EAC9B,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,YAAY;EACZ,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,oCAAoC;EACpC,gCAAgC;;AAElC;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;AACA,gBAAgB;AAChB;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":[".reviewsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 25px 600px;\n  color: #525252;\n}\n\n.ratingsSorter {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.ratingsSorter p {\n  margin-right: .5em;\n}\n\n.ratingsSorter select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n\n}\n\n.ratingsSorter select:active {\n  border: none;\n  outline: none;\n}\n\n.ratingsSorter select:focus {\n  border: none;\n  outline: none;\n}\n\n.cardList {\noverflow-y: auto;\n}\n\n.review  {\n  border-bottom: 1px solid;\n}\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".ZbIT1USN53eQBS79ZfgtW {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 75px 600px;\n  color: #525252;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW p {\n  margin-right: .5em;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:active {\n  border: none;\n  outline: none;\n}\n\n.fv9GwTjDDgcKZxRNn-1MW select:focus {\n  border: none;\n  outline: none;\n}\n\n.CuQFfbsctueZ4Ps1g_DOh {\noverflow-y: auto;\n}\n\n._3gqYfWX5Xam-afK3r6vx5u  {\n  border-bottom: 1px solid;\n}\n\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/reviews/reviews.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,8BAA8B;EAC9B,cAAc;AAChB;;AAEA;EACE,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;EACnB,iBAAiB;EACjB,iBAAiB;AACnB;;AAEA;EACE,kBAAkB;AACpB;;AAEA;EACE,cAAc;EACd,YAAY;EACZ,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,oCAAoC;EACpC,gCAAgC;AAClC;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;AACA,gBAAgB;AAChB;;AAEA;EACE,wBAAwB;AAC1B","sourcesContent":[".reviewsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 75px 600px;\n  color: #525252;\n}\n\n.ratingsSorter {\n  padding-left: 1em;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 1.2rem;\n  font-weight: bold;\n}\n\n.ratingsSorter p {\n  margin-right: .5em;\n}\n\n.ratingsSorter select{\n  color: #525252;\n  border: none;\n  background-color: white;\n  font-size: 1.2rem;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  border-bottom: 1px solid #525252;\n}\n\n.ratingsSorter select:active {\n  border: none;\n  outline: none;\n}\n\n.ratingsSorter select:focus {\n  border: none;\n  outline: none;\n}\n\n.cardList {\noverflow-y: auto;\n}\n\n.review  {\n  border-bottom: 1px solid;\n}\n\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"reviewsContainer": "ZbIT1USN53eQBS79ZfgtW",

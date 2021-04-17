@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './ratings.module.css';
+import RatingSummary from './RatingSummary';
 
 // Rating summary
 const Ratings = () => (
   <div className={styles.ratingsContainer}>
     <div className={styles.ratingsItem}>
-      Rating Summary
+      <RatingSummary />
     </div>
     <div className={styles.ratingsItem}>
       Breakdown & Recommendations
