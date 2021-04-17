@@ -16,8 +16,6 @@ const Reviews = () => {
     getReviewsByProductId();
   }, [sortTerm]);
 
-  console.log(starFilter);
-
   return (
     <div className={styles.reviewsContainer}>
       <div className={styles.ratingsSorter}>
@@ -41,9 +39,15 @@ const Reviews = () => {
       </div>
       {/* TODO these will not be hardcoded they will be dynamic */}
       <div className={styles.cardList}>
-        {reviews.length > 0 && reviews.slice(0, reviewsShowing).map((review, idx) => (
-          <div key={idx} className={styles.review}><ReviewCard review={review} /></div>
-        ))}
+        {reviews.length > 0 && reviews.slice(0, reviewsShowing)
+          .filter((review) => {
+            if (starFilter.includes(review.rating.toString())) {
+              return review;
+            }
+          })
+          .map((review, idx) => (
+            <div key={idx} className={styles.review}><ReviewCard review={review} /></div>
+          ))}
       </div>
     </div>
   );

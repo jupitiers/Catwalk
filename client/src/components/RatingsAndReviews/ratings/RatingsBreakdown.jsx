@@ -6,7 +6,7 @@ import { getStarPercents } from '../../../helpers/ratingsHelpers';
 const RatingsBreakdown = () => {
   const { metaData, filterByStars } = useContext(ReviewContext);
   const percents = getStarPercents(metaData.ratings);
-  
+
   return (
     <div className={styles.breakdownContainer}>
       {percents.map((percent, idx) => (

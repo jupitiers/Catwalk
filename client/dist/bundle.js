@@ -3215,7 +3215,6 @@ var Reviews = function Reviews() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getReviewsByProductId();
   }, [sortTerm]);
-  console.log(starFilter);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3234,7 +3233,11 @@ var Reviews = function Reviews() {
     value: "newest"
   }, "Newest"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.cardList
-  }, reviews.length > 0 && reviews.slice(0, reviewsShowing).map(function (review, idx) {
+  }, reviews.length > 0 && reviews.slice(0, reviewsShowing).filter(function (review) {
+    if (starFilter.includes(review.rating.toString())) {
+      return review;
+    }
+  }).map(function (review, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: idx,
       className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.review
@@ -3922,10 +3925,15 @@ var ReviewProvider = function ReviewProvider(_ref) {
       metaData = _useState14[0],
       setMetaData = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState15, 2),
-      starFilter = _useState16[0],
-      setStarFilter = _useState16[1]; // reviewImages logic
+      starSorting = _useState16[0],
+      setStarSorting = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(['1', '2', '3', '4', '5']),
+      _useState18 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState17, 2),
+      starFilter = _useState18[0],
+      setStarFilter = _useState18[1]; // reviewImages logic
 
 
   var openOverlay = function openOverlay(imageUrl) {
@@ -3944,15 +3952,23 @@ var ReviewProvider = function ReviewProvider(_ref) {
   };
 
   var filterByStars = function filterByStars(star) {
-    console.log(star);
+    if (starSorting) {
+      if (starFilter.includes(star)) {
+        var filteredStars = starFilter.filter(function (s) {
+          return s !== star;
+        });
 
-    if (starFilter.includes(star)) {
-      var filteredStars = starFilter.filter(function (s) {
-        return s !== star;
-      });
-      setStarFilter(filteredStars);
+        if (filteredStars.length === 0) {
+          filteredStars = ['1', '2', '3', '4', '5'];
+        }
+
+        setStarFilter(filteredStars);
+      } else {
+        setStarFilter([].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__.default)(starFilter), [star]));
+      }
     } else {
-      setStarFilter([].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__.default)(starFilter), [star]));
+      setStarSorting(true);
+      setStarFilter([star]);
     }
   };
 
@@ -3977,7 +3993,9 @@ var ReviewProvider = function ReviewProvider(_ref) {
       setMetaData: setMetaData,
       starFilter: starFilter,
       setStarFilter: setStarFilter,
-      filterByStars: filterByStars
+      filterByStars: filterByStars,
+      starSorting: starSorting,
+      setStarSorting: setStarSorting
     }
   }, children);
 };

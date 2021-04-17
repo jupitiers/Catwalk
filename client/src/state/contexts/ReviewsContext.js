@@ -10,7 +10,8 @@ const ReviewProvider = ({ children }) => {
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
   const [metaData, setMetaData] = useState({});
-  const [starFilter, setStarFilter] = useState([]);
+  const [starSorting, setStarSorting] = useState(false);
+  const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -28,13 +29,22 @@ const ReviewProvider = ({ children }) => {
   };
 
   const filterByStars = (star) => {
-    console.log(star);
-    if (starFilter.includes(star)) {
-      const filteredStars = starFilter.filter((s) => s !== star);
-      setStarFilter(filteredStars);
+    if (starSorting) {
+      if (starFilter.includes(star)) {
+        let filteredStars = starFilter.filter((s) => s !== star);
+        if (filteredStars.length === 0) {
+          filteredStars = ['1', '2', '3', '4', '5'];
+        }
+        setStarFilter(filteredStars);
+      } else {
+        setStarFilter([
+          ...starFilter,
+          star,
+        ]);
+      }
     } else {
+      setStarSorting(true);
       setStarFilter([
-        ...starFilter,
         star,
       ]);
     }
@@ -63,6 +73,8 @@ const ReviewProvider = ({ children }) => {
         starFilter,
         setStarFilter,
         filterByStars,
+        starSorting,
+        setStarSorting,
       }}
     >
       {children}
