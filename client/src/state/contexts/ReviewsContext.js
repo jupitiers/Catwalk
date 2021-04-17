@@ -50,6 +50,11 @@ const ReviewProvider = ({ children }) => {
     }
   };
 
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
+  };
+
   return (
     <ReviewContext.Provider
       value={{
@@ -75,6 +80,7 @@ const ReviewProvider = ({ children }) => {
         filterByStars,
         starSorting,
         setStarSorting,
+        clearFilter,
       }}
     >
       {children}

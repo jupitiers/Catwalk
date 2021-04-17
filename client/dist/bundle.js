@@ -2883,12 +2883,23 @@ __webpack_require__.r(__webpack_exports__);
 var RatingsBreakdown = function RatingsBreakdown() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
       metaData = _useContext.metaData,
-      filterByStars = _useContext.filterByStars;
+      filterByStars = _useContext.filterByStars,
+      starSorting = _useContext.starSorting,
+      starFilter = _useContext.starFilter,
+      clearFilter = _useContext.clearFilter;
 
   var percents = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getStarPercents)(metaData.ratings);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownContainer
-  }, percents.map(function (percent, idx) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.filterInfo
+  }, starSorting && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Displaying", ' ', starFilter.map(function (f, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", {
+      key: idx
+    }, f, ' ');
+  }), ' ', "Star", ' ', "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: clearFilter
+  }, "Clear"))), percents.map(function (percent, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: idx,
       className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -3972,6 +3983,11 @@ var ReviewProvider = function ReviewProvider(_ref) {
     }
   };
 
+  var clearFilter = function clearFilter() {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(ReviewContext.Provider, {
     value: {
       reviews: reviews,
@@ -3995,7 +4011,8 @@ var ReviewProvider = function ReviewProvider(_ref) {
       setStarFilter: setStarFilter,
       filterByStars: filterByStars,
       starSorting: starSorting,
-      setStarSorting: setStarSorting
+      setStarSorting: setStarSorting,
+      clearFilter: clearFilter
     }
   }, children);
 };
@@ -4612,7 +4629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._2n_ABqNAEv395iuSbao33L {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 125px 200px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratings.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,cAAc;EACd,cAAc;AAChB","sourcesContent":[".ratingsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 125px 200px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._2n_ABqNAEv395iuSbao33L {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 100px 250px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratings.module.css"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B;EAC1B,mCAAmC;EACnC,cAAc;EACd,cAAc;AAChB","sourcesContent":[".ratingsContainer {\n  width: 100%;\n  height: 100%;\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: 100px 250px 1fr;\n  grid-gap: 15px;\n  color: #525252;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"ratingsContainer": "_2n_ABqNAEv395iuSbao33L"
@@ -4642,10 +4659,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1HI-QlmIqb6s7zOb_MyKhg {\n  display: grid;\n  grid-template-rows: repeat(5, 25px);\n  grid-row-gap: 10%;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH {\n  margin: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: flex-start;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n._16WHxr7v8vpFtvddeyysY1 {\n  margin-left: 1em;\n  width: 60%;\n  height: 10px;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n\n._32zEH6JDCkowkRieYbnsmM {\n  height: 10px;\n  background-color: #641373;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingsBreakdown.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mCAAmC;EACnC,iBAAiB;AACnB;;AAEA;EACE,SAAS;EACT,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,2BAA2B;AAC7B;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,cAAc;EACd,eAAe;EACf,eAAe;EACf,gCAAgC;EAChC,UAAU;AACZ;;AAEA;EACE,cAAc;EACd,+BAA+B;AACjC;;AAEA;EACE,gBAAgB;EAChB,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,yBAAyB;AAC3B","sourcesContent":[".breakdownContainer {\n  display: grid;\n  grid-template-rows: repeat(5, 25px);\n  grid-row-gap: 10%;\n}\n\n.breakdownItem {\n  margin: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: flex-start;\n}\n\n.breakdownItem button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n.breakdownItem button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n.barContainer {\n  margin-left: 1em;\n  width: 60%;\n  height: 10px;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n\n.bar {\n  height: 10px;\n  background-color: #641373;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1HI-QlmIqb6s7zOb_MyKhg {\n  display: grid;\n  grid-template-rows: 25px repeat(5, 25px);\n  grid-row-gap: 10%;\n}\n\n._1kc-fgYeuGNqkSE2QOu4mK {\n  width: 75%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n\n._1kc-fgYeuGNqkSE2QOu4mK p {\n  margin: 0;\n  padding: 0;\n}\n\n._1kc-fgYeuGNqkSE2QOu4mK button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n._1kc-fgYeuGNqkSE2QOu4mK button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH {\n  margin: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: flex-start;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n._1y5ABBTl8KeqcB4wP7T_rH button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n._16WHxr7v8vpFtvddeyysY1 {\n  margin-left: 1em;\n  width: 60%;\n  height: 10px;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n\n._32zEH6JDCkowkRieYbnsmM {\n  height: 10px;\n  background-color: #641373;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingsBreakdown.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,wCAAwC;EACxC,iBAAiB;AACnB;;AAEA;EACE,UAAU;EACV,aAAa;EACb,mBAAmB;EACnB,8BAA8B;EAC9B,mBAAmB;AACrB;;AAEA;EACE,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,cAAc;EACd,eAAe;EACf,eAAe;EACf,gCAAgC;EAChC,UAAU;AACZ;;AAEA;EACE,cAAc;EACd,+BAA+B;AACjC;;AAEA;EACE,SAAS;EACT,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,2BAA2B;AAC7B;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,cAAc;EACd,eAAe;EACf,eAAe;EACf,gCAAgC;EAChC,UAAU;AACZ;;AAEA;EACE,cAAc;EACd,+BAA+B;AACjC;;AAEA;EACE,gBAAgB;EAChB,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,yBAAyB;AAC3B","sourcesContent":[".breakdownContainer {\n  display: grid;\n  grid-template-rows: 25px repeat(5, 25px);\n  grid-row-gap: 10%;\n}\n\n.filterInfo {\n  width: 75%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.filterInfo p {\n  margin: 0;\n  padding: 0;\n}\n\n.filterInfo button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n.filterInfo button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n.breakdownItem {\n  margin: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: flex-start;\n}\n\n.breakdownItem button {\n  border: none;\n  outline: none;\n  background-color: white;\n  color: #641373;\n  cursor: pointer;\n  font-size: 1rem;\n  border-bottom: 1px solid #641373;\n  padding: 0;\n}\n\n.breakdownItem button:hover {\n  color: #5FD9BD;\n  border-bottom: 1px solid#5FD9BD;\n}\n\n.barContainer {\n  margin-left: 1em;\n  width: 60%;\n  height: 10px;\n  background-color: #f1f1f1;\n  text-align: center;\n  color: white;\n}\n\n.bar {\n  height: 10px;\n  background-color: #641373;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"breakdownContainer": "_1HI-QlmIqb6s7zOb_MyKhg",
+	"filterInfo": "_1kc-fgYeuGNqkSE2QOu4mK",
 	"breakdownItem": "_1y5ABBTl8KeqcB4wP7T_rH",
 	"barContainer": "_16WHxr7v8vpFtvddeyysY1",
 	"bar": "_32zEH6JDCkowkRieYbnsmM"
