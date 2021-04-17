@@ -10,7 +10,7 @@ const RatingsFactors = () => {
   return (
     <div className={styles.factorsContainer}>
       {characteristics.map((char, idx) => (
-        <div className={styles.factorItem}>
+        <div key={idx} className={styles.factorItem}>
           <p><b>{char.name}</b></p>
           <input type="range" className={styles.range} disabled={true} value={char.value.toString()} min="0" max="50" />
           <div className={styles.rangeDescriptions}>

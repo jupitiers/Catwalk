@@ -2951,6 +2951,7 @@ var RatingsFactors = function RatingsFactors() {
     className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorsContainer
   }, characteristics.map(function (_char, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: idx,
       className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, _char.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       type: "range",
