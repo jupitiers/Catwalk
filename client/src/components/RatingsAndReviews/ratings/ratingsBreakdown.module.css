@@ -23,6 +23,11 @@
   padding: 0;
 }
 
+.breakdownItem button:hover {
+  color: #5FD9BD;
+  border-bottom: 1px solid#5FD9BD;
+}
+
 .barContainer {
   margin-left: 1em;
   width: 60%;
