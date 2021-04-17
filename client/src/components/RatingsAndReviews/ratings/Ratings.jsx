@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ratings.module.css';
 import RatingSummary from './RatingSummary';
 import RatingsBreakdown from './RatingsBreakdown';
+import RatingsFactors from './RatingsFactors';
 
 // Rating summary
 const Ratings = () => (
@@ -13,7 +14,7 @@ const Ratings = () => (
       <RatingsBreakdown />
     </div>
     <div className={styles.ratingsItem}>
-      Product Breakdown (Factors)
+      <RatingsFactors />
     </div>
   </div>
 );
