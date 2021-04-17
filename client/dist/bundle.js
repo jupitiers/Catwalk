@@ -2964,7 +2964,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var createStarArray = function createStarArray(review) {
   // get whole number and percent number
+  console.log(review.rating);
   var fullStars = Math.floor(review.rating);
+  console.log({
+    fullStars: fullStars
+  });
   var decimal = (review.rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   var partialStar; // 0-1 = no star
@@ -2996,11 +3000,16 @@ var createStarArray = function createStarArray(review) {
 
   var stars = [];
 
-  for (var i = 1; i < fullStars; i++) {
+  for (var i = 1; i <= fullStars; i++) {
     stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_0__.fullStar);
   }
 
-  stars.push(partialStar); // check to see if any empty stars need to be added
+  console.log(stars.length);
+
+  if (stars.length < 5) {
+    stars.push(partialStar);
+  } // check to see if any empty stars need to be added
+
 
   if (stars.length < 5) {
     var starsToAdd = 5 - stars.length;

@@ -4,7 +4,9 @@ import {
 
 export const createStarArray = (review) => {
 // get whole number and percent number
+  console.log(review.rating);
   const fullStars = Math.floor(review.rating);
+  console.log({ fullStars });
   let decimal = (review.rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   let partialStar;
@@ -30,10 +32,13 @@ export const createStarArray = (review) => {
   }
   // create array for displaying full stars dynamically
   const stars = [];
-  for (let i = 1; i < fullStars; i++) {
+  for (let i = 1; i <= fullStars; i++) {
     stars.push(fullStar);
   }
-  stars.push(partialStar);
+  console.log(stars.length);
+  if (stars.length < 5) {
+    stars.push(partialStar);
+  }
   // check to see if any empty stars need to be added
   if (stars.length < 5) {
     const starsToAdd = 5 - stars.length;
