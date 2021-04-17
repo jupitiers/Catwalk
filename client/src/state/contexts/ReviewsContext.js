@@ -10,6 +10,7 @@ const ReviewProvider = ({ children }) => {
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
   const [metaData, setMetaData] = useState({});
+  const [starFilter, setStarFilter] = useState([]);
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -24,6 +25,19 @@ const ReviewProvider = ({ children }) => {
   // ratingsAndReviews logic
   const showMoreReviews = () => {
     setReviewsShowing(reviewsShowing + 2);
+  };
+
+  const filterByStars = (star) => {
+    console.log(star);
+    if (starFilter.includes(star)) {
+      const filteredStars = starFilter.filter((s) => s !== star);
+      setStarFilter(filteredStars);
+    } else {
+      setStarFilter([
+        ...starFilter,
+        star,
+      ]);
+    }
   };
 
   return (
@@ -46,6 +60,9 @@ const ReviewProvider = ({ children }) => {
         setSortTerm,
         metaData,
         setMetaData,
+        starFilter,
+        setStarFilter,
+        filterByStars,
       }}
     >
       {children}

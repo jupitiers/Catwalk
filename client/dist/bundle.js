@@ -41,6 +41,25 @@ function _arrayWithHoles(arr) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _arrayWithoutHoles)
+/* harmony export */ });
+/* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray.js */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr);
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js ***!
@@ -118,6 +137,23 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _iterableToArray)
+/* harmony export */ });
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
@@ -175,6 +211,23 @@ function _nonIterableRest() {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _nonIterableSpread)
+/* harmony export */ });
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
@@ -196,6 +249,31 @@ __webpack_require__.r(__webpack_exports__);
 
 function _slicedToArray(arr, i) {
   return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr) || (0,_iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__.default)(arr, i) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__.default)(arr, i) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__.default)();
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _toConsumableArray)
+/* harmony export */ });
+/* harmony import */ var _arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithoutHoles.js */ "./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js");
+/* harmony import */ var _iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArray.js */ "./node_modules/@babel/runtime/helpers/esm/iterableToArray.js");
+/* harmony import */ var _unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unsupportedIterableToArray.js */ "./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js");
+/* harmony import */ var _nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nonIterableSpread.js */ "./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js");
+
+
+
+
+function _toConsumableArray(arr) {
+  return (0,_arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__.default)(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__.default)(arr) || (0,_nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__.default)();
 }
 
 /***/ }),
@@ -2804,7 +2882,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var RatingsBreakdown = function RatingsBreakdown() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
-      metaData = _useContext.metaData;
+      metaData = _useContext.metaData,
+      filterByStars = _useContext.filterByStars;
 
   var percents = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getStarPercents)(metaData.ratings);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2813,7 +2892,11 @@ var RatingsBreakdown = function RatingsBreakdown() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: idx,
       className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, percent.star, ' ', "stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      onClick: function onClick() {
+        return filterByStars(percent.star);
+      }
+    }, percent.star, ' ', "stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
@@ -3124,13 +3207,15 @@ var Reviews = function Reviews() {
       reviews = _useContext2.reviews,
       reviewsShowing = _useContext2.reviewsShowing,
       setSortTerm = _useContext2.setSortTerm,
-      sortTerm = _useContext2.sortTerm; // get reviews on load
+      sortTerm = _useContext2.sortTerm,
+      starFilter = _useContext2.starFilter; // get reviews on load
   // TODO change the api call to use dynamic id
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getReviewsByProductId();
   }, [sortTerm]);
+  console.log(starFilter);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3791,49 +3876,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ReviewContext": () => (/* binding */ ReviewContext),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
-var ReviewContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({});
+
+var ReviewContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.createContext)({});
 
 var ReviewProvider = function ReviewProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
       reviews = _useState2[0],
       setReviews = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
       feedbackGiven = _useState4[0],
       setFeedbackGiven = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('none'),
-      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('none'),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState5, 2),
       display = _useState6[0],
       setDisplay = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
-      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState7, 2),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
+      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState7, 2),
       selectedImage = _useState8[0],
       setSelectedImage = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(2),
-      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState9, 2),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(2),
+      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState9, 2),
       reviewsShowing = _useState10[0],
       setReviewsShowing = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('relevant'),
-      _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState11, 2),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('relevant'),
+      _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState11, 2),
       sortTerm = _useState12[0],
       setSortTerm = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
-      _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState13, 2),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({}),
+      _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState13, 2),
       metaData = _useState14[0],
-      setMetaData = _useState14[1]; // reviewImages logic
+      setMetaData = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState15, 2),
+      starFilter = _useState16[0],
+      setStarFilter = _useState16[1]; // reviewImages logic
 
 
   var openOverlay = function openOverlay(imageUrl) {
@@ -3851,7 +3943,20 @@ var ReviewProvider = function ReviewProvider(_ref) {
     setReviewsShowing(reviewsShowing + 2);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ReviewContext.Provider, {
+  var filterByStars = function filterByStars(star) {
+    console.log(star);
+
+    if (starFilter.includes(star)) {
+      var filteredStars = starFilter.filter(function (s) {
+        return s !== star;
+      });
+      setStarFilter(filteredStars);
+    } else {
+      setStarFilter([].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__.default)(starFilter), [star]));
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(ReviewContext.Provider, {
     value: {
       reviews: reviews,
       setReviews: setReviews,
@@ -3869,7 +3974,10 @@ var ReviewProvider = function ReviewProvider(_ref) {
       sortTerm: sortTerm,
       setSortTerm: setSortTerm,
       metaData: metaData,
-      setMetaData: setMetaData
+      setMetaData: setMetaData,
+      starFilter: starFilter,
+      setStarFilter: setStarFilter,
+      filterByStars: filterByStars
     }
   }, children);
 };

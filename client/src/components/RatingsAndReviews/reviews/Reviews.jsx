@@ -7,7 +7,7 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 const Reviews = () => {
   const { getReviewsByProductId } = useContext(APIContext);
   const {
-    reviews, reviewsShowing, setSortTerm, sortTerm,
+    reviews, reviewsShowing, setSortTerm, sortTerm, starFilter,
   } = useContext(ReviewContext);
 
   // get reviews on load
@@ -15,6 +15,8 @@ const Reviews = () => {
   useEffect(() => {
     getReviewsByProductId();
   }, [sortTerm]);
+
+  console.log(starFilter);
 
   return (
     <div className={styles.reviewsContainer}>
