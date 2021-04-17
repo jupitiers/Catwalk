@@ -9,51 +9,21 @@ const RatingsBreakdown = () => {
 
   return (
     <div className={styles.breakdownContainer}>
-      <div className={styles.breakdownItem}>
-        <button>5 stars</button>
-        <div className={styles.barContainer}>
-          <div
-            className={styles.bar}
-            style={{ width: `${percents['5']}%` }}
-          />
+      {percents.map((percent, idx) => (
+        <div key={idx} className={styles.breakdownItem}>
+          <button>
+            {percent.star}
+            {' '}
+            stars
+          </button>
+          <div className={styles.barContainer}>
+            <div
+              className={styles.bar}
+              style={{ width: `${percent[percent.star]}%` }}
+            />
+          </div>
         </div>
-      </div>
-      <div className={styles.breakdownItem}>
-        <button>4 stars</button>
-        <div className={styles.barContainer}>
-          <div
-            className={styles.bar}
-            style={{ width: `${percents['4']}%` }}
-          />
-        </div>
-      </div>
-      <div className={styles.breakdownItem}>
-        <button>3 stars</button>
-        <div className={styles.barContainer}>
-          <div
-            className={styles.bar}
-            style={{ width: `${percents['3']}%` }}
-          />
-        </div>
-      </div>
-      <div className={styles.breakdownItem}>
-        <button>2 stars</button>
-        <div className={styles.barContainer}>
-          <div
-            className={styles.bar}
-            style={{ width: `${percents['2']}%` }}
-          />
-        </div>
-      </div>
-      <div className={styles.breakdownItem}>
-        <button>1 stars</button>
-        <div className={styles.barContainer}>
-          <div
-            className={styles.bar}
-            style={{ width: `${percents['1']}%` }}
-          />
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

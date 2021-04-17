@@ -90,6 +90,34 @@ function _asyncToGenerator(fn) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _defineProperty)
+/* harmony export */ });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
@@ -2781,52 +2809,19 @@ var RatingsBreakdown = function RatingsBreakdown() {
   var percents = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getStarPercents)(metaData.ratings);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "5 stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
-    style: {
-      width: "".concat(percents['5'], "%")
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "4 stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
-    style: {
-      width: "".concat(percents['4'], "%")
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "3 stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
-    style: {
-      width: "".concat(percents['3'], "%")
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "2 stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
-    style: {
-      width: "".concat(percents['2'], "%")
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "1 stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
-    style: {
-      width: "".concat(percents['1'], "%")
-    }
-  }))));
+  }, percents.map(function (percent, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: idx,
+      className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, percent.star, ' ', "stars"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.barContainer
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.bar,
+      style: {
+        width: "".concat(percent[percent.star], "%")
+      }
+    })));
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingsBreakdown);
@@ -3198,7 +3193,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getRecommendPercent": () => (/* binding */ getRecommendPercent),
 /* harmony export */   "getStarPercents": () => (/* binding */ getStarPercents)
 /* harmony export */ });
-/* harmony import */ var _starRatings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starRatings */ "./client/src/helpers/starRatings.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _starRatings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./starRatings */ "./client/src/helpers/starRatings.js");
+
 
 var createStarArray = function createStarArray(rating) {
   // get whole number and percent number
@@ -3208,34 +3205,34 @@ var createStarArray = function createStarArray(rating) {
   var partialStar; // 0-1 = no star
 
   if (decimal < 2) {
-    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_0__.emptyStar;
+    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_1__.emptyStar;
   } // 2-3 = 1/4 star
 
 
   if (decimal > 1 && decimal < 4) {
-    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_0__.quarterStar;
+    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_1__.quarterStar;
   } // 4-6 = 1/2 star
 
 
   if (decimal > 3 && decimal < 7) {
-    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_0__.halfStar;
+    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_1__.halfStar;
   } // 7-8 = 3/4 star
 
 
   if (decimal > 6 && decimal < 9) {
-    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_0__.threeQuarterStar;
+    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_1__.threeQuarterStar;
   } // 9 = full star
 
 
   if (decimal > 8) {
-    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_0__.fullStar;
+    partialStar = _starRatings__WEBPACK_IMPORTED_MODULE_1__.fullStar;
   } // create array for displaying full stars dynamically
 
 
   var stars = [];
 
   for (var i = 1; i <= fullStars; i++) {
-    stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_0__.fullStar);
+    stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_1__.fullStar);
   }
 
   if (stars.length < 5) {
@@ -3247,7 +3244,7 @@ var createStarArray = function createStarArray(rating) {
     var starsToAdd = 5 - stars.length;
 
     for (var _i = 0; _i < starsToAdd; _i++) {
-      stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_0__.emptyStar);
+      stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_1__.emptyStar);
     }
   }
 
@@ -3291,13 +3288,15 @@ var getStarPercents = function getStarPercents(ratings) {
   var total = totals.reduce(function (a, b) {
     return parseInt(a) + parseInt(b);
   }, 0);
-  var percents = {};
+  var percents = [];
 
   for (var _key in ratings) {
-    percents[_key] = (ratings[_key] / total * 100).toFixed(0);
+    var _percents$push;
+
+    percents.push((_percents$push = {}, (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__.default)(_percents$push, _key, (ratings[_key] / total * 100).toFixed(0)), (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__.default)(_percents$push, "star", _key), _percents$push));
   }
 
-  return percents;
+  return percents.reverse();
 };
 
 /***/ }),

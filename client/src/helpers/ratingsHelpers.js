@@ -76,9 +76,9 @@ export const getStarPercents = (ratings) => {
     totals.push(parseInt(ratings[key]));
   }
   const total = totals.reduce((a, b) => parseInt(a) + parseInt(b), 0);
-  const percents = {};
+  const percents = [];
   for (const key in ratings) {
-    percents[key] = ((ratings[key] / total) * 100).toFixed(0);
+    percents.push({ [key]: ((ratings[key] / total) * 100).toFixed(0), star: key });
   }
-  return percents;
+  return percents.reverse();
 };
