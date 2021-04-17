@@ -8,6 +8,7 @@ const ReviewProvider = ({ children }) => {
   const [display, setDisplay] = useState('none');
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
+  const [sortTerm, setSortTerm] = useState('relevant');
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -40,6 +41,8 @@ const ReviewProvider = ({ children }) => {
         reviewsShowing,
         setReviewsShowing,
         showMoreReviews,
+        sortTerm,
+        setSortTerm,
       }}
     >
       {children}

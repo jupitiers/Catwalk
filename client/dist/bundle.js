@@ -2076,11 +2076,8 @@ var App = function App() {
       setProductList = _useContext.setProductList,
       someFunc = _useContext.someFunc;
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log({
-      sampleProduct: sampleProduct
-    });
-    someFunc();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {// console.log({ sampleProduct });
+    // someFunc();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _app_module_css__WEBPACK_IMPORTED_MODULE_1__.default.appContainer
@@ -2895,22 +2892,27 @@ var Reviews = function Reviews() {
 
   var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_4__.ReviewContext),
       reviews = _useContext2.reviews,
-      reviewsShowing = _useContext2.reviewsShowing; // get reviews on load
+      reviewsShowing = _useContext2.reviewsShowing,
+      setSortTerm = _useContext2.setSortTerm,
+      sortTerm = _useContext2.sortTerm; // get reviews on load
   // TODO change the api call to use dynamic id
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     getReviewsByProductId();
-  }, []);
+  }, [sortTerm]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.reviewsContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _reviews_module_css__WEBPACK_IMPORTED_MODULE_1__.default.ratingsSorter
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "248 Reviews, sorted by"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     name: "sort-by",
-    id: "sort-by"
+    id: "sort-by",
+    onChange: function onChange(e) {
+      setSortTerm(e.target.value);
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-    value: "relevance"
+    value: "relevant"
   }, "Relevance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     value: "helpful"
   }, "Helpful"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
@@ -2964,11 +2966,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var createStarArray = function createStarArray(review) {
   // get whole number and percent number
-  console.log(review.rating);
   var fullStars = Math.floor(review.rating);
-  console.log({
-    fullStars: fullStars
-  });
   var decimal = (review.rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   var partialStar; // 0-1 = no star
@@ -3003,8 +3001,6 @@ var createStarArray = function createStarArray(review) {
   for (var i = 1; i <= fullStars; i++) {
     stars.push(_starRatings__WEBPACK_IMPORTED_MODULE_0__.fullStar);
   }
-
-  console.log(stars.length);
 
   if (stars.length < 5) {
     stars.push(partialStar);
@@ -3152,7 +3148,8 @@ var APIProvider = function APIProvider(_ref) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_2__.useContext)(_ReviewsContext__WEBPACK_IMPORTED_MODULE_5__.ReviewContext),
       reviews = _useContext.reviews,
       setReviews = _useContext.setReviews,
-      setFeedbackGiven = _useContext.setFeedbackGiven;
+      setFeedbackGiven = _useContext.setFeedbackGiven,
+      sortTerm = _useContext.sortTerm;
 
   var baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp'; // sample endpoints
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
@@ -3214,7 +3211,7 @@ var APIProvider = function APIProvider(_ref) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=17069&count=100"), {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=17069&count=100&sort=").concat(sortTerm), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
@@ -3431,7 +3428,12 @@ var ReviewProvider = function ReviewProvider(_ref) {
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(2),
       _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState9, 2),
       reviewsShowing = _useState10[0],
-      setReviewsShowing = _useState10[1]; // reviewImages logic
+      setReviewsShowing = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('relevant'),
+      _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState11, 2),
+      sortTerm = _useState12[0],
+      setSortTerm = _useState12[1]; // reviewImages logic
 
 
   var openOverlay = function openOverlay(imageUrl) {
@@ -3463,7 +3465,9 @@ var ReviewProvider = function ReviewProvider(_ref) {
       setSelectedImage: setSelectedImage,
       reviewsShowing: reviewsShowing,
       setReviewsShowing: setReviewsShowing,
-      showMoreReviews: showMoreReviews
+      showMoreReviews: showMoreReviews,
+      sortTerm: sortTerm,
+      setSortTerm: setSortTerm
     }
   }, children);
 };

@@ -6,20 +6,22 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
   const { getReviewsByProductId } = useContext(APIContext);
-  const { reviews, reviewsShowing } = useContext(ReviewContext);
+  const {
+    reviews, reviewsShowing, setSortTerm, sortTerm,
+  } = useContext(ReviewContext);
 
   // get reviews on load
   // TODO change the api call to use dynamic id
   useEffect(() => {
     getReviewsByProductId();
-  }, []);
+  }, [sortTerm]);
 
   return (
     <div className={styles.reviewsContainer}>
       <div className={styles.ratingsSorter}>
         <p>248 Reviews, sorted by</p>
-        <select name="sort-by" id="sort-by">
-          <option value="relevance">Relevance</option>
+        <select name="sort-by" id="sort-by" onChange={(e) => { setSortTerm(e.target.value); }}>
+          <option value="relevant">Relevance</option>
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>
         </select>

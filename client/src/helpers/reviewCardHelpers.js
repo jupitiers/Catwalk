@@ -4,9 +4,7 @@ import {
 
 export const createStarArray = (review) => {
 // get whole number and percent number
-  console.log(review.rating);
   const fullStars = Math.floor(review.rating);
-  console.log({ fullStars });
   let decimal = (review.rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   let partialStar;
@@ -35,7 +33,6 @@ export const createStarArray = (review) => {
   for (let i = 1; i <= fullStars; i++) {
     stars.push(fullStar);
   }
-  console.log(stars.length);
   if (stars.length < 5) {
     stars.push(partialStar);
   }
