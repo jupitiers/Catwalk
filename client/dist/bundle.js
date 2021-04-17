@@ -2899,7 +2899,7 @@ var RatingsBreakdown = function RatingsBreakdown() {
     }, f, ' ');
   }), ' ', "Star", ' ', "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: clearFilter
-  }, "Clear"))), percents.map(function (percent, idx) {
+  }, "Clear Filter"))), percents.map(function (percent, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: idx,
       className: _ratingsBreakdown_module_css__WEBPACK_IMPORTED_MODULE_1__.default.breakdownItem
@@ -2935,79 +2935,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ratingsFactors.module.css */ "./client/src/components/RatingsAndReviews/ratings/ratingsFactors.module.css");
+/* harmony import */ var _state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../state/contexts/ReviewsContext */ "./client/src/state/contexts/ReviewsContext.js");
+/* harmony import */ var _helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/ratingsHelpers */ "./client/src/helpers/ratingsHelpers.js");
+
+
 
 
 
 var RatingsFactors = function RatingsFactors() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
+      metaData = _useContext.metaData;
+
+  var characteristics = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getCharacteristicsArray)(metaData.characteristics);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorsContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "6",
-    min: "0",
-    max: "10"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too large"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Width")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "5",
-    min: "0",
-    max: "10"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too narrow"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too wide"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Comfort")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "7",
-    min: "0",
-    max: "10"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Uncomfortable"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "OK"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Quality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "6",
-    min: "0",
-    max: "10"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Poor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "What I expected"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Length")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "4",
-    min: "0",
-    max: "10"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Runs short"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Runs long"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Fit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "range",
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
-    disabled: true,
-    value: "5",
-    min: "0",
-    max: "10 "
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Runs tight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Runs long"))));
+  }, characteristics.map(function (_char, idx) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.factorItem
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, _char.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "range",
+      className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.range,
+      disabled: true,
+      value: _char.value.toString(),
+      min: "0",
+      max: "50"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: _ratingsFactors_module_css__WEBPACK_IMPORTED_MODULE_1__.default.rangeDescriptions
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, _char.descriptions.low), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, _char.descriptions.mid), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, _char.descriptions.high)));
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingsFactors);
@@ -3290,10 +3245,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createStarArray": () => (/* binding */ createStarArray),
 /* harmony export */   "getAvgRating": () => (/* binding */ getAvgRating),
 /* harmony export */   "getRecommendPercent": () => (/* binding */ getRecommendPercent),
-/* harmony export */   "getStarPercents": () => (/* binding */ getStarPercents)
+/* harmony export */   "getStarPercents": () => (/* binding */ getStarPercents),
+/* harmony export */   "getCharacteristicsArray": () => (/* binding */ getCharacteristicsArray)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _starRatings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./starRatings */ "./client/src/helpers/starRatings.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 var createStarArray = function createStarArray(rating) {
@@ -3396,6 +3357,80 @@ var getStarPercents = function getStarPercents(ratings) {
   }
 
   return percents.reverse();
+};
+
+var getDescriptions = function getDescriptions(_char) {
+  var descriptions;
+
+  switch (_char) {
+    case 'Fit':
+      descriptions = {
+        low: 'Runs tight',
+        mid: 'Perfect',
+        high: 'Runs long'
+      };
+      break;
+
+    case 'Length':
+      descriptions = {
+        low: 'Runs short',
+        mid: 'Perfect',
+        high: 'Runs long'
+      };
+      break;
+
+    case 'Quality':
+      descriptions = {
+        low: 'Poor',
+        mid: 'What I expected',
+        high: 'Perfect'
+      };
+      break;
+
+    case 'Comfort':
+      descriptions = {
+        low: 'Uncomfortable',
+        mid: 'Ok',
+        high: 'Perfect'
+      };
+      break;
+
+    case 'Width':
+      descriptions = {
+        low: 'Too narrow',
+        mid: 'Perfect',
+        high: 'Too wide'
+      };
+      break;
+
+    case 'Size':
+      descriptions = {
+        low: 'Too small',
+        mid: 'Perfect',
+        high: 'Too large'
+      };
+      break;
+
+    default:
+      descriptions = {};
+  }
+
+  return descriptions;
+};
+
+var getCharacteristicsArray = function getCharacteristicsArray(chars) {
+  var arr = [];
+
+  for (var key in chars) {
+    var descriptions = getDescriptions(key);
+    arr.push(_objectSpread(_objectSpread({}, chars[key]), {}, {
+      name: key,
+      value: Number(chars[key].value) * 10,
+      descriptions: descriptions
+    }));
+  }
+
+  return arr;
 };
 
 /***/ }),
@@ -4693,7 +4728,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._2QABgfpsYEoF4ZgFD8YWO9 {\n  display: grid;\n  grid-template-rows: repeat(6, 25px);\n  grid-row-gap: 30%;\n}\n\n._27Vkm2Hm52HcXLnpLIIkC9 {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n._27Vkm2Hm52HcXLnpLIIkC9 p {\n  margin: 0 0 .5em;\n  font-size: .9rem;\n}\n\n.d6fPKAqfOHWTENZwP5-vt {\n  width: 80%;\n  color: #641373;\n}\n\n._1mbNiSG_lbZ15jWbV2mWXu {\n  width: 80%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\ninput[type=range] {\n  -webkit-appearance: none;\n  width: 80%;\n  margin: 0;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: #641373;\n}\ninput[type=range]::-webkit-slider-thumb {\n  height: 16px;\n  width: 16px;\n  border-radius: 3px;\n  background-color: white;\n  background: url(https://p.pngkite.com/spng/6-64255.png) center center no-repeat;\n  background-size: contain;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -16px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  background: #367ebd;\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  background: #3071a9;\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: transparent;\n  border-color: transparent;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  background: #3071a9;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  background: #3071a9;\n}\ninput[type=range]:focus::-ms-fill-upper {\n  background: #367ebd;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingsFactors.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mCAAmC;EACnC,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,gBAAgB;AAClB;;AAEA;EACE,UAAU;EACV,cAAc;AAChB;;AAEA;EACE,UAAU;EACV,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,wBAAwB;EACxB,UAAU;EACV,SAAS;AACX;AACA;EACE,aAAa;AACf;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,+EAA+E;EAC/E,wBAAwB;EACxB,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,oDAAoD;EACpD,mBAAmB;EACnB,oBAAoB;EACpB,2BAA2B;AAC7B;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,4EAA4E;EAC5E,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;AACpB;AACA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,oBAAoB;EACpB,oDAAoD;AACtD;AACA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,oBAAoB;EACpB,oDAAoD;AACtD;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,4EAA4E;EAC5E,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,mBAAmB;AACrB","sourcesContent":[".factorsContainer {\n  display: grid;\n  grid-template-rows: repeat(6, 25px);\n  grid-row-gap: 30%;\n}\n\n.factorItem {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.factorItem p {\n  margin: 0 0 .5em;\n  font-size: .9rem;\n}\n\n.range {\n  width: 80%;\n  color: #641373;\n}\n\n.rangeDescriptions {\n  width: 80%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\ninput[type=range] {\n  -webkit-appearance: none;\n  width: 80%;\n  margin: 0;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: #641373;\n}\ninput[type=range]::-webkit-slider-thumb {\n  height: 16px;\n  width: 16px;\n  border-radius: 3px;\n  background-color: white;\n  background: url(https://p.pngkite.com/spng/6-64255.png) center center no-repeat;\n  background-size: contain;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -16px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  background: #367ebd;\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  background: #3071a9;\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: transparent;\n  border-color: transparent;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  background: #3071a9;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  background: #3071a9;\n}\ninput[type=range]:focus::-ms-fill-upper {\n  background: #367ebd;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._2QABgfpsYEoF4ZgFD8YWO9 {\n  display: grid;\n  grid-template-rows: repeat(6, 30px);\n  grid-row-gap: 25%;\n}\n\n._27Vkm2Hm52HcXLnpLIIkC9 {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n._27Vkm2Hm52HcXLnpLIIkC9 p {\n  margin: .3em 0 1.2em;\n  font-size: .8rem;\n}\n\n.d6fPKAqfOHWTENZwP5-vt {\n  width: 80%;\n  min-width: 225px;\n  color: #641373;\n}\n\n._1mbNiSG_lbZ15jWbV2mWXu {\n  width: 80%;\n  min-width: 225px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n._1mbNiSG_lbZ15jWbV2mWXu p {\n  min-width: 75px;\n  text-align: center;\n}\n\ninput[type=range] {\n  -webkit-appearance: none;\n  width: 80%;\n  margin: 0;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: #641373;\n}\ninput[type=range]::-webkit-slider-thumb {\n  height: 16px;\n  width: 16px;\n  border-radius: 3px;\n  background-color: white;\n  background: url(https://p.pngkite.com/spng/6-64255.png) center center no-repeat;\n  background-size: contain;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -16px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  background: #367ebd;\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  background: #3071a9;\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: transparent;\n  border-color: transparent;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  background: #3071a9;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  background: #3071a9;\n}\ninput[type=range]:focus::-ms-fill-upper {\n  background: #367ebd;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingsFactors.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,mCAAmC;EACnC,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;AACzB;;AAEA;EACE,oBAAoB;EACpB,gBAAgB;AAClB;;AAEA;EACE,UAAU;EACV,gBAAgB;EAChB,cAAc;AAChB;;AAEA;EACE,UAAU;EACV,gBAAgB;EAChB,aAAa;EACb,mBAAmB;EACnB,8BAA8B;AAChC;;AAEA;EACE,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,wBAAwB;EACxB,UAAU;EACV,SAAS;AACX;AACA;EACE,aAAa;AACf;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,mBAAmB;AACrB;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,+EAA+E;EAC/E,wBAAwB;EACxB,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,oDAAoD;EACpD,mBAAmB;EACnB,oBAAoB;EACpB,2BAA2B;AAC7B;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,4EAA4E;EAC5E,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,WAAW;EACX,aAAa;EACb,eAAe;EACf,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;AACpB;AACA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,oBAAoB;EACpB,oDAAoD;AACtD;AACA;EACE,mBAAmB;EACnB,2BAA2B;EAC3B,oBAAoB;EACpB,oDAAoD;AACtD;AACA;EACE,YAAY;EACZ,WAAW;EACX,kBAAkB;EAClB,6BAA6B;EAC7B,4EAA4E;EAC5E,eAAe;EACf,wBAAwB;EACxB,iBAAiB;AACnB;AACA;EACE,mBAAmB;AACrB;AACA;EACE,mBAAmB;AACrB","sourcesContent":[".factorsContainer {\n  display: grid;\n  grid-template-rows: repeat(6, 30px);\n  grid-row-gap: 25%;\n}\n\n.factorItem {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n}\n\n.factorItem p {\n  margin: .3em 0 1.2em;\n  font-size: .8rem;\n}\n\n.range {\n  width: 80%;\n  min-width: 225px;\n  color: #641373;\n}\n\n.rangeDescriptions {\n  width: 80%;\n  min-width: 225px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.rangeDescriptions p {\n  min-width: 75px;\n  text-align: center;\n}\n\ninput[type=range] {\n  -webkit-appearance: none;\n  width: 80%;\n  margin: 0;\n}\ninput[type=range]:focus {\n  outline: none;\n}\ninput[type=range]::-webkit-slider-runnable-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: #641373;\n}\ninput[type=range]::-webkit-slider-thumb {\n  height: 16px;\n  width: 16px;\n  border-radius: 3px;\n  background-color: white;\n  background: url(https://p.pngkite.com/spng/6-64255.png) center center no-repeat;\n  background-size: contain;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -16px;\n}\ninput[type=range]:focus::-webkit-slider-runnable-track {\n  background: #367ebd;\n}\ninput[type=range]::-moz-range-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n  background: #3071a9;\n  border-radius: 1.3px;\n  border: 0.2px solid #010101;\n}\ninput[type=range]::-moz-range-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]::-ms-track {\n  width: 100%;\n  height: 8.4px;\n  cursor: pointer;\n  background: transparent;\n  border-color: transparent;\n  color: transparent;\n}\ninput[type=range]::-ms-fill-lower {\n  background: #2a6495;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-fill-upper {\n  background: #3071a9;\n  border: 0.2px solid #010101;\n  border-radius: 2.6px;\n  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;\n}\ninput[type=range]::-ms-thumb {\n  height: 50px;\n  width: 50px;\n  border-radius: 3px;\n  background-color: transparent;\n  background: url(https://i.stack.imgur.com/QneFV.png) center center no-repeat;\n  cursor: pointer;\n  -webkit-appearance: none;\n  margin-top: -23px;\n}\ninput[type=range]:focus::-ms-fill-lower {\n  background: #3071a9;\n}\ninput[type=range]:focus::-ms-fill-upper {\n  background: #367ebd;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"factorsContainer": "_2QABgfpsYEoF4ZgFD8YWO9",
@@ -4726,7 +4761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,+DAA+D;EAC/D,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  margin-top: 5em;\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(250px, 400px) minmax(600px, 700px);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,gEAAgE;EAChE,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  margin-top: 5em;\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(250px, 400px) minmax(600px, 700px);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"sectionTitle": "iL5xknovbtOxnnVpkH10g",

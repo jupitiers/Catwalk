@@ -1,7 +1,7 @@
 .factorsContainer {
   display: grid;
-  grid-template-rows: repeat(6, 25px);
-  grid-row-gap: 30%;
+  grid-template-rows: repeat(6, 30px);
+  grid-row-gap: 25%;
 }
 
 .factorItem {
@@ -11,20 +11,27 @@
 }
 
 .factorItem p {
-  margin: 0 0 .5em;
-  font-size: .9rem;
+  margin: .3em 0 1.2em;
+  font-size: .8rem;
 }
 
 .range {
   width: 80%;
+  min-width: 225px;
   color: #641373;
 }
 
 .rangeDescriptions {
   width: 80%;
+  min-width: 225px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.rangeDescriptions p {
+  min-width: 75px;
+  text-align: center;
 }
 
 input[type=range] {

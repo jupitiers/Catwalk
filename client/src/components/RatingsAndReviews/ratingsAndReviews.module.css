@@ -1,4 +1,5 @@
 .sectionTitle {
+  margin-top: 5em;
   font-size: 1.3rem;
   padding-bottom: .5em;
   font-family: 'Raleway', sans-serif;
@@ -9,7 +10,7 @@
   font-family: 'Raleway', sans-serif;
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);
+  grid-template-columns: minmax(250px, 400px) minmax(600px, 700px);
   grid-template-rows: 1fr 100px;
   grid-gap: 15px;
 }
