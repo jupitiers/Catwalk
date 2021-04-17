@@ -2,10 +2,10 @@ import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from './starRatings';
 
-export const createStarArray = (review) => {
+export const createStarArray = (rating) => {
 // get whole number and percent number
-  const fullStars = Math.floor(review.rating);
-  let decimal = (review.rating % 1).toFixed(1);
+  const fullStars = Math.floor(rating);
+  let decimal = (rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   let partialStar;
   // 0-1 = no star
@@ -52,8 +52,9 @@ export const getAvgRating = (allRatings) => {
   let avg = 0;
   for (const key in allRatings) {
     avg += parseInt(key) + parseInt(allRatings[key]);
+    ratings.push(parseInt(allRatings[key]));
   }
-
-  avg /= 5;
-  return avg;
+  const divisor = ratings.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+  avg /= divisor;
+  return avg.toFixed(1);
 };

@@ -8,6 +8,7 @@
 .avgRating {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
 }
 
 .avgRating h2 {
@@ -16,6 +17,10 @@
   margin: 0 0 .5em;
   padding: 0;
   }
+
+.starsContainer {
+  margin: .5em 1em;
+}
 
 .recommendPecent p {
   margin: 0;

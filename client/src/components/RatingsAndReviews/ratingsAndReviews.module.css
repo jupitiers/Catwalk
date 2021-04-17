@@ -9,7 +9,7 @@
   font-family: 'Raleway', sans-serif;
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(200px, 400px) minmax(650px, auto);
+  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);
   grid-template-rows: 1fr 100px;
   grid-gap: 15px;
 }

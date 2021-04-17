@@ -2684,13 +2684,17 @@ var RatingSummary = function RatingSummary() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_ReviewsContext__WEBPACK_IMPORTED_MODULE_2__.ReviewContext),
       metaData = _useContext.metaData;
 
-  console.log(metaData.ratings);
   var avgRating = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.getAvgRating)(metaData.ratings);
+  var stars = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_3__.createStarArray)(avgRating);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.summaryContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.avgRating
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "3.5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Stars")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "3.5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.starsContainer
+  }, stars.map(function (star) {
+    return star;
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: _ratingSummary_module_css__WEBPACK_IMPORTED_MODULE_1__.default.recommendPercent
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " 100% of reviews recommend this product")));
 };
@@ -2964,7 +2968,7 @@ var ReviewCard = function ReviewCard(_ref) {
   }, []); // helper functions for review formatting
 
   var truncatedSummary = (0,_helpers_reviewCardHelpers__WEBPACK_IMPORTED_MODULE_6__.truncateSummary)(review);
-  var stars = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_7__.createStarArray)(review);
+  var stars = (0,_helpers_ratingsHelpers__WEBPACK_IMPORTED_MODULE_7__.createStarArray)(review.rating);
 
   var _truncateBody = (0,_helpers_reviewCardHelpers__WEBPACK_IMPORTED_MODULE_6__.truncateBody)(review),
       _truncateBody2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_truncateBody, 2),
@@ -3183,10 +3187,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _starRatings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starRatings */ "./client/src/helpers/starRatings.js");
 
-var createStarArray = function createStarArray(review) {
+var createStarArray = function createStarArray(rating) {
   // get whole number and percent number
-  var fullStars = Math.floor(review.rating);
-  var decimal = (review.rating % 1).toFixed(1);
+  var fullStars = Math.floor(rating);
+  var decimal = (rating % 1).toFixed(1);
   decimal = parseInt(decimal.split('.')[1]);
   var partialStar; // 0-1 = no star
 
@@ -3242,10 +3246,14 @@ var getAvgRating = function getAvgRating(allRatings) {
 
   for (var key in allRatings) {
     avg += parseInt(key) + parseInt(allRatings[key]);
+    ratings.push(parseInt(allRatings[key]));
   }
 
-  avg /= 5;
-  return avg;
+  var divisor = ratings.reduce(function (a, b) {
+    return parseInt(a) + parseInt(b);
+  }, 0);
+  avg /= divisor;
+  return avg.toFixed(1);
 };
 
 /***/ }),
@@ -4402,11 +4410,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._3Oqa53gcnork0jnZJeX07n {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 {\n  display: flex;\n  flex-direction: row;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n.edPpBMRLgEh5QRs0tZus9 p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,gBAAgB;EAChB,UAAU;EACV;;AAEF;EACE,SAAS;EACT,kCAAkC;AACpC","sourcesContent":[".summaryContainer {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n.avgRating {\n  display: flex;\n  flex-direction: row;\n}\n\n.avgRating h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n.recommendPecent p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._3Oqa53gcnork0jnZJeX07n {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n._225DT6fbV0_-vKZagq1Vl4 h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n._1_CL8AslwfH9JzjJhtPenK {\n  margin: .5em 1em;\n}\n\n.edPpBMRLgEh5QRs0tZus9 p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratings/ratingSummary.module.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,2BAA2B;AAC7B;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,iBAAiB;EACjB,qCAAqC;EACrC,gBAAgB;EAChB,UAAU;EACV;;AAEF;EACE,gBAAgB;AAClB;;AAEA;EACE,SAAS;EACT,kCAAkC;AACpC","sourcesContent":[".summaryContainer {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  justify-content: flex-start;\n}\n\n.avgRating {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.avgRating h2 {\n  font-size: 2.5rem;\n  font-family: 'Montserrat', sans-serif;\n  margin: 0 0 .5em;\n  padding: 0;\n  }\n\n.starsContainer {\n  margin: .5em 1em;\n}\n\n.recommendPecent p {\n  margin: 0;\n  font-family: 'Raleway', sans-serif;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"summaryContainer": "_3Oqa53gcnork0jnZJeX07n",
 	"avgRating": "_225DT6fbV0_-vKZagq1Vl4",
+	"starsContainer": "_1_CL8AslwfH9JzjJhtPenK",
 	"recommendPecent": "edPpBMRLgEh5QRs0tZus9"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -4530,7 +4539,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(200px, 400px) minmax(650px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.il07vw6f6deAqBFQPW6Vs {\n}\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,+DAA+D;EAC/D,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;AACA;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(200px, 400px) minmax(650px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.ratings {\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".iL5xknovbtOxnnVpkH10g {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n._3pJwS3Gh8QGk0PNabn6Sjc {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.il07vw6f6deAqBFQPW6Vs {\n}\n._2kajcP-Qieow68EreAdr_z {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n._2hVaR2c6vxQD-K2XFGuhPX {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}", "",{"version":3,"sources":["webpack://./client/src/components/RatingsAndReviews/ratingsAndReviews.module.css"],"names":[],"mappings":"AAAA;EACE,iBAAiB;EACjB,oBAAoB;EACpB,kCAAkC;EAClC,cAAc;AAChB;;AAEA;EACE,kCAAkC;EAClC,WAAW;EACX,aAAa;EACb,+DAA+D;EAC/D,6BAA6B;EAC7B,cAAc;AAChB;;AAEA;AACA;AACA;EACE,oBAAoB;EACpB,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,2BAA2B;EAC3B,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,yBAAyB;EACzB,iBAAiB;EACjB,oCAAoC;EACpC,iBAAiB;EACjB,oCAAoC;EACpC,eAAe;AACjB","sourcesContent":[".sectionTitle {\n  font-size: 1.3rem;\n  padding-bottom: .5em;\n  font-family: 'Raleway', sans-serif;\n  color: #525252;\n}\n\n.ratingsAndReviewsContainer {\n  font-family: 'Raleway', sans-serif;\n  width: 100%;\n  display: grid;\n  grid-template-columns: minmax(230px, 400px) minmax(600px, auto);\n  grid-template-rows: 1fr 100px;\n  grid-gap: 15px;\n}\n\n.ratings {\n}\n.reviewActions {\n  grid-column-start: 2;\n  grid-row-start: 2;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.reviewButton {\n  height: 60px;\n  margin-right: 1em;\n  color: #525252;\n  background-color: #5fD9BD;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n  font-size: 1.2rem;\n  font-family: 'Open Sans', sans-serif;\n  padding: 0 .5em;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"sectionTitle": "iL5xknovbtOxnnVpkH10g",
@@ -4668,7 +4677,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 7em;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 7em;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1c7sECL7zjNlFLEzIK-Q4m {\n  color: #2f2f2f;\n}\n\n._2J00tR5jYQgfXrTQI5Nso3 {\n  padding: 2em;\n}\n", "",{"version":3,"sources":["webpack://./client/src/components/app.module.css"],"names":[],"mappings":"AAAA;EACE,cAAc;AAChB;;AAEA;EACE,YAAY;AACd","sourcesContent":[".appContainer {\n  color: #2f2f2f;\n}\n\n.componentContainer {\n  padding: 2em;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"appContainer": "_1c7sECL7zjNlFLEzIK-Q4m",
