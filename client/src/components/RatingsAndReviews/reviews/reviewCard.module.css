@@ -15,24 +15,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.star {
-  display: inline-block;
-  position: relative;
-  font-size: 100px;
-  color: #ddd;
-}
-
-.star:after {
-  font-family: FontAwesome;
-  content: "\f005";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 25%;
-  overflow: hidden;
-  color: #f80;
-}
-
 
 .reviewUserDate {
   display: flex;
@@ -58,6 +40,32 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   margin: 0
+}
+
+.expandBodyButton {
+  background-color: white;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #641373;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.recommended {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.recommended i {
+  font-size: 1.2rem;
+  color:#641373;
+}
+
+.recommended p {
+  margin-left: 1em;
+  font-size: 1rem;
 }
 
 .cardResponse {
@@ -87,6 +95,11 @@
   margin: .5em .5em 0 0;
 }
 
+.cardActions p span {
+  color: #641373;
+}
+
 .action {
   text-decoration: underline;
+  cursor: pointer;
 }
