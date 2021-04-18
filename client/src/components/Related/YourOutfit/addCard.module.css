@@ -1,0 +1,11 @@
+.itemCard {
+  margin-left: 3%;
+  margin-right: 3%;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.cardContents {
+  align-items: center;
+}
