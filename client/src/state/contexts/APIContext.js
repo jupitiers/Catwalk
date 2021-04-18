@@ -7,7 +7,7 @@ import { QuestionContext } from './QuestionsContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-  const { reviews, setReviews, setFeedbackGiven } = useContext(ReviewContext);
+  const { reviews, setReviews, setFeedbackAlreadyGiven } = useContext(ReviewContext);
   const { questions, setQuestions, setFeedbackGiven } = useContext(QuestionContext);
 
 
