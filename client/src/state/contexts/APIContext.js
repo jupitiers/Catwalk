@@ -37,9 +37,11 @@ const APIProvider = ({ children }) => {
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
 
+  const pId = '17068'
+
   const getReviewsByProductId = async () => {
     try {
-      const allReviews = await axios.get(`${baseURL}/reviews?product_id=17069&count=100&sort=${sortTerm}`, {
+      const allReviews = await axios.get(`${baseURL}/reviews?product_id=${pId}&count=100&sort=${sortTerm}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setReviews(allReviews.data.results);
@@ -73,7 +75,7 @@ const APIProvider = ({ children }) => {
 
   const getReviewMetaDataByProductId = async (reviewId) => {
     try {
-      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${'17069'}`, {
+      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setMetaData(data.data);
