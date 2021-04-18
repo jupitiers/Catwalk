@@ -4,7 +4,7 @@ export const ReviewContext = createContext({});
 
 const ReviewProvider = ({ children }) => {
   const [reviews, setReviews] = useState([]);
-  const [feedbackGiven, setFeedbackGiven] = useState(false);
+  const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
   const [display, setDisplay] = useState('none');
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
@@ -60,8 +60,8 @@ const ReviewProvider = ({ children }) => {
       value={{
         reviews,
         setReviews,
-        feedbackGiven,
-        setFeedbackGiven,
+        feedbackAlreadyGiven,
+        setFeedbackAlreadyGiven,
         display,
         setDisplay,
         openOverlay,

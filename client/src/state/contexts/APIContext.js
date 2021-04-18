@@ -7,7 +7,7 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackGiven, sortTerm, setMetaData,
+    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
   } = useContext(ReviewContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
@@ -54,7 +54,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackGiven(true);
+      setFeedbackAlreadyGiven(true);
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +65,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackGiven(true);
+      setFeedbackAlreadyGiven(true);
     } catch (err) {
       console.log(err);
     }

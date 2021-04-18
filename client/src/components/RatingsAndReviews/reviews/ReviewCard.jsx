@@ -12,7 +12,7 @@ import ReviewImages from './ReviewImages';
 
 const ReviewCard = ({ review }) => {
   const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
-  const { feedbackGiven } = useContext(ReviewContext);
+  const { feedbackAlreadyGiven } = useContext(ReviewContext);
   const [showMoreBody, setShowMoreBody] = useState(false);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const ReviewCard = ({ review }) => {
         <p>Helpful?</p>
         <p
           onClick={() => {
-            if (!feedbackGiven) {
+            if (!feedbackAlreadyGiven) {
               markReviewAsHelpful(review.review_id);
             }
           }}
@@ -103,7 +103,7 @@ const ReviewCard = ({ review }) => {
         <p>|</p>
         <p
           onClick={() => {
-            if (!feedbackGiven) {
+            if (!feedbackAlreadyGiven) {
               reportReview(review.review_id);
             }
           }}
