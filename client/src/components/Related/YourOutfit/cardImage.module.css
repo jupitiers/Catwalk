@@ -1,0 +1,10 @@
+.cardPictureArea {
+  width: 100%;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.removeItem {
+  float: right;
+}
