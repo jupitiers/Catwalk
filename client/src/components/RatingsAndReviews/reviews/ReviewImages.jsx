@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from './reviewImages.module.css';
+import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const ReviewImages = ({ images }) => {
-  const [display, setDisplay] = useState('none');
-  const [selectedImage, setSelectedImage] = useState('');
-
-  const openOverlay = (imageUrl) => {
-    setDisplay('block');
-    setSelectedImage(imageUrl);
-  };
-  const closeOverlay = () => {
-    setDisplay('none');
-    setSelectedImage('');
-  };
+  const {
+    display, selectedImage, openOverlay, closeOverlay,
+  } = useContext(ReviewContext);
 
   return (
     <>
