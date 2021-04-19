@@ -48,9 +48,9 @@ export const CreateReview = ({ children }) => {
                   <input type="file" id="upload" />
                 </label>
                 <div className={styles.images}>
-                  <div className={styles.thumbnail} />
-                  <div className={styles.thumbnail} />
-                  <div className={styles.thumbnail} />
+                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1517923368558-70ca9ac84b39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
+                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1523132797263-747d5d0dbbb3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHRoaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
+                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHRoaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
                 </div>
               </div>
               <div className={styles.submit}>
