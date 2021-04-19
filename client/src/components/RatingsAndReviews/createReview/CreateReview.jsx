@@ -2,13 +2,16 @@ import React, { useContext } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { fullStar, emptyStar } from '../starRatings';
+import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
 
 export const CreateReview = ({ children }) => {
   const {
-    showCreate, hideCreate, submitHandler, changeHandler,
+    showCreate, hideCreate, submitHandler, changeHandler, metaData,
   } = useContext(ReviewContext);
   const showHideClassName = showCreate ? styles.show : styles.hide;
-  console.log({ showCreate });
+  const characteristics = getCharacteristicsArray(metaData.characteristics);
+  console.log(characteristics);
+
   return (
     <div className={showHideClassName}>
       <section className={styles.formModalMain}>
@@ -75,48 +78,40 @@ export const CreateReview = ({ children }) => {
               <div className={styles.characteristics}>
                 <h4>Characteristics</h4>
                 <div className={styles.charTypes}>
-                  <p>
-                    Quality
-                  </p>
-                  <p>
-                    Size
-                  </p>
-                  <p>
-                    Comfort
-                  </p>
-                  <p>
-                    Width
-                  </p>
-                  <p>
-                    Length
-                  </p>
-                  <p>
-                    Fit
-                  </p>
+                  {characteristics.length > 0 && characteristics.map((ch) => (
+                    <>
+                      <p>
+                        {ch.name}
+                        :
+                        {' '}
+                        <span>Desc</span>
+                      </p>
+                      <div className={styles.charChoices}>
+                        <div className={styles.radioChoice}>
+                          <label htmlFor="one">1</label>
+                          <input type="radio" name="one" id="one" />
+                        </div>
+                        <div className={styles.radioChoice}>
+                          <label htmlFor="two">2</label>
+                          <input type="radio" name="two" id="two" />
+                        </div>
+                        <div className={styles.radioChoice}>
+                          <label htmlFor="three">3</label>
+                          <input type="radio" name="three" id="three" />
+                        </div>
+                        <div className={styles.radioChoice}>
+                          <label htmlFor="four">4</label>
+                          <input type="radio" name="four" id="four" />
+                        </div>
+                        <div className={styles.radioChoice}>
+                          <label htmlFor="five">5</label>
+                          <input type="radio" name="five" id="five" />
+                        </div>
+                      </div>
+                    </>
+                  ))}
                 </div>
-                <div className={styles.charChoices}>
-                  <h5>Average</h5>
-                  <div className={styles.radioChoice}>
-                    <label htmlFor="one">1</label>
-                    <input type="radio" name="one" id="one" />
-                  </div>
-                  <div className={styles.radioChoice}>
-                    <label htmlFor="two">2</label>
-                    <input type="radio" name="two" id="two" />
-                  </div>
-                  <div className={styles.radioChoice}>
-                    <label htmlFor="three">3</label>
-                    <input type="radio" name="three" id="three" />
-                  </div>
-                  <div className={styles.radioChoice}>
-                    <label htmlFor="four">4</label>
-                    <input type="radio" name="four" id="four" />
-                  </div>
-                  <div className={styles.radioChoice}>
-                    <label htmlFor="five">5</label>
-                    <input type="radio" name="five" id="five" />
-                  </div>
-                </div>
+
               </div>
               <div className={styles.upload}>
                 <label htmlFor="upload">

@@ -191,12 +191,6 @@
 
 .characteristics {
   grid-area: characteristics;
-  display: grid;
-  grid-template-columns: 150px auto;
-  grid-template-rows: 50px auto;
-  grid-template-areas:  'heading heading'
-                        'types choices';
-  grid-column-gap: 10px;
 }
 
 .characteristics h4 {
@@ -205,35 +199,41 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   color: #641373;
+  display: flex;
+  flex-direction: column;
 }
 
 .charTypes {
-  margin-top: 2em;
-  grid-area: types;
   display: flex;
   flex-direction: column;
   width: 150px;
   font-size: 1rem;
   font-family: 'Raleway', sans-serif;
-  font-weight: bold;
 }
 
 .charTypes p {
-  margin: .2em 0;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  margin: .2em 0 0 !important;
+}
+
+.charTpyes span {
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
 }
 
 .charChoices {
-  grid-area: choices;
   display: flex;
-  flex-direction: column;
-  margin-top: .5em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.charChoices h5 {
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: 'Raleway', sans-serif;
-  margin: 0 0 .5em;
+.charChoices .radioChoice {
+  margin-right: .5em;
+  height: 20px;
 }
 
 .submit {
