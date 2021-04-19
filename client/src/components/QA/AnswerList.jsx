@@ -1,6 +1,7 @@
 import React, {useEffect, useContext, useState} from 'react';
 import Answer from './Answer.jsx';
 import styles from './qa.module.css';
+import moment from 'moment';
 
 import { APIContext } from '../../state/contexts/APIContext';
 import { AnswerContext } from '../../state/contexts/AnswersContext';
@@ -40,7 +41,7 @@ var AnswerList = (props) => {
     <div>
       <div>
         {usedAnswers.map(entry =>
-          <Answer key={entry.id} id={entry.id} answer={entry.body} date={entry.date} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={helpfulnessClick}/>
+          <Answer key={entry.id} id={entry.id} answer={entry.body} date={moment(entry.date).format('MMMM Do YYYY')} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={helpfulnessClick}/>
           )}
       </div>
       {enoughAnswers ?
