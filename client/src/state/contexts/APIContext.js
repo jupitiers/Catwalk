@@ -9,16 +9,21 @@ import { AnswerContext } from './AnswersContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
+<<<<<<< HEAD
   const { reviews, setReviews, setFeedbackGiven } = useContext(ReviewContext);
   const { questions, setQuestions, setqHelpfulnessMarked } = useContext(QuestionContext);
   const { answers, setAnswers, setaHelpfulnessMarked } = useContext(AnswerContext);
 
 
+=======
+  const {
+    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
+  } = useContext(ReviewContext);
+>>>>>>> e8f63ef8f5a1dc586d8773bf412b1166b3d17625
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
   // sample endpoints
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
 
   // sample request to get all products
@@ -89,9 +94,15 @@ const APIProvider = ({ children }) => {
   /** ****************************************************************************
   *                      API calls for reviews
   ***************************************************************************** */
+  // example urls
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
+
+  const pId = '17068'
+
   const getReviewsByProductId = async () => {
     try {
-      const allReviews = await axios.get(`${baseURL}/reviews?product_id=17069&count=100`, {
+      const allReviews = await axios.get(`${baseURL}/reviews?product_id=${pId}&count=100&sort=${sortTerm}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setReviews(allReviews.data.results);
@@ -106,7 +117,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackGiven(true);
+      setFeedbackAlreadyGiven(true);
     } catch (err) {
       console.log(err);
     }
@@ -117,7 +128,18 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackGiven(true);
+      setFeedbackAlreadyGiven(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getReviewMetaDataByProductId = async (reviewId) => {
+    try {
+      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${pId}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setMetaData(data.data);
     } catch (err) {
       console.log(err);
     }
@@ -137,6 +159,7 @@ const APIProvider = ({ children }) => {
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,
+        getReviewMetaDataByProductId,
       }}
     >
       {children}

@@ -20,8 +20,8 @@ const App = () => {
   } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log({ sampleProduct });
-    someFunc();
+    // console.log({ sampleProduct });
+    // someFunc();
   }, []);
 
   return (
