@@ -43,9 +43,14 @@ export const CreateReview = ({ children }) => {
               <div className={styles.reccommend}>reccommend</div>
               <div className={styles.characteristics}>characteristics</div>
               <div className={styles.upload}>
-                <input type="file" id="upload" />
+                <label htmlFor="upload">
+                  <p>Upload Images</p>
+                  <input type="file" id="upload" />
+                </label>
                 <div className={styles.images}>
-                  Image Previews here
+                  <div className={styles.thumbnail} />
+                  <div className={styles.thumbnail} />
+                  <div className={styles.thumbnail} />
                 </div>
               </div>
               <div className={styles.submit}>

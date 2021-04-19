@@ -17,7 +17,6 @@
 
 .formModalMain {
   margin: 1em auto 0;
-  height: 600px;
   width: 80vw;
   background-color: white;
   padding: 1em;
@@ -51,8 +50,8 @@
 .form {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: auto 1fr;
+  grid-template-rows: repeat(6, auto);
   grid-template-areas:  'inputs rating'
                         'inputs reccommend'
                         'inputs characteristics'
@@ -63,26 +62,29 @@
 
 .inputs {
   grid-area: inputs;
-  border: 1px solid;
   display: flex;
   flex-direction: column;
+  padding: 1em;
 }
 
 .inputs label {
-  margin: .5em .5em 0;
+  margin: .5em .5em .2em;
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .inputs input {
   width: 300px;
   height: 35px;
-  margin: 0;
+  margin: 0 0 .5em;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
+
 }
 
 .inputs textarea {
+  padding: .5em;
   width: 300px;
   margin: 0;
   font-family: 'Raleway', sans-serif;
@@ -97,13 +99,8 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-
 .rating {
   grid-area: rating;
-  border: 1px solid;
-}
-.upload {
-  grid-area: upload;
   border: 1px solid;
 }
 .reccommend {
@@ -114,21 +111,56 @@
   grid-area: characteristics;
   border: 1px solid;
 }
+
 .upload {
   grid-area: upload;
-  border: 1px solid;
+  padding: 1em;
+  grid-area: upload;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.upload input {
+  display: none;
+}
+
+.upload p {
+  background-color: #5fD9BD;
+  border: 1px solid;
+  border-radius: 5px;
+  width: 125px;
+  text-align: center;
+  padding: .6em;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .images {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
 }
 
-
+.thumbnail {
+  height: 50px;
+  width: 50px;
+  margin: 0 .5em 0 0;
+  border: 1px solid;
+}
 
 .submit {
+  padding: 2em 1em 1em;
   grid-area: submit;
-  border: 1px solid;
+  display: flex;
+  justify-content: center;
+}
+
+.submit button {
+  padding: .5em;
+  background-color: #5fD9BD;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 5px;
+  width: 125px;
+  font-size: 1rem;
 }
