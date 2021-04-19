@@ -36,8 +36,6 @@ const App = () => {
           <RatingsAndReviews/>
         </div>
       </div>
-    </div>
-
   );
 };
 
