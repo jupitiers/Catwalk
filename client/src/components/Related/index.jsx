@@ -9,9 +9,9 @@ import sampleData from './dummyData.js';
 const RelatedItemsAndOutfit = () => {
   return (
     <div className={styles.CarouselsContainer}>
-      <span className={styles.carouselTitles}><b>Related Items</b></span>
+      <span className={styles.relatedTitle}><b>Related Items</b></span>
       <RelatedItemsCarousel data={sampleData}/>
-      <span className={styles.carouselTitles}><b>Your Outfit</b></span>
+      <span className={styles.outfitTitle}><b>Your Outfit</b></span>
       <YourOutfitCarousel data={sampleData}/>
     </div>
   )
