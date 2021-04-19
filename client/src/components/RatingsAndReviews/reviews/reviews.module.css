@@ -3,7 +3,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 25px 600px;
+  grid-template-rows: 75px 600px;
   color: #525252;
 }
 
@@ -29,7 +29,6 @@
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
   border-bottom: 1px solid #525252;
-
 }
 
 .ratingsSorter select:active {
