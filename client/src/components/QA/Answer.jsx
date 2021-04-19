@@ -14,14 +14,20 @@ var Answer = (props) => {
         <div className={styles.answerauthor}>
           by {props.author}, {props.date}
         </div>|
-        <div className={styles.answeractions}>
+        <div className={styles.answeractiondiv}>
           Helpful?
         </div>
-        <div className={styles.answeractions} onClick={() => {props.helpfulnessClick(props.id, props.questionId, helpful); setHelpful(true);}}>
-          Yes ({props.helpfulness})
+        <div className={styles.answeractiondiv} onClick={() => {props.helpfulnessClick(props.id, props.questionId, helpful); setHelpful(true);}}>
+          {helpful
+            ? <span className={styles.answeractionclicked}>Yes </span>
+            : <span className={styles.answeraction}>Yes </span>
+          } ({props.helpfulness})
         </div>|
-        <div className={styles.answeractions} onClick={() => setReported(true)}>
-          {reported ? 'Reported' : 'Report'}
+        <div className={styles.answeractiondiv} onClick={() => setReported(true)}>
+          {reported
+            ? <p className={styles.answeractionclicked}>Reported</p>
+            : <p className={styles.answeraction}>Report</p>
+          }
         </div>
       </div>
       <div>
