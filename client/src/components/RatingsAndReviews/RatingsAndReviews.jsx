@@ -19,7 +19,7 @@ const RatingsAndReviews = () => {
   return (
     <>
       <h2 className={styles.sectionTitle}>RATINGS & REVIEWS</h2>
-      {reviews.length === 0 ? (
+      {reviews.length > 0 ? (
         <div className={styles.ratingsAndReviewsContainer}>
           <div className={styles.ratings}><Ratings /></div>
           <div className={styles.reviews}><Reviews /></div>
@@ -27,7 +27,12 @@ const RatingsAndReviews = () => {
             {(reviews.length > 2 && reviews.length > reviewsShowing) && (
             <button onClick={showMoreReviews} className={styles.reviewButton}>More Reviews</button>
             )}
-            <button className={styles.reviewButton}>Add A Review +</button>
+            <button
+              onClick={openCreate}
+              className={styles.reviewButton}
+            >
+              Add A Review +
+            </button>
           </div>
         </div>
       )
@@ -39,9 +44,9 @@ const RatingsAndReviews = () => {
             >
               Be the first to add a review
             </button>
-            <CreateReview />
           </>
         )}
+      <CreateReview />
     </>
   );
 };

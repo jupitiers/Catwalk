@@ -15,9 +15,120 @@
   display: none;
 }
 
-.formContainer {
-  margin: 7em auto 0;
+.formModalMain {
+  margin: 1em auto 0;
   height: 600px;
-  width: 600px;
+  width: 80vw;
   background-color: white;
+  padding: 1em;
+  color: #525252
+}
+
+.iconWrapper {
+  font-size: 1.3rem;
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer h2 {
+  margin: .2em;
+  font-size: 1.7rem;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.formContainer h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:  'inputs rating'
+                        'inputs reccommend'
+                        'inputs characteristics'
+                        'upload characteristics'
+                        'upload characteristics'
+                        'submit submit'
+}
+
+.inputs {
+  grid-area: inputs;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs label {
+  margin: .5em .5em 0;
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+.inputs input {
+  width: 300px;
+  height: 35px;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: .9rem;
+}
+
+.inputs textarea {
+  width: 300px;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: .9rem;
+}
+
+.inputs p {
+  height: 10px;
+  font-size: .8rem;
+  color: red;
+  margin: .2em .5em 1em !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.rating {
+  grid-area: rating;
+  border: 1px solid;
+}
+.upload {
+  grid-area: upload;
+  border: 1px solid;
+}
+.reccommend {
+  grid-area: reccommend;
+  border: 1px solid;
+}
+.characteristics {
+  grid-area: characteristics;
+  border: 1px solid;
+}
+.upload {
+  grid-area: upload;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.submit {
+  grid-area: submit;
+  border: 1px solid;
 }

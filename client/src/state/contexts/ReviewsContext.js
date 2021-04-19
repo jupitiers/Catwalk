@@ -13,7 +13,7 @@ const ReviewProvider = ({ children }) => {
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
-  const [showCreate, setShowCreate] = useState(false);
+  const [showCreate, setShowCreate] = useState(true);
 
   // createReview logic
   const openCreate = () => {
