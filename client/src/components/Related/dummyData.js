@@ -154,4 +154,6 @@ const sampleReviews = {
 export default {
   sampleProduct,
   sampleRelatedId,
+  sampleRelatedInfo,
+  sampleReviews
 };

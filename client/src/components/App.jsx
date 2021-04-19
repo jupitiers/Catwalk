@@ -8,7 +8,7 @@ import { ProductContext } from '../state/contexts/ProductContext';
 import Header from './Header/index.jsx';
 import OverView from './OverView/index.jsx';
 import QASection from './QA/index.jsx';
-import RatingsAndReviews from './Reviews/RatingsAndReviews.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 import RelatedItemsAndOutfit from './Related/index.jsx';
 
 
