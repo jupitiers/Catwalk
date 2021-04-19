@@ -18,7 +18,7 @@ const CardDescription = props => {
     <div className={styles.description}>
       <span>{category}</span>
       <span>{name}</span>
-      <span>{price}</span>
+      <span>{`$${price}`}</span>
       <span>Stars</span>
     </div>
   )
