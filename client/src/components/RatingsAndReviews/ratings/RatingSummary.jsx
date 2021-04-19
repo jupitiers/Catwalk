@@ -12,7 +12,7 @@ const RatingSummary = () => {
   return (
     <div className={styles.summaryContainer}>
       <div className={styles.avgRating}>
-        <h2>3.5</h2>
+        <h2>{avgRating}</h2>
         <div className={styles.starsContainer}>
           {stars.map((star, idx) => <div key={idx}>{star}</div>)}
         </div>
