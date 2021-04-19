@@ -1,0 +1,104 @@
+.wrapper {
+  padding: 15px 0px 0px 25px;
+}
+
+.h1 {
+  margin: 0px;
+}
+
+.h2 {
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.price {
+
+}
+
+.selectStyle {
+  margin: 0px;
+  text-transform: uppercase;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 262px;
+  padding: 0px;
+}
+
+.li {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin: 0px 10px 10px 0px;
+  border-radius: 28px;
+}
+
+.bold {
+  margin: 0px 5px;
+}
+
+.divDropDown {
+
+}
+
+.divSelect {
+  height: 40px;
+  margin-top: 21px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectSize {
+  height: 100%;
+  width: 68%;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.optionSize {
+  height: 100%;
+}
+
+.selectNum {
+  height: 100%;
+  width: 28%;
+}
+
+.optionNum {
+
+}
+
+.divButton {
+  height: 40px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  height: 100%;
+  width: 80%;
+  text-transform: uppercase;
+  background: white;
+  border: 1px solid black;
+}
+
+.starLikeDiv {
+  border: 1px solid;
+  width: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7px;
+  padding-left: 4px;
+}
+
+.starLikeDiv svg {
+  width: 27px;
+  height: 38px;
+}
