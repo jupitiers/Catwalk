@@ -7,7 +7,7 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { AnswerContext } from '../../state/contexts/AnswersContext';
 
 var AnswerList = (props) => {
-  const { getAnswersByQuestionId, markAnswerAsHelpful } = useContext(APIContext);
+  const { getAnswersByQuestionId, markAnswerAsHelpful, reportAnswer } = useContext(APIContext);
   const { answers, setAnswers } = useContext(AnswerContext);
 
   const[clicked, setClicked] = useState(false);
@@ -31,9 +31,15 @@ var AnswerList = (props) => {
     usedAnswers = initialAnswers;
   }
 
-  var helpfulnessClick = function(answerId, questionId, helpful) {
+  var answerHelpfulnessClick = function(answerId, helpful) {
     if (!helpful) {
-      markAnswerAsHelpful(answerId, questionId);
+      markAnswerAsHelpful(answerId);
+    }
+  }
+
+  var reportAnswerClick = function(answerId, reported) {
+    if (!reported) {
+      reportAnswer(answerId);
     }
   }
 
@@ -41,7 +47,7 @@ var AnswerList = (props) => {
     <div>
       <div>
         {usedAnswers.map(entry =>
-          <Answer key={entry.id} id={entry.id} answer={entry.body} date={moment(entry.date).format('MMMM Do YYYY')} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={helpfulnessClick}/>
+          <Answer key={entry.id} id={entry.id} answer={entry.body} date={moment(entry.date).format('MMMM Do YYYY')} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={answerHelpfulnessClick} reportClick={reportAnswerClick}/>
           )}
       </div>
       {enoughAnswers ?

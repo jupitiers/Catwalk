@@ -2,13 +2,28 @@ import React, {useEffect, useContext} from 'react';
 import QAEntry from './QAEntry.jsx';
 import moment from 'moment';
 
-
+import { APIContext } from '../../state/contexts/APIContext';
+import { QuestionContext } from '../../state/contexts/QuestionsContext';
 
 var QAList = (props) => {
+  const { getAnswersByQuestionId, markQuestionAsHelpful, reportQuestion } = useContext(APIContext);
+
+  var questionHelpfulnessClick = function(questionId, helpful) {
+    if (!helpful) {
+      markQuestionAsHelpful(questionId);
+    }
+  }
+
+  var reportQuestionClick = function(questionId, reported) {
+    if (!reported) {
+      reportQuestion(questionId);
+    }
+  }
+
   return (
     <div>
       {props.data.map(entry =>
-      <QAEntry key={entry.question_id} id={entry.question_id} question={entry.question_body} date={moment(entry.question_date).format('MMMM Do YYYY')} author={entry.asker_name} helpfulness={entry.question_helpfulness} reported={entry.reported} answers={entry.answers}/>
+      <QAEntry key={entry.question_id} id={entry.question_id} question={entry.question_body} date={moment(entry.question_date).format('MMMM Do YYYY')} author={entry.asker_name} helpfulness={entry.question_helpfulness} reported={entry.reported} answers={entry.answers} helpfulnessClick={questionHelpfulnessClick} reportClick={reportQuestionClick}/>
       )}
     </div>
   )
