@@ -201,6 +201,7 @@
   color: #641373;
   display: flex;
   flex-direction: column;
+  margin: 1em 0 .5em;
 }
 
 .charTypes {
@@ -216,12 +217,6 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   margin: .2em 0 0 !important;
-}
-
-.charTpyes span {
-    font-size: 1rem;
-    font-weight: bold;
-    font-family: 'Raleway', sans-serif;
 }
 
 .charChoices {
