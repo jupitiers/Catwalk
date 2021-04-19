@@ -6,8 +6,8 @@ import styles from './relatedItemCard.module.css';
 const RelatedItemCard = props => {
   return (
     <div className={styles.itemCard}>
-      <CardPicture />
-      <CardDescription />
+      <CardPicture relatedId={props.relatedId} data={props.data}/>
+      <CardDescription relatedId={props.relatedId} data={props.data}/>
     </div>
   )
 }
