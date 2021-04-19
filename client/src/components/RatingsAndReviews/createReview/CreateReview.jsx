@@ -111,9 +111,9 @@ export const CreateReview = ({ children }) => {
                           {ch.name}
                           :
                           {' '}
-                          <span style={{ marginLeft: '1em' }}>
+                          <span style={{ marginLeft: '1em', color: '#641373' }}>
                             {newReview.characteristics[ch.id] && (
-                              currentDesc.descriptions[newDesc]
+                              currentDesc.descriptions[newReview.characteristics[ch.id]]
                             )}
                           </span>
                         </p>
