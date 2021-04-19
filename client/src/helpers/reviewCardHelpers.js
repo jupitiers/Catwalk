@@ -30,10 +30,12 @@ export const createStarArray = (review) => {
   }
   // create array for displaying full stars dynamically
   const stars = [];
-  for (let i = 1; i < fullStars; i++) {
+  for (let i = 1; i <= fullStars; i++) {
     stars.push(fullStar);
   }
-  stars.push(partialStar);
+  if (stars.length < 5) {
+    stars.push(partialStar);
+  }
   // check to see if any empty stars need to be added
   if (stars.length < 5) {
     const starsToAdd = 5 - stars.length;
@@ -59,7 +61,7 @@ export const truncateBody = (review) => {
   let truncatedBody;
   let restOfBody;
   if (review.body.length > 250) {
-    truncatedBody = `${review.body.substring(0, 250)}...`;
+    truncatedBody = `${review.body.substring(0, 250)}`;
     restOfBody = review.body.substring(250);
   } else {
     truncatedBody = review.body;
