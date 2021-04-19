@@ -37,7 +37,7 @@ const APIProvider = ({ children }) => {
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
 
-  const pId = '17068';
+  const pId = '17069';
 
   const getReviewsByProductId = async () => {
     try {

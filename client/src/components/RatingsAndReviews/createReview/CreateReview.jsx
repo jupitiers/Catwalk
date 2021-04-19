@@ -62,7 +62,51 @@ export const CreateReview = ({ children }) => {
                 </div>
 
               </div>
-              <div className={styles.characteristics}>characteristics</div>
+              <div className={styles.characteristics}>
+                <h4>Characteristics</h4>
+                <div className={styles.charTypes}>
+                  <p>
+                    Quality
+                  </p>
+                  <p>
+                    Size
+                  </p>
+                  <p>
+                    Comfort
+                  </p>
+                  <p>
+                    Width
+                  </p>
+                  <p>
+                    Length
+                  </p>
+                  <p>
+                    Fit
+                  </p>
+                </div>
+                <div className={styles.charChoices}>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="one">1</label>
+                    <input type="radio" name="one" id="one" />
+                  </div>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="two">2</label>
+                    <input type="radio" name="two" id="two" />
+                  </div>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="three">3</label>
+                    <input type="radio" name="three" id="three" />
+                  </div>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="four">4</label>
+                    <input type="radio" name="four" id="four" />
+                  </div>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="five">5</label>
+                    <input type="radio" name="five" id="five" />
+                  </div>
+                </div>
+              </div>
               <div className={styles.upload}>
                 <label htmlFor="upload">
                   <p>Upload Images</p>

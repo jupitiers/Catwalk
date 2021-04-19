@@ -17,7 +17,8 @@
 
 .formModalMain {
   margin: 1em auto 0;
-  width: 80vw;
+  min-width: 325px;
+  max-width: 600px;
   background-color: white;
   padding: 1em;
   color: #525252
@@ -28,7 +29,6 @@
 }
 
 .formContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +48,6 @@
 }
 
 .form {
-  width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(6, auto);
@@ -57,14 +56,15 @@
                         'inputs characteristics'
                         'upload characteristics'
                         'upload characteristics'
-                        'submit submit'
+                        'submit submit';
+  grid-gap: 0 2em;
+
 }
 
 .inputs {
   grid-area: inputs;
   display: flex;
   flex-direction: column;
-  padding: 1em;
 }
 
 .inputs label {
@@ -139,12 +139,6 @@
   margin: .3em .0em;
 }
 
-
-.characteristics {
-  grid-area: characteristics;
-  border: 1px solid;
-}
-
 .upload {
   grid-area: upload;
   padding: 1em;
@@ -153,7 +147,6 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
 
 .upload input {
   display: none;
@@ -182,6 +175,45 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.characteristics {
+  grid-area: characteristics;
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-template-rows: 50px auto;
+  grid-template-areas:  'heading heading'
+                        'types choices';
+  grid-column-gap: 10px;
+}
+
+.characteristics h4 {
+  grid-area: heading;
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+
+}
+
+.charTypes {
+  grid-area: types;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+.charTypes p {
+  margin: .2em 0;
+}
+
+
+.charChoices {
+  grid-area: choices;
+  display: flex;
+  flex-direction: column;
 }
 
 .submit {
