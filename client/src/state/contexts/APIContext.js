@@ -4,6 +4,7 @@ import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
 import { AnswerContext } from './AnswersContext';
+import { ProductContext } from './ProductContext';
 
 export const APIContext = createContext({});
 
@@ -13,9 +14,10 @@ const APIProvider = ({ children }) => {
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
+  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
-
+  const pId = '17067';
   // sample endpoints
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
 
@@ -29,6 +31,17 @@ const APIProvider = ({ children }) => {
       const products = await axios.get(`${baseURL}/products`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getProductById = async () => {
+    try {
+      const product = await axios.get(`${baseURL}/products/${pId}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setSelectedProduct(product.data);
     } catch (err) {
       console.log(err);
     }
@@ -111,8 +124,6 @@ const APIProvider = ({ children }) => {
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
 
-  const pId = '17067';
-
   const getReviewsByProductId = async () => {
     try {
       const allReviews = await axios.get(`${baseURL}/reviews?product_id=${pId}&count=100&sort=${sortTerm}`, {
@@ -147,7 +158,7 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getReviewMetaDataByProductId = async (reviewId) => {
+  const getReviewMetaDataByProductId = async () => {
     try {
       const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
@@ -163,6 +174,7 @@ const APIProvider = ({ children }) => {
       value={{
         // Products
         getAllProducts,
+        getProductById,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
@@ -170,7 +182,7 @@ const APIProvider = ({ children }) => {
         markAnswerAsHelpful,
         reportQuestion,
         reportAnswer,
-        //Reviews
+        // Reviews
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,

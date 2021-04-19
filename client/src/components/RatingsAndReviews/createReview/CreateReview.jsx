@@ -1,16 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { fullStar, emptyStar } from '../starRatings';
 import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
+import { ProductContext } from '../../../state/contexts/ProductContext';
+import { APIContext } from '../../../state/contexts/APIContext';
 
 export const CreateReview = ({ children }) => {
   const {
-    showCreate, hideCreate, submitHandler, changeHandler, metaData,
+    showCreate, hideCreate, submitHandler, changeHandler, metaData, newReview, setNewReview,
   } = useContext(ReviewContext);
+  const { getProductById } = useContext(APIContext);
+  const { selectedProduct } = useContext(ProductContext);
   const showHideClassName = showCreate ? styles.show : styles.hide;
   const characteristics = getCharacteristicsArray(metaData.characteristics);
-  console.log(characteristics);
+
+  // console.log(metaData);
+
+  useEffect(() => {
+    getProductById();
+  }, []);
+
+  const changeCharacteristic = (e) => {
+    setNewReview({
+      ...newReview,
+      characteristics: {
+        ...newReview.characteristics,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+  console.log(newReview);
 
   return (
     <div className={showHideClassName}>
@@ -22,29 +42,33 @@ export const CreateReview = ({ children }) => {
           </span>
           <div className={styles.formContainer}>
             <h2>Write your review</h2>
-            <h3>about the product name</h3>
+            <h3>
+              about the
+              {' '}
+              {selectedProduct.name}
+            </h3>
             <form onSubmit={submitHandler} className={styles.form}>
               <div className={styles.inputs}>
                 <label htmlFor="nickname">
                   Nickname
                 </label>
-                <input type="text" name="nickname" id="nickname" value="" placeholder="Example: jackson11" reqired />
+                <input type="text" name="nickname" id="nickname" value="" placeholder="Example: jackson11" required={true} onChange={changeHandler} />
                 <p>For privacy reasons, do not use your full name or email address</p>
 
                 <label htmlFor="email">
                   Email
                 </label>
 
-                <input type="email" name="email" id="email" value="" placeholder="Example: jackson11@gmail.com" required />
+                <input type="email" name="email" id="email" value="" placeholder="Example: jackson11@gmail.com" required={true} onChange={changeHandler} />
                 <p>For authentication reasons, you will not be emailed</p>
                 <label htmlFor="summary">
                   Summary
                 </label>
-                <input type="text" name="summary" id="summary" value="" placeholder="Example: Best purchase ever!" />
+                <input type="text" name="summary" id="summary" value="" placeholder="Example: Best purchase ever!" onChange={changeHandler} />
                 <label htmlFor="body">
                   Body
                 </label>
-                <textarea rows="3" type="text" name="body" id="body" value="" placeholder="Example: Why did you like the product or not" />
+                <textarea rows="3" type="text" name="body" id="body" value="" placeholder="Example: Why did you like the product or not" onChange={changeHandler} />
                 <p>Minimum required characters left: 50 </p>
               </div>
               <div className={styles.rating}>
@@ -58,15 +82,16 @@ export const CreateReview = ({ children }) => {
                 <span className={styles.star}>{emptyStar}</span>
                 <p>Poor</p>
               </div>
-              <div className={styles.reccommend}>
-                <p>Do you reccommend this product?</p>
+              <div className={styles.recommend}>
+                <p>Do you recommend this product?</p>
                 <div className={styles.radioChoice}>
                   <label htmlFor="yes">Yes</label>
-                  <input type="radio" name="yes" id="yes" />
+                  <input onChange={changeHandler} type="radio" name="yes" id="yes" />
                 </div>
                 <div className={styles.radioChoice}>
                   <label htmlFor="no">No</label>
                   <input
+                    onChange={changeHandler}
                     type="radio"
                     name="no"
                     id="no"
@@ -78,8 +103,8 @@ export const CreateReview = ({ children }) => {
               <div className={styles.characteristics}>
                 <h4>Characteristics</h4>
                 <div className={styles.charTypes}>
-                  {characteristics.length > 0 && characteristics.map((ch) => (
-                    <>
+                  {characteristics.length > 0 && characteristics.map((ch, idx) => (
+                    <div key={idx}>
                       <p>
                         {ch.name}
                         :
@@ -88,27 +113,57 @@ export const CreateReview = ({ children }) => {
                       </p>
                       <div className={styles.charChoices}>
                         <div className={styles.radioChoice}>
-                          <label htmlFor="one">1</label>
-                          <input type="radio" name="one" id="one" />
+                          <label htmlFor={`${ch.name}1`}>1</label>
+                          <input
+                            onChange={changeCharacteristic}
+                            type="radio"
+                            name={ch.id}
+                            id={`${ch.name}1`}
+                            value="1"
+                          />
                         </div>
                         <div className={styles.radioChoice}>
-                          <label htmlFor="two">2</label>
-                          <input type="radio" name="two" id="two" />
+                          <label htmlFor={`${ch.name}2`}>2</label>
+                          <input
+                            onChange={changeCharacteristic}
+                            type="radio"
+                            name={ch.id}
+                            id={`${ch.name}2`}
+                            value="2"
+                          />
                         </div>
                         <div className={styles.radioChoice}>
-                          <label htmlFor="three">3</label>
-                          <input type="radio" name="three" id="three" />
+                          <label htmlFor={`${ch.name}3`}>3</label>
+                          <input
+                            onChange={changeCharacteristic}
+                            type="radio"
+                            name={ch.id}
+                            id={`${ch.name}3`}
+                            value="3"
+                          />
                         </div>
                         <div className={styles.radioChoice}>
-                          <label htmlFor="four">4</label>
-                          <input type="radio" name="four" id="four" />
+                          <label htmlFor={`${ch.name}4`}>4</label>
+                          <input
+                            onChange={changeCharacteristic}
+                            type="radio"
+                            name={ch.id}
+                            id={`${ch.name}4`}
+                            value="4"
+                          />
                         </div>
                         <div className={styles.radioChoice}>
-                          <label htmlFor="five">5</label>
-                          <input type="radio" name="five" id="five" />
+                          <label htmlFor={`${ch.name}5`}>5</label>
+                          <input
+                            onChange={changeCharacteristic}
+                            type="radio"
+                            name={ch.id}
+                            id={`${ch.name}5`}
+                            value="5"
+                          />
                         </div>
                       </div>
-                    </>
+                    </div>
                   ))}
                 </div>
 

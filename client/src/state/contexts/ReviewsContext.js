@@ -14,6 +14,16 @@ const ReviewProvider = ({ children }) => {
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
   const [showCreate, setShowCreate] = useState(true);
+  const [newReview, setNewReview] = useState({
+    name: '',
+    email: '',
+    summary: '',
+    body: '',
+    rating: 0,
+    recommended: false,
+    characteristics: {},
+    photos: [],
+  });
 
   // createReview logic
   const openCreate = () => {
@@ -105,6 +115,8 @@ const ReviewProvider = ({ children }) => {
         hideCreate,
         createChangeHandler,
         createSubmitHandler,
+        newReview,
+        setNewReview,
       }}
     >
       {children}

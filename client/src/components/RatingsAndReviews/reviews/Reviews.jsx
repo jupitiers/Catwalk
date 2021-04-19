@@ -5,7 +5,7 @@ import { APIContext } from '../../../state/contexts/APIContext';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
-  const { getReviewsByProductId } = useContext(APIContext);
+  const { getReviewsByProductId, getProductById } = useContext(APIContext);
   const {
     reviews, reviewsShowing, setSortTerm, sortTerm, starFilter,
   } = useContext(ReviewContext);

@@ -52,7 +52,7 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(6, auto);
   grid-template-areas:  'inputs rating'
-                        'inputs reccommend'
+                        'inputs recommend'
                         'inputs characteristics'
                         'upload characteristics'
                         'upload characteristics'
@@ -128,13 +128,13 @@
   font-weight: bold;
 }
 
-.reccommend {
-  grid-area: reccommend;
+.recommend {
+  grid-area: recommend;
   display: flex;
   flex-direction: column;
 }
 
-.reccommend p {
+.recommend p {
   font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Raleway', sans-serif;
