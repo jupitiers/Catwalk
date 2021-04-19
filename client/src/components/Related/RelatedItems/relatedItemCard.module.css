@@ -1,0 +1,7 @@
+.itemCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 2fr;
+  margin-left: 3%;
+  margin-right: 3%;
+}

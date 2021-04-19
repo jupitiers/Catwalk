@@ -5,7 +5,8 @@ import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from '../../../helpers/starRatings';
 import { APIContext } from '../../../state/contexts/APIContext';
-import { createStarArray, truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
+import { truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
+import { createStarArray } from '../../../helpers/ratingsHelpers';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import ReviewImages from './ReviewImages';
 
@@ -20,7 +21,7 @@ const ReviewCard = ({ review }) => {
 
   // helper functions for review formatting
   const truncatedSummary = truncateSummary(review);
-  const stars = createStarArray(review);
+  const stars = createStarArray(review.rating);
   const [truncatedBody, restOfBody] = truncateBody(review);
 
   return (
@@ -31,10 +32,6 @@ const ReviewCard = ({ review }) => {
         </div>
         <div className={styles.reviewUserDate}>
           <p>
-            {/* there is no way to tell if a user is verified in the system that I know of */}
-            {/* {review.recommend && (
-            <i className="fas fa-check-circle" />
-            )} */}
             {review.reviewer_name}
           </p>
           <p>
@@ -43,18 +40,33 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
       <h3>{truncatedSummary}</h3>
-      <p className={styles.cardBody}>{truncatedBody}</p>
-      {restOfBody && (
+
+      <p className={styles.cardBody}>
+        {truncatedBody}
+        {(restOfBody && !showMoreBody) && (
+          <>
+            ...
+            <button
+              className={styles.expandBodyButton}
+              onClick={() => setShowMoreBody(!showMoreBody)}
+            >
+              Show More
+            </button>
+          </>
+        )}
+        {showMoreBody && (
+          restOfBody
+        )}
+        {(showMoreBody) && (
         <button
           className={styles.expandBodyButton}
           onClick={() => setShowMoreBody(!showMoreBody)}
         >
-          {showMoreBody ? 'Show Less' : 'Show More'}
+          Show Less
         </button>
-      )}
-      {showMoreBody && (
-        restOfBody
-      )}
+        )}
+      </p>
+
       {review.photos.length > 0 && (
         <ReviewImages images={review.photos} />
       )}

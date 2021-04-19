@@ -5,10 +5,12 @@ import styles from './app.module.css';
 import { ProductContext } from '../state/contexts/ProductContext';
 
 // import components
-import Header from './Header/index';
-import OverView from './OverView/index';
-import QASection from './QA/index';
-import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
+import Header from './Header/index.jsx';
+import OverView from './OverView/index.jsx';
+import QASection from './QA/index.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
+import RelatedItemsAndOutfit from './Related/index.jsx';
+
 
 const App = () => {
   const {
@@ -20,20 +22,20 @@ const App = () => {
   } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log({ sampleProduct });
-    someFunc();
+    // console.log({ sampleProduct });
+    // someFunc();
   }, []);
 
-  return (
-    <div className={styles.appContainer}>
-      <Header />
-      <OverView />
-      <div className={styles.componentContainer}>
-        <QASection />
-        <RatingsAndReviews />
+    return (
+      <div className={styles.appContainer}>
+        <Header />
+        <OverView />
+        <div className={styles.componentContainer}>
+          <RelatedItemsAndOutfit />
+          <QASection/>
+          <RatingsAndReviews/>
+        </div>
       </div>
-    </div>
-
   );
 };
 

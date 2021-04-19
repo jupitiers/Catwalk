@@ -4,15 +4,15 @@ export const QuestionContext = createContext({});
 
 const QuestionProvider = ({ children }) => {
   const [questions, setQuestions] = useState([]);
-  const [feedbackGiven, setFeedbackGiven] = useState(false);
+  const [qHelpfulnessMarked, setqHelpfulnessMarked] = useState(false);
 
   return (
     <QuestionContext.Provider
       value={{
         questions,
         setQuestions,
-        feedbackGiven,
-        setFeedbackGiven
+        qHelpfulnessMarked,
+        setqHelpfulnessMarked
       }}
     >
       {children}

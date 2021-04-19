@@ -16,7 +16,6 @@ const QASection = () => {
     getQuestionsByProductId();
   }, []);
 
-
   return(
     <div className={styles.section}>
       <div className={styles.title}>
