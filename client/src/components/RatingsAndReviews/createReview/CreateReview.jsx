@@ -26,10 +26,14 @@ export const CreateReview = ({ children }) => {
                   Nickname
                 </label>
                 <input type="text" name="nickname" id="nickname" value="" placeholder="Example: jackson11" reqired />
+                <p>For privacy reasons, do not use your full name or email address</p>
+
                 <label htmlFor="email">
                   Email
                 </label>
+
                 <input type="email" name="email" id="email" value="" placeholder="Example: jackson11@gmail.com" required />
+                <p>For authentication reasons, you will not be emailed</p>
                 <label htmlFor="summary">
                   Summary
                 </label>
@@ -58,7 +62,12 @@ export const CreateReview = ({ children }) => {
                 </div>
                 <div className={styles.radioChoice}>
                   <label htmlFor="no">No</label>
-                  <input type="radio" name="no" id="no" />
+                  <input
+                    type="radio"
+                    name="no"
+                    id="no"
+                    checked="checked"
+                  />
                 </div>
 
               </div>

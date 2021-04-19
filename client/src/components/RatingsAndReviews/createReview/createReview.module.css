@@ -18,7 +18,7 @@
 .formModalMain {
   margin: 1em auto 0;
   min-width: 325px;
-  max-width: 600px;
+  max-width: 700px;
   background-color: white;
   padding: 1em;
   color: #525252
@@ -72,12 +72,13 @@
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  color:#641373;
 }
 
 .inputs input {
   width: 300px;
   height: 35px;
-  margin: 0 0 .5em;
+  margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
 
@@ -94,8 +95,9 @@
 .inputs p {
   height: 10px;
   font-size: .8rem;
+  max-width: 300px;
   color: red;
-  margin: .2em .5em 1em !important;
+  margin: .2em .5em 1.2em !important;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -111,6 +113,7 @@
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  color: #641373;
 }
 
 .rating .star {
@@ -129,6 +132,7 @@
   font-weight: bold;
   font-family: 'Raleway', sans-serif;
   margin: 0 0 .5em;
+  color: #641373;
 }
 
 .radioChoice {
@@ -138,6 +142,7 @@
   justify-content: space-between;
   margin: .3em .0em;
 }
+
 
 .upload {
   grid-area: upload;
@@ -192,7 +197,7 @@
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-
+  color: #641373;
 }
 
 .charTypes {
