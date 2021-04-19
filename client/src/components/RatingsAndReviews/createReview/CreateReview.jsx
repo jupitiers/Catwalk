@@ -32,7 +32,7 @@ export const CreateReview = ({ children }) => {
 
   const changeHandler = (e) => {
     console.log(e.target.value);
-  }
+  };
 
   return (
     <div className={showHideClassName}>
