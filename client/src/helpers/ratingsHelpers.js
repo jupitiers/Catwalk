@@ -88,44 +88,56 @@ const getDescriptions = (char) => {
   switch (char) {
     case 'Fit':
       descriptions = {
-        low: 'Runs tight',
-        mid: 'Perfect',
-        high: 'Runs long',
+        1: 'Runs tight',
+        2: 'Slightly tight',
+        3: 'Perfect',
+        4: 'Slightly long',
+        5: 'Runs long',
       };
       break;
     case 'Length':
       descriptions = {
-        low: 'Runs short',
-        mid: 'Perfect',
-        high: 'Runs long',
+        1: 'Runs short',
+        2: 'Slightly short',
+        3: 'Perfect',
+        4: 'Slightly long',
+        5: 'Runs long',
       };
       break;
     case 'Quality':
       descriptions = {
-        low: 'Poor',
-        mid: 'What I expected',
-        high: 'Perfect',
+        1: 'Poor',
+        2: 'Below average',
+        3: 'What I expected',
+        4: 'Pretty great',
+        5: 'Perfect',
       };
       break;
     case 'Comfort':
       descriptions = {
-        low: 'Uncomfortable',
-        mid: 'Ok',
-        high: 'Perfect',
+        1: 'Uncomfortable',
+        2: 'Slightly uncomfortable',
+        3: 'Ok',
+        4: 'Comfortable',
+        5: 'Perfect',
       };
       break;
     case 'Width':
       descriptions = {
-        low: 'Too narrow',
-        mid: 'Perfect',
-        high: 'Too wide',
+        1: 'Too narrow',
+        2: 'Slightly narrow',
+        3: 'Perfect',
+        4: 'Slightly wide',
+        5: 'Too wide',
       };
       break;
     case 'Size':
       descriptions = {
-        low: 'Too small',
-        mid: 'Perfect',
-        high: 'Too large',
+        1: 'Too small',
+        2: 'Slightly small',
+        3: 'Perfect',
+        4: 'Slightly large',
+        5: 'Too large',
       };
       break;
     default:

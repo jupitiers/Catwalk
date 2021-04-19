@@ -1,9 +1,9 @@
 .sectionTitle {
   margin-top: 5em;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   padding-bottom: .5em;
-  font-family: 'Raleway', sans-serif;
-  color: #525252;
+  letter-spacing: 2px;
+  font-family: 'Dela Gothic One', cursive;  color: #525252;
 }
 
 .ratingsAndReviewsContainer {
@@ -34,4 +34,18 @@
   font-size: 1.2rem;
   font-family: 'Open Sans', sans-serif;
   padding: 0 .5em;
+}
+
+.firstReviewButton {
+  border: none;
+  outline: none;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  color: #641373;
+  text-decoration: underline;
+}
+
+.firstReviewButton:hover {
+  color: #5FD9BD;
 }
