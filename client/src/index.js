@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import App from './components/App';
 // context import
-import {RootProvider} from './state/contexts/RootContext';
-
+import { RootProvider } from './state/contexts/RootContext';
 
 ReactDOM.render(
-<RootProvider>
-  <App />
-</RootProvider>,
-document.getElementById('app')
+  <RootProvider>
+    <App />
+  </RootProvider>,
+  document.getElementById('app'),
 );

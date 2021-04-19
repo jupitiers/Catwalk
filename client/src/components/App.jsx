@@ -1,8 +1,8 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 // import '../index.css'
 import styles from './app.module.css';
 // context imports
-import {ProductContext} from '../state/contexts/ProductContext';
+import { ProductContext } from '../state/contexts/ProductContext';
 
 // import components
 import Header from './Header/index.jsx';
@@ -19,12 +19,12 @@ const App = () => {
     productList,
     setProductList,
     someFunc,
-    } = useContext(ProductContext)
+  } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log({sampleProduct})
-    someFunc();
-  }, [])
+    // console.log({ sampleProduct });
+    // someFunc();
+  }, []);
 
     return (
       <div className={styles.appContainer}>
@@ -36,8 +36,9 @@ const App = () => {
           <RatingsAndReviews/>
         </div>
       </div>
+    </div>
 
-    )
-}
+  );
+};
 
 export default App;
