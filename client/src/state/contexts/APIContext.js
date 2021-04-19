@@ -9,17 +9,14 @@ import { AnswerContext } from './AnswersContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-<<<<<<< HEAD
-  const { reviews, setReviews, setFeedbackGiven } = useContext(ReviewContext);
+  const {
+    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
+  } = useContext(ReviewContext);
   const { questions, setQuestions, setqHelpfulnessMarked } = useContext(QuestionContext);
   const { answers, setAnswers, setaHelpfulnessMarked } = useContext(AnswerContext);
 
 
-=======
-  const {
-    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
-  } = useContext(ReviewContext);
->>>>>>> e8f63ef8f5a1dc586d8773bf412b1166b3d17625
+
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
