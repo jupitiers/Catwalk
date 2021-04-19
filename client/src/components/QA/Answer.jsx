@@ -1,7 +1,13 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import styles from './qa.module.css';
 
 var Answer = (props) => {
+  const[helpful, setHelpful] = useState(false);
+  const[reported, setReported] = useState(false);
+
+
+
+
   return(
     <div className={styles.answerentry}>
       <div className={styles.answer}>
@@ -14,11 +20,11 @@ var Answer = (props) => {
         <div className={styles.answeractions}>
           Helpful?
         </div>
-        <div className={styles.answeractions}>
+        <div className={styles.answeractions} onClick={() => {props.helpfulnessClick(props.id, props.questionId)}}>
           Yes ({props.helpfulness})
         </div>|
-        <div className={styles.answeractions}>
-          Report
+        <div className={styles.answeractions} onClick={() => setReported(true)}>
+          {reported ? 'Reported' : 'Report'}
         </div>
       </div>
       <div>

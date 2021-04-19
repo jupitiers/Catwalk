@@ -76,13 +76,13 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const markAnswerAsHelpful = async (answerId) => {
+  const markAnswerAsHelpful = async (answerId, questionId) => {
     try {
-      await axios.put(`${baseURL}/qa/questions/${answerId}/helpful`, null, {
+      await axios.put(`${baseURL}/qa/answers/${answerId}/helpful`, null, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      getAnswersByQuestionId();
-      setaHelpfulnessMarked(true);
+      getAnswersByQuestionId(questionId);
+      // setaHelpfulnessMarked(true);
     } catch (err) {
       console.log(err);
     }
