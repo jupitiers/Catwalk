@@ -5,7 +5,6 @@ import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
 import { AnswerContext } from './AnswersContext';
 
-
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
@@ -14,9 +13,6 @@ const APIProvider = ({ children }) => {
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
-
-
-
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
@@ -42,7 +38,7 @@ const APIProvider = ({ children }) => {
   *                      API calls for QAs
   ***************************************************************************** */
 
-   const getQuestionsByProductId = async () => {
+  const getQuestionsByProductId = async () => {
     try {
       const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=17069`, {
         headers: { Authorization: REACT_APP_API_KEY },
@@ -115,7 +111,7 @@ const APIProvider = ({ children }) => {
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
 
-  const pId = '17068'
+  const pId = '17068';
 
   const getReviewsByProductId = async () => {
     try {
@@ -165,9 +161,9 @@ const APIProvider = ({ children }) => {
   return (
     <APIContext.Provider
       value={{
-        //Products
+        // Products
         getAllProducts,
-        //QAs
+        // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
         markQuestionAsHelpful,

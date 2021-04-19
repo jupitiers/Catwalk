@@ -4637,9 +4637,9 @@ var APIProvider = function APIProvider(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(APIContext.Provider, {
     value: {
-      //Products
+      // Products
       getAllProducts: getAllProducts,
-      //QAs
+      // QAs
       getQuestionsByProductId: getQuestionsByProductId,
       getAnswersByQuestionId: getAnswersByQuestionId,
       markQuestionAsHelpful: markQuestionAsHelpful,
