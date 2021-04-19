@@ -4,3 +4,7 @@
   border-color: black;
   border-style: solid;
 }
+
+.removeItem {
+  float: right;
+}

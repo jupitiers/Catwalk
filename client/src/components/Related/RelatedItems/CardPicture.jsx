@@ -5,8 +5,7 @@ import styles from './cardPicture.module.css';
 const CardPicture = () => {
   return (
     <div className={styles.cardPictureArea}>
-      <img></img>
-      {/* <ComparisonModal /> */}
+      <ComparisonModal />
     </div>
   )
 }
