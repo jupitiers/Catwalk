@@ -3,7 +3,7 @@ import CardPicture from './CardPicture.jsx';
 import CardDescription from './CardDescription.jsx';
 import styles from './relatedItemCard.module.css';
 
-const RelatedItemCard = () => {
+const RelatedItemCard = props => {
   return (
     <div className={styles.itemCard}>
       <CardPicture />

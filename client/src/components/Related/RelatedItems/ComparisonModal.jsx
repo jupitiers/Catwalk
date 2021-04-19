@@ -4,7 +4,7 @@ import styles from './comparisonModal.module.css';
 const ComparisonModal = () => {
   return (
     <div>
-      <button className={styles.modalButton}>o</button>
+      <button className={styles.modalButton}><i className={"far fa-star"}></i></button>
       {/* <span>Current Product</span>
       <span>Compared Prodcut</span>
       <span>Green</span>

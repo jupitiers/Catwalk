@@ -9,3 +9,8 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.carouselTitles {
+  font-family: 'Raleway', sans-serif;
+  color: #525252;
+}

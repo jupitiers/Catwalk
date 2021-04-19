@@ -2,15 +2,14 @@ import React, {useEffect, useContext} from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import styles from './relatedItemsCarousel.module.css';
 
-const RelatedItemsCarousel = () => {
+const RelatedItemsCarousel = props => {
   return (
     <div className={styles.carousel}>
-      <button className={styles.carouselButton}>Left</button>
-      <RelatedItemCard />
-      <RelatedItemCard />
-      <RelatedItemCard />
-      <RelatedItemCard />
-      <button className={styles.carouselButton}>Right</button>
+      <button className={styles.carouselButton}><i className="fas fa-angle-left"></i></button>
+      {props.data.sampleRelatedId.map((item, index) => {
+        return <RelatedItemCard key={index} id={item} />
+      })}
+      <button className={styles.carouselButton}><i className="fas fa-angle-right"></i></button>
     </div>
   )
 }
