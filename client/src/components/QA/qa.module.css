@@ -73,28 +73,33 @@
   margin-right: 10px;
 }
 
-.answeractiondiv {
-  font-size: 75%;
+.questionactionsection {
+  float: right;
+  margin-top: 0.5em;
+}
+
+.answeractiondiv, .questionactiondiv {
+  font-size: 80%;
   display: inline-block;
   align-items: right;
   margin: 4px;
 }
 
 
-.answeraction {
+.answeraction, .questionaction {
   text-decoration: underline;
   color:#641373;
 }
 
-.answeraction:hover {
+.answeraction:hover, .questionaction:hover {
   color: #5FD9BD;
 }
 
-.answeraction:active {
+.answeraction:active, .questionaction:active {
   font-weight: bold;
 }
 
-.answeractionclicked {
+.answeractionclicked, .questionactionclicked {
   text-decoration: underline;
   font-weight: bold;
   color:#641373;
