@@ -45,14 +45,15 @@ export const CreateReview = ({ children }) => {
                 <p>Minimum required characters left: 50 </p>
               </div>
               <div className={styles.rating}>
-                <p>
+                <h4>
                   <b>Overall Rating: </b>
-                </p>
+                </h4>
                 <span className={styles.star}>{emptyStar}</span>
                 <span className={styles.star}>{emptyStar}</span>
                 <span className={styles.star}>{emptyStar}</span>
                 <span className={styles.star}>{emptyStar}</span>
                 <span className={styles.star}>{emptyStar}</span>
+                <p>Poor</p>
               </div>
               <div className={styles.reccommend}>
                 <p>Do you reccommend this product?</p>
@@ -94,6 +95,7 @@ export const CreateReview = ({ children }) => {
                   </p>
                 </div>
                 <div className={styles.charChoices}>
+                  <h5>Average</h5>
                   <div className={styles.radioChoice}>
                     <label htmlFor="one">1</label>
                     <input type="radio" name="one" id="one" />

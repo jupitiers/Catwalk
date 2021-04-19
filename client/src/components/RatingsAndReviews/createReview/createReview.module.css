@@ -81,7 +81,6 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
-
 }
 
 .inputs textarea {
@@ -109,16 +108,24 @@
   align-items: center;
 }
 
-.rating p {
+.rating h4 {
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   color: #641373;
+  margin-right: .5em;
 }
 
 .rating .star {
   font-size: 1.5rem;
   color: #641373;
+}
+
+.rating p {
+  margin-left: .5em;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .reccommend {
@@ -201,6 +208,7 @@
 }
 
 .charTypes {
+  margin-top: 2em;
   grid-area: types;
   display: flex;
   flex-direction: column;
@@ -214,11 +222,18 @@
   margin: .2em 0;
 }
 
-
 .charChoices {
   grid-area: choices;
   display: flex;
   flex-direction: column;
+  margin-top: .5em;
+}
+
+.charChoices h5 {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  margin: 0 0 .5em;
 }
 
 .submit {
