@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { fullStar, emptyStar } from '../starRatings';
@@ -14,8 +14,8 @@ export const CreateReview = ({ children }) => {
   const { selectedProduct } = useContext(ProductContext);
   const showHideClassName = showCreate ? styles.show : styles.hide;
   const characteristics = getCharacteristicsArray(metaData.characteristics);
-
-  // console.log(metaData);
+  const descriptions = getCharacteristicsArray(metaData.characteristics);
+  const [newDesc, setNewDesc] = useState('');
 
   useEffect(() => {
     getProductById();
@@ -29,8 +29,8 @@ export const CreateReview = ({ children }) => {
         [e.target.name]: e.target.value,
       },
     });
+    setNewDesc(e.target.value);
   };
-  console.log(newReview);
 
   return (
     <div className={showHideClassName}>
@@ -103,68 +103,75 @@ export const CreateReview = ({ children }) => {
               <div className={styles.characteristics}>
                 <h4>Characteristics</h4>
                 <div className={styles.charTypes}>
-                  {characteristics.length > 0 && characteristics.map((ch, idx) => (
-                    <div key={idx}>
-                      <p>
-                        {ch.name}
-                        :
-                        {' '}
-                        <span>Desc</span>
-                      </p>
-                      <div className={styles.charChoices}>
-                        <div className={styles.radioChoice}>
-                          <label htmlFor={`${ch.name}1`}>1</label>
-                          <input
-                            onChange={changeCharacteristic}
-                            type="radio"
-                            name={ch.id}
-                            id={`${ch.name}1`}
-                            value="1"
-                          />
-                        </div>
-                        <div className={styles.radioChoice}>
-                          <label htmlFor={`${ch.name}2`}>2</label>
-                          <input
-                            onChange={changeCharacteristic}
-                            type="radio"
-                            name={ch.id}
-                            id={`${ch.name}2`}
-                            value="2"
-                          />
-                        </div>
-                        <div className={styles.radioChoice}>
-                          <label htmlFor={`${ch.name}3`}>3</label>
-                          <input
-                            onChange={changeCharacteristic}
-                            type="radio"
-                            name={ch.id}
-                            id={`${ch.name}3`}
-                            value="3"
-                          />
-                        </div>
-                        <div className={styles.radioChoice}>
-                          <label htmlFor={`${ch.name}4`}>4</label>
-                          <input
-                            onChange={changeCharacteristic}
-                            type="radio"
-                            name={ch.id}
-                            id={`${ch.name}4`}
-                            value="4"
-                          />
-                        </div>
-                        <div className={styles.radioChoice}>
-                          <label htmlFor={`${ch.name}5`}>5</label>
-                          <input
-                            onChange={changeCharacteristic}
-                            type="radio"
-                            name={ch.id}
-                            id={`${ch.name}5`}
-                            value="5"
-                          />
+                  {characteristics.length > 0 && characteristics.map((ch, idx) => {
+                    const [currentDesc] = descriptions.filter((d) => d.id === ch.id);
+                    return (
+                      <div key={idx}>
+                        <p>
+                          {ch.name}
+                          :
+                          {' '}
+                          <span style={{ marginLeft: '1em' }}>
+                            {newReview.characteristics[ch.id] && (
+                              currentDesc.descriptions[newDesc]
+                            )}
+                          </span>
+                        </p>
+                        <div className={styles.charChoices}>
+                          <div className={styles.radioChoice}>
+                            <label htmlFor={`${ch.name}1`}>1</label>
+                            <input
+                              onChange={changeCharacteristic}
+                              type="radio"
+                              name={ch.id}
+                              id={`${ch.name}1`}
+                              value="1"
+                            />
+                          </div>
+                          <div className={styles.radioChoice}>
+                            <label htmlFor={`${ch.name}2`}>2</label>
+                            <input
+                              onChange={changeCharacteristic}
+                              type="radio"
+                              name={ch.id}
+                              id={`${ch.name}2`}
+                              value="2"
+                            />
+                          </div>
+                          <div className={styles.radioChoice}>
+                            <label htmlFor={`${ch.name}3`}>3</label>
+                            <input
+                              onChange={changeCharacteristic}
+                              type="radio"
+                              name={ch.id}
+                              id={`${ch.name}3`}
+                              value="3"
+                            />
+                          </div>
+                          <div className={styles.radioChoice}>
+                            <label htmlFor={`${ch.name}4`}>4</label>
+                            <input
+                              onChange={changeCharacteristic}
+                              type="radio"
+                              name={ch.id}
+                              id={`${ch.name}4`}
+                              value="4"
+                            />
+                          </div>
+                          <div className={styles.radioChoice}>
+                            <label htmlFor={`${ch.name}5`}>5</label>
+                            <input
+                              onChange={changeCharacteristic}
+                              type="radio"
+                              name={ch.id}
+                              id={`${ch.name}5`}
+                              value="5"
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
               </div>
