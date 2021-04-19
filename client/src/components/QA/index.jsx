@@ -53,6 +53,8 @@ const QASection = () => {
     setSearchQuery(query);
     if (searchQuery.length >= 2) {
       setSearching(!searching);
+      console.log(searching);
+      getQuestionsByProductId();
     }
   }
   //Add a usedQuestions conditional for if the search bar has 3+ characters in it
@@ -62,9 +64,9 @@ const QASection = () => {
       <div className={styles.title}>
         <h2>Questions & Answers</h2>
       </div>
-      <div className={styles.searchdiv}>
+      <form className={styles.searchdiv}>
         <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => searchChange($('#searchbar').val())}/>
-      </div>
+      </form>
       <div className={styles.feed}>
         <QAList data={usedQuestions}/>
       </div>
