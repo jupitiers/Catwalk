@@ -75,11 +75,11 @@
 
 .questionactionsection {
   float: right;
-  margin-top: 0.7em;
+  margin-top: 0.5em;
 }
 
 .answeractiondiv, .questionactiondiv {
-  font-size: 75%;
+  font-size: 80%;
   display: inline-block;
   align-items: right;
   margin: 4px;

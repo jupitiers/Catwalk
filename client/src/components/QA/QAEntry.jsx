@@ -30,6 +30,9 @@ var QA = (props) => {
               ? <p className={styles.questionactionclicked}>Reported</p>
               : <p className={styles.questionaction}>Report</p>
             }
+          </div>|
+          <div className={styles.questionactiondiv}>
+            <p className={styles.questionaction}>Add Answer</p>
           </div>
         </div>
       </div>

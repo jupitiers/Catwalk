@@ -1,6 +1,7 @@
 import React, {useEffect, useContext, useState} from 'react';
 import QAList from './QAList.jsx';
 import styles from './qa.module.css';
+import $ from 'jquery';
 
 //sample data
 import qaSampleData from './qaSampleData.js';
@@ -12,6 +13,9 @@ const QASection = () => {
   const { questions } = useContext(QuestionContext);
 
   const[clicked, setClicked] = useState(false);
+  const[searchQuery, setSearchQuery] = useState(' ');
+  const[searching, setSearching] = useState(false);
+
 
   useEffect(() => {
     getQuestionsByProductId();
@@ -21,13 +25,37 @@ const QASection = () => {
 
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
 
-  var initialQuestions = questionList.slice(0, 4);
-  var usedQuestions;
-  if (clicked) {
-    usedQuestions = questionList;
+
+  if (searchQuery.length > 2) {
+    var searchedQuestions = [];
+    for (var i = 0; i < questionList.length; i++) {
+      if (questionList[i].question_body.indexOf(searchQuery) !== undefined) {
+        searchedQuestions.push(questionList[i]);
+      }
+    }
+    var shortenedSearchedQuestions = searchedQuestions.slice(0, 4);
+    if (clicked) {
+      usedQuestions = shortenedSearchQuestions;
+    } else {
+      usedQuestions = searchedQuestions;
+    }
   } else {
-    usedQuestions = initialQuestions;
+    var initialQuestions = questionList.slice(0, 4);
+    var usedQuestions;
+    if (clicked) {
+      usedQuestions = questionList;
+    } else {
+      usedQuestions = initialQuestions;
+    }
   }
+
+  var searchChange = function (query) {
+    setSearchQuery(query);
+    if (searchQuery.length >= 2) {
+      setSearching(!searching);
+    }
+  }
+  //Add a usedQuestions conditional for if the search bar has 3+ characters in it
 
   return(
     <div className={styles.section}>
@@ -35,7 +63,7 @@ const QASection = () => {
         <h2>Questions & Answers</h2>
       </div>
       <div className={styles.searchdiv}>
-        <input className={styles.searchbar} type='text' placeholder='Have a question? Search for answers...'/>
+        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => searchChange($('#searchbar').val())}/>
       </div>
       <div className={styles.feed}>
         <QAList data={usedQuestions}/>
