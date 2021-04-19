@@ -12,8 +12,8 @@ const APIProvider = ({ children }) => {
   const {
     reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
   } = useContext(ReviewContext);
-  const { questions, setQuestions, setqHelpfulnessMarked } = useContext(QuestionContext);
-  const { answers, setAnswers, setaHelpfulnessMarked } = useContext(AnswerContext);
+  const { questions, setQuestions } = useContext(QuestionContext);
+  const { answers, setAnswers } = useContext(AnswerContext);
 
 
 
@@ -70,19 +70,38 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getQuestionsByProductId();
-      setqHelpfulnessMarked(true);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const markAnswerAsHelpful = async (answerId, questionId) => {
+  const markAnswerAsHelpful = async (answerId) => {
     try {
       await axios.put(`${baseURL}/qa/answers/${answerId}/helpful`, null, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      // getAnswersByQuestionId(questionId);
-      // setaHelpfulnessMarked(true);
+      getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const reportQuestion = async (questionId) => {
+    try {
+      await axios.put(`${baseURL}/qa/questions/${questionId}/report`, null, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const reportAnswer = async (answerId) => {
+    try {
+      await axios.put(`${baseURL}/qa/answers/${answerId}/report`, null, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -153,6 +172,8 @@ const APIProvider = ({ children }) => {
         getAnswersByQuestionId,
         markQuestionAsHelpful,
         markAnswerAsHelpful,
+        reportQuestion,
+        reportAnswer,
         //Reviews
         getReviewsByProductId,
         markReviewAsHelpful,

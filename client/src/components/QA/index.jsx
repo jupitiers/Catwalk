@@ -11,10 +11,23 @@ const QASection = () => {
   const { getQuestionsByProductId } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
 
+  const[clicked, setClicked] = useState(false);
 
   useEffect(() => {
     getQuestionsByProductId();
   }, []);
+
+  var questionList = questions.slice();
+
+  questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
+
+  var initialQuestions = questionList.slice(0, 4);
+  var usedQuestions;
+  if (clicked) {
+    usedQuestions = questionList;
+  } else {
+    usedQuestions = initialQuestions;
+  }
 
   return(
     <div className={styles.section}>
@@ -25,10 +38,13 @@ const QASection = () => {
         <input className={styles.searchbar} type='text' placeholder='Have a question? Search for answers...'/>
       </div>
       <div className={styles.feed}>
-        <QAList data={questions}/>
+        <QAList data={usedQuestions}/>
       </div>
       <div className='QA-button'>
-        <button className={styles.button}>More Answered Questions</button>
+      {clicked
+        ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+        : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+      }
         <button className={styles.button}>Add a Question +</button>
       </div>
     </div>

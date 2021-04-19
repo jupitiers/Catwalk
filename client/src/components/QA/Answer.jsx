@@ -17,13 +17,13 @@ var Answer = (props) => {
         <div className={styles.answeractiondiv}>
           Helpful?
         </div>
-        <div className={styles.answeractiondiv} onClick={() => {props.helpfulnessClick(props.id, props.questionId, helpful); setHelpful(true);}}>
+        <div className={styles.answeractiondiv} onClick={() => {props.helpfulnessClick(props.id, helpful); setHelpful(true);}}>
           {helpful
             ? <span className={styles.answeractionclicked}>Yes </span>
             : <span className={styles.answeraction}>Yes </span>
           } ({props.helpfulness})
         </div>|
-        <div className={styles.answeractiondiv} onClick={() => setReported(true)}>
+        <div className={styles.answeractiondiv} onClick={() => {props.reportClick(props.id, reported); setReported(true);}}>
           {reported
             ? <p className={styles.answeractionclicked}>Reported</p>
             : <p className={styles.answeraction}>Report</p>
