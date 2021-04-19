@@ -10,8 +10,7 @@ var AnswerList = (props) => {
   const { answers, setAnswers } = useContext(AnswerContext);
 
   const[clicked, setClicked] = useState(false);
-  const[helpfulClicked, setHelpfulClicked] = useState(0);
-  console.log(props);
+  const[helpfulClicked, setHelpfulClicked] = useState({clickCount: 0});
 
   var answerList = [];
   for (var key in props.answers) {
@@ -31,9 +30,10 @@ var AnswerList = (props) => {
     usedAnswers = initialAnswers;
   }
 
-  var helpfulnessClick = function(answerId, questionId) {
-    markAnswerAsHelpful(answerId, questionId);
-    setHelpfulClicked(1);
+  var helpfulnessClick = function(answerId, questionId, helpful) {
+    if (!helpful) {
+      markAnswerAsHelpful(answerId, questionId);
+    }
   }
 
   return (

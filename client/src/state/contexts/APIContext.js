@@ -81,8 +81,9 @@ const APIProvider = ({ children }) => {
       await axios.put(`${baseURL}/qa/answers/${answerId}/helpful`, null, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      getAnswersByQuestionId(questionId);
+      // getAnswersByQuestionId(questionId);
       // setaHelpfulnessMarked(true);
+      getQuestionsByProductId();
     } catch (err) {
       console.log(err);
     }

@@ -5,9 +5,6 @@ var Answer = (props) => {
   const[helpful, setHelpful] = useState(false);
   const[reported, setReported] = useState(false);
 
-
-
-
   return(
     <div className={styles.answerentry}>
       <div className={styles.answer}>
@@ -20,7 +17,7 @@ var Answer = (props) => {
         <div className={styles.answeractions}>
           Helpful?
         </div>
-        <div className={styles.answeractions} onClick={() => {props.helpfulnessClick(props.id, props.questionId)}}>
+        <div className={styles.answeractions} onClick={() => {props.helpfulnessClick(props.id, props.questionId, helpful); setHelpful(true);}}>
           Yes ({props.helpfulness})
         </div>|
         <div className={styles.answeractions} onClick={() => setReported(true)}>

@@ -2495,7 +2495,8 @@ var Answer = function Answer(props) {
   }, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractions,
     onClick: function onClick() {
-      props.helpfulnessClick(props.id, props.questionId);
+      props.helpfulnessClick(props.id, props.questionId, helpful);
+      setHelpful(true);
     }
   }, "Yes (", props.helpfulness, ")"), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractions,
@@ -2552,12 +2553,13 @@ var AnswerList = function AnswerList(props) {
       clicked = _useState2[0],
       setClicked = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+    clickCount: 0
+  }),
       _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
       helpfulClicked = _useState4[0],
       setHelpfulClicked = _useState4[1];
 
-  console.log(props);
   var answerList = [];
 
   for (var key in props.answers) {
@@ -2578,9 +2580,10 @@ var AnswerList = function AnswerList(props) {
     usedAnswers = initialAnswers;
   }
 
-  var helpfulnessClick = function helpfulnessClick(answerId, questionId) {
-    markAnswerAsHelpful(answerId, questionId);
-    setHelpfulClicked(1);
+  var helpfulnessClick = function helpfulnessClick(answerId, questionId, helpful) {
+    if (!helpful) {
+      markAnswerAsHelpful(answerId, questionId);
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, usedAnswers.map(function (entry) {
@@ -3946,8 +3949,9 @@ var APIProvider = function APIProvider(_ref) {
               });
 
             case 3:
-              getAnswersByQuestionId(questionId); // setaHelpfulnessMarked(true);
-
+              // getAnswersByQuestionId(questionId);
+              // setaHelpfulnessMarked(true);
+              getQuestionsByProductId();
               _context5.next = 9;
               break;
 
