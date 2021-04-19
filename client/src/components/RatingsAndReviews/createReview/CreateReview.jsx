@@ -8,14 +8,13 @@ import { APIContext } from '../../../state/contexts/APIContext';
 
 export const CreateReview = ({ children }) => {
   const {
-    showCreate, hideCreate, submitHandler, changeHandler, metaData, newReview, setNewReview,
+    showCreate, hideCreate, submitHandler, metaData, newReview, setNewReview,
   } = useContext(ReviewContext);
   const { getProductById } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   const showHideClassName = showCreate ? styles.show : styles.hide;
   const characteristics = getCharacteristicsArray(metaData.characteristics);
   const descriptions = getCharacteristicsArray(metaData.characteristics);
-  const [newDesc, setNewDesc] = useState('');
 
   useEffect(() => {
     getProductById();
@@ -29,8 +28,11 @@ export const CreateReview = ({ children }) => {
         [e.target.name]: e.target.value,
       },
     });
-    setNewDesc(e.target.value);
   };
+
+  const changeHandler = (e) => {
+    console.log(e.target.value);
+  }
 
   return (
     <div className={showHideClassName}>
