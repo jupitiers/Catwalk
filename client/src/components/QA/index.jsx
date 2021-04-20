@@ -13,8 +13,8 @@ const QASection = () => {
   const { questions } = useContext(QuestionContext);
 
   const[clicked, setClicked] = useState(false);
-  const[searchQuery, setSearchQuery] = useState(' ');
-  const[searching, setSearching] = useState(false);
+  const[noResults, setNoResults] = useState(false);
+  const[searchResults, setSearchResults] = useState([]);
 
 
   useEffect(() => {
@@ -25,23 +25,39 @@ const QASection = () => {
 
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
 
+  var initialQuestions = questionList.slice(0, 4);
+  var usedQuestions;
 
-  if (searchQuery.length > 2) {
-    var searchedQuestions = [];
-    for (var i = 0; i < questionList.length; i++) {
-      if (questionList[i].question_body.indexOf(searchQuery) !== undefined) {
-        searchedQuestions.push(questionList[i]);
+  var searchFunc = function(query) {
+    if (query.length > 2) {
+      var searchedQuestions = [];
+      for (var i = 0; i < questionList.length; i++) {
+        if (questionList[i].question_body.indexOf(query) >= 0) {
+          searchedQuestions.push(questionList[i]);
+        }
       }
-    }
-    var shortenedSearchedQuestions = searchedQuestions.slice(0, 4);
-    if (clicked) {
-      usedQuestions = shortenedSearchQuestions;
+      setSearchResults(searchedQuestions);
+      if (searchedQuestions.length === 0) {
+        setNoResults(true);
+      } else {
+        setNoResults(false);
+      }
     } else {
-      usedQuestions = searchedQuestions;
+      setNoResults(false);
+      setSearchResults(questionList);
     }
-  } else {
-    var initialQuestions = questionList.slice(0, 4);
-    var usedQuestions;
+  }
+
+
+  if (searchResults.length > 0) {
+    var searchedQuestionsList = searchResults.slice();
+    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
+    if (clicked) {
+      usedQuestions = searchedQuestionsList;
+    } else {
+      usedQuestions = shortenedSearchedQuestions;
+    }
+  } else { //For initial rendering
     if (clicked) {
       usedQuestions = questionList;
     } else {
@@ -49,30 +65,26 @@ const QASection = () => {
     }
   }
 
-  var searchChange = function (query) {
-    setSearchQuery(query);
-    if (searchQuery.length >= 2) {
-      setSearching(!searching);
-    }
-  }
-  //Add a usedQuestions conditional for if the search bar has 3+ characters in it
 
   return(
     <div className={styles.section}>
       <div className={styles.title}>
         <h2>Questions & Answers</h2>
       </div>
-      <div className={styles.searchdiv}>
-        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => searchChange($('#searchbar').val())}/>
-      </div>
+      <form className={styles.searchdiv}>
+        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
+      </form>
       <div className={styles.feed}>
-        <QAList data={usedQuestions}/>
+        {noResults
+          ? <p>Sorry, no related questions could be found...</p>
+          : <QAList data={usedQuestions}/>
+        }
       </div>
       <div className='QA-button'>
-      {clicked
-        ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-        : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
-      }
+        {clicked
+          ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+          : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+        }
         <button className={styles.button}>Add a Question +</button>
       </div>
     </div>

@@ -23,7 +23,10 @@ const Answer = (props) => {
         <div className={styles.answeractiondiv}>
           Helpful?
         </div>
-        <div className={styles.answeractiondiv} onClick={() => { props.helpfulnessClick(props.id, helpful); setHelpful(true); }}>
+        <div
+          className={styles.answeractiondiv}
+          onClick={() => { props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
+        >
           {helpful
             ? <span className={styles.answeractionclicked}>Yes </span>
             : <span className={styles.answeraction}>Yes </span>}
@@ -33,14 +36,23 @@ const Answer = (props) => {
           )
         </div>
         |
-        <div className={styles.answeractiondiv} onClick={() => { props.reportClick(props.id, reported); setReported(true); }}>
+        <div
+          className={styles.answeractiondiv}
+          onClick={() => { props.reportClick(props.id, reported); setReported(true); }}
+        >
           {reported
             ? <p className={styles.answeractionclicked}>Reported</p>
             : <p className={styles.answeraction}>Report</p>}
         </div>
       </div>
       <div>
-        {props.photos.map((photo, idx) => <img key={idx} className={styles.answerimage} src={photo} />)}
+        {props.photos.map((photo, idx) => (
+          <img
+            key={idx}
+            className={styles.answerimage}
+            src={photo}
+          />
+        ))}
       </div>
     </div>
   );
