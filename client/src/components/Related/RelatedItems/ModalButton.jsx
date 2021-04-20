@@ -6,13 +6,19 @@ const ModalButton = () => {
   const [showModal, setShowModal] = useState(false);
 
   let openModal = () => {
-    setShowModal(!showModal)
+    setShowModal(!showModal);
+  };
+
+  let closeOpenModal = e => {
+    if (e.target.id === 'modalBackground') {
+      setShowModal(!showModal);
+    }
   };
 
   return (
     <div>
       <button className={styles.modalButton} onClick={openModal}><i className={"far fa-star"}></i></button>
-      <ComparisonModal showModal={showModal} setShowModal={setShowModal}/>
+      {showModal ? <ComparisonModal showModal={showModal} setShowModal={setShowModal} onClick={closeOpenModal}/> : null}
     </div>
   )
 }

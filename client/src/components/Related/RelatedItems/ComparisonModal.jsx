@@ -3,8 +3,10 @@ import styles from './comparisonModal.module.css';
 
 const ComparisonModal = props => {
   return (
-    <div>
-      {props.showModal ? <div>Hi</div> : null}
+    <div className={styles.modal} onClick={e => {props.onClick(e)}} id="modalBackground">
+      <div className={styles.modalContent}>
+        <p>Hi</p>
+      </div>
     </div>
   )
 }
