@@ -3,6 +3,9 @@ import styles from './qa.module.css';
 import $ from 'jquery';
 
 import { APIContext } from '../../state/contexts/APIContext';
+import { ReviewContext } from '../../state/contexts/ReviewsContext';
+import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
+
 
 
 const AnswerModal = (props) => {
@@ -12,16 +15,49 @@ const AnswerModal = (props) => {
   const [nicknameAuth, setNicknameAuth] = useState(true);
   const [emailAuth, setEmailAuth] = useState(true);
   const [submittable, setSubmittable] = useState(true);
+  const [photos, setPhotos] = useState([]);
 
   var questionSubmit = true;
   var nicknameSubmit = true;
   var emailSubmit = true;
 
-  var submit = function(data) {
+  var addPhoto = function(imageUrl) {
+    var currentPhotos = photos.slice();
+    if (currentPhotos.length < 5 && imageUrl) {
+      currentPhotos.push(imageUrl);
+      setPhotos(currentPhotos);
+    } else if (currentPhotos.length === 5) {
+      console.log('too many photos');
+    }
+  }
+
+  var uploadPhoto = async (e) => {
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    formData.append('upload_preset', 'jrdii220');
+    try {
+      const res = await fetch(REACT_APP_CLOUDINARY_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      const file = await res.json();
+      if (res) {
+        console.log(res);
+        if (photos.length < 5 && file.url) {
+          console.log(file);
+          addPhoto(file.url);
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  var submit = function(questionId, data) {
     if (questionSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
       console.log('submittable');
-      addAnswer(data);
+      addAnswer(questionId, data);
     } else {
       setSubmittable(false);
       console.log('not');
@@ -53,14 +89,14 @@ const AnswerModal = (props) => {
       emailSubmit = false;
     }
 
-    var questionData = {
+    var answerData = {
       body: question,
       name: nickname,
       email: email,
-      photos: ''
+      photos: photos
     }
 
-    submit(answerData);
+    submit(props.questionId, answerData);
   }
 
   return(
@@ -72,11 +108,11 @@ const AnswerModal = (props) => {
           {questionAuth
             ? <div>
                 <span>Your Answer: *</span><br/>
-                <textarea id='question' className={styles.modalquestion} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
+                <textarea id='question' className={styles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Question: *</span><br/>
-                <textarea id='question' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
+                <textarea id='question' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
           }
         </div>
@@ -110,10 +146,24 @@ const AnswerModal = (props) => {
         </div>
         <div className={styles.modaldiv}>
           <div>
-            <span>Upload your photos: </span>
-            {/*Add a text area to input links
-              Add a button to add image links to images state
-              Display images below*/}
+            <span>Upload your photos: </span><br/>
+            <input type='text' id='photoUrl' className={styles.modalphotos} placeholder='Place your photo URL here'/>
+            {photos.length < 5
+              ? <button className={styles.addphoto} onClick={() => addPhoto($('#photoUrl').val())}>Add photo</button>
+              : <span>Max photos added</span>
+            } <br/>
+            {photos.length < 5
+              ? <label htmlFor='photoUpload'>
+                  <input type="file" id='photoUpload' placeholder='Upload a photo' onChange={uploadPhoto}/>
+                </label>
+              // <button className={styles.addphoto} onClick={() => console.log('Adding photo')}>Select photo from your computer</button>
+              : <span>Max photos added</span>
+            }
+            <div>
+              {photos.map(url =>
+                <img className={styles.answerimage} key={url} src={url}/>
+              )}
+            </div>
           </div>
         </div>
         <div>
