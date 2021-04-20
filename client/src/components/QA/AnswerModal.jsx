@@ -153,7 +153,8 @@ const AnswerModal = (props) => {
               : <span>Max photos added</span>
             } <br/>
             {photos.length < 5
-              ? <label htmlFor='photoUpload'>
+              ? <label className={styles.uploadphoto}>
+                  Upload a photo
                   <input type="file" id='photoUpload' placeholder='Upload a photo' onChange={uploadPhoto}/>
                 </label>
               // <button className={styles.addphoto} onClick={() => console.log('Adding photo')}>Select photo from your computer</button>
