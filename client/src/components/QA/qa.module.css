@@ -6,8 +6,6 @@
   font-size: 100%;
   border: 3px solid #5FD9BD;
   word-wrap: normal;
-  height: 900px;
-  overflow-y: scroll;
 }
 
 .title{
@@ -31,6 +29,8 @@
   width: 90%;
   padding: 2%;
   margin: 0 auto;
+  height: 900px;
+  overflow-y: scroll;
 }
 
 .feedbutton{
