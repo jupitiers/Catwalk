@@ -18,8 +18,6 @@ const YourOutfitCarousel = props => {
     setLeftIndex(leftIndex === 0 ? leftIndex - 0: leftIndex - 1);
   };
 
-  console.log(outfitItems)
-
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
