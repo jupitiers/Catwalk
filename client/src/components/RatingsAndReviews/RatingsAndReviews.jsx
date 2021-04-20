@@ -19,7 +19,7 @@ const RatingsAndReviews = () => {
   return (
     <>
       <h2 className={styles.sectionTitle}>RATINGS & REVIEWS</h2>
-      {reviews && reviews.length > 0 ? (
+      {reviews.length > 0 ? (
         <div className={styles.ratingsAndReviewsContainer}>
           <div className={styles.ratings}><Ratings /></div>
           <div className={styles.reviews}><Reviews /></div>
