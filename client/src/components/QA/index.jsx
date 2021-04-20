@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 //sample data
 import qaSampleData from './qaSampleData.js';
+import QuestionModal from './QuestionModal.jsx';
 import { APIContext } from '../../state/contexts/APIContext';
 import { QuestionContext } from '../../state/contexts/QuestionsContext';
 
@@ -15,18 +16,16 @@ const QASection = () => {
   const[clicked, setClicked] = useState(false);
   const[noResults, setNoResults] = useState(false);
   const[searchResults, setSearchResults] = useState([]);
+  const[showModal, setShowModal] = useState(false);
 
 
   useEffect(() => {
     getQuestionsByProductId();
   }, []);
 
+
   var questionList = questions.slice();
-
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
-
-  var initialQuestions = questionList.slice(0, 4);
-  var usedQuestions;
 
   var searchFunc = function(query) {
     if (query.length > 2) {
@@ -49,7 +48,8 @@ const QASection = () => {
     }
   }
 
-
+  var initialQuestions = questionList.slice(0, 4);
+  var usedQuestions;
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
     var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
@@ -86,7 +86,16 @@ const QASection = () => {
           ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
           : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
         }
-        <button className={styles.button}>Add a Question +</button>
+        <button className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+      </div>
+      <div>
+        {showModal
+          ? <div className={styles.modal}>
+              <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
+              <QuestionModal/>
+            </div>
+          : null
+        }
       </div>
     </div>
   )
