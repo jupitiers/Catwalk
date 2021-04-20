@@ -5,6 +5,9 @@
   color: #525252;
   font-size: 100%;
   border: 3px solid #5FD9BD;
+  word-wrap: normal;
+  height: 900px;
+  overflow-y: scroll;
 }
 
 .title{
@@ -21,7 +24,7 @@
 
 .searchbar {
   width: 100%;
-  height: 30px;
+  height: 50px;
 }
 
 .feed {
@@ -32,13 +35,15 @@
 
 .feedbutton{
   margin: 5px;
-  /* background-color: #FAEBD2; */
+  background-color: #5FD9BD;
   border-width: 1px;
+  font-size: clamp(2px, 1vw, 15px);
 }
 
 .button{
   width: 20%;
-  height: 30px;
+  height: 50px;
+  font-size: clamp(2px, 1vw, 20px);
   background-color: #5FD9BD;
   border: 1px solid #15332C;
   color: #525252;
@@ -56,6 +61,7 @@
 
 .answer {
   padding-bottom: 1%;
+  display: inline-block
 }
 
 .answerlogistics {
@@ -67,12 +73,61 @@
   font-size: 80%;
   display: inline-block;
   margin-right: 10px;
-  margin-left: 2%;
 }
 
-.answeractions {
-  font-size: 75%;
+.questionactionsection {
+  float: right;
+  margin-top: 0.5em;
+}
+
+.answeractiondiv, .questionactiondiv {
+  font-size: 80%;
   display: inline-block;
   align-items: right;
   margin: 4px;
+}
+
+
+.answeraction, .questionaction {
+  text-decoration: underline;
+  color:#641373;
+}
+
+.answeraction:hover, .questionaction:hover {
+  color: #5FD9BD;
+}
+
+.answeraction:active, .questionaction:active {
+  font-weight: bold;
+}
+
+.answeractionclicked, .questionactionclicked {
+  text-decoration: underline;
+  font-weight: bold;
+  color:#641373;
+}
+
+.answerimage {
+  width: 50px;
+  height: 50px;
+}
+
+.qasection {
+  display: inline-block;
+  width: 100%;
+  font-size: clamp(5px, 2vw, 20px);
+}
+
+.qatitle {
+  float: left;
+}
+
+.qacontent {
+  float: left;
+  margin-left: 0.5%;
+}
+
+.answerentry {
+  margin-top: 1.33em;
+  margin-left: 2%;
 }

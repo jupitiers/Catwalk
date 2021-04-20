@@ -1,0 +1,24 @@
+.itemCard {
+  margin-left: 3%;
+  margin-right: 3%;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addButton {
+  margin:0 auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #5fD9BD;
+  border-radius: 50%;
+  border-width: thin;
+}
+
+.addText {
+  font-family: 'Open Sans', sans-serif;
+}
