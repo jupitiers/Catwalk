@@ -5,7 +5,7 @@ const CardImage = () => {
   return (
     <div className={styles.cardPictureArea}>
       <img></img>
-      <button className={styles.removeItem}>x</button>
+      <button className={styles.removeItem}><i className="fas fa-times"></i></button>
     </div>
   )
 }

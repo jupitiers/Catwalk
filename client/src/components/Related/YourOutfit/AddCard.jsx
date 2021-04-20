@@ -5,8 +5,9 @@ const AddCard = () => {
   return (
     <div className={styles.itemCard}>
       <div className={styles.cardContents}>
-        <button>+</button>
-        <span>Add to Outfit</span>
+        <button className={styles.addButton}><i className="fas fa-plus"></i></button>
+        <br></br>
+        <span className={styles.addText}>Add to Outfit</span>
       </div>
     </div>
   )

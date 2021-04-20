@@ -1,4 +1,4 @@
-// for product 1
+// for product 17067
 const sampleProduct = [
   {
       "id": 17067,
