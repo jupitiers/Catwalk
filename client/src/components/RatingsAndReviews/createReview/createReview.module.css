@@ -20,7 +20,7 @@
   min-width: 325px;
   max-width: 700px;
   background-color: white;
-  padding: 1em;
+  padding: .5em;
   color: #525252
 }
 
@@ -157,11 +157,17 @@
 
 .upload {
   grid-area: upload;
-  padding: 1em;
   grid-area: upload;
   display: flex;
+  padding-left: .5em;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.upload label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .upload input {
@@ -169,19 +175,26 @@
 }
 
 .upload p {
-  background-color: #5fD9BD;
-  border: 1px solid;
-  border-radius: 5px;
-  width: 125px;
-  text-align: center;
-  padding: .6em;
+  color: #641373;
+  text-decoration: underline;
   font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+
+.upload p:hover {
+  color: #5fD9BD;
+}
+
+.upload span {
+  font-family: 'Open Sans', sans-serif;
+  margin-left: .5em;
 }
 
 .images {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  height: 55px;
 }
 
 .thumbnail {
@@ -237,10 +250,9 @@
 }
 
 .submit {
-  padding: 2em 1em 1em;
   grid-area: submit;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .submit button {

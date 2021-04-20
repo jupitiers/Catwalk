@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
+import { getCharacteristicsArray } from '../../helpers/ratingsHelpers';
 
 export const ReviewContext = createContext({});
 
@@ -14,6 +15,8 @@ const ReviewProvider = ({ children }) => {
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
+  const [recommend, setRecommend] = useState(false);
+  const [bodyCountDown, setBodyCountDown] = useState(50);
   const [showCreate, setShowCreate] = useState(true);
   const [newReview, setNewReview] = useState({
     name: '',
@@ -25,15 +28,6 @@ const ReviewProvider = ({ children }) => {
     characteristics: {},
     photos: [],
   });
-
-  // createReview logic
-  const openCreate = () => {
-    setShowCreate(true);
-  };
-
-  const hideCreate = () => {
-    setShowCreate(false);
-  };
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -77,6 +71,15 @@ const ReviewProvider = ({ children }) => {
     setStarFilter(['1', '2', '3', '4', '5']);
   };
 
+  // createReview logic
+  const openCreate = () => {
+    setShowCreate(true);
+  };
+
+  const hideCreate = () => {
+    setShowCreate(false);
+  };
+
   const handleImageUpload = async (e) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
@@ -102,6 +105,41 @@ const ReviewProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const inputChangeHandler = (e) => {
+    setNewReview({
+      ...newReview,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const bodyChangeHandler = (e) => {
+    setNewReview({
+      ...newReview,
+      body: e.target.value,
+    });
+    if (e.target.value.length <= 50) {
+      setBodyCountDown(50 - e.target.value.length);
+    }
+  };
+
+  const changeCharacteristic = (e) => {
+    setNewReview({
+      ...newReview,
+      characteristics: {
+        ...newReview.characteristics,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  const validateForm = () => {
+
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -136,6 +174,13 @@ const ReviewProvider = ({ children }) => {
         newReview,
         setNewReview,
         handleImageUpload,
+        submitHandler,
+        inputChangeHandler,
+        changeCharacteristic,
+        recommend,
+        setRecommend,
+        bodyChangeHandler,
+        bodyCountDown,
       }}
     >
       {children}

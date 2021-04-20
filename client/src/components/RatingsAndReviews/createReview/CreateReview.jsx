@@ -9,42 +9,22 @@ import { APIContext } from '../../../state/contexts/APIContext';
 export const CreateReview = ({ children }) => {
   // context imports
   const {
-    showCreate, hideCreate, metaData, newReview, setNewReview, handleImageUpload,
+    showCreate, hideCreate, metaData, newReview,
+    setNewReview, handleImageUpload, inputChangeHandler,
+    submitHandler, changeCharacteristic, recommend, setRecommend, bodyChangeHandler,
+    bodyCountDown,
   } = useContext(ReviewContext);
   const { getProductById } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
   const descriptions = getCharacteristicsArray(metaData.characteristics);
-  // state
-  const [recommend, setRecommend] = useState(false);
   // modal class for show / hide styles
   const showHideClassName = showCreate ? styles.show : styles.hide;
 
   useEffect(() => {
     getProductById();
   }, []);
-
-  const inputChangeHandler = (e) => {
-    setNewReview({
-      ...newReview,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const changeCharacteristic = (e) => {
-    setNewReview({
-      ...newReview,
-      characteristics: {
-        ...newReview.characteristics,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div className={showHideClassName}>
@@ -64,7 +44,7 @@ export const CreateReview = ({ children }) => {
             <form onSubmit={submitHandler} className={styles.form}>
               <div className={styles.inputs}>
                 <label htmlFor="name">
-                  Nickname
+                  Nickname *
                 </label>
                 <input
                   type="text"
@@ -78,7 +58,7 @@ export const CreateReview = ({ children }) => {
                 <p>For privacy reasons, do not use your full name or email address</p>
 
                 <label htmlFor="email">
-                  Email
+                  Email *
                 </label>
 
                 <input
@@ -98,6 +78,7 @@ export const CreateReview = ({ children }) => {
                   type="text"
                   name="summary"
                   id="summary"
+                  maxLength="60"
                   value={newReview.summary}
                   placeholder="Example: Best purchase ever!"
                   onChange={inputChangeHandler}
@@ -110,11 +91,21 @@ export const CreateReview = ({ children }) => {
                   type="text"
                   name="body"
                   id="body"
+                  minLength="50"
+                  maxLength="1000"
                   value={newReview.body}
                   placeholder="Example: Why did you like the product or not"
-                  onChange={inputChangeHandler}
+                  onChange={bodyChangeHandler}
                 />
-                <p>Minimum required characters left: 50 </p>
+                {bodyCountDown > 0 ? (
+                  <p>
+                    Minimum required characters left:
+                    {' '}
+                    {bodyCountDown}
+                  </p>
+                ) : (
+                  <p>Minium reached</p>
+                )}
               </div>
               <div className={styles.rating}>
                 <h4>
@@ -223,22 +214,22 @@ export const CreateReview = ({ children }) => {
 
               </div>
               <div className={styles.upload}>
+                {newReview.photos.length < 5 && (
                 <label htmlFor="upload">
                   <p>Upload Images</p>
+                  <span>Max 5</span>
                   <input
                     type="file"
                     id="upload"
                     onChange={handleImageUpload}
-                    disabled={newReview.photos.length === 5}
                   />
                 </label>
+
+                )}
                 <div className={styles.images}>
-                  {newReview.photos.length > 0 && newReview.photos.map((photo, idx) => {
-                    console.log(photo);
-                    return (
-                      <div key={idx} className={styles.thumbnail} style={{ backgroundImage: `url(${photo})`}} />
-                    );
-                  })}
+                  {newReview.photos.length > 0 && newReview.photos.map((photo, idx) => (
+                    <div key={idx} className={styles.thumbnail} style={{ backgroundImage: `url(${photo})` }} />
+                  ))}
                 </div>
               </div>
               <div className={styles.submit}>
