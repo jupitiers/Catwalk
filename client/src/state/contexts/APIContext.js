@@ -133,10 +133,11 @@ const APIProvider = ({ children }) => {
   const addAnswer = async (questionId, answerData) => {
     console.log(answerData);
     try {
-      const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
-      console.log(data);
+      // const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
+      //   headers: { Authorization: REACT_APP_API_KEY },
+      // });
+      // console.log(data);
+      getQuestionsByProductId();
     } catch (err) {
       console.log(err);
     }

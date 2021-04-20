@@ -41,7 +41,7 @@ var QA = (props) => {
             {showModal
             ? <div className={styles.modal}>
                 <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-                <AnswerModal/>
+                <AnswerModal questionId={props.id} question={props.question} productData={props.productData}/>
               </div>
             : null
             }
