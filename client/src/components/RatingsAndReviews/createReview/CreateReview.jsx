@@ -12,7 +12,7 @@ export const CreateReview = ({ children }) => {
     showCreate, hideCreate, metaData, newReview,
     setNewReview, handleImageUpload, inputChangeHandler,
     submitHandler, changeCharacteristic, recommend, setRecommend, bodyChangeHandler,
-    bodyCountDown,
+    bodyCountDown, stars, setStars, changeRating, ratingText,
   } = useContext(ReviewContext);
   const { getProductById } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
@@ -111,12 +111,17 @@ export const CreateReview = ({ children }) => {
                 <h4>
                   <b>Overall Rating: </b>
                 </h4>
-                <span className={styles.star}>{emptyStar}</span>
-                <span className={styles.star}>{emptyStar}</span>
-                <span className={styles.star}>{emptyStar}</span>
-                <span className={styles.star}>{emptyStar}</span>
-                <span className={styles.star}>{emptyStar}</span>
-                <p>Poor</p>
+                {stars.map((star, idx) => (
+                  <div
+                    className={styles.star}
+                    key={idx}
+                    onClick={() => changeRating(idx)}
+                  >
+                    {star}
+                  </div>
+                ))}
+                {' '}
+                <p>{ratingText}</p>
               </div>
               <div className={styles.recommend}>
                 <p>Do you recommend this product?</p>
@@ -145,16 +150,18 @@ export const CreateReview = ({ children }) => {
                     const [currentDesc] = descriptions.filter((d) => d.id === ch.id);
                     return (
                       <div key={idx}>
-                        <p>
-                          {ch.name}
-                          :
+                        <div className={styles.charHeading} key={idx}>
+                          <p>
+                            {ch.name}
+                            :
+                          </p>
                           {' '}
-                          <span style={{ marginLeft: '1em', color: '#641373' }}>
+                          <span style={{ marginLeft: '1em', fontWeight: 'bold', color: '#641373' }}>
                             {newReview.characteristics[ch.id] && (
                               currentDesc.descriptions[newReview.characteristics[ch.id]]
                             )}
                           </span>
-                        </p>
+                        </div>
                         <div className={styles.charChoices}>
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}1`}>1</label>

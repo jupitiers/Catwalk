@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
-import { getCharacteristicsArray } from '../../helpers/ratingsHelpers';
+import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsHelpers';
 
 export const ReviewContext = createContext({});
 
@@ -15,6 +15,15 @@ const ReviewProvider = ({ children }) => {
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
+  const [stars, setStars] = useState(createStarArray(0));
+  const ratingDescriptions = {
+    1: 'Poor',
+    2: 'Fair',
+    3: 'Average',
+    4: 'Good',
+    5: 'Great',
+  };
+  const [ratingText, setRatingText] = useState();
   const [recommend, setRecommend] = useState(false);
   const [bodyCountDown, setBodyCountDown] = useState(50);
   const [showCreate, setShowCreate] = useState(true);
@@ -134,6 +143,12 @@ const ReviewProvider = ({ children }) => {
     });
   };
 
+  const changeRating = (count) => {
+    console.log(count);
+    setStars(createStarArray(count + 1));
+    setRatingText(ratingDescriptions[count + 1]);
+  };
+
   const validateForm = () => {
 
   };
@@ -181,6 +196,10 @@ const ReviewProvider = ({ children }) => {
         setRecommend,
         bodyChangeHandler,
         bodyCountDown,
+        stars,
+        setStars,
+        changeRating,
+        ratingText,
       }}
     >
       {children}

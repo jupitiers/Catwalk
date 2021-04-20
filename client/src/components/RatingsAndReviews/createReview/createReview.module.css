@@ -18,7 +18,7 @@
 .formModalMain {
   margin: 1em auto 0;
   min-width: 325px;
-  max-width: 700px;
+  max-width: 800px;
   background-color: white;
   padding: .5em;
   color: #525252
@@ -108,6 +108,14 @@
   align-items: center;
 }
 
+.rating p {
+  width: 150px;
+}
+
+.star {
+  cursor: pointer;
+}
+
 .rating h4 {
   font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
@@ -116,9 +124,8 @@
   margin-right: .5em;
 }
 
-.rating .star {
-  font-size: 1.5rem;
-  color: #641373;
+.rating div {
+  margin: .7em 0 0;
 }
 
 .rating p {
@@ -236,10 +243,17 @@
   margin: .2em 0 0 !important;
 }
 
+.charHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .charChoices {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: .5em 0;
 }
 
 .charChoices .radioChoice {
