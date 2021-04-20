@@ -10,7 +10,7 @@ var QA = (props) => {
 
 
   return (
-    <div>
+    <div className={styles.feedentry}>
       <div className={styles.qasection}>
         <div className={styles.qatitle}>
           <h4>Q: </h4>
@@ -28,12 +28,12 @@ var QA = (props) => {
               : <span className={styles.questionaction}>Yes </span>
             } ({props.helpfulness})
           </div>|
-          <div className={styles.questionactiondiv} onClick={() => {props.reportClick(props.id, reported); setReported(true);}}>
+          {/* <div className={styles.questionactiondiv} onClick={() => {props.reportClick(props.id, reported); setReported(true);}}>
             {reported
               ? <p className={styles.questionactionclicked}>Reported</p>
               : <p className={styles.questionaction}>Report</p>
             }
-          </div>|
+          </div>| */}
           <div className={styles.questionactiondiv}>
             <p className={styles.questionaction} onClick={() => {setShowModal(true)}}>Add Answer</p>
           </div>

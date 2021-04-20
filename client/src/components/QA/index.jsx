@@ -2,10 +2,10 @@ import React, {useEffect, useContext, useState} from 'react';
 import QAList from './QAList.jsx';
 import styles from './qa.module.css';
 import $ from 'jquery';
+import QuestionModal from './QuestionModal.jsx';
 
 //sample data
 import qaSampleData from './qaSampleData.js';
-import QuestionModal from './QuestionModal.jsx';
 import { APIContext } from '../../state/contexts/APIContext';
 import { QuestionContext } from '../../state/contexts/QuestionsContext';
 
@@ -92,7 +92,7 @@ const QASection = () => {
         {showModal
           ? <div className={styles.modal}>
               <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-              <QuestionModal/>
+              <QuestionModal productName={'Example product name'}/>
             </div>
           : null
         }

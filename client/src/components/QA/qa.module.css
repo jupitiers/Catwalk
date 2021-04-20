@@ -33,14 +33,14 @@
   overflow-y: scroll;
 }
 
-.feedbutton{
+.feedbutton {
   margin: 5px;
   background-color: #5FD9BD;
   border-width: 1px;
   font-size: clamp(2px, 1vw, 15px);
 }
 
-.button{
+.button, .questionsubmit{
   width: 20%;
   height: 50px;
   font-size: clamp(2px, 1vw, 20px);
@@ -51,7 +51,9 @@
   padding: 5px;
 }
 
-.button:active, .button:hover, .feedbutton:active, .feedbutton:hover{
+.button:active, .button:hover,
+.feedbutton:active, .feedbutton:hover,
+.questionsubmit:active, .questionsubmit:hover{
   transform: scale(0.95);
   cursor: pointer;
 }
@@ -92,16 +94,69 @@
   cursor: pointer;
 }
 
+.modaldiv {
+  margin: 15px;
+}
+
+.modalquestion {
+  width: 80%;
+  height: 80px;
+  overflow-wrap: break-word;
+  margin-top: 5px;
+}
+
+.modaluser {
+  width: 40%;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.modaltitlecheck {
+  color: red;
+}
+
+.modalquestioncheck {
+  border: 2px solid red;
+  width: 80%;
+  height: 80px;
+  overflow-wrap: break-word;
+  margin-top: 5px;
+}
+
+.modalusercheck {
+  border: 2px solid red;
+  width: 40%;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.questionsubmit {
+  margin-left: 15px;
+}
+
+.submiterror {
+  color: red;
+}
+
+
+
+.feedentry {
+  margin-top: 25px;
+}
+
 .answerentry {
   margin-bottom: 10px;
 }
 
 .answer {
-  padding-bottom: 1%;
+  margin-left: 5px;
   display: inline-block
 }
 
 .answerlogistics {
+  margin-left: 5px;
   width: 100%;
   display: inline-block;
 }
@@ -114,14 +169,15 @@
 
 .questionactionsection {
   float: right;
-  margin-top: 0.5em;
+  /* margin-top: 0.5em; */
 }
 
 .answeractiondiv, .questionactiondiv {
   font-size: 80%;
   display: inline-block;
   align-items: right;
-  margin: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 
@@ -159,14 +215,17 @@
 
 .qatitle {
   float: left;
+  margin-bottom: -1.33em;
+  margin-top: -1em;
 }
 
 .qacontent {
   float: left;
   margin-left: 0.5%;
+  margin-top: -0.95em;
 }
 
 .answerentry {
-  margin-top: 1.33em;
+  margin-top: 0.33em;
   margin-left: 2%;
 }
