@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
 
 export const ReviewContext = createContext({});
 
@@ -13,7 +14,7 @@ const ReviewProvider = ({ children }) => {
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
-  const [showCreate, setShowCreate] = useState(false);
+  const [showCreate, setShowCreate] = useState(true);
   const [newReview, setNewReview] = useState({
     name: '',
     email: '',
@@ -32,14 +33,6 @@ const ReviewProvider = ({ children }) => {
 
   const hideCreate = () => {
     setShowCreate(false);
-  };
-
-  const createChangeHandler = (e) => {
-
-  };
-
-  const createSubmitHandler = (e) => {
-
   };
 
   // reviewImages logic
@@ -84,6 +77,33 @@ const ReviewProvider = ({ children }) => {
     setStarFilter(['1', '2', '3', '4', '5']);
   };
 
+  const handleImageUpload = async (e) => {
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    formData.append('upload_preset', 'wq9qoqey');
+    formData.append('folder', 'catwalk');
+    try {
+      const res = await fetch(REACT_APP_CLOUDINARY_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      const file = await res.json();
+      if (res) {
+        if (newReview.photos.length < 5) {
+          setNewReview({
+            ...newReview,
+            photos: [
+              ...newReview.photos,
+              file.url,
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <ReviewContext.Provider
       value={{
@@ -113,10 +133,9 @@ const ReviewProvider = ({ children }) => {
         showCreate,
         openCreate,
         hideCreate,
-        createChangeHandler,
-        createSubmitHandler,
         newReview,
         setNewReview,
+        handleImageUpload,
       }}
     >
       {children}

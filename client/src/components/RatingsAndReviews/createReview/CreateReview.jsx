@@ -7,18 +7,30 @@ import { ProductContext } from '../../../state/contexts/ProductContext';
 import { APIContext } from '../../../state/contexts/APIContext';
 
 export const CreateReview = ({ children }) => {
+  // context imports
   const {
-    showCreate, hideCreate, submitHandler, metaData, newReview, setNewReview,
+    showCreate, hideCreate, metaData, newReview, setNewReview, handleImageUpload,
   } = useContext(ReviewContext);
   const { getProductById } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
-  const showHideClassName = showCreate ? styles.show : styles.hide;
+  // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
   const descriptions = getCharacteristicsArray(metaData.characteristics);
+  // state
+  const [recommend, setRecommend] = useState(false);
+  // modal class for show / hide styles
+  const showHideClassName = showCreate ? styles.show : styles.hide;
 
   useEffect(() => {
     getProductById();
   }, []);
+
+  const inputChangeHandler = (e) => {
+    setNewReview({
+      ...newReview,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const changeCharacteristic = (e) => {
     setNewReview({
@@ -30,8 +42,8 @@ export const CreateReview = ({ children }) => {
     });
   };
 
-  const changeHandler = (e) => {
-    console.log(e.target.value);
+  const submitHandler = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -51,26 +63,57 @@ export const CreateReview = ({ children }) => {
             </h3>
             <form onSubmit={submitHandler} className={styles.form}>
               <div className={styles.inputs}>
-                <label htmlFor="nickname">
+                <label htmlFor="name">
                   Nickname
                 </label>
-                <input type="text" name="nickname" id="nickname" value="" placeholder="Example: jackson11" required={true} onChange={changeHandler} />
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={newReview.name}
+                  placeholder="Example: jackson11"
+                  required={true}
+                  onChange={inputChangeHandler}
+                />
                 <p>For privacy reasons, do not use your full name or email address</p>
 
                 <label htmlFor="email">
                   Email
                 </label>
 
-                <input type="email" name="email" id="email" value="" placeholder="Example: jackson11@gmail.com" required={true} onChange={changeHandler} />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={newReview.email}
+                  placeholder="Example: jackson11@gmail.com"
+                  required={true}
+                  onChange={inputChangeHandler}
+                />
                 <p>For authentication reasons, you will not be emailed</p>
                 <label htmlFor="summary">
                   Summary
                 </label>
-                <input type="text" name="summary" id="summary" value="" placeholder="Example: Best purchase ever!" onChange={changeHandler} />
+                <input
+                  type="text"
+                  name="summary"
+                  id="summary"
+                  value={newReview.summary}
+                  placeholder="Example: Best purchase ever!"
+                  onChange={inputChangeHandler}
+                />
                 <label htmlFor="body">
                   Body
                 </label>
-                <textarea rows="3" type="text" name="body" id="body" value="" placeholder="Example: Why did you like the product or not" onChange={changeHandler} />
+                <textarea
+                  rows="3"
+                  type="text"
+                  name="body"
+                  id="body"
+                  value={newReview.body}
+                  placeholder="Example: Why did you like the product or not"
+                  onChange={inputChangeHandler}
+                />
                 <p>Minimum required characters left: 50 </p>
               </div>
               <div className={styles.rating}>
@@ -86,19 +129,21 @@ export const CreateReview = ({ children }) => {
               </div>
               <div className={styles.recommend}>
                 <p>Do you recommend this product?</p>
-                <div className={styles.radioChoice}>
-                  <label htmlFor="yes">Yes</label>
-                  <input onChange={changeHandler} type="radio" name="yes" id="yes" />
-                </div>
-                <div className={styles.radioChoice}>
-                  <label htmlFor="no">No</label>
-                  <input
-                    onChange={changeHandler}
-                    type="radio"
-                    name="no"
-                    id="no"
-                    checked="checked"
-                  />
+                <div className={styles.recommendRadios}>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="yes">Yes</label>
+                    <input onChange={() => setRecommend(true)} type="radio" name="yes" id="yes" checked={recommend} />
+                  </div>
+                  <div className={styles.radioChoice}>
+                    <label htmlFor="no">No</label>
+                    <input
+                      onChange={() => setRecommend(false)}
+                      type="radio"
+                      name="no"
+                      id="no"
+                      checked={!recommend}
+                    />
+                  </div>
                 </div>
 
               </div>
@@ -180,12 +225,20 @@ export const CreateReview = ({ children }) => {
               <div className={styles.upload}>
                 <label htmlFor="upload">
                   <p>Upload Images</p>
-                  <input type="file" id="upload" />
+                  <input
+                    type="file"
+                    id="upload"
+                    onChange={handleImageUpload}
+                    disabled={newReview.photos.length === 5}
+                  />
                 </label>
                 <div className={styles.images}>
-                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1517923368558-70ca9ac84b39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
-                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1523132797263-747d5d0dbbb3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHRoaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
-                  <div className={styles.thumbnail} style={{ backgroundImage: 'url(\'https://images.unsplash.com/photo-1486401899868-0e435ed85128?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHRoaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60\')' }} />
+                  {newReview.photos.length > 0 && newReview.photos.map((photo, idx) => {
+                    console.log(photo);
+                    return (
+                      <div key={idx} className={styles.thumbnail} style={{ backgroundImage: `url(${photo})`}} />
+                    );
+                  })}
                 </div>
               </div>
               <div className={styles.submit}>
