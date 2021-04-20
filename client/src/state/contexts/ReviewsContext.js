@@ -12,6 +12,35 @@ const ReviewProvider = ({ children }) => {
   const [metaData, setMetaData] = useState({});
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
+  // createReview state
+  const [showCreate, setShowCreate] = useState(false);
+  const [newReview, setNewReview] = useState({
+    name: '',
+    email: '',
+    summary: '',
+    body: '',
+    rating: 0,
+    recommended: false,
+    characteristics: {},
+    photos: [],
+  });
+
+  // createReview logic
+  const openCreate = () => {
+    setShowCreate(true);
+  };
+
+  const hideCreate = () => {
+    setShowCreate(false);
+  };
+
+  const createChangeHandler = (e) => {
+
+  };
+
+  const createSubmitHandler = (e) => {
+
+  };
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -81,6 +110,13 @@ const ReviewProvider = ({ children }) => {
         starSorting,
         setStarSorting,
         clearFilter,
+        showCreate,
+        openCreate,
+        hideCreate,
+        createChangeHandler,
+        createSubmitHandler,
+        newReview,
+        setNewReview,
       }}
     >
       {children}

@@ -14,9 +14,9 @@ const RatingsFactors = () => {
           <p><b>{char.name}</b></p>
           <input type="range" className={styles.range} disabled={true} value={char.value.toString()} min="0" max="50" />
           <div className={styles.rangeDescriptions}>
-            <p>{char.descriptions.low}</p>
-            <p>{char.descriptions.mid}</p>
-            <p>{char.descriptions.high}</p>
+            <p>{char.descriptions['1']}</p>
+            <p>{char.descriptions['3']}</p>
+            <p>{char.descriptions['5']}</p>
           </div>
         </div>
       ))}
