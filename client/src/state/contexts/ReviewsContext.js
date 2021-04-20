@@ -5,6 +5,7 @@ import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsH
 export const ReviewContext = createContext({});
 
 const ReviewProvider = ({ children }) => {
+  // context imports
   const [reviews, setReviews] = useState([]);
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
   const [display, setDisplay] = useState('none');
@@ -26,14 +27,15 @@ const ReviewProvider = ({ children }) => {
   const [ratingText, setRatingText] = useState();
   const [recommend, setRecommend] = useState(false);
   const [bodyCountDown, setBodyCountDown] = useState(50);
-  const [showCreate, setShowCreate] = useState(false);
+  const [showCreate, setShowCreate] = useState(true);
   const [newReview, setNewReview] = useState({
+    product_id: '',
     name: '',
     email: '',
     summary: '',
     body: '',
     rating: 0,
-    recommended: false,
+    recommend: false,
     characteristics: {},
     photos: [],
   });
@@ -154,7 +156,7 @@ const ReviewProvider = ({ children }) => {
       ...newReview,
       characteristics: {
         ...newReview.characteristics,
-        [e.target.name]: e.target.value,
+        [e.target.name]: parseInt(e.target.value),
       },
     });
   };
@@ -165,6 +167,21 @@ const ReviewProvider = ({ children }) => {
     setNewReview({
       ...newReview,
       rating: count + 1,
+    });
+  };
+
+  const changeRecommendation = (e) => {
+    let recommended = false;
+    if (e.target.name === 'yes') {
+      setRecommend(true);
+      recommended = true;
+    } else {
+      setRecommend(false);
+      recommended = false;
+    }
+    setNewReview({
+      ...newReview,
+      recommend: recommended,
     });
   };
 
@@ -199,16 +216,6 @@ const ReviewProvider = ({ children }) => {
     return areErrors;
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    const areErrors = validateForm();
-    if (areErrors) {
-      // alert user
-    } else {
-      // submit form
-    }
-  };
-
   return (
     <ReviewContext.Provider
       value={{
@@ -241,7 +248,6 @@ const ReviewProvider = ({ children }) => {
         newReview,
         setNewReview,
         handleImageUpload,
-        submitHandler,
         inputChangeHandler,
         changeCharacteristic,
         recommend,
@@ -253,6 +259,8 @@ const ReviewProvider = ({ children }) => {
         changeRating,
         ratingText,
         errors,
+        changeRecommendation,
+        validateForm,
       }}
     >
       {children}
