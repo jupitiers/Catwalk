@@ -5,7 +5,7 @@ import { emptyStar } from '../../helpers/starRatings';
 
 
 const ProductForm = () => {
-  console.log({emptyStar})
+  // console.log({emptyStar})
   const [ inputs, setInputs ] = useState({
 
   })
