@@ -32,7 +32,8 @@ const QASection = () => {
     if (query.length > 2) {
       var searchedQuestions = [];
       for (var i = 0; i < questionList.length; i++) {
-        if (questionList[i].question_body.indexOf(query) >= 0) {
+        var currentTestBody = questionList[i].question_body.toLowerCase();
+        if (currentTestBody.indexOf(query.toLowerCase()) >= 0) {
           searchedQuestions.push(questionList[i]);
         }
       }
