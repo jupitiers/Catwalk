@@ -81,7 +81,21 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
+  border-radius: 5px;
 }
+
+.inputs .errorInput {
+  border: 1px solid red;
+}
+
+.errorText {
+  color: red;
+  font-weight: 400;
+  font-size: .9rem;
+  font-family: 'Open Sans', sans-serif;
+  height: 25px;
+}
+
 
 .inputs textarea {
   padding: .5em;
@@ -89,13 +103,14 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
+  border-radius: 5px;
 }
 
 .inputs p {
   height: 10px;
   font-size: .8rem;
   max-width: 300px;
-  color: red;
+  color: #525252;
   margin: .2em .5em 1.2em !important;
   font-family: 'Open Sans', sans-serif;
 }
@@ -104,16 +119,24 @@
   grid-area: rating;
   margin: 1em 0 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .rating p {
   width: 150px;
 }
 
+.stars {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  align-items: center;
+}
+
 .star {
   cursor: pointer;
+  margin: 0;
 }
 
 .rating h4 {
@@ -121,15 +144,11 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   color: #641373;
-  margin-right: .5em;
-}
-
-.rating div {
-  margin: .7em 0 0;
+  margin: 0;
 }
 
 .rating p {
-  margin-left: .5em;
+  margin: 0 0 .7em .5em;
   font-size: 1rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;

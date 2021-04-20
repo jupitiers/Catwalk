@@ -37,6 +37,12 @@ const ReviewProvider = ({ children }) => {
     characteristics: {},
     photos: [],
   });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    body: '',
+    rating: '',
+  });
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -117,6 +123,11 @@ const ReviewProvider = ({ children }) => {
   };
 
   const inputChangeHandler = (e) => {
+    setErrors({
+      name: '',
+      email: '',
+      body: '',
+    });
     setNewReview({
       ...newReview,
       [e.target.name]: e.target.value,
@@ -124,6 +135,11 @@ const ReviewProvider = ({ children }) => {
   };
 
   const bodyChangeHandler = (e) => {
+    setErrors({
+      body: '',
+      name: '',
+      email: '',
+    });
     setNewReview({
       ...newReview,
       body: e.target.value,
@@ -144,17 +160,53 @@ const ReviewProvider = ({ children }) => {
   };
 
   const changeRating = (count) => {
-    console.log(count);
     setStars(createStarArray(count + 1));
     setRatingText(ratingDescriptions[count + 1]);
+    setNewReview({
+      ...newReview,
+      rating: count + 1,
+    });
   };
 
   const validateForm = () => {
+    let areErrors = false;
+    const newErrors = {
+      name: '',
+      email: '',
+      body: '',
+      rating: '',
+    };
+    if (!newReview.name) {
+      newErrors.name = 'You must enter a nickname';
+      areErrors = true;
+    }
+    if (!newReview.email) {
+      newErrors.email = 'You must enter an email';
+      areErrors = true;
+    }
+    if (!newReview.rating) {
+      newErrors.rating = 'You must select a rating';
+      areErrors = true;
+    }
+    if (!newReview.body || newReview.body.length < 50) {
+      newErrors.body = 'You must include a body';
+      areErrors = true;
+    }
+    if (areErrors) {
+      setErrors(newErrors);
+    }
 
+    return areErrors;
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const areErrors = validateForm();
+    if (areErrors) {
+      // alert user
+    } else {
+      // submit form
+    }
   };
 
   return (
@@ -200,6 +252,7 @@ const ReviewProvider = ({ children }) => {
         setStars,
         changeRating,
         ratingText,
+        errors,
       }}
     >
       {children}

@@ -12,7 +12,7 @@ export const CreateReview = ({ children }) => {
     showCreate, hideCreate, metaData, newReview,
     setNewReview, handleImageUpload, inputChangeHandler,
     submitHandler, changeCharacteristic, recommend, setRecommend, bodyChangeHandler,
-    bodyCountDown, stars, setStars, changeRating, ratingText,
+    bodyCountDown, stars, setStars, changeRating, ratingText, errors,
   } = useContext(ReviewContext);
   const { getProductById } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
@@ -26,6 +26,7 @@ export const CreateReview = ({ children }) => {
     getProductById();
   }, []);
 
+  console.log(errors);
   return (
     <div className={showHideClassName}>
       <section className={styles.formModalMain}>
@@ -45,29 +46,30 @@ export const CreateReview = ({ children }) => {
               <div className={styles.inputs}>
                 <label htmlFor="name">
                   Nickname *
+                  <span className={styles.errorText}>{errors.name && errors.name}</span>
                 </label>
                 <input
+                  className={errors.email !== '' && styles.errorInput}
                   type="text"
                   name="name"
                   id="name"
                   value={newReview.name}
                   placeholder="Example: jackson11"
-                  required={true}
                   onChange={inputChangeHandler}
                 />
                 <p>For privacy reasons, do not use your full name or email address</p>
 
                 <label htmlFor="email">
                   Email *
+                  <span className={styles.errorText}>{errors.email && errors.email}</span>
                 </label>
-
                 <input
+                  className={errors.email !== '' && styles.errorInput}
                   type="email"
                   name="email"
                   id="email"
                   value={newReview.email}
                   placeholder="Example: jackson11@gmail.com"
-                  required={true}
                   onChange={inputChangeHandler}
                 />
                 <p>For authentication reasons, you will not be emailed</p>
@@ -84,9 +86,12 @@ export const CreateReview = ({ children }) => {
                   onChange={inputChangeHandler}
                 />
                 <label htmlFor="body">
-                  Body
+                  Body *
+                  {' '}
+                  <span className={styles.errorText}>{errors.body && errors.body}</span>
                 </label>
                 <textarea
+                  className={errors.body !== '' && styles.errorInput}
                   rows="3"
                   type="text"
                   name="body"
@@ -109,19 +114,22 @@ export const CreateReview = ({ children }) => {
               </div>
               <div className={styles.rating}>
                 <h4>
-                  <b>Overall Rating: </b>
+                  <b>Overall Rating * </b>
                 </h4>
-                {stars.map((star, idx) => (
-                  <div
-                    className={styles.star}
-                    key={idx}
-                    onClick={() => changeRating(idx)}
-                  >
-                    {star}
-                  </div>
-                ))}
+                <span className={styles.errorText}>{errors.rating && errors.rating}</span>
+                <div className={styles.stars}>
+                  {stars.map((star, idx) => (
+                    <div
+                      className={styles.star}
+                      key={idx}
+                      onClick={() => changeRating(idx)}
+                    >
+                      {star}
+                    </div>
+                  ))}
+                  <p>{ratingText}</p>
+                </div>
                 {' '}
-                <p>{ratingText}</p>
               </div>
               <div className={styles.recommend}>
                 <p>Do you recommend this product?</p>
