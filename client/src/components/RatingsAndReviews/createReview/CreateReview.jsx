@@ -18,8 +18,8 @@ export const CreateReview = ({ children }) => {
   const { getProductById, createNewReview } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   // using helper functions
-  const characteristics = getCharacteristicsArray(metaData.characteristics);
-  const descriptions = getCharacteristicsArray(metaData.characteristics);
+  const characteristics = metaData && getCharacteristicsArray(metaData.characteristics);
+  const descriptions = metaData && getCharacteristicsArray(metaData.characteristics);
   // modal class for show / hide styles
   const showHideClassName = showCreate ? styles.show : styles.hide;
   const [loading, setLoading] = useState(false);
