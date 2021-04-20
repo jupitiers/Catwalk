@@ -1,8 +1,13 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import styles from './relatedItemsCarousel.module.css';
 
 const RelatedItemsCarousel = props => {
+  // track left most card
+  const [leftIndex, setLeftIndex] = useState(0);
+  let relatedItems = props.data.sampleRelatedId;
+
+
   return (
     <div className={styles.carousel}>
       <button className={styles.carouselButton}><i className="fas fa-angle-left"></i></button>
