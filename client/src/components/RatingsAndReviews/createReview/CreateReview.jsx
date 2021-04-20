@@ -11,20 +11,58 @@ export const CreateReview = ({ children }) => {
   const {
     showCreate, hideCreate, metaData, newReview,
     setNewReview, handleImageUpload, inputChangeHandler,
-    submitHandler, changeCharacteristic, recommend, setRecommend, bodyChangeHandler,
-    bodyCountDown, stars, setStars, changeRating, ratingText, errors,
+    submitHandler, changeCharacteristic, recommend,
+    setRecommend, bodyChangeHandler, changeRecommendation,
+    bodyCountDown, stars, setStars, changeRating, ratingText, errors, validateForm,
   } = useContext(ReviewContext);
-  const { getProductById } = useContext(APIContext);
+  const { getProductById, createNewReview } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
   const descriptions = getCharacteristicsArray(metaData.characteristics);
   // modal class for show / hide styles
   const showHideClassName = showCreate ? styles.show : styles.hide;
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getProductById();
   }, []);
+
+  useEffect(() => {
+    setNewReview({
+      ...newReview,
+      product_id: selectedProduct.id,
+    });
+  }, [selectedProduct]);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const areErrors = validateForm();
+    if (!areErrors) {
+      setLoading(true);
+      try {
+        await createNewReview(newReview);
+        setTimeout(() => {
+          setLoading(false);
+          hideCreate();
+        }, 2000);
+        setNewReview({
+          prodcut_id: selectedProduct.id,
+          name: '',
+          email: '',
+          summary: '',
+          body: '',
+          rating: 0,
+          recommend: false,
+          characteristics: {},
+          photos: [],
+        });
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    }
+  };
 
   return (
     <div className={showHideClassName}>
@@ -41,7 +79,7 @@ export const CreateReview = ({ children }) => {
               {' '}
               {selectedProduct.name}
             </h3>
-            <form onSubmit={submitHandler} className={styles.form}>
+            <form onSubmit={submitForm} className={styles.form}>
               <div className={styles.inputs}>
                 <label htmlFor="name">
                   Nickname *
@@ -135,12 +173,12 @@ export const CreateReview = ({ children }) => {
                 <div className={styles.recommendRadios}>
                   <div className={styles.radioChoice}>
                     <label htmlFor="yes">Yes</label>
-                    <input onChange={() => setRecommend(true)} type="radio" name="yes" id="yes" checked={recommend} />
+                    <input onChange={changeRecommendation} type="radio" name="yes" id="yes" checked={recommend} />
                   </div>
                   <div className={styles.radioChoice}>
                     <label htmlFor="no">No</label>
                     <input
-                      onChange={() => setRecommend(false)}
+                      onChange={changeRecommendation}
                       type="radio"
                       name="no"
                       id="no"
@@ -247,7 +285,12 @@ export const CreateReview = ({ children }) => {
                 </div>
               </div>
               <div className={styles.submit}>
-                <button type="submit">Submit</button>
+                <button type="submit">
+                  {loading ? (
+                    <span className={styles.loading}>Submitting</span>
+                  )
+                    : 'Sumbit'}
+                </button>
               </div>
             </form>
           </div>
