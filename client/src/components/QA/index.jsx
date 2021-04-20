@@ -8,10 +8,13 @@ import QuestionModal from './QuestionModal.jsx';
 import qaSampleData from './qaSampleData.js';
 import { APIContext } from '../../state/contexts/APIContext';
 import { QuestionContext } from '../../state/contexts/QuestionsContext';
+import { ProductContext } from '../../state/contexts/ProductContext';
 
 const QASection = () => {
-  const { getQuestionsByProductId } = useContext(APIContext);
+  const { getQuestionsByProductId, getProductById } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
+  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+
 
   const[clicked, setClicked] = useState(false);
   const[noResults, setNoResults] = useState(false);
@@ -21,8 +24,8 @@ const QASection = () => {
 
   useEffect(() => {
     getQuestionsByProductId();
+    getProductById();
   }, []);
-
 
   var questionList = questions.slice();
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
@@ -78,7 +81,7 @@ const QASection = () => {
       <div className={styles.feed}>
         {noResults
           ? <p>Sorry, no related questions could be found...</p>
-          : <QAList data={usedQuestions}/>
+          : <QAList questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
       <div className='QA-button'>
@@ -92,7 +95,7 @@ const QASection = () => {
         {showModal
           ? <div className={styles.modal}>
               <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-              <QuestionModal productName={'Example product name'}/>
+              <QuestionModal productName={selectedProduct.name}/>
             </div>
           : null
         }

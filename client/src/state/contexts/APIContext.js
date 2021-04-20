@@ -53,7 +53,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=17069`, {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setQuestions(allQuestions.data.results);
@@ -112,6 +112,31 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addQuestion = async (questionData) => {
+    console.log(questionData);
+    try {
+      const data = await axios.post(`${baseURL}/qa/questions`, questionData, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      console.log(data);
+      getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addAnswer = async (questionId, answerData) => {
+    console.log(answerData);
+    try {
+      const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -194,6 +219,8 @@ const APIProvider = ({ children }) => {
         markAnswerAsHelpful,
         reportQuestion,
         reportAnswer,
+        addQuestion,
+        addAnswer,
         // Reviews
         getReviewsByProductId,
         markReviewAsHelpful,

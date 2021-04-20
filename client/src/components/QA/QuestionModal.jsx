@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styles from './qa.module.css';
 import $ from 'jquery';
 
+import { APIContext } from '../../state/contexts/APIContext';
+
+
 const QuestionModal = (props) => {
+  const { getQuestionsByProductId, addQuestion } = useContext(APIContext);
 
   const [questionAuth, setQuestionAuth] = useState(true);
   const [nicknameAuth, setNicknameAuth] = useState(true);
@@ -13,18 +17,11 @@ const QuestionModal = (props) => {
   var nicknameSubmit = true;
   var emailSubmit = true;
 
-  // useEffect(() => {
-  //   if (questionAuth && nicknameAuth && emailAuth) {
-  //     setSubmittable(true);
-  //   } else {
-  //     setSubmittable(false);
-  //   }
-  // }, [questionAuth, nicknameAuth, emailAuth])
-
-  var submit = function() {
+  var submit = function(data) {
     if (questionSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
       console.log('submittable');
+      addQuestion(data);
     } else {
       setSubmittable(false);
       console.log('not');
@@ -56,7 +53,14 @@ const QuestionModal = (props) => {
       emailSubmit = false;
     }
 
-    submit();
+    var questionData = {
+      body: question,
+      name: nickname,
+      email: email,
+      product_id: 17067 //Example, will implement getting pId later
+    }
+
+    submit(questionData);
   }
 
   return(
