@@ -84,12 +84,12 @@ const QuestionModal = (props) => {
           {nicknameAuth
             ? <div>
                 <span>Nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modaluser} placeholder='Example: jackson11!'/><br/>
+                <input type='text' id='nickname' className={styles.modaluser} maxLength='60' placeholder='Example: jackson11!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modalusercheck} placeholder='Example: jackson11!'/><br/>
+                <input type='text' id='nickname' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
           }
@@ -98,12 +98,12 @@ const QuestionModal = (props) => {
           {emailAuth
             ? <div>
                 <span>Email: * </span><br/>
-                <input type='text' id='email' className={styles.modaluser} placeholder='Example: jackson11@gmail.com'/><br/>
+                <input type='text' id='email' className={styles.modaluser} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Email: * </span><br/>
-                <input type='text' id='email' className={styles.modalusercheck} placeholder='Example: jackson11@gmail.com'/><br/>
+                <input type='text' id='email' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
           }
