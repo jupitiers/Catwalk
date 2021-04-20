@@ -6,6 +6,7 @@ const ProductProvider = ({ children }) => {
   const [sampleProduct, setSampleProduct] = useState({
     name: 'a product', id: 1,
   });
+  const [selectedProduct, setSelectedProduct] = useState({});
 
   const [productList, setProductList] = useState([]);
 
@@ -21,6 +22,8 @@ const ProductProvider = ({ children }) => {
         productList,
         setProductList,
         someFunc,
+        selectedProduct,
+        setSelectedProduct,
       }}
     >
       {children}
