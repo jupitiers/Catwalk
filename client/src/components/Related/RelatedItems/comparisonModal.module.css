@@ -1,3 +1,11 @@
 .modalButton{
+  width: 20px;
+  height: 20px;
   float: right;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  border: none;
 }

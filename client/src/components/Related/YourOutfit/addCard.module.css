@@ -9,6 +9,16 @@
   justify-content: center;
 }
 
-.cardContents {
-  display: inline-block;
+.addButton {
+  margin:0 auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #5fD9BD;
+  border-radius: 50%;
+  border-width: thin;
+}
+
+.addText {
+  font-family: 'Open Sans', sans-serif;
 }
