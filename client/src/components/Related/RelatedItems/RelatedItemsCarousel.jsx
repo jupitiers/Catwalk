@@ -7,14 +7,11 @@ const RelatedItemsCarousel = props => {
   const [leftIndex, setLeftIndex] = useState(0);
   let relatedItems = props.data.sampleRelatedId;
   let displayedItems = relatedItems.slice(leftIndex, leftIndex + 4);
-  // console.log(displayedItems)
-  // console.log(props.data)
 
   // onclick function for right arrow button
   let nextItem = () => {
     setLeftIndex(leftIndex + 1);
   };
-  // console.log(leftIndex)
 
   // onclick function for left arrow button
   let previousItem = () => {
@@ -27,7 +24,7 @@ const RelatedItemsCarousel = props => {
       {displayedItems.map((id, index) => {
         return <RelatedItemCard key={index} relatedId={id} data={props.data}/>
       })}
-      {leftIndex === displayedItems.length - 3 ?
+      {leftIndex === relatedItems.length - 4 ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>
       }
     </div>
