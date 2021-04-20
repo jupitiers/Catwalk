@@ -26,7 +26,7 @@ const ReviewProvider = ({ children }) => {
   const [ratingText, setRatingText] = useState();
   const [recommend, setRecommend] = useState(false);
   const [bodyCountDown, setBodyCountDown] = useState(50);
-  const [showCreate, setShowCreate] = useState(true);
+  const [showCreate, setShowCreate] = useState(false);
   const [newReview, setNewReview] = useState({
     name: '',
     email: '',
