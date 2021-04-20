@@ -18,9 +18,9 @@
 .formModalMain {
   margin: 1em auto 0;
   min-width: 325px;
-  max-width: 700px;
+  max-width: 800px;
   background-color: white;
-  padding: 1em;
+  padding: .5em;
   color: #525252
 }
 
@@ -81,7 +81,21 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
+  border-radius: 5px;
 }
+
+.inputs .errorInput {
+  border: 1px solid red;
+}
+
+.errorText {
+  color: red;
+  font-weight: 400;
+  font-size: .9rem;
+  font-family: 'Open Sans', sans-serif;
+  height: 25px;
+}
+
 
 .inputs textarea {
   padding: .5em;
@@ -89,13 +103,14 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
   font-size: .9rem;
+  border-radius: 5px;
 }
 
 .inputs p {
   height: 10px;
   font-size: .8rem;
   max-width: 300px;
-  color: red;
+  color: #525252;
   margin: .2em .5em 1.2em !important;
   font-family: 'Open Sans', sans-serif;
 }
@@ -104,8 +119,24 @@
   grid-area: rating;
   margin: 1em 0 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rating p {
+  width: 150px;
+}
+
+.stars {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
   align-items: center;
+}
+
+.star {
+  cursor: pointer;
+  margin: 0;
 }
 
 .rating h4 {
@@ -113,16 +144,11 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   color: #641373;
-  margin-right: .5em;
-}
-
-.rating .star {
-  font-size: 1.5rem;
-  color: #641373;
+  margin: 0;
 }
 
 .rating p {
-  margin-left: .5em;
+  margin: 0 0 .7em .5em;
   font-size: 1rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -142,22 +168,32 @@
   color: #641373;
 }
 
+.recommendRadios {
+  display: flex;
+  flex-direction: row;
+}
+
 .radioChoice {
   width: 50px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: .3em .0em;
+  justify-content: flex-start;
 }
 
 
 .upload {
   grid-area: upload;
-  padding: 1em;
   grid-area: upload;
   display: flex;
+  padding-left: .5em;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.upload label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .upload input {
@@ -165,19 +201,26 @@
 }
 
 .upload p {
-  background-color: #5fD9BD;
-  border: 1px solid;
-  border-radius: 5px;
-  width: 125px;
-  text-align: center;
-  padding: .6em;
+  color: #641373;
+  text-decoration: underline;
   font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+
+.upload p:hover {
+  color: #5fD9BD;
+}
+
+.upload span {
+  font-family: 'Open Sans', sans-serif;
+  margin-left: .5em;
 }
 
 .images {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  height: 55px;
 }
 
 .thumbnail {
@@ -219,10 +262,17 @@
   margin: .2em 0 0 !important;
 }
 
+.charHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .charChoices {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: .5em 0;
 }
 
 .charChoices .radioChoice {
@@ -233,10 +283,9 @@
 }
 
 .submit {
-  padding: 2em 1em 1em;
   grid-area: submit;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .submit button {

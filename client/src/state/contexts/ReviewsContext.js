@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
+import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
+import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsHelpers';
 
 export const ReviewContext = createContext({});
 
@@ -13,6 +15,17 @@ const ReviewProvider = ({ children }) => {
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
+  const [stars, setStars] = useState(createStarArray(0));
+  const ratingDescriptions = {
+    1: 'Poor',
+    2: 'Fair',
+    3: 'Average',
+    4: 'Good',
+    5: 'Great',
+  };
+  const [ratingText, setRatingText] = useState();
+  const [recommend, setRecommend] = useState(false);
+  const [bodyCountDown, setBodyCountDown] = useState(50);
   const [showCreate, setShowCreate] = useState(false);
   const [newReview, setNewReview] = useState({
     name: '',
@@ -24,23 +37,12 @@ const ReviewProvider = ({ children }) => {
     characteristics: {},
     photos: [],
   });
-
-  // createReview logic
-  const openCreate = () => {
-    setShowCreate(true);
-  };
-
-  const hideCreate = () => {
-    setShowCreate(false);
-  };
-
-  const createChangeHandler = (e) => {
-
-  };
-
-  const createSubmitHandler = (e) => {
-
-  };
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    body: '',
+    rating: '',
+  });
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
@@ -84,6 +86,129 @@ const ReviewProvider = ({ children }) => {
     setStarFilter(['1', '2', '3', '4', '5']);
   };
 
+  // createReview logic
+  const openCreate = () => {
+    setShowCreate(true);
+  };
+
+  const hideCreate = () => {
+    setShowCreate(false);
+  };
+
+  const handleImageUpload = async (e) => {
+    const formData = new FormData();
+    formData.append('file', e.target.files[0]);
+    formData.append('upload_preset', 'wq9qoqey');
+    formData.append('folder', 'catwalk');
+    try {
+      const res = await fetch(REACT_APP_CLOUDINARY_URL, {
+        method: 'POST',
+        body: formData,
+      });
+      const file = await res.json();
+      if (res) {
+        if (newReview.photos.length < 5) {
+          setNewReview({
+            ...newReview,
+            photos: [
+              ...newReview.photos,
+              file.url,
+            ],
+          });
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const inputChangeHandler = (e) => {
+    setErrors({
+      name: '',
+      email: '',
+      body: '',
+    });
+    setNewReview({
+      ...newReview,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const bodyChangeHandler = (e) => {
+    setErrors({
+      body: '',
+      name: '',
+      email: '',
+    });
+    setNewReview({
+      ...newReview,
+      body: e.target.value,
+    });
+    if (e.target.value.length <= 50) {
+      setBodyCountDown(50 - e.target.value.length);
+    }
+  };
+
+  const changeCharacteristic = (e) => {
+    setNewReview({
+      ...newReview,
+      characteristics: {
+        ...newReview.characteristics,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  const changeRating = (count) => {
+    setStars(createStarArray(count + 1));
+    setRatingText(ratingDescriptions[count + 1]);
+    setNewReview({
+      ...newReview,
+      rating: count + 1,
+    });
+  };
+
+  const validateForm = () => {
+    let areErrors = false;
+    const newErrors = {
+      name: '',
+      email: '',
+      body: '',
+      rating: '',
+    };
+    if (!newReview.name) {
+      newErrors.name = 'You must enter a nickname';
+      areErrors = true;
+    }
+    if (!newReview.email) {
+      newErrors.email = 'You must enter an email';
+      areErrors = true;
+    }
+    if (!newReview.rating) {
+      newErrors.rating = 'You must select a rating';
+      areErrors = true;
+    }
+    if (!newReview.body || newReview.body.length < 50) {
+      newErrors.body = 'You must include a body';
+      areErrors = true;
+    }
+    if (areErrors) {
+      setErrors(newErrors);
+    }
+
+    return areErrors;
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const areErrors = validateForm();
+    if (areErrors) {
+      // alert user
+    } else {
+      // submit form
+    }
+  };
+
   return (
     <ReviewContext.Provider
       value={{
@@ -113,10 +238,21 @@ const ReviewProvider = ({ children }) => {
         showCreate,
         openCreate,
         hideCreate,
-        createChangeHandler,
-        createSubmitHandler,
         newReview,
         setNewReview,
+        handleImageUpload,
+        submitHandler,
+        inputChangeHandler,
+        changeCharacteristic,
+        recommend,
+        setRecommend,
+        bodyChangeHandler,
+        bodyCountDown,
+        stars,
+        setStars,
+        changeRating,
+        ratingText,
+        errors,
       }}
     >
       {children}
