@@ -2,6 +2,10 @@
   padding: 15px 0px 0px 25px;
 }
 
+form *:focus {
+  outline: none;
+}
+
 .h1 {
   margin: 0px;
 }
@@ -36,6 +40,7 @@
   border: 1px solid black;
   margin: 0px 10px 10px 0px;
   border-radius: 28px;
+  cursor: pointer;
 }
 
 .bold {
@@ -51,6 +56,10 @@
   margin-top: 21px;
   display: flex;
   justify-content: space-between;
+}
+
+.divSelect select {
+  cursor: pointer;
 }
 
 .selectSize {
@@ -86,6 +95,7 @@
   text-transform: uppercase;
   background: white;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .starLikeDiv {
@@ -96,6 +106,7 @@
   align-items: center;
   padding-top: 7px;
   padding-left: 4px;
+  cursor: pointer;
 }
 
 .starLikeDiv svg {

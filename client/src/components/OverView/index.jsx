@@ -8,7 +8,7 @@ import styles from './overview.module.css';
 const OverView = () => {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.messageP}>site-wide announcement message! - sale / discount <b>offer</b> - <u>new product hightlight</u></p>
+      <p className={styles.messageP}><i>site-wide announcement message! </i>- sale / discount <b>offer</b> - <u>new product hightlight</u></p>
       <div className={styles.secWrapper}>
         <section className={styles.secOne}>
           <ImageGallery />
