@@ -289,7 +289,7 @@ export const CreateReview = ({ children }) => {
                   {loading ? (
                     <span className={styles.loading}>Submitting</span>
                   )
-                    : 'Sumbit'}
+                    : 'Submit'}
                 </button>
               </div>
             </form>
