@@ -42,8 +42,21 @@ export const CreateReview = ({ children }) => {
       setLoading(true);
       try {
         await createNewReview(newReview);
-        setLoading(false);
-        hideCreate();
+        setTimeout(() => {
+          setLoading(false);
+          hideCreate();
+        }, 2000);
+        setNewReview({
+          prodcut_id: selectedProduct.id,
+          name: '',
+          email: '',
+          summary: '',
+          body: '',
+          rating: 0,
+          recommend: false,
+          characteristics: {},
+          photos: [],
+        });
       } catch (err) {
         console.log(err);
         setLoading(false);
