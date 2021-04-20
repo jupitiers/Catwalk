@@ -26,7 +26,6 @@ export const CreateReview = ({ children }) => {
     getProductById();
   }, []);
 
-  console.log(errors);
   return (
     <div className={showHideClassName}>
       <section className={styles.formModalMain}>
@@ -49,7 +48,7 @@ export const CreateReview = ({ children }) => {
                   <span className={styles.errorText}>{errors.name && errors.name}</span>
                 </label>
                 <input
-                  className={errors.email !== '' && styles.errorInput}
+                  className={errors.email !== '' ? styles.errorInput : ''}
                   type="text"
                   name="name"
                   id="name"
@@ -64,7 +63,7 @@ export const CreateReview = ({ children }) => {
                   <span className={styles.errorText}>{errors.email && errors.email}</span>
                 </label>
                 <input
-                  className={errors.email !== '' && styles.errorInput}
+                  className={errors.email !== '' ? styles.errorInput : ''}
                   type="email"
                   name="email"
                   id="email"
@@ -91,7 +90,7 @@ export const CreateReview = ({ children }) => {
                   <span className={styles.errorText}>{errors.body && errors.body}</span>
                 </label>
                 <textarea
-                  className={errors.body !== '' && styles.errorInput}
+                  className={errors.body !== '' ? styles.errorInput : ''}
                   rows="3"
                   type="text"
                   name="body"
