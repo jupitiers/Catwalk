@@ -59,7 +59,7 @@ const ReviewCard = ({ review }) => {
         )}
         {(showMoreBody) && (
         <button
-          className={styles.expandBodyButton}
+          className={[styles.expandBodyButton, styles.showLess].join(' ')}
           onClick={() => setShowMoreBody(!showMoreBody)}
         >
           Show Less

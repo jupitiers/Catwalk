@@ -8,7 +8,7 @@ describe('Reviews Component', () => {
   beforeEach(() => {
     wrapper = mount(
       <RootProvider value={{ reviews: [1, 2, 3, 4] }}>
-        <Reviews />
+        <Reviews onChange={jest.fn()} />
       </RootProvider>
       ,
     );
@@ -22,15 +22,12 @@ describe('Reviews Component', () => {
     const select = wrapper.find('#sort-by');
     expect(select.exists()).toBe(true);
   });
-  it('dropdown should call change handler', () => {
-    const select = wrapper.find('#sort-by');
-    select.find('option').at(0).simulate('change', {
-      target: { value: 'relevant' },
-    });
-    expect(select.exists()).toBe(true);
-  });
   it('should contain review cards list', () => {
     const list = wrapper.find('.cardList');
     expect(list.exists()).toBe(true);
+  });
+  it('should contain review card in card list', () => {
+    const card = wrapper.find('.review');
+    expect(card.exists()).toBe(true);
   });
 });

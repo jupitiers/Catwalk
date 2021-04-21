@@ -6,3 +6,5 @@ client/src/config/config.js
 .eslintrc.js
 
 .vscode/settings.json
+
+coverage
