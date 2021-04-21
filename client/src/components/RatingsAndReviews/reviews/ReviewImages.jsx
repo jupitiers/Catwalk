@@ -7,7 +7,6 @@ const ReviewImages = ({ images }) => {
     display, selectedImage, openOverlay, closeOverlay,
   } = useContext(ReviewContext);
   const showHideClassName = display ? styles.show : styles.hide;
-  console.log(showHideClassName);
   return (
     <>
       <p>

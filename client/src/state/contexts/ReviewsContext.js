@@ -41,6 +41,35 @@ const defaultReviews = [
   },
 ];
 
+const defaultMetaData = {
+  product_id: '2',
+  ratings: {
+    2: 1,
+    3: 1,
+    4: 2,
+    // ...
+  },
+  recommended: {
+    0: 5,
+    // ...
+  },
+  characteristics: {
+    Size: {
+      id: 14,
+      value: '4.0000',
+    },
+    Width: {
+      id: 15,
+      value: '3.5000',
+    },
+    Comfort: {
+      id: 16,
+      value: '4.0000',
+    },
+    // ...
+  },
+};
+
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
@@ -51,7 +80,7 @@ const ReviewProvider = ({ children }) => {
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
-  const [metaData, setMetaData] = useState({});
+  const [metaData, setMetaData] = useState(defaultMetaData);
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
