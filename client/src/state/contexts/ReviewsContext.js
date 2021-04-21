@@ -73,7 +73,6 @@ const defaultMetaData = {
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
-  // context imports
   const [reviews, setReviews] = useState(defaultReviews);
   const [feedback, setFeedback] = useState({});
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
