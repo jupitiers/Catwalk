@@ -20,37 +20,35 @@ const QuestionModal = (props) => {
   var submit = function(data) {
     if (questionSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
-      console.log('submittable');
       addQuestion(data);
       props.closeModal();
     } else {
       setSubmittable(false);
-      console.log('not');
     }
   }
 
   var checkAuth = function(question, nickname, email) {
 
-    if (question.length > 0) {
+    if (question && question.length > 0) {
       setQuestionAuth(true);
       questionSubmit = true;
-    } else if (question.length === 0) {
+    } else if (!question || question.length === 0) {
       setQuestionAuth(false);
       questionSubmit = false;
     }
 
-    if (nickname.length > 0) {
+    if (nickname && nickname.length > 0) {
       setNicknameAuth(true);
       nicknameSubmit = true;
-    } else if (nickname.length === 0) {
+    } else if (!nickname || nickname.length === 0) {
       setNicknameAuth(false);
       nicknameSubmit = false;
     }
 
-    if (email.indexOf('@') > 0) {
+    if (email && email.indexOf('@') > 0) {
       setEmailAuth(true);
       emailSubmit = true;
-    } else if (email.indexOf('@') < 0) {
+    } else if (!email || email.indexOf('@') < 0) {
       setEmailAuth(false);
       emailSubmit = false;
     }
@@ -67,8 +65,8 @@ const QuestionModal = (props) => {
 
   return(
     <div className={styles.modalcontent}>
-      <h2>Ask Your Question</h2>
-      <h4>About the {props.productName}</h4>
+      <h2 id='title'>Ask Your Question</h2>
+      <h4 id='subtitle'>About the {props.productName}</h4>
       <div>
         <div>
           {submittable
@@ -84,7 +82,7 @@ const QuestionModal = (props) => {
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Question: *</span><br/>
-                <textarea id='question' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
+                <textarea id='questionCheck' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
               </div>
           }
         </div>
@@ -97,7 +95,7 @@ const QuestionModal = (props) => {
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11!'/><br/>
+                <input type='text' id='nicknameCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
           }
@@ -111,7 +109,7 @@ const QuestionModal = (props) => {
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Email: * </span><br/>
-                <input type='text' id='email' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
+                <input type='text' id='emailCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
           }

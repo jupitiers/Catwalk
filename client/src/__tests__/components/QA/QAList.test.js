@@ -42,6 +42,10 @@ describe('QAList Component', () => {
   it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
+  it('should contain a QA list', () => {
+    const entries = wrapper.find('.QAEntryList');
+    expect(entries.exists()).toBe(true);
+  });
   it('should contain a list of QA Entries', () => {
     const entries = wrapper.find('.QAEntry');
     expect(entries.exists()).toBe(true);
