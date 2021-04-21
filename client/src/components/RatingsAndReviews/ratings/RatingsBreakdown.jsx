@@ -29,7 +29,7 @@ const RatingsBreakdown = () => {
               {' '}
               Reviews
             </p>
-            <button onClick={clearFilter}>Clear</button>
+            <button className={styles.clearButton} onClick={clearFilter}>Clear</button>
           </>
         )}
       </div>
