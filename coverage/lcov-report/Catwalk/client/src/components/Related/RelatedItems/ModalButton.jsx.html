@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Catwalk/client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx</title>
+    <title>Code coverage report for Catwalk/client/src/components/Related/RelatedItems/ModalButton.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">Catwalk/client/src/components/RatingsAndReviews/ratings</a> RatingSummary.jsx</h1>
+        <h1><a href="../../../../../../index.html">All files</a> / <a href="index.html">Catwalk/client/src/components/Related/RelatedItems</a> ModalButton.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.29% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.29% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
@@ -82,24 +82,20 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,43 +107,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useContext } from 'react';
-import styles from './ratingSummary.module.css';
-import { ReviewContext } from '../../../state/contexts/ReviewsContext';
-import { getAvgRating, createStarArray, getRecommendPercent } from '../../../helpers/ratingsHelpers';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useEffect, useContext, useState} from 'react';
+import styles from './modalButton.module.css';
+import ComparisonModal from './ComparisonModal.jsx';
 &nbsp;
-const RatingSummary = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const { metaData } = <span class="cstat-no" title="statement not covered" >useContext(ReviewContext);</span>
-  const avgRating = <span class="cstat-no" title="statement not covered" >getAvgRating(metaData.ratings);</span>
-  const stars = <span class="cstat-no" title="statement not covered" >createStarArray(avgRating);</span>
-  const percent = <span class="cstat-no" title="statement not covered" >getRecommendPercent(metaData.recommended);</span>
+const ModalButton = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  const [showModal, setShowModal] = <span class="cstat-no" title="statement not covered" >useState(false);</span> // note: change back to false
+&nbsp;
+  let openModal = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setShowModal(!showModal);</span>
+  };
+&nbsp;
+  let closeOpenModal = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (e.target.id === 'modalBackground') {</span>
+<span class="cstat-no" title="statement not covered" >      setShowModal(!showModal);</span>
+    }
+  };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className={styles.summaryContainer}&gt;
-      &lt;div className={styles.avgRating}&gt;
-        &lt;h2&gt;{avgRating}&lt;/h2&gt;
-        &lt;div className={styles.starsContainer}&gt;
-          {stars.map(<span class="fstat-no" title="function not covered" >(s</span>tar, idx) =&gt; <span class="cstat-no" title="statement not covered" >&lt;div key={idx}&gt;{star}&lt;/div&gt;)</span>}
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div className={styles.recommendPercent}&gt;
-        &lt;p&gt;
-          {' '}
-          {`${percent}% of reviews recommend this product`}
-        &lt;/p&gt;
-      &lt;/div&gt;
+    &lt;div&gt;
+      &lt;button className={styles.modalButton} onClick={openModal}&gt;&lt;i className={"far fa-star"}&gt;&lt;/i&gt;&lt;/button&gt;
+      {showModal ? &lt;ComparisonModal showModal={showModal} setShowModal={setShowModal} onClick={closeOpenModal}/&gt; : null}
     &lt;/div&gt;
-  );
-};
+  )
+}
 &nbsp;
-export default RatingSummary;
-&nbsp;</pre></td></tr></table></pre>
+export default ModalButton;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

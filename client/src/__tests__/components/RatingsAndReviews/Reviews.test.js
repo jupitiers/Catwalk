@@ -14,7 +14,7 @@ describe('Reviews Component', () => {
     );
   });
 
-  it('Renders Reviews Component', () => {
+  it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
   it('has a dropdown to sort reviews', () => {
