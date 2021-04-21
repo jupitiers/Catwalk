@@ -8,7 +8,7 @@ import { CreateReview } from './createReview/CreateReview';
 
 const RatingsAndReviews = () => {
   const {
-    reviews, reviewsShowing, setReviewsShowing, showMoreReviews, openCreate,
+    reviews, reviewsShowing, setReviewsShowing, showMoreReviews, openCreate, setReviews,
   } = useContext(ReviewContext);
   const { getReviewsByProductId } = useContext(APIContext);
 
@@ -17,7 +17,7 @@ const RatingsAndReviews = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <h2 className={styles.sectionTitle}>RATINGS & REVIEWS</h2>
       {reviews.length > 0 ? (
         <div className={styles.ratingsAndReviewsContainer}>
@@ -25,7 +25,7 @@ const RatingsAndReviews = () => {
           <div className={styles.reviews}><Reviews /></div>
           <div className={styles.reviewActions}>
             {(reviews.length > 2 && reviews.length > reviewsShowing) && (
-            <button onClick={showMoreReviews} className={styles.reviewButton}>More Reviews</button>
+            <button onClick={showMoreReviews} className={styles.moreReviews}>More Reviews</button>
             )}
             <button
               onClick={openCreate}
@@ -47,7 +47,7 @@ const RatingsAndReviews = () => {
           </>
         )}
       <CreateReview />
-    </>
+    </div>
   );
 };
 

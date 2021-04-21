@@ -1,14 +1,53 @@
 import React, { createContext, useContext, useState } from 'react';
 import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
 import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsHelpers';
+// default reviews for testing
+const defaultReviews = [
+  {
+    review_id: 0,
+    rating: 0,
+    summary: '',
+    recommend: false,
+    response: '',
+    body: '',
+    date: '',
+    reviewer_name: '',
+    helpfulness: 0,
+    photos: [],
+  },
+  {
+    review_id: 3,
+    rating: 0,
+    summary: '',
+    recommend: false,
+    response: '',
+    body: '',
+    date: '',
+    reviewer_name: '',
+    helpfulness: 0,
+    photos: [],
+  },
+  {
+    review_id: 3,
+    rating: 0,
+    summary: '',
+    recommend: false,
+    response: '',
+    body: '',
+    date: '',
+    reviewer_name: '',
+    helpfulness: 0,
+    photos: [],
+  },
+];
 
-export const ReviewContext = createContext({});
+export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
   // context imports
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(defaultReviews);
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
@@ -48,11 +87,11 @@ const ReviewProvider = ({ children }) => {
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
-    setDisplay('block');
+    setDisplay(true);
     setSelectedImage(imageUrl);
   };
   const closeOverlay = () => {
-    setDisplay('none');
+    setDisplay(false);
     setSelectedImage('');
   };
 
