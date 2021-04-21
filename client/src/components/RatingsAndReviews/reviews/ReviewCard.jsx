@@ -20,7 +20,7 @@ const ReviewCard = ({ review }) => {
   }, []);
 
   // helper functions for review formatting
-  const truncatedSummary = truncateSummary(review);
+  const truncatedSummary = truncateSummary(review || {});
   const stars = createStarArray(review.rating);
   const [truncatedBody, restOfBody] = truncateBody(review);
 

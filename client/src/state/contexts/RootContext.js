@@ -5,19 +5,16 @@ import ReviewProvider from './ReviewsContext';
 import QuestionProvider from './QuestionsContext';
 import AnswerProvider from './AnswersContext';
 
-
-export const RootProvider = ({children}) => {
-  return (
-    <ProductProvider>
-      <AnswerProvider>
-        <QuestionProvider>
-          <ReviewProvider>
-            <APIProvider>
-              {children}
-            </APIProvider>
-          </ReviewProvider>
-        </QuestionProvider>
-      </AnswerProvider>
-    </ProductProvider>
-  );
-};
+export const RootProvider = ({ children }) => (
+  <ProductProvider>
+    <AnswerProvider>
+      <QuestionProvider>
+        <ReviewProvider>
+          <APIProvider>
+            {children}
+          </APIProvider>
+        </ReviewProvider>
+      </QuestionProvider>
+    </AnswerProvider>
+  </ProductProvider>
+);

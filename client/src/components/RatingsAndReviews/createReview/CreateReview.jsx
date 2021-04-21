@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
-import { fullStar, emptyStar } from '../starRatings';
 import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
 import { ProductContext } from '../../../state/contexts/ProductContext';
 import { APIContext } from '../../../state/contexts/APIContext';
@@ -73,7 +72,7 @@ export const CreateReview = ({ children }) => {
             <i className="far fa-times-circle" />
           </span>
           <div className={styles.formContainer}>
-            <h2>Write your review</h2>
+            <h2 className={styles.formHeader}>Write your review</h2>
             <h3>
               about the
               {' '}
@@ -289,7 +288,7 @@ export const CreateReview = ({ children }) => {
                   {loading ? (
                     <span className={styles.loading}>Submitting</span>
                   )
-                    : 'Sumbit'}
+                    : 'Submit'}
                 </button>
               </div>
             </form>
