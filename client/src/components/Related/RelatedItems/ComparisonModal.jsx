@@ -28,6 +28,20 @@ const ComparisonModal = props => {
 
   // combined feature comparisons
   let featureComparison = [];
+  // looks like below
+  // [
+  //   {
+  //     feature: 'fabric',
+  //     currentProduct: 'canvas',
+  //     comparedProduct: '', // if not listed as a feature
+  //   },
+
+  //   {
+  //     feature: 'lenses',
+  //     currentProduct: '',
+  //     comparedProduct: 'ultrasheen',
+  //   },
+  // ]
 
   let getComparison = () => {
     // loop over currentFeatures
@@ -68,7 +82,6 @@ const ComparisonModal = props => {
   };
 
   getComparison();
-  // console.log(featureComparison)
 
   return (
     <div className={styles.modal} onClick={e => {props.onClick(e)}} id="modalBackground">
@@ -81,77 +94,9 @@ const ComparisonModal = props => {
           </div>
         </div>
         <div className={styles.modalBody}>
-          {/* {} */}
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
-          <div className={styles.bodyRow}>
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-          </div>
+          {featureComparison.map((data, index) => {
+            return <div key={index} className={styles.bodyRow}><p className={styles.rowContentLeft}>{data.currentProduct == null ? <i className="fas fa-check"></i> : data.currentProduct}</p><p className={styles.rowContentCenter}>{data.feature}</p><p className={styles.rowContentRight}>{data.comparedProduct == null ? <i className="fas fa-check"></i> : data.comparedProduct}</p></div>
+          })}
         </div>
       </div>
     </div>
