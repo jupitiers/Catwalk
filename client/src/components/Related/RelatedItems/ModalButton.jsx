@@ -3,7 +3,7 @@ import styles from './modalButton.module.css';
 import ComparisonModal from './ComparisonModal.jsx';
 
 const ModalButton = props => {
-  const [showModal, setShowModal] = useState(true); // note: change back to false
+  const [showModal, setShowModal] = useState(false); // note: change back to false
 
   let openModal = () => {
     setShowModal(!showModal);

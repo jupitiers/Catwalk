@@ -59,4 +59,11 @@
   overflow: auto;
   margin-top: 2em;
   margin-bottom: 2em;
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.bodyRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
