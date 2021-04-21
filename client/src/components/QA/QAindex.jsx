@@ -90,7 +90,7 @@ const QASection = () => {
       </div>
       <div className='QA-button'>
         {clicked
-          ? <button id='moreQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+          ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
           : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
         }
         <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>

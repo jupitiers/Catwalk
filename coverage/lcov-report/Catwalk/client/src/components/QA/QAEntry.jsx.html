@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">54.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>6/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,18 +120,24 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,13 +194,16 @@ import AnswerList from './AnswerList.jsx';
 import styles from './qa.module.css';
 import AnswerModal from './AnswerModal.jsx';
 &nbsp;
-var QA = <span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {
-  const[helpful, setHelpful] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const[reported, setReported] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const[showModal, setShowModal] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+var QA = (props) =&gt; {
+  const[helpful, setHelpful] = useState(false);
+  const[reported, setReported] = useState(false);
+  const[showModal, setShowModal] = useState(false);
 &nbsp;
+  var closeAnswerModal = <span class="fstat-no" title="function not covered" >fu</span>nction() {
+<span class="cstat-no" title="statement not covered" >    setShowModal(false);</span>
+  }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.feedentry}&gt;
       &lt;div className={styles.qasection}&gt;
         &lt;div className={styles.qatitle}&gt;
@@ -209,7 +218,7 @@ var QA = <span class="fstat-no" title="function not covered" >(p</span>rops) =&g
           &lt;/div&gt;
           &lt;div className={styles.questionactiondiv} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >props.helpfulnessClick(props.id, helpful); <span class="cstat-no" title="statement not covered" ></span>setHelpful(true);}</span>}&gt;
             {helpful
-              ? &lt;span className={styles.questionactionclicked}&gt;Yes &lt;/span&gt;
+              ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span className={styles.questionactionclicked}&gt;Yes &lt;/span&gt;</span>
               : &lt;span className={styles.questionaction}&gt;Yes &lt;/span&gt;
             } ({props.helpfulness})
           &lt;/div&gt;|
@@ -224,9 +233,9 @@ var QA = <span class="fstat-no" title="function not covered" >(p</span>rops) =&g
           &lt;/div&gt;
           &lt;div&gt;
             {showModal
-            ? &lt;div className={styles.modal}&gt;
-                &lt;span className={styles.modalclose} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >setShowModal(false)}</span>}&gt;x&lt;/span&gt;
-                &lt;AnswerModal questionId={props.id} question={props.question} productData={props.productData}/&gt;
+            ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;div className={styles.modal}&gt;</span>
+                &lt;span className={styles.modalclose} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >closeAnswerModal()}</span>}&gt;&lt;i className="far fa-times-circle" /&gt;&lt;/span&gt;
+                &lt;AnswerModal questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/&gt;
               &lt;/div&gt;
             : null
             }
@@ -253,7 +262,7 @@ export default QA;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 21 2021 11:23:53 GMT-0500 (Central Daylight Time)
+                at Wed Apr 21 2021 13:36:25 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.61% </span>
+                <span class="strong">1.59% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/62</span>
+                <span class='fraction'>1/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/45</span>
+                <span class='fraction'>0/41</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">1.61% </span>
+                <span class="strong">1.59% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/62</span>
+                <span class='fraction'>1/63</span>
             </div>
         
             
@@ -240,7 +240,8 @@
 <a name='L181'></a><a href='#L181'>181</a>
 <a name='L182'></a><a href='#L182'>182</a>
 <a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,7 +251,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -300,6 +301,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -391,13 +393,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -411,6 +406,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -483,6 +485,7 @@ const AnswerModal = <span class="fstat-no" title="function not covered" >(p</spa
 <span class="cstat-no" title="statement not covered" >      setSubmittable(true);</span>
 <span class="cstat-no" title="statement not covered" >      console.log('submittable');</span>
 <span class="cstat-no" title="statement not covered" >      addAnswer(questionId, data);</span>
+<span class="cstat-no" title="statement not covered" >      props.closeModal();</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      setSubmittable(false);</span>
 <span class="cstat-no" title="statement not covered" >      console.log('not');</span>
@@ -506,10 +509,10 @@ const AnswerModal = <span class="fstat-no" title="function not covered" >(p</spa
 <span class="cstat-no" title="statement not covered" >      nicknameSubmit = false;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (email.indexOf('@') &gt; 0 &amp;&amp; email.indexOf('.com') &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    if (email.indexOf('@') &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >      setEmailAuth(true);</span>
 <span class="cstat-no" title="statement not covered" >      emailSubmit = true;</span>
-    } else <span class="cstat-no" title="statement not covered" >if (email.indexOf('@') &lt; 0 || email.indexOf('.com') &lt; 0) {</span>
+    } else <span class="cstat-no" title="statement not covered" >if (email.indexOf('@') &lt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >      setEmailAuth(false);</span>
 <span class="cstat-no" title="statement not covered" >      emailSubmit = false;</span>
     }
@@ -529,6 +532,12 @@ const AnswerModal = <span class="fstat-no" title="function not covered" >(p</spa
       &lt;h2&gt;Submit Your Answer&lt;/h2&gt;
       &lt;h4&gt;{props.productData.name}: {props.question}&lt;/h4&gt;
       &lt;div&gt;
+        &lt;div&gt;
+          {submittable
+            ? null
+            : &lt;p className={styles.submiterror}&gt;You must enter the following: &lt;/p&gt;
+          }
+        &lt;/div&gt;
         &lt;div className={styles.modaldiv}&gt;
           {questionAuth
             ? &lt;div&gt;
@@ -593,12 +602,6 @@ const AnswerModal = <span class="fstat-no" title="function not covered" >(p</spa
           &lt;/div&gt;
         &lt;/div&gt;
         &lt;div&gt;
-          {submittable
-            ? null
-            : &lt;p className={styles.submiterror}&gt;Please check your entries&lt;/p&gt;
-          }
-        &lt;/div&gt;
-        &lt;div&gt;
           &lt;button className={styles.questionsubmit} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}</span>}&gt;Submit answer&lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -613,7 +616,7 @@ export default AnswerModal;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 21 2021 11:23:53 GMT-0500 (Central Daylight Time)
+                at Wed Apr 21 2021 13:36:25 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>
