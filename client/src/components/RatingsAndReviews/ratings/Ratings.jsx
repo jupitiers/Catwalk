@@ -16,13 +16,13 @@ const Ratings = () => {
 
   return (
     <div className={styles.ratingsContainer}>
-      <div className={styles.ratingsItem}>
+      <div className={styles.summary}>
         <RatingSummary />
       </div>
-      <div className={styles.ratingsItem}>
+      <div className={styles.breakdown}>
         <RatingsBreakdown />
       </div>
-      <div className={styles.ratingsItem}>
+      <div className={styles.factors}>
         <RatingsFactors />
       </div>
     </div>

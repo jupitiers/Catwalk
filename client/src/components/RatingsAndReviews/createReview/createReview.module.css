@@ -321,3 +321,21 @@
     text-shadow:
       .25em 0 0 white,
       .5em 0 0 white;}}
+
+
+@media (max-width: 650px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .show {
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+  }
+}

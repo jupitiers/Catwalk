@@ -68,8 +68,15 @@ export const getRecommendPercent = (totals = {}) => {
   return 0;
 };
 
-export const getStarPercents = (ratings) => {
+export const getStarPercents = (data) => {
   const totals = [];
+  const ratings = {
+    1: data['1'] || 0,
+    2: data['2'] || 0,
+    3: data['3'] || 0,
+    4: data['4'] || 0,
+    5: data['5'] || 0,
+  };
   let avg = 0;
   for (const key in ratings) {
     avg += parseInt(key) + parseInt(ratings[key]);
