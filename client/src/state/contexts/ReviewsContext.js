@@ -47,7 +47,7 @@ const ReviewProvider = ({ children }) => {
   // context imports
   const [reviews, setReviews] = useState(defaultReviews);
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
@@ -87,11 +87,11 @@ const ReviewProvider = ({ children }) => {
 
   // reviewImages logic
   const openOverlay = (imageUrl) => {
-    setDisplay('block');
+    setDisplay(true);
     setSelectedImage(imageUrl);
   };
   const closeOverlay = () => {
-    setDisplay('none');
+    setDisplay(false);
     setSelectedImage('');
   };
 
