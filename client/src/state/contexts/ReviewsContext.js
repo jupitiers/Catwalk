@@ -73,8 +73,8 @@ const defaultMetaData = {
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
-  // context imports
   const [reviews, setReviews] = useState(defaultReviews);
+  const [feedback, setFeedback] = useState({});
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
   const [display, setDisplay] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
@@ -129,14 +129,29 @@ const ReviewProvider = ({ children }) => {
     setReviewsShowing(reviewsShowing + 2);
   };
 
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
+  };
+
+  const getShowCount = () => {
+    const filtered = reviews.slice(0, reviewsShowing)
+      .filter((review) => {
+        if (starFilter.includes(review.rating.toString())) {
+          return review;
+        }
+      });
+    return filtered.length;
+  };
+
   const filterByStars = (star) => {
     if (starSorting) {
       if (starFilter.includes(star)) {
-        let filteredStars = starFilter.filter((s) => s !== star);
-        if (filteredStars.length === 0) {
-          filteredStars = ['1', '2', '3', '4', '5'];
-        }
+        const filteredStars = starFilter.filter((s) => s !== star);
         setStarFilter(filteredStars);
+        if (filteredStars.length === 0) {
+          clearFilter();
+        }
       } else {
         setStarFilter([
           ...starFilter,
@@ -149,11 +164,6 @@ const ReviewProvider = ({ children }) => {
         star,
       ]);
     }
-  };
-
-  const clearFilter = () => {
-    setStarSorting(false);
-    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   // createReview logic
@@ -329,6 +339,9 @@ const ReviewProvider = ({ children }) => {
         errors,
         changeRecommendation,
         validateForm,
+        getShowCount,
+        feedback,
+        setFeedback,
       }}
     >
       {children}
