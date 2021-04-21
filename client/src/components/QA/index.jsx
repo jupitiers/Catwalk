@@ -90,16 +90,16 @@ const QASection = () => {
       </div>
       <div className='QA-button'>
         {clicked
-          ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-          : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+          ? <button id='moreQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+          : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
         }
-        <button className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+        <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
       </div>
       <div>
         {showModal
           ? <div className={styles.modal}>
               <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
-              <QuestionModal productName={selectedProduct.name} closeModal={closeQuestionModal}/>
+              <QuestionModal id='questionModal' productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null
         }
