@@ -12,9 +12,10 @@
   height: 20px;
   border-radius: 50%;
   background-color: transparent;
-  border-width: thin;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
+  cursor: pointer;
 }

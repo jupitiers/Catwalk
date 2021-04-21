@@ -33,9 +33,10 @@
   overflow-y: scroll;
 }
 
-.feedbutton {
+.feedbutton, .addphoto {
   margin: 5px;
   background-color: #5FD9BD;
+  border: 1px solid #15332C;
   border-width: 1px;
   font-size: clamp(2px, 1vw, 15px);
 }
@@ -53,7 +54,9 @@
 
 .button:active, .button:hover,
 .feedbutton:active, .feedbutton:hover,
-.questionsubmit:active, .questionsubmit:hover{
+.questionsubmit:active, .questionsubmit:hover,
+.addphoto:active, .addphoto:hover,
+.uploadphoto:active, .uploadphoto:hover {
   transform: scale(0.95);
   cursor: pointer;
 }
@@ -105,7 +108,7 @@
   margin-top: 5px;
 }
 
-.modaluser {
+.modaluser, .modalphotos {
   width: 40%;
   height: 30px;
   margin-top: 5px;
@@ -151,8 +154,12 @@
 }
 
 .answer {
-  margin-left: 5px;
   display: inline-block
+}
+
+.answer:before{
+  content: ' ';
+  white-space: pre;
 }
 
 .answerlogistics {
@@ -169,7 +176,6 @@
 
 .questionactionsection {
   float: right;
-  /* margin-top: 0.5em; */
 }
 
 .answeractiondiv, .questionactiondiv {
@@ -200,6 +206,17 @@
   text-decoration: underline;
   font-weight: bold;
   color:#641373;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.uploadphoto {
+  background-color: #5FD9BD;
+  border: 1px solid #15332C;
+  cursor: pointer;
+  font-size: clamp(2px, 1vw, 15px);
 }
 
 .answerimage {

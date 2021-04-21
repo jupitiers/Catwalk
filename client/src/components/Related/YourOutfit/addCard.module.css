@@ -17,6 +17,7 @@
   background-color: #5fD9BD;
   border-radius: 50%;
   border-width: thin;
+  cursor: pointer;
 }
 
 .addText {
