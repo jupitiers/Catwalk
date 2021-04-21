@@ -36,4 +36,14 @@ describe('ReviewCard Component', () => {
     const button = wrapper.find('.expandBodyButton');
     expect(button.exists()).toBe(true);
   });
+  it('Should have show less button after show more button is clicked', () => {
+    const moreButton = wrapper.find('.expandBodyButton');
+    moreButton.simulate('click');
+    const lessButton = wrapper.find('.showLess');
+    expect(lessButton.exists()).toBe(true);
+  });
+  it('Should have card actions', () => {
+    const actions = wrapper.find('.cardActions');
+    expect(actions.exists()).toBe(true);
+  });
 });

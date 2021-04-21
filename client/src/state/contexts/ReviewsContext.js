@@ -5,7 +5,7 @@ import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsH
 const defaultReviews = [
   {
     review_id: 0,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -17,7 +17,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -29,7 +29,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -41,17 +41,46 @@ const defaultReviews = [
   },
 ];
 
+const defaultMetaData = {
+  product_id: '2',
+  ratings: {
+    2: 1,
+    3: 1,
+    4: 2,
+    // ...
+  },
+  recommended: {
+    0: 5,
+    // ...
+  },
+  characteristics: {
+    Size: {
+      id: 14,
+      value: '4.0000',
+    },
+    Width: {
+      id: 15,
+      value: '3.5000',
+    },
+    Comfort: {
+      id: 16,
+      value: '4.0000',
+    },
+    // ...
+  },
+};
+
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
-  // context imports
   const [reviews, setReviews] = useState(defaultReviews);
+  const [feedback, setFeedback] = useState({});
   const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
   const [display, setDisplay] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
-  const [metaData, setMetaData] = useState({});
+  const [metaData, setMetaData] = useState(defaultMetaData);
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
@@ -100,14 +129,29 @@ const ReviewProvider = ({ children }) => {
     setReviewsShowing(reviewsShowing + 2);
   };
 
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
+  };
+
+  const getShowCount = () => {
+    const filtered = reviews.slice(0, reviewsShowing)
+      .filter((review) => {
+        if (starFilter.includes(review.rating.toString())) {
+          return review;
+        }
+      });
+    return filtered.length;
+  };
+
   const filterByStars = (star) => {
     if (starSorting) {
       if (starFilter.includes(star)) {
-        let filteredStars = starFilter.filter((s) => s !== star);
-        if (filteredStars.length === 0) {
-          filteredStars = ['1', '2', '3', '4', '5'];
-        }
+        const filteredStars = starFilter.filter((s) => s !== star);
         setStarFilter(filteredStars);
+        if (filteredStars.length === 0) {
+          clearFilter();
+        }
       } else {
         setStarFilter([
           ...starFilter,
@@ -120,11 +164,6 @@ const ReviewProvider = ({ children }) => {
         star,
       ]);
     }
-  };
-
-  const clearFilter = () => {
-    setStarSorting(false);
-    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   // createReview logic
@@ -300,6 +339,9 @@ const ReviewProvider = ({ children }) => {
         errors,
         changeRecommendation,
         validateForm,
+        getShowCount,
+        feedback,
+        setFeedback,
       }}
     >
       {children}

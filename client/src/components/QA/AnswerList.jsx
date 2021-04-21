@@ -47,13 +47,13 @@ var AnswerList = (props) => {
     <div>
       <div>
         {usedAnswers.map(entry =>
-          <Answer key={entry.id} id={entry.id} answer={entry.body} date={moment(entry.date).format('MMMM Do YYYY')} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={answerHelpfulnessClick} reportClick={reportAnswerClick}/>
+          <Answer className='answer' key={entry.id} id={entry.id} answer={entry.body} date={moment(entry.date).format('MMMM Do YYYY')} author={entry.answerer_name} helpfulness={entry.helpfulness} photos={entry.photos} questionId={props.questionId} helpfulnessClick={answerHelpfulnessClick} reportClick={reportAnswerClick}/>
           )}
       </div>
       {enoughAnswers ?
         clicked
-          ? <button className={styles.feedbutton} onClick={() => setClicked(false)}>Collapse answers</button>
-          : <button className={styles.feedbutton} onClick={() => setClicked(true)}>Load more answers</button>
+          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={() => setClicked(false)}>Collapse answers</button>
+          : <button id='moreAnswers' className={styles.feedbutton} onClick={() => setClicked(true)}>Load more answers</button>
         : <div/>
       }
     </div>

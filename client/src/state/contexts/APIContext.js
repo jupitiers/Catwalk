@@ -10,7 +10,8 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData, newReview,
+    reviews, setReviews, setFeedbackAlreadyGiven, feedback,
+    setFeedback, sortTerm, setMetaData, newReview,
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
@@ -18,6 +19,7 @@ const APIProvider = ({ children }) => {
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   const pId = '17067';
+  // const pId = '111111111111111111' //TESTING RENDERING FOR NO DATA
   // sample endpoints
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
 
@@ -169,6 +171,10 @@ const APIProvider = ({ children }) => {
       });
       getReviewsByProductId();
       setFeedbackAlreadyGiven(true);
+      setFeedback({
+        ...feedback,
+        [reviewId]: true,
+      });
     } catch (err) {
       console.log(err);
     }

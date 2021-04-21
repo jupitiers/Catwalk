@@ -28,3 +28,9 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
 }
+
+@media (max-width: 830px) {
+  .avgRating h2 {
+    margin-bottom: 0;
+  }
+}
