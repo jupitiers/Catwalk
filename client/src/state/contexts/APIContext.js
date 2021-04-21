@@ -10,7 +10,8 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData, newReview,
+    reviews, setReviews, setFeedbackAlreadyGiven, feedback,
+    setFeedback, sortTerm, setMetaData, newReview,
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
@@ -169,6 +170,10 @@ const APIProvider = ({ children }) => {
       });
       getReviewsByProductId();
       setFeedbackAlreadyGiven(true);
+      setFeedback({
+        ...feedback,
+        reviewId: true,
+      });
     } catch (err) {
       console.log(err);
     }
