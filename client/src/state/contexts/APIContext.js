@@ -172,7 +172,7 @@ const APIProvider = ({ children }) => {
       setFeedbackAlreadyGiven(true);
       setFeedback({
         ...feedback,
-        reviewId: true,
+        [reviewId]: true,
       });
     } catch (err) {
       console.log(err);
