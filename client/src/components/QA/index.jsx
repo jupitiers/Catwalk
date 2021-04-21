@@ -2,37 +2,40 @@ import React, {useEffect, useContext, useState} from 'react';
 import QAList from './QAList.jsx';
 import styles from './qa.module.css';
 import $ from 'jquery';
+import QuestionModal from './QuestionModal.jsx';
 
 //sample data
 import qaSampleData from './qaSampleData.js';
 import { APIContext } from '../../state/contexts/APIContext';
 import { QuestionContext } from '../../state/contexts/QuestionsContext';
+import { ProductContext } from '../../state/contexts/ProductContext';
 
 const QASection = () => {
-  const { getQuestionsByProductId } = useContext(APIContext);
+  const { getQuestionsByProductId, getProductById } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
+  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+
 
   const[clicked, setClicked] = useState(false);
   const[noResults, setNoResults] = useState(false);
   const[searchResults, setSearchResults] = useState([]);
+  const[showModal, setShowModal] = useState(false);
 
 
   useEffect(() => {
     getQuestionsByProductId();
+    getProductById();
   }, []);
 
   var questionList = questions.slice();
-
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
-
-  var initialQuestions = questionList.slice(0, 4);
-  var usedQuestions;
 
   var searchFunc = function(query) {
     if (query.length > 2) {
       var searchedQuestions = [];
       for (var i = 0; i < questionList.length; i++) {
-        if (questionList[i].question_body.indexOf(query) >= 0) {
+        var currentTestBody = questionList[i].question_body.toLowerCase();
+        if (currentTestBody.indexOf(query.toLowerCase()) >= 0) {
           searchedQuestions.push(questionList[i]);
         }
       }
@@ -48,7 +51,8 @@ const QASection = () => {
     }
   }
 
-
+  var initialQuestions = questionList.slice(0, 4);
+  var usedQuestions;
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
     var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
@@ -77,7 +81,7 @@ const QASection = () => {
       <div className={styles.feed}>
         {noResults
           ? <p>Sorry, no related questions could be found...</p>
-          : <QAList data={usedQuestions}/>
+          : <QAList questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
       <div className='QA-button'>
@@ -85,7 +89,16 @@ const QASection = () => {
           ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
           : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
         }
-        <button className={styles.button}>Add a Question +</button>
+        <button className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+      </div>
+      <div>
+        {showModal
+          ? <div className={styles.modal}>
+              <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
+              <QuestionModal productName={selectedProduct.name}/>
+            </div>
+          : null
+        }
       </div>
     </div>
   )

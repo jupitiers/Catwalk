@@ -3,11 +3,11 @@ import CardImage from './CardImage.jsx';
 import CardDescription from './CardDescription.jsx';
 import styles from './outfitCard.module.css';
 
-const OutfitCard = () => {
+const OutfitCard = props => {
   return (
     <div className={styles.itemCard}>
-      <CardImage />
-      <CardDescription />
+      <CardImage outfitId={props.outfitId} data={props.data}/>
+      <CardDescription outfitId={props.outfitId} data={props.data}/>
     </div>
   )
 }
