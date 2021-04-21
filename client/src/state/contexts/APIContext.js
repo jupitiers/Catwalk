@@ -47,6 +47,27 @@ const APIProvider = ({ children }) => {
     }
   };
 
+  const getProductStyles = async (id) => {
+    try {
+      const getStyles = await axios.get(`${baseURL}/products/${id}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY }
+      });
+      return getStyles.data;
+    } catch(err) {
+      console.log({err})
+    }
+  }
+
+  const getRelatedProducts = async (id) => {
+    try {
+      const relatedProducts = await axios.get(`${baseURL}/products/${id}/related`, {
+        headers: { Authorization: REACT_APP_API_KEY }
+      });
+    } catch(err) {
+      console.log({err})
+    }
+  }
+
   /** ****************************************************************************
   *                      API calls for QAs
   ***************************************************************************** */
@@ -175,6 +196,8 @@ const APIProvider = ({ children }) => {
         // Products
         getAllProducts,
         getProductById,
+        getProductStyles,
+        getRelatedProducts,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,

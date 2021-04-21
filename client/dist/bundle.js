@@ -2269,48 +2269,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _image_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./image.module.css */ "./client/src/components/ImageGallery/image.module.css");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+/* harmony import */ var _state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/contexts/ProductContext */ "./client/src/state/contexts/ProductContext.js");
+/* harmony import */ var _image_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./image.module.css */ "./client/src/components/ImageGallery/image.module.css");
+
+
+
+
 
 
 
 
 var ImageGallery = function ImageGallery() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
-    src: 'https://i.imgur.com/CWbILwR.jpg',
-    active: true
-  }, {
-    src: 'https://i.imgur.com/zD7uTjm.jpg',
-    active: false
-  }, {
-    src: 'https://i.imgur.com/jXLpARE.jpg',
-    active: false
-  }, {
-    src: 'https://i.imgur.com/CWbILwR.jpg',
-    active: false
-  }, {
-    src: 'https://i.imgur.com/zD7uTjm.jpg',
-    active: false
-  }, {
-    src: 'https://i.imgur.com/jXLpARE.jpg',
-    active: false
-  }]),
-      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_4__.APIContext),
+      getProductStyles = _useContext.getProductStyles;
+
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_5__.ProductContext),
+      styles = _useContext2.styles,
+      setStyles = _useContext2.setStyles;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
       images = _useState2[0],
       setImages = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(images[0]),
-      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(images[0]),
+      _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
       mainImg = _useState4[0],
       setMainImg = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState5, 2),
       modal = _useState6[0],
       setModal = _useState6[1];
 
-  var modalWrapper = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
+  var modalWrapper = (0,react__WEBPACK_IMPORTED_MODULE_3__.useRef)();
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+    (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {
+      var getStyles, images;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return getProductStyles(17067);
+
+            case 2:
+              getStyles = _context.sent;
+              setStyles(getStyles.results);
+              images = {};
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  }, []);
 
   var updateMainImg = function updateMainImg(index) {
     var updateImages = images.map(function (img, i) {
@@ -2405,52 +2426,55 @@ var ImageGallery = function ImageGallery() {
     }
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.wrapper
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
-    className: "fas fa-expand ".concat(_image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.expand),
+  console.log({
+    styles: styles
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.wrapper
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("i", {
+    className: "fas fa-expand ".concat(styles.expand),
     onClick: openModal
-  }), modal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalWrapper,
+  }), modal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.modalWrapper,
     ref: modalWrapper,
     onClick: closeModal
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalDiv
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.modalDiv
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("img", {
     src: mainImg.src,
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalImg
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.close,
+    className: styles.modalImg
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("p", {
+    className: styles.close,
     onClick: closeModal
-  }, "X"))) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.imgDiv
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.thumbNailWrapper
+  }, "X"))) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.imgDiv
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.thumbNailWrapper
   }, images.map(function (img, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-      className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.thumbNailDiv,
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: styles.thumbNailDiv,
       key: i
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("img", {
       src: img.src,
-      className: img.active ? _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.active : _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.thumbNailImg,
+      className: img.active ? styles.active : styles.thumbNailImg,
       onClick: function onClick() {
         return updateMainImg(i);
       }
     }));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
-    className: "fas fa-arrow-down ".concat(_image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.arrowDown)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.arrowDiv
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
-    className: "fas fa-arrow-left ".concat(_image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.arrowLeft),
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("i", {
+    className: "fas fa-arrow-down ".concat(styles.arrowDown)
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.arrowDiv
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("i", {
+    className: "fas fa-arrow-left ".concat(styles.arrowLeft),
     onClick: moveLeft
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainImgDiv
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: styles.mainImgDiv
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("img", {
     src: mainImg.src,
-    className: _image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.mainImg
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
-    className: "fas fa-arrow-right ".concat(_image_module_css__WEBPACK_IMPORTED_MODULE_2__.default.arrowRight),
+    className: styles.mainImg
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("i", {
+    className: "fas fa-arrow-right ".concat(styles.arrowRight),
     onClick: moveRight
   }))));
 };
@@ -4970,36 +4994,32 @@ var APIProvider = function APIProvider(_ref) {
       return _ref3.apply(this, arguments);
     };
   }();
-  /** ****************************************************************************
-  *                      API calls for QAs
-  ***************************************************************************** */
 
-
-  var getQuestionsByProductId = /*#__PURE__*/function () {
-    var _ref4 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3() {
-      var allQuestions;
+  var getProductStyles = /*#__PURE__*/function () {
+    var _ref4 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3(id) {
+      var getStyles;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/qa/questions?product_id=17069"), {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/products/").concat(id, "/styles"), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
               });
 
             case 3:
-              allQuestions = _context3.sent;
-              setQuestions(allQuestions.data.results);
-              _context3.next = 10;
-              break;
+              getStyles = _context3.sent;
+              return _context3.abrupt("return", getStyles.data);
 
             case 7:
               _context3.prev = 7;
               _context3.t0 = _context3["catch"](0);
-              console.log(_context3.t0);
+              console.log({
+                err: _context3.t0
+              });
 
             case 10:
             case "end":
@@ -5009,20 +5029,103 @@ var APIProvider = function APIProvider(_ref) {
       }, _callee3, null, [[0, 7]]);
     }));
 
-    return function getQuestionsByProductId() {
+    return function getProductStyles(_x) {
       return _ref4.apply(this, arguments);
     };
   }();
 
-  var getAnswersByQuestionId = /*#__PURE__*/function () {
-    var _ref5 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee4(questionId) {
-      var allAnswers;
+  var getRelatedProducts = /*#__PURE__*/function () {
+    var _ref5 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee4(id) {
+      var relatedProducts;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/products/").concat(id, "/related"), {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              relatedProducts = _context4.sent;
+              _context4.next = 9;
+              break;
+
+            case 6:
+              _context4.prev = 6;
+              _context4.t0 = _context4["catch"](0);
+              console.log({
+                err: _context4.t0
+              });
+
+            case 9:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 6]]);
+    }));
+
+    return function getRelatedProducts(_x2) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+  /** ****************************************************************************
+  *                      API calls for QAs
+  ***************************************************************************** */
+
+
+  var getQuestionsByProductId = /*#__PURE__*/function () {
+    var _ref6 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee5() {
+      var allQuestions;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              _context5.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/qa/questions?product_id=17069"), {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              allQuestions = _context5.sent;
+              setQuestions(allQuestions.data.results);
+              _context5.next = 10;
+              break;
+
+            case 7:
+              _context5.prev = 7;
+              _context5.t0 = _context5["catch"](0);
+              console.log(_context5.t0);
+
+            case 10:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 7]]);
+    }));
+
+    return function getQuestionsByProductId() {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+
+  var getAnswersByQuestionId = /*#__PURE__*/function () {
+    var _ref7 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee6(questionId) {
+      var allAnswers;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.prev = 0;
+              _context6.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/qa/questions/").concat(questionId, "/answers"), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
@@ -5030,104 +5133,30 @@ var APIProvider = function APIProvider(_ref) {
               });
 
             case 3:
-              allAnswers = _context4.sent;
+              allAnswers = _context6.sent;
               setAnswers(allAnswers.data.results);
-              _context4.next = 10;
+              _context6.next = 10;
               break;
 
             case 7:
-              _context4.prev = 7;
-              _context4.t0 = _context4["catch"](0);
-              console.log(_context4.t0);
-
-            case 10:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4, null, [[0, 7]]);
-    }));
-
-    return function getAnswersByQuestionId(_x) {
-      return _ref5.apply(this, arguments);
-    };
-  }();
-
-  var markQuestionAsHelpful = /*#__PURE__*/function () {
-    var _ref6 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee5(questionId) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee5$(_context5) {
-        while (1) {
-          switch (_context5.prev = _context5.next) {
-            case 0:
-              _context5.prev = 0;
-              _context5.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/questions/").concat(questionId, "/helpful"), null, {
-                headers: {
-                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
-                }
-              });
-
-            case 3:
-              getQuestionsByProductId();
-              _context5.next = 9;
-              break;
-
-            case 6:
-              _context5.prev = 6;
-              _context5.t0 = _context5["catch"](0);
-              console.log(_context5.t0);
-
-            case 9:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5, null, [[0, 6]]);
-    }));
-
-    return function markQuestionAsHelpful(_x2) {
-      return _ref6.apply(this, arguments);
-    };
-  }();
-
-  var markAnswerAsHelpful = /*#__PURE__*/function () {
-    var _ref7 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee6(answerId) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.prev = 0;
-              _context6.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/answers/").concat(answerId, "/helpful"), null, {
-                headers: {
-                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
-                }
-              });
-
-            case 3:
-              getQuestionsByProductId();
-              _context6.next = 9;
-              break;
-
-            case 6:
-              _context6.prev = 6;
+              _context6.prev = 7;
               _context6.t0 = _context6["catch"](0);
               console.log(_context6.t0);
 
-            case 9:
+            case 10:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, null, [[0, 6]]);
+      }, _callee6, null, [[0, 7]]);
     }));
 
-    return function markAnswerAsHelpful(_x3) {
+    return function getAnswersByQuestionId(_x3) {
       return _ref7.apply(this, arguments);
     };
   }();
 
-  var reportQuestion = /*#__PURE__*/function () {
+  var markQuestionAsHelpful = /*#__PURE__*/function () {
     var _ref8 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee7(questionId) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee7$(_context7) {
         while (1) {
@@ -5135,7 +5164,7 @@ var APIProvider = function APIProvider(_ref) {
             case 0:
               _context7.prev = 0;
               _context7.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/questions/").concat(questionId, "/report"), null, {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/questions/").concat(questionId, "/helpful"), null, {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
@@ -5159,12 +5188,12 @@ var APIProvider = function APIProvider(_ref) {
       }, _callee7, null, [[0, 6]]);
     }));
 
-    return function reportQuestion(_x4) {
+    return function markQuestionAsHelpful(_x4) {
       return _ref8.apply(this, arguments);
     };
   }();
 
-  var reportAnswer = /*#__PURE__*/function () {
+  var markAnswerAsHelpful = /*#__PURE__*/function () {
     var _ref9 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee8(answerId) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee8$(_context8) {
         while (1) {
@@ -5172,7 +5201,7 @@ var APIProvider = function APIProvider(_ref) {
             case 0:
               _context8.prev = 0;
               _context8.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/answers/").concat(answerId, "/report"), null, {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/answers/").concat(answerId, "/helpful"), null, {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
@@ -5196,8 +5225,82 @@ var APIProvider = function APIProvider(_ref) {
       }, _callee8, null, [[0, 6]]);
     }));
 
-    return function reportAnswer(_x5) {
+    return function markAnswerAsHelpful(_x5) {
       return _ref9.apply(this, arguments);
+    };
+  }();
+
+  var reportQuestion = /*#__PURE__*/function () {
+    var _ref10 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee9(questionId) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.prev = 0;
+              _context9.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/questions/").concat(questionId, "/report"), null, {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              getQuestionsByProductId();
+              _context9.next = 9;
+              break;
+
+            case 6:
+              _context9.prev = 6;
+              _context9.t0 = _context9["catch"](0);
+              console.log(_context9.t0);
+
+            case 9:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9, null, [[0, 6]]);
+    }));
+
+    return function reportQuestion(_x6) {
+      return _ref10.apply(this, arguments);
+    };
+  }();
+
+  var reportAnswer = /*#__PURE__*/function () {
+    var _ref11 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee10(answerId) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.prev = 0;
+              _context10.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/qa/answers/").concat(answerId, "/report"), null, {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              getQuestionsByProductId();
+              _context10.next = 9;
+              break;
+
+            case 6:
+              _context10.prev = 6;
+              _context10.t0 = _context10["catch"](0);
+              console.log(_context10.t0);
+
+            case 9:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10, null, [[0, 6]]);
+    }));
+
+    return function reportAnswer(_x7) {
+      return _ref11.apply(this, arguments);
     };
   }();
   /** ****************************************************************************
@@ -5209,14 +5312,14 @@ var APIProvider = function APIProvider(_ref) {
 
 
   var getReviewsByProductId = /*#__PURE__*/function () {
-    var _ref10 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee9() {
+    var _ref12 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee11() {
       var allReviews;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee9$(_context9) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee11$(_context11) {
         while (1) {
-          switch (_context9.prev = _context9.next) {
+          switch (_context11.prev = _context11.next) {
             case 0:
-              _context9.prev = 0;
-              _context9.next = 3;
+              _context11.prev = 0;
+              _context11.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews?product_id=").concat(pId, "&count=100&sort=").concat(sortTerm), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
@@ -5224,84 +5327,8 @@ var APIProvider = function APIProvider(_ref) {
               });
 
             case 3:
-              allReviews = _context9.sent;
+              allReviews = _context11.sent;
               setReviews(allReviews.data.results);
-              _context9.next = 10;
-              break;
-
-            case 7:
-              _context9.prev = 7;
-              _context9.t0 = _context9["catch"](0);
-              console.log(_context9.t0);
-
-            case 10:
-            case "end":
-              return _context9.stop();
-          }
-        }
-      }, _callee9, null, [[0, 7]]);
-    }));
-
-    return function getReviewsByProductId() {
-      return _ref10.apply(this, arguments);
-    };
-  }();
-
-  var markReviewAsHelpful = /*#__PURE__*/function () {
-    var _ref11 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee10(reviewId) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee10$(_context10) {
-        while (1) {
-          switch (_context10.prev = _context10.next) {
-            case 0:
-              _context10.prev = 0;
-              _context10.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/reviews/").concat(reviewId, "/helpful"), null, {
-                headers: {
-                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
-                }
-              });
-
-            case 3:
-              getReviewsByProductId();
-              setFeedbackAlreadyGiven(true);
-              _context10.next = 10;
-              break;
-
-            case 7:
-              _context10.prev = 7;
-              _context10.t0 = _context10["catch"](0);
-              console.log(_context10.t0);
-
-            case 10:
-            case "end":
-              return _context10.stop();
-          }
-        }
-      }, _callee10, null, [[0, 7]]);
-    }));
-
-    return function markReviewAsHelpful(_x6) {
-      return _ref11.apply(this, arguments);
-    };
-  }();
-
-  var reportReview = /*#__PURE__*/function () {
-    var _ref12 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee11(reviewId) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee11$(_context11) {
-        while (1) {
-          switch (_context11.prev = _context11.next) {
-            case 0:
-              _context11.prev = 0;
-              _context11.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/reviews/").concat(reviewId, "/report"), null, {
-                headers: {
-                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
-                }
-              });
-
-            case 3:
-              getReviewsByProductId();
-              setFeedbackAlreadyGiven(true);
               _context11.next = 10;
               break;
 
@@ -5318,29 +5345,28 @@ var APIProvider = function APIProvider(_ref) {
       }, _callee11, null, [[0, 7]]);
     }));
 
-    return function reportReview(_x7) {
+    return function getReviewsByProductId() {
       return _ref12.apply(this, arguments);
     };
   }();
 
-  var getReviewMetaDataByProductId = /*#__PURE__*/function () {
-    var _ref13 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee12() {
-      var data;
+  var markReviewAsHelpful = /*#__PURE__*/function () {
+    var _ref13 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee12(reviewId) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
               _context12.prev = 0;
               _context12.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews/meta/?product_id=").concat(pId), {
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/reviews/").concat(reviewId, "/helpful"), null, {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
                 }
               });
 
             case 3:
-              data = _context12.sent;
-              setMetaData(data.data);
+              getReviewsByProductId();
+              setFeedbackAlreadyGiven(true);
               _context12.next = 10;
               break;
 
@@ -5357,8 +5383,85 @@ var APIProvider = function APIProvider(_ref) {
       }, _callee12, null, [[0, 7]]);
     }));
 
-    return function getReviewMetaDataByProductId() {
+    return function markReviewAsHelpful(_x8) {
       return _ref13.apply(this, arguments);
+    };
+  }();
+
+  var reportReview = /*#__PURE__*/function () {
+    var _ref14 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee13(reviewId) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.prev = 0;
+              _context13.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().put("".concat(baseURL, "/reviews/").concat(reviewId, "/report"), null, {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              getReviewsByProductId();
+              setFeedbackAlreadyGiven(true);
+              _context13.next = 10;
+              break;
+
+            case 7:
+              _context13.prev = 7;
+              _context13.t0 = _context13["catch"](0);
+              console.log(_context13.t0);
+
+            case 10:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13, null, [[0, 7]]);
+    }));
+
+    return function reportReview(_x9) {
+      return _ref14.apply(this, arguments);
+    };
+  }();
+
+  var getReviewMetaDataByProductId = /*#__PURE__*/function () {
+    var _ref15 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee14() {
+      var data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.prev = 0;
+              _context14.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().get("".concat(baseURL, "/reviews/meta/?product_id=").concat(pId), {
+                headers: {
+                  Authorization: _config_config__WEBPACK_IMPORTED_MODULE_4__.REACT_APP_API_KEY
+                }
+              });
+
+            case 3:
+              data = _context14.sent;
+              setMetaData(data.data);
+              _context14.next = 10;
+              break;
+
+            case 7:
+              _context14.prev = 7;
+              _context14.t0 = _context14["catch"](0);
+              console.log(_context14.t0);
+
+            case 10:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14, null, [[0, 7]]);
+    }));
+
+    return function getReviewMetaDataByProductId() {
+      return _ref15.apply(this, arguments);
     };
   }();
 
@@ -5367,6 +5470,8 @@ var APIProvider = function APIProvider(_ref) {
       // Products
       getAllProducts: getAllProducts,
       getProductById: getProductById,
+      getProductStyles: getProductStyles,
+      getRelatedProducts: getRelatedProducts,
       // QAs
       getQuestionsByProductId: getQuestionsByProductId,
       getAnswersByQuestionId: getAnswersByQuestionId,
@@ -5453,37 +5558,29 @@ var ProductContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createCo
 var ProductProvider = function ProductProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    name: 'a product',
-    id: 1
-  }),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
-      sampleProduct = _useState2[0],
-      setSampleProduct = _useState2[1];
+      selectedProduct = _useState2[0],
+      setSelectedProduct = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState3, 2),
-      selectedProduct = _useState4[0],
-      setSelectedProduct = _useState4[1];
+      productList = _useState4[0],
+      setProductList = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
-      productList = _useState6[0],
-      setProductList = _useState6[1];
-
-  var someFunc = function someFunc() {
-    console.log('hello from context');
-  };
+      styles = _useState6[0],
+      setStyles = _useState6[1];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(ProductContext.Provider, {
     value: {
-      sampleProduct: sampleProduct,
-      setSampleProduct: setSampleProduct,
       productList: productList,
-      setProductList: setProductList,
-      someFunc: someFunc,
       selectedProduct: selectedProduct,
-      setSelectedProduct: setSelectedProduct
+      styles: styles,
+      setProductList: setProductList,
+      setSelectedProduct: setSelectedProduct,
+      setStyles: setStyles
     }
   }, children);
 };
@@ -65842,7 +65939,7 @@ function injectIntoDevTools(devToolsConfig) {
     scheduleRoot:  scheduleRoot ,
     setRefreshHandler:  setRefreshHandler ,
     // Enables DevTools to append owner stacks to error messages in DEV mode.
-    getCurrentFiber:  getCurrentFiberForDevTools
+    getCurrentFiber:  getCurrentFiberForDevTools 
   });
 }
 
@@ -70775,7 +70872,7 @@ module.exports = function (list, options) {
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -70789,17 +70886,17 @@ module.exports = function (list, options) {
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -70812,7 +70909,7 @@ module.exports = function (list, options) {
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -70824,12 +70921,12 @@ module.exports = function (list, options) {
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -70840,7 +70937,7 @@ module.exports = function (list, options) {
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -70849,7 +70946,7 @@ module.exports = function (list, options) {
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.

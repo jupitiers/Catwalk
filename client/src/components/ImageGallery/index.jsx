@@ -1,38 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { APIContext } from '../../state/contexts/APIContext';
+import { ProductContext } from '../../state/contexts/ProductContext';
 import styles from './image.module.css';
 
 const ImageGallery = () => {
 
-  const [ images, setImages ] = useState([
-    {
-      src: 'https://i.imgur.com/CWbILwR.jpg',
-      active: true
-    },
-    {
-      src: 'https://i.imgur.com/zD7uTjm.jpg',
-      active: false
-    },
-    {
-      src: 'https://i.imgur.com/jXLpARE.jpg',
-      active: false
-    },
-    {
-      src: 'https://i.imgur.com/CWbILwR.jpg',
-      active: false
-    },
-    {
-      src: 'https://i.imgur.com/zD7uTjm.jpg',
-      active: false
-    },
-    {
-      src: 'https://i.imgur.com/jXLpARE.jpg',
-      active: false
-    }
-  ])
-
+  const { getProductStyles } = useContext(APIContext);
+  const { styles, setStyles } = useContext(ProductContext);
+  const [ images, setImages ] = useState([])
   const [ mainImg, setMainImg ] = useState(images[0]);
   const [ modal, setModal ] = useState(false)
   const modalWrapper = useRef()
+
+  useEffect(() => {
+    (async() => {
+    const getStyles = await getProductStyles(17067)
+    setStyles(getStyles.results)
+    const images = {};
+
+    })()
+  },[])
 
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
@@ -116,6 +103,8 @@ const ImageGallery = () => {
       enableScroll();
     }
   }
+
+  console.log({styles})
 
   return (
     <div className={styles.wrapper}>
