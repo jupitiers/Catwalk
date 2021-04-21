@@ -98,7 +98,7 @@ const QASection = () => {
       <div>
         {showModal
           ? <div className={styles.modal}>
-              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}>x</span>
+              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
               <QuestionModal productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null

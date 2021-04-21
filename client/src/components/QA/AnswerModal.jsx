@@ -82,10 +82,10 @@ const AnswerModal = (props) => {
       nicknameSubmit = false;
     }
 
-    if (email.indexOf('@') > 0 && email.indexOf('.com') > 0) {
+    if (email.indexOf('@') > 0) {
       setEmailAuth(true);
       emailSubmit = true;
-    } else if (email.indexOf('@') < 0 || email.indexOf('.com') < 0) {
+    } else if (email.indexOf('@') < 0) {
       setEmailAuth(false);
       emailSubmit = false;
     }

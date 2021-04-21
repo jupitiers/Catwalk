@@ -43,7 +43,7 @@ var QA = (props) => {
           <div>
             {showModal
             ? <div className={styles.modal}>
-                <span className={styles.modalclose} onClick={() => {closeAnswerModal()}}>x</span>
+                <span className={styles.modalclose} onClick={() => {closeAnswerModal()}}><i className="far fa-times-circle" /></span>
                 <AnswerModal questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/>
               </div>
             : null
