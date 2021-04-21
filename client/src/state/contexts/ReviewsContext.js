@@ -129,14 +129,19 @@ const ReviewProvider = ({ children }) => {
     setReviewsShowing(reviewsShowing + 2);
   };
 
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
+  };
+
   const filterByStars = (star) => {
     if (starSorting) {
       if (starFilter.includes(star)) {
-        let filteredStars = starFilter.filter((s) => s !== star);
-        if (filteredStars.length === 0) {
-          filteredStars = ['1', '2', '3', '4', '5'];
-        }
+        const filteredStars = starFilter.filter((s) => s !== star);
         setStarFilter(filteredStars);
+        if (filteredStars.length === 0) {
+          clearFilter();
+        }
       } else {
         setStarFilter([
           ...starFilter,
@@ -149,11 +154,6 @@ const ReviewProvider = ({ children }) => {
         star,
       ]);
     }
-  };
-
-  const clearFilter = () => {
-    setStarSorting(false);
-    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   // createReview logic
