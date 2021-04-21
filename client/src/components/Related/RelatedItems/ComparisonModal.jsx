@@ -1,15 +1,19 @@
 import React, {useEffect, useContext} from 'react';
 import styles from './comparisonModal.module.css';
 
-const ComparisonModal = () => {
+const ComparisonModal = props => {
   return (
-    <div>
-      <button className={styles.modalButton}><i className={"far fa-star"}></i></button>
-      {/* <span>Current Product</span>
-      <span>Compared Prodcut</span>
-      <span>Green</span>
-      <span>Color</span>
-      <span>Red</span> */}
+    <div className={styles.modal} onClick={e => {props.onClick(e)}} id="modalBackground">
+      <div className={styles.modalContent}>
+        <span className={styles.modalHeader}>
+          <h4>COMPARING</h4>
+          <span className={styles.productNames}>
+            <h5>Product 1</h5>
+            <h5>Product 2</h5>
+          </span>
+        </span>
+
+      </div>
     </div>
   )
 }
