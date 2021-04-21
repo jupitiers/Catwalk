@@ -13,7 +13,7 @@ const Reviews = () => {
   // get reviews on load
   // TODO change the api call to use dynamic id
   useEffect(() => {
-    getReviewsByProductId()
+    getReviewsByProductId();
   }, [sortTerm]);
 
   return (
