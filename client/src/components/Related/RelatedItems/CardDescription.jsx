@@ -2,6 +2,7 @@ import React, {useEffect, useContext} from 'react';
 import styles from './cardDescription.module.css';
 
 const CardDescription = props => {
+  // console.log(props.data)
   let id = props.relatedId;
   let data = props.data;
   let category = '', name = '', price, stars;

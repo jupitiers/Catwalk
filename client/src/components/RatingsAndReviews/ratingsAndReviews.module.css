@@ -24,7 +24,7 @@
   align-items: center;
 }
 
-.reviewButton {
+.reviewButton, .moreReviews {
   height: 60px;
   margin-right: 1em;
   color: #525252;

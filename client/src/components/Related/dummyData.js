@@ -15,6 +15,7 @@ const sampleProduct = [
 
 // for 17067
 const sampleRelatedId = [
+  17067,
   17068,
   17069,
   17074,
@@ -22,6 +23,27 @@ const sampleRelatedId = [
 ];
 
 const sampleRelatedInfo = [
+  {
+    "id": 17067,
+    "campus": "hr-rfp",
+    "name": "Camo Onesie",
+    "slogan": "Blend in to your crowd",
+    "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in t  even the wildest surroundings.",
+    "category": "Jackets",
+    "default_price": "140.00",
+    "created_at": "2021-02-23T04:22:44.728Z",
+    "updated_at": "2021-02-23T04:22:44.728Z",
+    "features": [
+      {
+          "feature": "Fabric",
+          "value": "Canvas"
+      },
+      {
+          "feature": "Buttons",
+          "value": "Brass"
+      }
+    ]
+  },
   {
     "id": 17068,
     "campus": "hr-rfp",

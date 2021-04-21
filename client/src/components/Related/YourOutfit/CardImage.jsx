@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './cardImage.module.css';
 
-const CardImage = () => {
+const CardImage = props => {
   return (
     <div className={styles.cardPictureArea}>
       <img></img>

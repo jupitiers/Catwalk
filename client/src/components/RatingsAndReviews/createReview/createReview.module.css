@@ -290,9 +290,34 @@
 
 .submit button {
   padding: .5em;
-  background-color: #5fD9BD;
+  background-color: white;
   font-family: 'Open Sans', sans-serif;
   border-radius: 5px;
   width: 125px;
   font-size: 1rem;
+  border: 1px solid #641373;
 }
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: #641373;
+    text-shadow:
+      .25em 0 0#641373,
+      .5em 0 0#641373;}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0#641373,
+      .5em 0 0 #641373;}
+  60% {
+    text-shadow:
+      .25em 0 0 #641373,
+      .5em 0 0 #641373;}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}

@@ -10,14 +10,14 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData,
+    reviews, setReviews, setFeedbackAlreadyGiven, sortTerm, setMetaData, newReview,
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
-  const pId = '17069';
+  const pId = '17067';
   // sample endpoints
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
 
@@ -53,7 +53,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=17069`, {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setQuestions(allQuestions.data.results);
@@ -117,6 +117,33 @@ const APIProvider = ({ children }) => {
     }
   };
 
+  const addQuestion = async (questionData) => {
+    console.log(questionData);
+    try {
+      const data = await axios.post(`${baseURL}/qa/questions`, questionData, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      console.log(data);
+      getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addAnswer = async (questionId, answerData) => {
+    console.log(questionId);
+    console.log(answerData);
+    try {
+      const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      console.log(data);
+      getQuestionsByProductId();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   /** ****************************************************************************
   *                      API calls for reviews
   ***************************************************************************** */
@@ -169,6 +196,18 @@ const APIProvider = ({ children }) => {
     }
   };
 
+  const createNewReview = async () => {
+    console.log(newReview);
+    try {
+      const data = await axios.post(`${baseURL}/reviews`, newReview, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <APIContext.Provider
       value={{
@@ -182,11 +221,14 @@ const APIProvider = ({ children }) => {
         markAnswerAsHelpful,
         reportQuestion,
         reportAnswer,
+        addQuestion,
+        addAnswer,
         // Reviews
         getReviewsByProductId,
         markReviewAsHelpful,
         reportReview,
         getReviewMetaDataByProductId,
+        createNewReview,
       }}
     >
       {children}

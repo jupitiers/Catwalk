@@ -6,7 +6,8 @@ const ReviewImages = ({ images }) => {
   const {
     display, selectedImage, openOverlay, closeOverlay,
   } = useContext(ReviewContext);
-
+  const showHideClassName = display ? styles.show : styles.hide;
+  console.log(showHideClassName);
   return (
     <>
       <p>
@@ -14,8 +15,8 @@ const ReviewImages = ({ images }) => {
       </p>
       <div
         onClick={closeOverlay}
-        style={{ display }}
-        className={styles.imageOverlay}
+        style={display ? { display: 'block' } : { display: 'none' }}
+        className={showHideClassName}
       >
         <div
           className={styles.image}

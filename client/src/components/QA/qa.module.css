@@ -6,8 +6,6 @@
   font-size: 100%;
   border: 3px solid #5FD9BD;
   word-wrap: normal;
-  height: 900px;
-  overflow-y: scroll;
 }
 
 .title{
@@ -31,16 +29,19 @@
   width: 90%;
   padding: 2%;
   margin: 0 auto;
+  height: 900px;
+  overflow-y: scroll;
 }
 
-.feedbutton{
+.feedbutton, .addphoto {
   margin: 5px;
   background-color: #5FD9BD;
+  border: 1px solid #15332C;
   border-width: 1px;
   font-size: clamp(2px, 1vw, 15px);
 }
 
-.button{
+.button, .questionsubmit{
   width: 20%;
   height: 50px;
   font-size: clamp(2px, 1vw, 20px);
@@ -51,8 +52,101 @@
   padding: 5px;
 }
 
-.button:active, .feedbutton:active{
+.button:active, .button:hover,
+.feedbutton:active, .feedbutton:hover,
+.questionsubmit:active, .questionsubmit:hover,
+.addphoto:active, .addphoto:hover,
+.uploadphoto:active, .uploadphoto:hover {
   transform: scale(0.95);
+  cursor: pointer;
+}
+
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modalcontent {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modalclose {
+  color:#641373;
+  float: right;
+  margin-right: 10%;
+  margin-top: 15%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modalclose:hover, .modalclose:focus {
+  color: #5FD9BD;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modaldiv {
+  margin: 15px;
+}
+
+.modalquestion {
+  width: 80%;
+  height: 80px;
+  overflow-wrap: break-word;
+  margin-top: 5px;
+}
+
+.modaluser, .modalphotos {
+  width: 40%;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.modaltitlecheck {
+  color: red;
+}
+
+.modalquestioncheck {
+  border: 2px solid red;
+  width: 80%;
+  height: 80px;
+  overflow-wrap: break-word;
+  margin-top: 5px;
+}
+
+.modalusercheck {
+  border: 2px solid red;
+  width: 40%;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.questionsubmit {
+  margin-left: 15px;
+}
+
+.submiterror {
+  color: red;
+}
+
+
+
+.feedentry {
+  margin-top: 25px;
 }
 
 .answerentry {
@@ -60,11 +154,16 @@
 }
 
 .answer {
-  padding-bottom: 1%;
   display: inline-block
 }
 
+.answer:before{
+  content: ' ';
+  white-space: pre;
+}
+
 .answerlogistics {
+  margin-left: 5px;
   width: 100%;
   display: inline-block;
 }
@@ -77,14 +176,14 @@
 
 .questionactionsection {
   float: right;
-  margin-top: 0.5em;
 }
 
 .answeractiondiv, .questionactiondiv {
   font-size: 80%;
   display: inline-block;
   align-items: right;
-  margin: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 
@@ -95,16 +194,29 @@
 
 .answeraction:hover, .questionaction:hover {
   color: #5FD9BD;
+  cursor: pointer;
 }
 
 .answeraction:active, .questionaction:active {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .answeractionclicked, .questionactionclicked {
   text-decoration: underline;
   font-weight: bold;
   color:#641373;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.uploadphoto {
+  background-color: #5FD9BD;
+  border: 1px solid #15332C;
+  cursor: pointer;
+  font-size: clamp(2px, 1vw, 15px);
 }
 
 .answerimage {
@@ -120,14 +232,17 @@
 
 .qatitle {
   float: left;
+  margin-bottom: -1.33em;
+  margin-top: -1em;
 }
 
 .qacontent {
   float: left;
   margin-left: 0.5%;
+  margin-top: -0.95em;
 }
 
 .answerentry {
-  margin-top: 1.33em;
+  margin-top: 0.33em;
   margin-left: 2%;
 }
