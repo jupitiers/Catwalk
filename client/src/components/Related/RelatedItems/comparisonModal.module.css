@@ -15,15 +15,15 @@
 .modalContent {
   background-color: #fefefe;
   margin: 0;
-  padding: 20px;
+  padding: 0 2em;
   border: 1px solid #888;
-  width: 500px;
-  height: 400px;
+  width: 25em;
+  height: 20em;
   font-family: 'Raleway', sans-serif;
   /* font-family: 'Open Sans', sans-serif; */
   /* font-family: 'Dela Gothic One', sans-serif; */
   display: grid;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 5em 1fr;
 }
 
 .modalHeader {
@@ -31,7 +31,63 @@
   grid-template-rows: 1fr 1fr;
 }
 
+.modalTitle {
+  margin-top: 2em;
+  margin-bottom: 0;
+  padding: 0;
+  color: #641373;
+}
+
 .productNames {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.nameOne {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.nameTwo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-right: 2em;
+}
+
+.modalBody {
+  overflow: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.bodyRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-right: 1em;
+}
+
+.rowContentLeft {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.rowContentCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rowContentRight {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.bodyRow i {
+  color: #641373;
 }
