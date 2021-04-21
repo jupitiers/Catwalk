@@ -65,7 +65,7 @@ export const CreateReview = ({ children }) => {
   };
 
   return (
-    <div id="create-modal" className={showHideClassName}>
+    <div className={showHideClassName}>
       <section className={styles.formModalMain}>
         {children}
         <>
@@ -73,7 +73,7 @@ export const CreateReview = ({ children }) => {
             <i className="far fa-times-circle" />
           </span>
           <div className={styles.formContainer}>
-            <h2>Write your review</h2>
+            <h2 className={styles.formHeader}>Write your review</h2>
             <h3>
               about the
               {' '}

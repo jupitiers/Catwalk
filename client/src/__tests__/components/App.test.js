@@ -3,10 +3,14 @@ import { shallow, render } from '../../../../enzyme.setup';
 import App from '../../components/App';
 
 describe('App Component', () => {
-  it('Renders App Component', () => {
-    const wrapper = shallow(
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(
       <App />,
     );
+  });
+
+  it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
 });

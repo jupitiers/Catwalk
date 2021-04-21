@@ -1,7 +1,9 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { shallow, render, mount } from '../../../../../enzyme.setup';
 import RatingsAndReviews from '../../../components/RatingsAndReviews/RatingsAndReviews';
 import { RootProvider } from '../../../state/contexts/RootContext';
+import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 describe('RatingsAndReviews Component', () => {
   let wrapper;
@@ -13,15 +15,17 @@ describe('RatingsAndReviews Component', () => {
     );
   });
 
-  it('Renders RatingsAndReviews Component', () => {
+  it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it('has a first review button', () => {
-    const button = <button>Be the first to add a review</button>;
-    expect(wrapper.containsMatchingElement(button)).toBe(true);
+  it('has an add review button', () => {
+    const button = wrapper.find('.firstReviewButton');
+    expect(button.exists()).toBe(true);
   });
-  it('has text on first review button', () => {
-    const button = wrapper.find('#first-review-button');
-    expect(button.text()).toEqual('Be the first to add a review');
+  it('create review modal opens when add review button clicked', () => {
+    const button = wrapper.find('.firstReviewButton');
+    button.simulate('click');
+    const modal = wrapper.find('.show');
+    expect(modal.exists()).toBe(true);
   });
 });
