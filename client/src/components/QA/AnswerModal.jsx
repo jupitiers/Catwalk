@@ -105,6 +105,12 @@ const AnswerModal = (props) => {
       <h2>Submit Your Answer</h2>
       <h4>{props.productData.name}: {props.question}</h4>
       <div>
+        <div>
+          {submittable
+            ? null
+            : <p className={styles.submiterror}>You must enter the following: </p>
+          }
+        </div>
         <div className={styles.modaldiv}>
           {questionAuth
             ? <div>
@@ -167,12 +173,6 @@ const AnswerModal = (props) => {
               )}
             </div>
           </div>
-        </div>
-        <div>
-          {submittable
-            ? null
-            : <p className={styles.submiterror}>Please check your entries</p>
-          }
         </div>
         <div>
           <button className={styles.questionsubmit} onClick={() => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>

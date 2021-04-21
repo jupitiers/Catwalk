@@ -30,6 +30,7 @@ const QuestionModal = (props) => {
   }
 
   var checkAuth = function(question, nickname, email) {
+
     if (question.length > 0) {
       setQuestionAuth(true);
       questionSubmit = true;
@@ -69,6 +70,12 @@ const QuestionModal = (props) => {
       <h2>Ask Your Question</h2>
       <h4>About the {props.productName}</h4>
       <div>
+        <div>
+          {submittable
+            ? null
+            : <p className={styles.submiterror}>You must enter the following: </p>
+          }
+        </div>
         <div className={styles.modaldiv}>
           {questionAuth
             ? <div>
@@ -107,12 +114,6 @@ const QuestionModal = (props) => {
                 <input type='text' id='email' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
-          }
-        </div>
-        <div>
-          {submittable
-            ? null
-            : <p className={styles.submiterror}>Please check your entries</p>
           }
         </div>
         <div>

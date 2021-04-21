@@ -77,7 +77,7 @@ const QASection = () => {
   return(
     <div className={styles.section}>
       <div className={styles.title}>
-        <h2>Questions & Answers</h2>
+        <h2>QUESTIONS & ANSWERS</h2>
       </div>
       <form className={styles.searchdiv}>
         <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
