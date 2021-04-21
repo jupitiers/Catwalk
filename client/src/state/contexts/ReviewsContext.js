@@ -5,7 +5,7 @@ import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsH
 const defaultReviews = [
   {
     review_id: 0,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -17,7 +17,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -29,7 +29,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',

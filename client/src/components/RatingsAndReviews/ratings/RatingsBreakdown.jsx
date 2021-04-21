@@ -18,7 +18,7 @@ const RatingsBreakdown = () => {
               Displaying
               {' '}
               {starFilter.map((f, idx) => (
-                <b key={idx}>
+                <b className={styles.filter} key={idx}>
                   {f}
                   {' '}
                 </b>
