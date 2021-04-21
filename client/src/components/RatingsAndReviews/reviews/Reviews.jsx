@@ -7,7 +7,7 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 const Reviews = () => {
   const { getReviewsByProductId, getProductById } = useContext(APIContext);
   const {
-    reviews, reviewsShowing, setSortTerm, sortTerm, starFilter, getFilteredShowCount,
+    reviews, reviewsShowing, setSortTerm, sortTerm, starFilter, getShowCount,
   } = useContext(ReviewContext);
 
   // get reviews on load
@@ -22,8 +22,7 @@ const Reviews = () => {
         <p>
           Viewing
           {' '}
-          {getFilteredShowCount() || (reviewsShowing <= reviews.length
-            ? reviewsShowing : reviews.length)}
+          { getShowCount() }
           {' '}
           of
           {' '}

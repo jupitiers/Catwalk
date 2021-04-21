@@ -134,12 +134,13 @@ const ReviewProvider = ({ children }) => {
     setStarFilter(['1', '2', '3', '4', '5']);
   };
 
-  const getFilteredShowCount = () => {
-    const filtered = reviews.filter((r) => {
-      if (starFilter.includes(r.rating.toString())) {
-        return r;
-      }
-    });
+  const getShowCount = () => {
+    const filtered = reviews.slice(0, reviewsShowing)
+      .filter((review) => {
+        if (starFilter.includes(review.rating.toString())) {
+          return review;
+        }
+      });
     return filtered.length;
   };
 
@@ -338,7 +339,7 @@ const ReviewProvider = ({ children }) => {
         errors,
         changeRecommendation,
         validateForm,
-        getFilteredShowCount,
+        getShowCount,
       }}
     >
       {children}
