@@ -84,8 +84,8 @@ const QASection = () => {
       </form>
       <div className={styles.feed}>
         {noResults
-          ? <p>Sorry, no related questions could be found...</p>
-          : <QAList questionData={usedQuestions} productData={selectedProduct}/>
+          ? <p id='noResults'>Sorry, no related questions could be found...</p>
+          : <QAList id='QAlist' questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
       <div className='QA-button'>
@@ -95,7 +95,7 @@ const QASection = () => {
         }
         <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
       </div>
-      <div>
+      <div id='questionModalDiv'>
         {showModal
           ? <div className={styles.modal}>
               <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
