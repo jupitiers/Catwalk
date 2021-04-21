@@ -70,7 +70,6 @@ export const getRecommendPercent = (totals = {}) => {
 
 export const getStarPercents = (data) => {
   const totals = [];
-  console.log(data);
   const ratings = {
     1: data['1'] || 0,
     2: data['2'] || 0,
