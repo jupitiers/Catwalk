@@ -2,8 +2,8 @@ import React, {useEffect, useContext, useState} from 'react';
 import styles from './modalButton.module.css';
 import ComparisonModal from './ComparisonModal.jsx';
 
-const ModalButton = () => {
-  const [showModal, setShowModal] = useState(false); // note: change back to false
+const ModalButton = props => {
+  const [showModal, setShowModal] = useState(true); // note: change back to false
 
   let openModal = () => {
     setShowModal(!showModal);
@@ -18,7 +18,7 @@ const ModalButton = () => {
   return (
     <div>
       <button className={styles.modalButton} onClick={openModal}><i className={"far fa-star"}></i></button>
-      {showModal ? <ComparisonModal showModal={showModal} setShowModal={setShowModal} onClick={closeOpenModal}/> : null}
+      {showModal ? <ComparisonModal showModal={showModal} setShowModal={setShowModal} onClick={closeOpenModal} relatedId={props.relatedId} data={props.data} index={props.index} movement={props.movement}/> : null}
     </div>
   )
 }
