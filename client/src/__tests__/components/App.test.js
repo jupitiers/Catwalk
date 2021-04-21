@@ -3,7 +3,7 @@ import { shallow, render } from '../../../../enzyme.setup';
 import App from '../../components/App';
 
 describe('App Component', () => {
-  test('Renders App Component', () => {
+  it('Renders App Component', () => {
     const wrapper = shallow(
       <App />,
     );

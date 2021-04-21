@@ -65,7 +65,7 @@ export const CreateReview = ({ children }) => {
   };
 
   return (
-    <div className={showHideClassName}>
+    <div id="create-modal" className={showHideClassName}>
       <section className={styles.formModalMain}>
         {children}
         <>

@@ -4,7 +4,7 @@ import { RootProvider } from '../../../state/contexts/RootContext';
 import Ratings from '../../../components/RatingsAndReviews/ratings/Ratings';
 
 describe('Ratings Component', () => {
-  test('Renders Ratings Component', () => {
+  it('Renders Ratings Component', () => {
     const wrapper = shallow(
       <RootProvider>
         <Ratings />

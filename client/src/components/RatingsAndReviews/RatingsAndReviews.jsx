@@ -28,6 +28,7 @@ const RatingsAndReviews = () => {
             <button onClick={showMoreReviews} className={styles.reviewButton}>More Reviews</button>
             )}
             <button
+              id="review-button"
               onClick={openCreate}
               className={styles.reviewButton}
             >
@@ -39,6 +40,7 @@ const RatingsAndReviews = () => {
         : (
           <>
             <button
+              id="first-review-button"
               onClick={openCreate}
               className={styles.firstReviewButton}
             >

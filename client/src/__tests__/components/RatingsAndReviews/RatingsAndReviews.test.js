@@ -4,12 +4,24 @@ import RatingsAndReviews from '../../../components/RatingsAndReviews/RatingsAndR
 import { RootProvider } from '../../../state/contexts/RootContext';
 
 describe('RatingsAndReviews Component', () => {
-  test('Renders RatingsAndReviews Component', () => {
-    const wrapper = shallow(
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(
       <RootProvider>
         <RatingsAndReviews />
       </RootProvider>,
     );
+  });
+
+  it('Renders RatingsAndReviews Component', () => {
     expect(wrapper.exists()).toBe(true);
+  });
+  it('has a first review button', () => {
+    const button = <button>Be the first to add a review</button>;
+    expect(wrapper.containsMatchingElement(button)).toBe(true);
+  });
+  it('has text on first review button', () => {
+    const button = wrapper.find('#first-review-button');
+    expect(button.text()).toEqual('Be the first to add a review');
   });
 });
