@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.88% </span>
+                <span class="strong">64.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/17</span>
+                <span class='fraction'>11/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">52.38% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>11/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">42.86% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.88% </span>
+                <span class="strong">64.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/17</span>
+                <span class='fraction'>11/17</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -189,24 +189,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -307,25 +307,25 @@ import { createStarArray } from '../../../helpers/ratingsHelpers';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import ReviewImages from './ReviewImages';
 &nbsp;
-const ReviewCard = <span class="fstat-no" title="function not covered" >({</span> review }) =&gt; {
-  const { getAllProducts, markReviewAsHelpful, reportReview } = <span class="cstat-no" title="statement not covered" >useContext(APIContext);</span>
-  const { feedbackAlreadyGiven } = <span class="cstat-no" title="statement not covered" >useContext(ReviewContext);</span>
-  const [showMoreBody, setShowMoreBody] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+const ReviewCard = ({ review }) =&gt; {
+  const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
+  const { feedbackAlreadyGiven } = useContext(ReviewContext);
+  const [showMoreBody, setShowMoreBody] = useState(false);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    getAllProducts();</span>
+  useEffect(() =&gt; {
+    getAllProducts();
   }, []);
 &nbsp;
   // helper functions for review formatting
-  const truncatedSummary = <span class="cstat-no" title="statement not covered" >truncateSummary(review);</span>
-  const stars = <span class="cstat-no" title="statement not covered" >createStarArray(review.rating);</span>
-  const [truncatedBody, restOfBody] = <span class="cstat-no" title="statement not covered" >truncateBody(review);</span>
+  const truncatedSummary = truncateSummary(review || <span class="branch-1 cbranch-no" title="branch not covered" >{})</span>;
+  const stars = createStarArray(review.rating);
+  const [truncatedBody, restOfBody] = truncateBody(review);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.reviewCardContainer}&gt;
       &lt;div className={styles.cardHeader}&gt;
         &lt;div&gt;
-          {stars.map(<span class="fstat-no" title="function not covered" >(s</span>tar, idx) =&gt; <span class="cstat-no" title="statement not covered" >&lt;span key={idx}&gt;{star}&lt;/span&gt;)</span>}
+          {stars.map((star, idx) =&gt; &lt;span key={idx}&gt;{star}&lt;/span&gt;)}
         &lt;/div&gt;
         &lt;div className={styles.reviewUserDate}&gt;
           &lt;p&gt;
@@ -352,10 +352,10 @@ const ReviewCard = <span class="fstat-no" title="function not covered" >({</span
           &lt;/&gt;
         )}
         {showMoreBody &amp;&amp; (
-          restOfBody
+<span class="branch-1 cbranch-no" title="branch not covered" >          restOfBody</span>
         )}
         {(showMoreBody) &amp;&amp; (
-        &lt;button
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;button</span>
           className={styles.expandBodyButton}
           onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setShowMoreBody(!showMoreBody)}</span>
         &gt;
@@ -365,10 +365,10 @@ const ReviewCard = <span class="fstat-no" title="function not covered" >({</span
       &lt;/p&gt;
 &nbsp;
       {review.photos.length &gt; 0 &amp;&amp; (
-        &lt;ReviewImages images={review.photos} /&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;ReviewImages images={review.photos} /&gt;</span>
       )}
       {review.recommend &amp;&amp; (
-        &lt;div className={styles.recommended}&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;div className={styles.recommended}&gt;</span>
           &lt;i className="fas fa-check-double" /&gt;
           &lt;p&gt;I recommend this Product&lt;/p&gt;
         &lt;/div&gt;
@@ -394,7 +394,7 @@ const ReviewCard = <span class="fstat-no" title="function not covered" >({</span
         &lt;/p&gt;
         &lt;p className={styles.yesCount}&gt;
           (
-          {review.helpfulness || 0}
+          {review.helpfulness || <span class="branch-1 cbranch-no" title="branch not covered" >0}</span>
           )
         &lt;/p&gt;
         &lt;p&gt;|&lt;/p&gt;
@@ -421,7 +421,7 @@ export default ReviewCard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Apr 20 2021 23:37:44 GMT-0400 (Eastern Daylight Time)
+                at Wed Apr 21 2021 10:17:01 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../../../../prettify.js"></script>
