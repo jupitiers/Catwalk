@@ -38,13 +38,13 @@ var QA = (props) => {
             }
           </div>| */}
           <div className={styles.questionactiondiv}>
-            <p className={styles.questionaction} onClick={() => {setShowModal(true)}}>Add Answer</p>
+            <p className={styles.questionaction} id='addAnswer' onClick={() => {setShowModal(true)}}>Add Answer</p>
           </div>
           <div>
             {showModal
             ? <div className={styles.modal}>
                 <span className={styles.modalclose} onClick={() => {closeAnswerModal()}}><i className="far fa-times-circle" /></span>
-                <AnswerModal questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/>
+                <AnswerModal id='answerModal' questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/>
               </div>
             : null
             }
@@ -56,7 +56,7 @@ var QA = (props) => {
           <h4>A: </h4>
         </div>
         <div className={styles.qacontent}></div>
-           <AnswerList answers={props.answers} questionId={props.id}/>
+           <AnswerList className='answerList' answers={props.answers} questionId={props.id}/>
       </div>
     </div>
   )

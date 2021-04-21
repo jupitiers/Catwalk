@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">63.64% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>7/10</span>
             </div>
         
             
@@ -128,29 +128,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,6 +151,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -229,13 +229,13 @@ var QA = (props) =&gt; {
             }
           &lt;/div&gt;| */}
           &lt;div className={styles.questionactiondiv}&gt;
-            &lt;p className={styles.questionaction} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >setShowModal(true)}</span>}&gt;Add Answer&lt;/p&gt;
+            &lt;p className={styles.questionaction} id='addAnswer' onClick={() =&gt; {setShowModal(true)}}&gt;Add Answer&lt;/p&gt;
           &lt;/div&gt;
           &lt;div&gt;
             {showModal
-            ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;div className={styles.modal}&gt;</span>
-                &lt;span className={styles.modalclose} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >closeAnswerModal()}</span>}&gt;&lt;i className="far fa-times-circle" /&gt;&lt;/span&gt;
-                &lt;AnswerModal questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/&gt;
+            ? &lt;div className={styles.modal}&gt;
+                &lt;span id='closeAnswerModal' className={styles.modalclose} onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >closeAnswerModal()}</span>}&gt;&lt;i className="far fa-times-circle" /&gt;&lt;/span&gt;
+                &lt;AnswerModal id='answerModal' questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/&gt;
               &lt;/div&gt;
             : null
             }
@@ -247,7 +247,7 @@ var QA = (props) =&gt; {
           &lt;h4&gt;A: &lt;/h4&gt;
         &lt;/div&gt;
         &lt;div className={styles.qacontent}&gt;&lt;/div&gt;
-           &lt;AnswerList answers={props.answers} questionId={props.id}/&gt;
+           &lt;AnswerList className='answerList' answers={props.answers} questionId={props.id}/&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   )
@@ -262,7 +262,7 @@ export default QA;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Apr 21 2021 13:36:25 GMT-0500 (Central Daylight Time)
+                at Wed Apr 21 2021 13:58:53 GMT-0500 (Central Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>
