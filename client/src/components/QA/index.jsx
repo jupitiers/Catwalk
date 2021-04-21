@@ -30,6 +30,10 @@ const QASection = () => {
   var questionList = questions.slice();
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
 
+  var closeQuestionModal = function() {
+    setShowModal(false);
+  }
+
   var searchFunc = function(query) {
     if (query.length > 2) {
       var searchedQuestions = [];
@@ -94,8 +98,8 @@ const QASection = () => {
       <div>
         {showModal
           ? <div className={styles.modal}>
-              <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-              <QuestionModal productName={selectedProduct.name}/>
+              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}>x</span>
+              <QuestionModal productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null
         }

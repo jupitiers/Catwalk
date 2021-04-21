@@ -22,6 +22,7 @@ const QuestionModal = (props) => {
       setSubmittable(true);
       console.log('submittable');
       addQuestion(data);
+      props.closeModal();
     } else {
       setSubmittable(false);
       console.log('not');

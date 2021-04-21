@@ -8,6 +8,9 @@ var QA = (props) => {
   const[reported, setReported] = useState(false);
   const[showModal, setShowModal] = useState(false);
 
+  var closeAnswerModal = function() {
+    setShowModal(false);
+  }
 
   return (
     <div className={styles.feedentry}>
@@ -40,8 +43,8 @@ var QA = (props) => {
           <div>
             {showModal
             ? <div className={styles.modal}>
-                <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-                <AnswerModal questionId={props.id} question={props.question} productData={props.productData}/>
+                <span className={styles.modalclose} onClick={() => {closeAnswerModal()}}>x</span>
+                <AnswerModal questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/>
               </div>
             : null
             }

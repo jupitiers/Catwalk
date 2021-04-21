@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619020085078" clover="3.2.0">
-  <project timestamp="1619020085078" name="All files">
-    <metrics statements="681" coveredstatements="247" conditionals="264" coveredconditionals="55" methods="156" coveredmethods="41" elements="1101" coveredelements="343" complexity="0" loc="681" ncloc="681" packages="17" files="46" classes="46"/>
+<coverage generated="1619022233848" clover="3.2.0">
+  <project timestamp="1619022233848" name="All files">
+    <metrics statements="681" coveredstatements="248" conditionals="264" coveredconditionals="55" methods="156" coveredmethods="42" elements="1101" coveredelements="345" complexity="0" loc="681" ncloc="681" packages="17" files="46" classes="46"/>
     <package name="Catwalk">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="enzyme.setup.js" path="/home/jessb/hackreactor/FEC/Catwalk/enzyme.setup.js">
+      <file name="enzyme.setup.js" path="/home/daniel/HackReactor/Catwalk/enzyme.setup.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="7" count="10" type="stmt"/>
       </file>
     </package>
     <package name="Catwalk.client.src.components">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <file name="App.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/App.jsx">
+      <file name="App.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/App.jsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="13" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
@@ -21,7 +21,7 @@
     </package>
     <package name="Catwalk.client.src.components.Header">
       <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Header/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Header/index.jsx">
         <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -34,7 +34,7 @@
     </package>
     <package name="Catwalk.client.src.components.ImageGallery">
       <metrics statements="5" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/ImageGallery/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/ImageGallery/index.jsx">
         <metrics statements="5" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -45,7 +45,7 @@
     </package>
     <package name="Catwalk.client.src.components.OverView">
       <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/OverView/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/OverView/index.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -53,7 +53,7 @@
     </package>
     <package name="Catwalk.client.src.components.ProductForm">
       <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/ProductForm/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/ProductForm/index.jsx">
         <metrics statements="7" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -66,7 +66,7 @@
     </package>
     <package name="Catwalk.client.src.components.QA">
       <metrics statements="194" coveredstatements="8" conditionals="114" coveredconditionals="0" methods="40" coveredmethods="0"/>
-      <file name="Answer.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/Answer.jsx">
+      <file name="Answer.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/Answer.jsx">
         <metrics statements="7" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -76,7 +76,7 @@
         <line num="41" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
       </file>
-      <file name="AnswerList.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/AnswerList.jsx">
+      <file name="AnswerList.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/AnswerList.jsx">
         <metrics statements="25" coveredstatements="1" conditionals="10" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -104,7 +104,7 @@
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
       </file>
-      <file name="AnswerModal.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/AnswerModal.jsx">
+      <file name="AnswerModal.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/AnswerModal.jsx">
         <metrics statements="62" coveredstatements="1" conditionals="45" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -169,7 +169,7 @@
         <line num="165" count="0" type="stmt"/>
         <line num="177" count="0" type="stmt"/>
       </file>
-      <file name="QAEntry.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/QAEntry.jsx">
+      <file name="QAEntry.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/QAEntry.jsx">
         <metrics statements="8" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -180,7 +180,7 @@
         <line num="38" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
       </file>
-      <file name="QAList.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/QAList.jsx">
+      <file name="QAList.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/QAList.jsx">
         <metrics statements="10" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -193,7 +193,7 @@
         <line num="23" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
       </file>
-      <file name="QuestionModal.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/QuestionModal.jsx">
+      <file name="QuestionModal.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/QuestionModal.jsx">
         <metrics statements="39" coveredstatements="1" conditionals="29" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
@@ -235,7 +235,7 @@
         <line num="66" count="0" type="stmt"/>
         <line num="118" count="0" type="stmt"/>
       </file>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/index.jsx">
         <metrics statements="42" coveredstatements="1" conditionals="18" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -280,14 +280,14 @@
         <line num="92" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
       </file>
-      <file name="qaSampleData.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/QA/qaSampleData.js">
+      <file name="qaSampleData.js" path="/home/daniel/HackReactor/Catwalk/client/src/components/QA/qaSampleData.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="Catwalk.client.src.components.RatingsAndReviews">
       <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="4" methods="2" coveredmethods="2"/>
-      <file name="RatingsAndReviews.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/RatingsAndReviews.jsx">
+      <file name="RatingsAndReviews.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/RatingsAndReviews.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="9" count="2" type="stmt"/>
         <line num="12" count="9" type="stmt"/>
@@ -299,7 +299,7 @@
     </package>
     <package name="Catwalk.client.src.components.RatingsAndReviews.createReview">
       <metrics statements="31" coveredstatements="15" conditionals="30" coveredconditionals="15" methods="10" coveredmethods="4"/>
-      <file name="CreateReview.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/createReview/CreateReview.jsx">
+      <file name="CreateReview.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/createReview/CreateReview.jsx">
         <metrics statements="31" coveredstatements="15" conditionals="30" coveredconditionals="15" methods="10" coveredmethods="4"/>
         <line num="8" count="3" type="stmt"/>
         <line num="16" count="9" type="stmt"/>
@@ -336,7 +336,7 @@
     </package>
     <package name="Catwalk.client.src.components.RatingsAndReviews.ratings">
       <metrics statements="24" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="10" coveredmethods="6"/>
-      <file name="RatingSummary.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx">
+      <file name="RatingSummary.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingSummary.jsx">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="11" type="stmt"/>
@@ -346,7 +346,7 @@
         <line num="12" count="11" type="stmt"/>
         <line num="17" count="55" type="stmt"/>
       </file>
-      <file name="Ratings.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/ratings/Ratings.jsx">
+      <file name="Ratings.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/ratings/Ratings.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="10" count="3" type="stmt"/>
         <line num="11" count="11" type="stmt"/>
@@ -354,7 +354,7 @@
         <line num="14" count="6" type="stmt"/>
         <line num="17" count="11" type="stmt"/>
       </file>
-      <file name="RatingsBreakdown.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingsBreakdown.jsx">
+      <file name="RatingsBreakdown.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingsBreakdown.jsx">
         <metrics statements="7" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="1"/>
         <line num="6" count="4" type="stmt"/>
         <line num="9" count="11" type="stmt"/>
@@ -364,7 +364,7 @@
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
       </file>
-      <file name="RatingsFactors.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingsFactors.jsx">
+      <file name="RatingsFactors.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/ratings/RatingsFactors.jsx">
         <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="11" type="stmt"/>
@@ -374,8 +374,8 @@
       </file>
     </package>
     <package name="Catwalk.client.src.components.RatingsAndReviews.reviews">
-      <metrics statements="34" coveredstatements="25" conditionals="31" coveredconditionals="19" methods="15" coveredmethods="9"/>
-      <file name="ReviewCard.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/reviews/ReviewCard.jsx">
+      <metrics statements="34" coveredstatements="26" conditionals="31" coveredconditionals="19" methods="15" coveredmethods="10"/>
+      <file name="ReviewCard.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/reviews/ReviewCard.jsx">
         <metrics statements="17" coveredstatements="11" conditionals="21" coveredconditionals="11" methods="7" coveredmethods="3"/>
         <line num="13" count="4" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
@@ -395,7 +395,7 @@
         <line num="106" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="107" count="0" type="stmt"/>
       </file>
-      <file name="ReviewImages.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/reviews/ReviewImages.jsx">
+      <file name="ReviewImages.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/reviews/ReviewImages.jsx">
         <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
         <line num="5" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
@@ -405,15 +405,15 @@
         <line num="28" count="5" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
       </file>
-      <file name="Reviews.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/RatingsAndReviews/reviews/Reviews.jsx">
-        <metrics statements="10" coveredstatements="7" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="3"/>
+      <file name="Reviews.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/RatingsAndReviews/reviews/Reviews.jsx">
+        <metrics statements="10" coveredstatements="8" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="4"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="13" type="stmt"/>
         <line num="11" count="13" type="stmt"/>
         <line num="15" count="13" type="stmt"/>
         <line num="16" count="8" type="stmt"/>
         <line num="19" count="13" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
         <line num="44" count="26" type="cond" truecount="1" falsecount="1"/>
         <line num="45" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
@@ -421,14 +421,14 @@
     </package>
     <package name="Catwalk.client.src.components.Related">
       <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="dummyData.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/dummyData.js">
+      <file name="dummyData.js" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/dummyData.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="145" count="1" type="stmt"/>
       </file>
-      <file name="index.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/index.jsx">
+      <file name="index.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/index.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -436,7 +436,7 @@
     </package>
     <package name="Catwalk.client.src.components.Related.RelatedItems">
       <metrics statements="35" coveredstatements="6" conditionals="12" coveredconditionals="0" methods="12" coveredmethods="0"/>
-      <file name="CardDescription.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/CardDescription.jsx">
+      <file name="CardDescription.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/CardDescription.jsx">
         <metrics statements="10" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -449,18 +449,18 @@
         <line num="14" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
       </file>
-      <file name="CardPicture.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/CardPicture.jsx">
+      <file name="CardPicture.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/CardPicture.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
       </file>
-      <file name="ComparisonModal.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/ComparisonModal.jsx">
+      <file name="ComparisonModal.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/ComparisonModal.jsx">
         <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
       </file>
-      <file name="ModalButton.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/ModalButton.jsx">
+      <file name="ModalButton.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/ModalButton.jsx">
         <metrics statements="8" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -471,12 +471,12 @@
         <line num="14" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
       </file>
-      <file name="RelatedItemCard.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/RelatedItemCard.jsx">
+      <file name="RelatedItemCard.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/RelatedItemCard.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
       </file>
-      <file name="RelatedItemsCarousel.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/RelatedItems/RelatedItemsCarousel.jsx">
+      <file name="RelatedItemsCarousel.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/RelatedItems/RelatedItemsCarousel.jsx">
         <metrics statements="10" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -492,12 +492,12 @@
     </package>
     <package name="Catwalk.client.src.components.Related.YourOutfit">
       <metrics statements="26" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="8" coveredmethods="0"/>
-      <file name="AddCard.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/YourOutfit/AddCard.jsx">
+      <file name="AddCard.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/YourOutfit/AddCard.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
       </file>
-      <file name="CardDescription.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/YourOutfit/CardDescription.jsx">
+      <file name="CardDescription.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/YourOutfit/CardDescription.jsx">
         <metrics statements="10" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -510,17 +510,17 @@
         <line num="13" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
       </file>
-      <file name="CardImage.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/YourOutfit/CardImage.jsx">
+      <file name="CardImage.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/YourOutfit/CardImage.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
       </file>
-      <file name="OutfitCard.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/YourOutfit/OutfitCard.jsx">
+      <file name="OutfitCard.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/YourOutfit/OutfitCard.jsx">
         <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
       </file>
-      <file name="YourOutfitCarousel.jsx" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/components/Related/YourOutfit/YourOutfitCarousel.jsx">
+      <file name="YourOutfitCarousel.jsx" path="/home/daniel/HackReactor/Catwalk/client/src/components/Related/YourOutfit/YourOutfitCarousel.jsx">
         <metrics statements="10" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
@@ -536,7 +536,7 @@
     </package>
     <package name="Catwalk.client.src.config">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="config.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/config/config.js">
+      <file name="config.js" path="/home/daniel/HackReactor/Catwalk/client/src/config/config.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="10" type="stmt"/>
         <line num="2" count="10" type="stmt"/>
@@ -544,7 +544,7 @@
     </package>
     <package name="Catwalk.client.src.helpers">
       <metrics statements="88" coveredstatements="57" conditionals="34" coveredconditionals="16" methods="10" coveredmethods="7"/>
-      <file name="ratingsHelpers.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/helpers/ratingsHelpers.js">
+      <file name="ratingsHelpers.js" path="/home/daniel/HackReactor/Catwalk/client/src/helpers/ratingsHelpers.js">
         <metrics statements="72" coveredstatements="43" conditionals="30" coveredconditionals="14" methods="8" coveredmethods="5"/>
         <line num="5" count="10" type="stmt"/>
         <line num="7" count="37" type="stmt"/>
@@ -619,7 +619,7 @@
         <line num="153" count="0" type="stmt"/>
         <line num="160" count="29" type="stmt"/>
       </file>
-      <file name="reviewCardHelpers.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/helpers/reviewCardHelpers.js">
+      <file name="reviewCardHelpers.js" path="/home/daniel/HackReactor/Catwalk/client/src/helpers/reviewCardHelpers.js">
         <metrics statements="11" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="5" count="4" type="stmt"/>
         <line num="7" count="3" type="cond" truecount="1" falsecount="1"/>
@@ -633,7 +633,7 @@
         <line num="22" count="0" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
       </file>
-      <file name="starRatings.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/helpers/starRatings.js">
+      <file name="starRatings.js" path="/home/daniel/HackReactor/Catwalk/client/src/helpers/starRatings.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="10" type="stmt"/>
         <line num="10" count="10" type="stmt"/>
@@ -644,7 +644,7 @@
     </package>
     <package name="Catwalk.client.src.state.contexts">
       <metrics statements="209" coveredstatements="89" conditionals="26" coveredconditionals="0" methods="37" coveredmethods="12"/>
-      <file name="APIContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/APIContext.js">
+      <file name="APIContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/APIContext.js">
         <metrics statements="91" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="5"/>
         <line num="9" count="10" type="stmt"/>
         <line num="11" count="10" type="stmt"/>
@@ -738,7 +738,7 @@
         <line num="207" count="0" type="stmt"/>
         <line num="211" count="23" type="stmt"/>
       </file>
-      <file name="AnswersContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/AnswersContext.js">
+      <file name="AnswersContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/AnswersContext.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="10" type="stmt"/>
         <line num="5" count="10" type="stmt"/>
@@ -746,7 +746,7 @@
         <line num="7" count="17" type="stmt"/>
         <line num="9" count="17" type="stmt"/>
       </file>
-      <file name="ProductContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/ProductContext.js">
+      <file name="ProductContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/ProductContext.js">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="3" count="10" type="stmt"/>
         <line num="5" count="10" type="stmt"/>
@@ -757,7 +757,7 @@
         <line num="14" count="0" type="stmt"/>
         <line num="17" count="17" type="stmt"/>
       </file>
-      <file name="QuestionsContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/QuestionsContext.js">
+      <file name="QuestionsContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/QuestionsContext.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="10" type="stmt"/>
         <line num="5" count="10" type="stmt"/>
@@ -765,7 +765,7 @@
         <line num="7" count="17" type="stmt"/>
         <line num="9" count="17" type="stmt"/>
       </file>
-      <file name="ReviewsContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/ReviewsContext.js">
+      <file name="ReviewsContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/ReviewsContext.js">
         <metrics statements="98" coveredstatements="38" conditionals="26" coveredconditionals="0" methods="16" coveredmethods="3"/>
         <line num="5" count="10" type="stmt"/>
         <line num="44" count="10" type="stmt"/>
@@ -866,7 +866,7 @@
         <line num="255" count="0" type="stmt"/>
         <line num="258" count="23" type="stmt"/>
       </file>
-      <file name="RootContext.js" path="/home/jessb/hackreactor/FEC/Catwalk/client/src/state/contexts/RootContext.js">
+      <file name="RootContext.js" path="/home/daniel/HackReactor/Catwalk/client/src/state/contexts/RootContext.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="8" count="9" type="stmt"/>
         <line num="9" count="21" type="stmt"/>
