@@ -6,7 +6,7 @@ import { ProductContext } from '../state/contexts/ProductContext';
 // import components
 import Header from './Header/index';
 import OverView from './OverView/index';
-import QASection from './QA/index';
+import QASection from './QA/QAindex';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 import RelatedItemsAndOutfit from './Related/index';
 
