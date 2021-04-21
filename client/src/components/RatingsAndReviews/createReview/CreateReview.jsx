@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
-import { fullStar, emptyStar } from '../starRatings';
 import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
 import { ProductContext } from '../../../state/contexts/ProductContext';
 import { APIContext } from '../../../state/contexts/APIContext';

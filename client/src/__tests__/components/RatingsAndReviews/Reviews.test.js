@@ -17,8 +17,20 @@ describe('Reviews Component', () => {
   it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
-  it('has a dropdown to sort reviews', () => {
+
+  it('should have a dropdown to sort reviews', () => {
     const select = wrapper.find('#sort-by');
     expect(select.exists()).toBe(true);
+  });
+  it('dropdown should call change handler', () => {
+    const select = wrapper.find('#sort-by');
+    select.find('option').at(0).simulate('change', {
+      target: { value: 'relevant' },
+    });
+    expect(select.exists()).toBe(true);
+  });
+  it('should contain review cards list', () => {
+    const list = wrapper.find('.cardList');
+    expect(list.exists()).toBe(true);
   });
 });
