@@ -8,11 +8,12 @@
 
 .ratingsAndReviewsContainer {
   font-family: 'Raleway', sans-serif;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: (auto-fit,minmax(250px, 400px) minmax(600px, 700px));
   grid-template-rows: 1fr 100px;
-  grid-gap: 15px;
+  grid-gap: 15px 10%;
 }
 
 .reviewActions {
