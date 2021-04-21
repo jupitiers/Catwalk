@@ -30,6 +30,10 @@ const QASection = () => {
   var questionList = questions.slice();
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
 
+  var closeQuestionModal = function() {
+    setShowModal(false);
+  }
+
   var searchFunc = function(query) {
     if (query.length > 2) {
       var searchedQuestions = [];
@@ -73,29 +77,29 @@ const QASection = () => {
   return(
     <div className={styles.section}>
       <div className={styles.title}>
-        <h2>Questions & Answers</h2>
+        <h2>QUESTIONS & ANSWERS</h2>
       </div>
       <form className={styles.searchdiv}>
         <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
       </form>
       <div className={styles.feed}>
         {noResults
-          ? <p>Sorry, no related questions could be found...</p>
-          : <QAList questionData={usedQuestions} productData={selectedProduct}/>
+          ? <p id='noResults'>Sorry, no related questions could be found...</p>
+          : <QAList id='QAlist' questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
       <div className='QA-button'>
         {clicked
-          ? <button className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-          : <button className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+          ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+          : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
         }
-        <button className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+        <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
       </div>
-      <div>
+      <div id='questionModalDiv'>
         {showModal
           ? <div className={styles.modal}>
-              <span className={styles.modalclose} onClick={() => {setShowModal(false)}}>x</span>
-              <QuestionModal productName={selectedProduct.name}/>
+              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
+              <QuestionModal id='questionModal' productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null
         }

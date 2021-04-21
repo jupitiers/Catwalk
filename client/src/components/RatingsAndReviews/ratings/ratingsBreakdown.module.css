@@ -1,5 +1,6 @@
 .breakdownContainer {
   display: grid;
+  grid-template-columns: 100%;
   grid-template-rows: 25px repeat(5, 25px);
   grid-row-gap: 10%;
 }
@@ -69,4 +70,23 @@
 .bar {
   height: 10px;
   background-color: #641373;
+}
+
+@media (max-width: 830px) {
+  .breakdownContainer {
+    width: 100%;
+    margin: 1em  auto 0;
+  }
+
+  .breakdownItem {
+    width: 90%;
+    margin: auto;
+    justify-content: space-around;
+  }
+  .filterInfo {
+    width: 90%;
+    justify-content: space-around;
+
+  }
+
 }
