@@ -67,7 +67,7 @@ const APIProvider = ({ children }) => {
       const product = await axios.get(`${baseURL}/products/${id}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      setRelatedProductInfo(product.data);
+      return product.data;
     } catch (err) {
       console.log(err);
     }

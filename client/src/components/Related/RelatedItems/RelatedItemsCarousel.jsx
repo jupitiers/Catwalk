@@ -3,13 +3,22 @@ import RelatedItemCard from './RelatedItemCard.jsx';
 import styles from './relatedItemsCarousel.module.css';
 
 const RelatedItemsCarousel = props => {
+  const { getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
+  const { relatedProducts, setRelatedProducts } = useContext(RelatedContext);
+
+  useEffect(() => {
+    getRelatedProducts();
+  }, []);
+
   // track left most card index
   const [leftIndex, setLeftIndex] = useState(0);
 
   // track relative movement of carousel to get true index
   const [movement, setMovement] = useState(0);
 
-  let relatedItems = props.data.sampleRelatedId;
+  let relatedItems = relatedProducts.slice();
+
+  // let relatedItems = props.data.sampleRelatedId;
   let displayedItems = relatedItems.slice(leftIndex, leftIndex + 4);
 
   // onclick function for right arrow button

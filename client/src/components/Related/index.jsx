@@ -10,26 +10,10 @@ import { RelatedContext } from '../../state/contexts/RelatedContext.js';
 import sampleData from './dummyData.js';
 
 const RelatedItemsAndOutfit = () => {
-  const { getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
-  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
-
-  useEffect(() => {
-    getRelatedProducts();
-  });
-
-  let data = [];
-  relatedProducts.forEach(product => {
-    getRelatedProductInfoById(product)
-      .then(() => data.push(relatedProductInfo))
-      .catch(err => console.log(err));
-  });
-
-  console.log(data);
-
   return (
     <div className={styles.CarouselsContainer}>
       <span className={styles.relatedTitle}><b>Related Items</b></span>
-      <RelatedItemsCarousel data={sampleData}/>
+      <RelatedItemsCarousel data={sampleData} relatedProductIds={relatedProducts}/>
       <span className={styles.outfitTitle}><b>Your Outfit</b></span>
       <YourOutfitCarousel data={sampleData}/>
     </div>
