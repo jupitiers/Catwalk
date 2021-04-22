@@ -28,6 +28,7 @@ const QASection = () => {
   }, []);
 
   var questionList = questions.slice();
+  var enoughQuestions = (questionList.length > 2);
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
 
   var closeQuestionModal = function() {
@@ -55,11 +56,11 @@ const QASection = () => {
     }
   }
 
-  var initialQuestions = questionList.slice(0, 4);
+  var initialQuestions = questionList.slice(0, 2);
   var usedQuestions;
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
-    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
+    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 2);
     if (clicked) {
       usedQuestions = searchedQuestionsList;
     } else {
@@ -89,9 +90,14 @@ const QASection = () => {
         }
       </div>
       <div className='QA-button'>
-        {clicked
-          ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-          : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+        {enoughQuestions
+          ? <span>
+              {clicked
+                ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
+                : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+                }
+            </span>
+          : null
         }
         <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
       </div>
