@@ -45,10 +45,12 @@ const RatingsBreakdown = () => {
       </div>
       {percents.map((percent, idx) => (
         <div key={idx} className={styles.breakdownItem}>
-          <button onClick={(e) => {
-            trackClick(e, 'reviews widget', new Date());
-            filterByStars(percent.star);
-          }}
+          <button
+            className={styles.filterButton}
+            onClick={(e) => {
+              trackClick(e, 'reviews widget', new Date());
+              filterByStars(percent.star);
+            }}
           >
             {percent.star}
             {' '}
