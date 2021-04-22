@@ -1,9 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import moment from 'moment';
 import styles from './reviewCard.module.css';
-import {
-  emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
-} from '../../../helpers/starRatings';
 import { APIContext } from '../../../state/contexts/APIContext';
 import { truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
 import { createStarArray } from '../../../helpers/ratingsHelpers';
@@ -14,7 +11,7 @@ const ReviewCard = ({ review }) => {
   const {
     getAllProducts, markReviewAsHelpful, reportReview, trackClick,
   } = useContext(APIContext);
-  const { feedbackAlreadyGiven, feedback, setFeedback } = useContext(ReviewContext);
+  const { feedback } = useContext(ReviewContext);
   const [showMoreBody, setShowMoreBody] = useState(false);
 
   useEffect(() => {

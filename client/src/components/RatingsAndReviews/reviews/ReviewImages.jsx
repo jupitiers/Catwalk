@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './reviewImages.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { APIContext } from '../../../state/contexts/APIContext';

@@ -10,9 +10,9 @@ export const CreateReview = ({ children }) => {
   const {
     showCreate, hideCreate, metaData, newReview,
     setNewReview, handleImageUpload, inputChangeHandler,
-    submitHandler, changeCharacteristic, recommend,
-    setRecommend, bodyChangeHandler, changeRecommendation,
-    bodyCountDown, stars, setStars, changeRating, ratingText, errors, validateForm,
+    changeCharacteristic, recommend,
+    bodyChangeHandler, changeRecommendation,
+    bodyCountDown, stars, changeRating, ratingText, errors, validateForm,
   } = useContext(ReviewContext);
   const { getProductById, createNewReview, trackClick } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './reviews.module.css';
 import ReviewCard from './ReviewCard';
 import { APIContext } from '../../../state/contexts/APIContext';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
-  const { getReviewsByProductId, getProductById, trackClick } = useContext(APIContext);
+  const { getReviewsByProductId, trackClick } = useContext(APIContext);
   const {
     reviews, reviewsShowing, setSortTerm, sortTerm, starFilter, getShowCount,
   } = useContext(ReviewContext);

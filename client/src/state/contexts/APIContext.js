@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
@@ -10,12 +10,12 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    reviews, setReviews, setFeedbackAlreadyGiven, feedback,
+    setReviews, setFeedbackAlreadyGiven, feedback,
     setFeedback, sortTerm, setMetaData, newReview,
   } = useContext(ReviewContext);
-  const { questions, setQuestions } = useContext(QuestionContext);
-  const { answers, setAnswers } = useContext(AnswerContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { setQuestions } = useContext(QuestionContext);
+  const { setAnswers } = useContext(AnswerContext);
+  const { setSelectedProduct } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   const pId = '17067';
@@ -30,7 +30,7 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
   const getAllProducts = async () => {
     try {
-      const products = await axios.get(`${baseURL}/products`, {
+      await axios.get(`${baseURL}/products`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
     } catch (err) {
@@ -224,7 +224,7 @@ const APIProvider = ({ children }) => {
       time,
     };
     try {
-      const res = await axios.post(`${baseURL}/interactions`, data, {
+      await axios.post(`${baseURL}/interactions`, data, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
     } catch (err) {

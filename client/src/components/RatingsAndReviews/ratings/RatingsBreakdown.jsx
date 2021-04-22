@@ -6,7 +6,7 @@ import { APIContext } from '../../../state/contexts/APIContext';
 
 const RatingsBreakdown = () => {
   const {
-    metaData, filterByStars, starSorting, starFilter, clearFilter, getFilteredShowCount,
+    metaData, filterByStars, starSorting, starFilter, clearFilter,
   } = useContext(ReviewContext);
   const { trackClick } = useContext(APIContext);
   const percents = getStarPercents(metaData.ratings);
