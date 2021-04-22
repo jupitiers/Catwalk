@@ -5,7 +5,7 @@ import { APIContext } from '../../../state/contexts/APIContext';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
-  const { getReviewsByProductId, getProductById } = useContext(APIContext);
+  const { getReviewsByProductId, getProductById, trackClick } = useContext(APIContext);
   const {
     reviews, reviewsShowing, setSortTerm, sortTerm, starFilter, getShowCount,
   } = useContext(ReviewContext);
@@ -30,7 +30,14 @@ const Reviews = () => {
           {' '}
           Reviews, sorted by
         </p>
-        <select name="sort-by" id="sort-by" onChange={(e) => { setSortTerm(e.target.value); }}>
+        <select
+          name="sort-by"
+          id="sort-by"
+          onClick={(e) => {
+            trackClick(e, 'review widget', new Date());
+          }}
+          onChange={(e) => { setSortTerm(e.target.value); }}
+        >
           <option value="relevant">Relevance</option>
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>
