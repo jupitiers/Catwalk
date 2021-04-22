@@ -6,7 +6,7 @@ import styles from './relatedItemCard.module.css';
 const RelatedItemCard = props => {
   return (
     <div className={styles.itemCard}>
-      <CardPicture relatedId={props.relatedId} data={props.data} index={props.index} movement={props.movement}/>
+      <CardPicture relatedId={props.relatedId}/>
       <CardDescription relatedId={props.relatedId} data={props.data} index={props.index} movement={props.movement}/>
     </div>
   )

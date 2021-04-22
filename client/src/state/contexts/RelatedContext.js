@@ -5,6 +5,7 @@ export const RelatedContext = createContext({});
 const RelatedProvider = ({ children }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [relatedProductInfo, setRelatedProductInfo] = useState([]);
+  const [allRelatedProductInfo, setAllRelatedProductInfo] = useState([]);
 
   return (
     <RelatedContext.Provider
@@ -12,7 +13,9 @@ const RelatedProvider = ({ children }) => {
         relatedProducts,
         setRelatedProducts,
         relatedProductInfo,
-        setRelatedProductInfo
+        setRelatedProductInfo,
+        allRelatedProductInfo,
+        setAllRelatedProductInfo
       }}>
         {children}
     </RelatedContext.Provider>

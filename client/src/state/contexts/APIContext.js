@@ -19,16 +19,10 @@ const APIProvider = ({ children }) => {
     setMetaData,
     newReview,
   } = useContext(ReviewContext);
-<<<<<<< HEAD
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
-  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
-=======
-  const { setQuestions } = useContext(QuestionContext);
-  const { setAnswers } = useContext(AnswerContext);
-  const { setSelectedProduct } = useContext(ProductContext);
->>>>>>> origin
+  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo, allRelatedProductInfo, setAllRelatedProductInfo } = useContext(RelatedContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
@@ -64,6 +58,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setRelatedProducts(products.data);
+      return (products.data)
     } catch (err) {
       console.log(err);
     }
@@ -74,10 +69,22 @@ const APIProvider = ({ children }) => {
       const product = await axios.get(`${baseURL}/products/${id}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      return product.data;
+      setRelatedProductInfo(product.data);
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const getAllRelatedProductInfo = async (ids) => {
+    let productsInfo = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      productsInfo.push(product.data);
+    }
+    setAllRelatedProductInfo(productsInfo);
   };
 
   /** ****************************************************************************
@@ -266,6 +273,7 @@ const APIProvider = ({ children }) => {
         getProductById,
         getRelatedProducts,
         getRelatedProductInfoById,
+        getAllRelatedProductInfo,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,

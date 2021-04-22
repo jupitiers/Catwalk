@@ -1,30 +1,28 @@
 import React, {useEffect, useContext} from 'react';
 import styles from './comparisonModal.module.css';
 
+import { APIContext } from '../../../state/contexts/APIContext.js';
+import { ProductContext } from '../../../state/contexts/ProductContext.js';
+import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
+
 const ComparisonModal = props => {
-  let currentId = 17067;
+  const { getProductById, getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
+  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
+
+  useEffect(() => {
+    getRelatedProductInfoById(props.relatedId);
+  }, []);
+
+  let currentId = selectedProduct.id;
   let comparedId = props.relatedId;
+  console.log(currentId)
+  console.log(comparedId)
 
-  let currentFeatures = [
-    {
-        "feature": "Fabric",
-        "value": "Canvas"
-    },
-    {
-        "feature": "Buttons",
-        "value": "Brass"
-    }
-  ];
+  let currentFeatures = selectedProduct.features;
 
-  let getComparedFeatures = () => {
-    for (let i = 0; i < props.data.sampleRelatedInfo.length; i++) {
-      if (props.data.sampleRelatedInfo[i].id === comparedId) {
-        return props.data.sampleRelatedInfo[i].features;
-      }
-    }
-  };
-
-  let comparedFeatures = getComparedFeatures();
+  let comparedFeatures = relatedProductInfo.features;
+  console.log(relatedProductInfo.features)
 
   // combined feature comparisons
   let featureComparison = [];
@@ -89,8 +87,8 @@ const ComparisonModal = props => {
         <div className={styles.modalHeader}>
           <h4 className={styles.modalTitle}>COMPARING</h4>
           <div className={styles.productNames}>
-            <h5 className={styles.nameOne}>Product 1</h5>
-            <h5 className={styles.nameTwo}>Product 2</h5>
+            <h5 className={styles.nameOne}>{selectedProduct.name}</h5>
+            <h5 className={styles.nameTwo}>{relatedProductInfo.name}</h5>
           </div>
         </div>
         <div className={styles.modalBody}>

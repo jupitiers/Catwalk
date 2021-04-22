@@ -1,21 +1,29 @@
 import React, {useEffect, useContext} from 'react';
 import styles from './cardDescription.module.css';
 
-const CardDescription = props => {
-  let index = props.index + props.movement;
-  let id = props.relatedId;
-  let data = props.data;
+import { APIContext } from '../../../state/contexts/APIContext.js';
+import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
-  let category = data.sampleRelatedInfo[index].category;
-  let name = data.sampleRelatedInfo[index].name;
-  let price = data.sampleRelatedInfo[index].default_price;
+const CardDescription = props => {
+  const { getProductById, getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
+  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
+
+  useEffect(() => {
+    getRelatedProductInfoById(props.relatedId);
+  }, [])
+
+  let id = props.relatedId;
+
+  let category = relatedProductInfo.category;
+  let name = relatedProductInfo.name;
+  let price = relatedProductInfo.default_price;
   let stars;
 
   return (
     <div className={styles.description}>
-      <span>{category}</span>
-      <span>{name}</span>
-      <span>{`$${price}`}</span>
+      <span>{props.data.category}</span>
+      <span>{props.data.name}</span>
+      <span>{`$${props.data.default_price}`}</span>
       <span>Stars</span>
     </div>
   )
