@@ -227,12 +227,30 @@ const APIProvider = ({ children }) => {
   };
 
   const createNewReview = async () => {
-    console.log(newReview);
     try {
       const data = await axios.post(`${baseURL}/reviews`, newReview, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /** ****************************************************************************
+  *                      API calls for click-tracking
+  ***************************************************************************** */
+
+  const trackClick = async (elem, widget, time) => {
+    const data = {
+      element: elem.target.outerHTML,
+      widget,
+      time,
+    };
+    try {
+      const res = await axios.post(`${baseURL}/interactions`, data, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
     } catch (err) {
       console.log(err);
     }
@@ -261,6 +279,8 @@ const APIProvider = ({ children }) => {
         reportReview,
         getReviewMetaDataByProductId,
         createNewReview,
+        // click tracker
+        trackClick,
       }}
     >
       {children}

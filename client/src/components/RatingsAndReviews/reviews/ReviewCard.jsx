@@ -11,7 +11,9 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import ReviewImages from './ReviewImages';
 
 const ReviewCard = ({ review }) => {
-  const { getAllProducts, markReviewAsHelpful, reportReview } = useContext(APIContext);
+  const {
+    getAllProducts, markReviewAsHelpful, reportReview, trackClick,
+  } = useContext(APIContext);
   const { feedbackAlreadyGiven, feedback, setFeedback } = useContext(ReviewContext);
   const [showMoreBody, setShowMoreBody] = useState(false);
 
@@ -48,7 +50,10 @@ const ReviewCard = ({ review }) => {
             ...
             <button
               className={styles.expandBodyButton}
-              onClick={() => setShowMoreBody(!showMoreBody)}
+              onClick={(e) => {
+                trackClick(e, 'reviews widget', new Date());
+                setShowMoreBody(!showMoreBody);
+              }}
             >
               Show More
             </button>
@@ -60,7 +65,10 @@ const ReviewCard = ({ review }) => {
         {(showMoreBody) && (
         <button
           className={[styles.expandBodyButton, styles.showLess].join(' ')}
-          onClick={() => setShowMoreBody(!showMoreBody)}
+          onClick={(e) => {
+            trackClick(e, 'reviews widget', new Date());
+            setShowMoreBody(!showMoreBody);
+          }}
         >
           Show Less
         </button>
@@ -86,12 +94,12 @@ const ReviewCard = ({ review }) => {
       <div className={styles.cardActions}>
         <p>Helpful?</p>
         <p
-          onClick={() => {
-            // if (!feedbackAlreadyGiven) {
-            //   markReviewAsHelpful(review.review_id);
-            // }
+          onClick={(e) => {
             if (!feedback[review.review_id]) {
+              trackClick(e, 'reviews widget', new Date());
               markReviewAsHelpful(review.review_id);
+            } else {
+              trackClick(e, 'reviews widget', new Date());
             }
           }}
           className={styles.action}
@@ -105,10 +113,9 @@ const ReviewCard = ({ review }) => {
         </p>
         <p>|</p>
         <p
-          onClick={() => {
-            if (!feedbackAlreadyGiven) {
-              reportReview(review.review_id);
-            }
+          onClick={(e) => {
+            reportReview(review.review_id);
+            trackClick(e, 'reviews widget', new Date());
           }}
           className={styles.action}
         >
