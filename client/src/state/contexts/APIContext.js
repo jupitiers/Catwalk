@@ -5,6 +5,7 @@ import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
 import { AnswerContext } from './AnswersContext';
 import { ProductContext } from './ProductContext';
+import { RelatedContext } from './RelatedContext';
 
 export const APIContext = createContext({});
 
@@ -16,6 +17,7 @@ const APIProvider = ({ children }) => {
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   const pId = '17067';
@@ -44,6 +46,28 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setSelectedProduct(product.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getRelatedProducts = async () => {
+    try {
+      const products = await axios.get(`${baseURL}/products/${pId}/related`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setRelatedProducts(products.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getRelatedProductInfoById = async (id) => {
+    try {
+      const product = await axios.get(`${baseURL}/products/${id}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setRelatedProductInfo(product.data);
     } catch (err) {
       console.log(err);
     }
@@ -220,6 +244,8 @@ const APIProvider = ({ children }) => {
         // Products
         getAllProducts,
         getProductById,
+        getRelatedProducts,
+        getRelatedProductInfoById,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
