@@ -14,7 +14,10 @@ const Answer = (props) => {
         <div className={styles.answerauthor}>
           by
           {' '}
-          {props.author}
+          {props.author.toLowerCase() === 'seller'
+            ? <span style={{fontWeight: 'bold'}}>Seller</span>
+            : <span>{props.author}</span>
+          }
           ,
           {' '}
           {props.date}
