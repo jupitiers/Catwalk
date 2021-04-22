@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
@@ -9,28 +9,29 @@ import { ProductContext } from './ProductContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
+  // context imports
   const {
-    reviews, setReviews, setFeedbackAlreadyGiven, feedback,
-    setFeedback, sortTerm, setMetaData, newReview,
+    setReviews,
+    feedback,
+    setFeedback,
+    sortTerm,
+    setMetaData,
+    newReview,
   } = useContext(ReviewContext);
-  const { questions, setQuestions } = useContext(QuestionContext);
-  const { answers, setAnswers } = useContext(AnswerContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { setQuestions } = useContext(QuestionContext);
+  const { setAnswers } = useContext(AnswerContext);
+  const { setSelectedProduct } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
+  // hard coded product id for use in all components
   const pId = '17067';
-  // const pId = '111111111111111111' //TESTING RENDERING FOR NO DATA
-  // sample endpoints
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions?product_id=17067
-
-  // sample request to get all products
 
   /** ****************************************************************************
   *                      API calls for products
   ***************************************************************************** */
   const getAllProducts = async () => {
     try {
-      const products = await axios.get(`${baseURL}/products`, {
+      await axios.get(`${baseURL}/products`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
     } catch (err) {
@@ -149,9 +150,6 @@ const APIProvider = ({ children }) => {
   /** ****************************************************************************
   *                      API calls for reviews
   ***************************************************************************** */
-  // example urls
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=17069&count=100
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=17069
 
   const getReviewsByProductId = async () => {
     try {
@@ -170,7 +168,6 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackAlreadyGiven(true);
       setFeedback({
         ...feedback,
         [reviewId]: true,
@@ -185,7 +182,6 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackAlreadyGiven(true);
     } catch (err) {
       console.log(err);
     }
@@ -214,7 +210,7 @@ const APIProvider = ({ children }) => {
   };
 
   /** ****************************************************************************
-  *                      API calls for click-tracking
+  *                      API call for click-tracking
   ***************************************************************************** */
 
   const trackClick = async (elem, widget, time) => {
@@ -224,7 +220,7 @@ const APIProvider = ({ children }) => {
       time,
     };
     try {
-      const res = await axios.post(`${baseURL}/interactions`, data, {
+      await axios.post(`${baseURL}/interactions`, data, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
     } catch (err) {

@@ -1,9 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import moment from 'moment';
 import styles from './reviewCard.module.css';
-import {
-  emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
-} from '../../../helpers/starRatings';
 import { APIContext } from '../../../state/contexts/APIContext';
 import { truncateSummary, truncateBody } from '../../../helpers/reviewCardHelpers';
 import { createStarArray } from '../../../helpers/ratingsHelpers';
@@ -11,17 +8,19 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import ReviewImages from './ReviewImages';
 
 const ReviewCard = ({ review }) => {
+  // context imports
   const {
-    getAllProducts, markReviewAsHelpful, reportReview, trackClick,
+    markReviewAsHelpful,
+    reportReview,
+    trackClick,
   } = useContext(APIContext);
-  const { feedbackAlreadyGiven, feedback, setFeedback } = useContext(ReviewContext);
-  const [showMoreBody, setShowMoreBody] = useState(false);
+  const {
+    feedback,
+    showMoreBody,
+    setShowMoreBody,
+  } = useContext(ReviewContext);
 
-  useEffect(() => {
-    getAllProducts();
-  }, []);
-
-  // helper functions for review formatting
+  // using helper functions
   const truncatedSummary = truncateSummary(review || {});
   const stars = createStarArray(review.rating);
   const [truncatedBody, restOfBody] = truncateBody(review);
@@ -42,7 +41,6 @@ const ReviewCard = ({ review }) => {
         </div>
       </div>
       <h3>{truncatedSummary}</h3>
-
       <p className={styles.cardBody}>
         {truncatedBody}
         {(restOfBody && !showMoreBody) && (
@@ -74,7 +72,6 @@ const ReviewCard = ({ review }) => {
         </button>
         )}
       </p>
-
       {review.photos.length > 0 && (
         <ReviewImages images={review.photos} />
       )}
@@ -84,7 +81,6 @@ const ReviewCard = ({ review }) => {
           <p>I recommend this Product</p>
         </div>
       )}
-
       {review.response && (
         <div className={styles.cardResponse}>
           <h6>Response from seller:</h6>

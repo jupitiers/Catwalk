@@ -4,7 +4,9 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
 
 const RatingsFactors = () => {
+  // context imports
   const { metaData } = useContext(ReviewContext);
+  // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
 
   return (
