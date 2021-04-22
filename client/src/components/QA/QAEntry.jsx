@@ -3,7 +3,13 @@ import AnswerList from './AnswerList.jsx';
 import styles from './qa.module.css';
 import AnswerModal from './AnswerModal.jsx';
 
+import { APIContext } from '../../state/contexts/APIContext';
+
 var QA = (props) => {
+
+  const { getAnswersByQuestionId, markQuestionAsHelpful, reportQuestion } = useContext(APIContext);
+
+
   const[helpful, setHelpful] = useState(false);
   const[reported, setReported] = useState(false);
   const[showModal, setShowModal] = useState(false);
@@ -11,6 +17,18 @@ var QA = (props) => {
   var closeAnswerModal = function() {
     setShowModal(false);
   }
+
+  var questionHelpfulnessClick = function(questionId, helpful) {
+    if (!helpful) {
+      markQuestionAsHelpful(questionId);
+    }
+  }
+
+  // var reportQuestionClick = function(questionId, reported) {
+  //   if (!reported) {
+  //     reportQuestion(questionId);
+  //   }
+  // }
 
   return (
     <div className={styles.feedentry}>
@@ -25,13 +43,13 @@ var QA = (props) => {
           <div className={styles.questionactiondiv}>
             Helpful?
           </div>
-          <div className={styles.questionactiondiv} onClick={() => {props.helpfulnessClick(props.id, helpful); setHelpful(true);}}>
+          <div className={styles.questionactiondiv} onClick={() => {questionHelpfulnessClick(props.id, helpful); setHelpful(true);}}>
             {helpful
               ? <span className={styles.questionactionclicked}>Yes </span>
               : <span className={styles.questionaction}>Yes </span>
             } ({props.helpfulness})
           </div>|
-          {/* <div className={styles.questionactiondiv} onClick={() => {props.reportClick(props.id, reported); setReported(true);}}>
+          {/* <div className={styles.questionactiondiv} onClick={() => {reportQuestionClick(props.id, reported); setReported(true);}}>
             {reported
               ? <p className={styles.questionactionclicked}>Reported</p>
               : <p className={styles.questionaction}>Report</p>
