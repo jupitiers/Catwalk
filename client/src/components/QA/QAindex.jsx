@@ -89,17 +89,21 @@ const QASection = () => {
           : <QAList id='QAlist' questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
-      <div className='QA-button'>
-        {enoughQuestions
-          ? <span>
-              {clicked
-                ? <button id='fewerQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(false)}}>Fewer Answered Questions</button>
-                : <button id='moreQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(true)}}>More Answered Questions</button>
-                }
-            </span>
-          : null
-        }
-        <button id='addQuestion' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setShowModal(true)}}>Add a Question +</button>
+      <div>
+        <span id='moreQuestionsButton'>
+          {enoughQuestions
+            ? <span>
+                {clicked
+                  ? <button id='fewerQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(false)}}>Fewer Answered Questions</button>
+                  : <button id='moreQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(true)}}>More Answered Questions</button>
+                  }
+              </span>
+            : null
+          }
+        </span>
+        <span>
+          <button id='addQuestion' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setShowModal(true)}}>Add a Question +</button>
+        </span>
       </div>
       <div id='questionModalDiv'>
         {showModal
