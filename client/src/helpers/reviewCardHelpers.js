@@ -1,7 +1,4 @@
-import {
-  emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
-} from './starRatings';
-
+// truncate a review summary to limit it to just 60 characters
 export const truncateSummary = (review) => {
   let truncatedSummary;
   if (review.summary.length > 60) {
@@ -12,6 +9,8 @@ export const truncateSummary = (review) => {
   return truncatedSummary;
 };
 
+// truncate a review body to get the first 250 characters
+// as well as the rest of the body
 export const truncateBody = (review) => {
   let truncatedBody;
   let restOfBody;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './createReview.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { getCharacteristicsArray } from '../../../helpers/ratingsHelpers';
@@ -8,25 +8,43 @@ import { APIContext } from '../../../state/contexts/APIContext';
 export const CreateReview = ({ children }) => {
   // context imports
   const {
-    showCreate, hideCreate, metaData, newReview,
-    setNewReview, handleImageUpload, inputChangeHandler,
-    submitHandler, changeCharacteristic, recommend,
-    setRecommend, bodyChangeHandler, changeRecommendation,
-    bodyCountDown, stars, setStars, changeRating, ratingText, errors, validateForm,
+    showCreate,
+    hideCreate,
+    metaData,
+    newReview,
+    setNewReview,
+    handleImageUpload,
+    inputChangeHandler,
+    changeCharacteristic,
+    recommend,
+    bodyChangeHandler,
+    changeRecommendation,
+    bodyCountDown,
+    stars,
+    changeRating,
+    ratingText,
+    errors,
+    validateForm,
+    loading, setLoading,
   } = useContext(ReviewContext);
-  const { getProductById, createNewReview, trackClick } = useContext(APIContext);
+  const {
+    getProductById,
+    createNewReview,
+    trackClick,
+  } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
   const descriptions = getCharacteristicsArray(metaData.characteristics);
   // modal class for show / hide styles
   const showHideClassName = showCreate ? styles.show : styles.hide;
-  const [loading, setLoading] = useState(false);
 
+  // get current product by Id
   useEffect(() => {
     getProductById();
   }, []);
 
+  // setting product id when selected product changes
   useEffect(() => {
     setNewReview({
       ...newReview,
@@ -34,6 +52,8 @@ export const CreateReview = ({ children }) => {
     });
   }, [selectedProduct]);
 
+  // validate then submit form then clear inputs
+  // display loading state while making api request
   const submitForm = async (e) => {
     e.preventDefault();
     const areErrors = validateForm();
