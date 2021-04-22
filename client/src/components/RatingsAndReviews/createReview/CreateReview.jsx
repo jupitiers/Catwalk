@@ -14,7 +14,7 @@ export const CreateReview = ({ children }) => {
     setRecommend, bodyChangeHandler, changeRecommendation,
     bodyCountDown, stars, setStars, changeRating, ratingText, errors, validateForm,
   } = useContext(ReviewContext);
-  const { getProductById, createNewReview } = useContext(APIContext);
+  const { getProductById, createNewReview, trackClick } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   // using helper functions
   const characteristics = getCharacteristicsArray(metaData.characteristics);
@@ -68,7 +68,13 @@ export const CreateReview = ({ children }) => {
       <section className={styles.formModalMain}>
         {children}
         <>
-          <span onClick={hideCreate} className={styles.iconWrapper}>
+          <span
+            onClick={(e) => {
+              trackClick(e, 'reviews widget', new Date());
+              hideCreate();
+            }}
+            className={styles.iconWrapper}
+          >
             <i className="far fa-times-circle" />
           </span>
           <div className={styles.formContainer}>
@@ -78,7 +84,13 @@ export const CreateReview = ({ children }) => {
               {' '}
               {selectedProduct.name}
             </h3>
-            <form onSubmit={submitForm} className={styles.form}>
+            <form
+              onSubmit={(e) => {
+                trackClick(e, 'reviews widget', new Date());
+                submitForm(e);
+              }}
+              className={styles.form}
+            >
               <div className={styles.inputs}>
                 <label htmlFor="name">
                   Nickname *
@@ -90,6 +102,9 @@ export const CreateReview = ({ children }) => {
                   name="name"
                   id="name"
                   value={newReview.name}
+                  onClick={(e) => {
+                    trackClick(e, 'review widget', new Date());
+                  }}
                   placeholder="Example: jackson11"
                   onChange={inputChangeHandler}
                 />
@@ -106,6 +121,9 @@ export const CreateReview = ({ children }) => {
                   id="email"
                   value={newReview.email}
                   placeholder="Example: jackson11@gmail.com"
+                  onClick={(e) => {
+                    trackClick(e, 'review widget', new Date());
+                  }}
                   onChange={inputChangeHandler}
                 />
                 <p>For authentication reasons, you will not be emailed</p>
@@ -119,6 +137,9 @@ export const CreateReview = ({ children }) => {
                   maxLength="60"
                   value={newReview.summary}
                   placeholder="Example: Best purchase ever!"
+                  onClick={(e) => {
+                    trackClick(e, 'review widget', new Date());
+                  }}
                   onChange={inputChangeHandler}
                 />
                 <label htmlFor="body">
@@ -136,6 +157,9 @@ export const CreateReview = ({ children }) => {
                   maxLength="1000"
                   value={newReview.body}
                   placeholder="Example: Why did you like the product or not"
+                  onClick={(e) => {
+                    trackClick(e, 'review widget', new Date());
+                  }}
                   onChange={bodyChangeHandler}
                 />
                 {bodyCountDown > 0 ? (
@@ -158,7 +182,10 @@ export const CreateReview = ({ children }) => {
                     <div
                       className={styles.star}
                       key={idx}
-                      onClick={() => changeRating(idx)}
+                      onClick={(e) => {
+                        trackClick(e, 'reviews widget', new Date());
+                        changeRating(idx);
+                      }}
                     >
                       {star}
                     </div>
@@ -172,11 +199,23 @@ export const CreateReview = ({ children }) => {
                 <div className={styles.recommendRadios}>
                   <div className={styles.radioChoice}>
                     <label htmlFor="yes">Yes</label>
-                    <input onChange={changeRecommendation} type="radio" name="yes" id="yes" checked={recommend} />
+                    <input
+                      onClick={(e) => {
+                        trackClick(e, 'review widget', new Date());
+                      }}
+                      onChange={changeRecommendation}
+                      type="radio"
+                      name="yes"
+                      id="yes"
+                      checked={recommend}
+                    />
                   </div>
                   <div className={styles.radioChoice}>
                     <label htmlFor="no">No</label>
                     <input
+                      onClick={(e) => {
+                        trackClick(e, 'review widget', new Date());
+                      }}
                       onChange={changeRecommendation}
                       type="radio"
                       name="no"
@@ -210,6 +249,9 @@ export const CreateReview = ({ children }) => {
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}1`}>1</label>
                             <input
+                              onClick={(e) => {
+                                trackClick(e, 'review widget', new Date());
+                              }}
                               onChange={changeCharacteristic}
                               type="radio"
                               name={ch.id}
@@ -220,6 +262,9 @@ export const CreateReview = ({ children }) => {
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}2`}>2</label>
                             <input
+                              onClick={(e) => {
+                                trackClick(e, 'review widget', new Date());
+                              }}
                               onChange={changeCharacteristic}
                               type="radio"
                               name={ch.id}
@@ -230,6 +275,9 @@ export const CreateReview = ({ children }) => {
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}3`}>3</label>
                             <input
+                              onClick={(e) => {
+                                trackClick(e, 'review widget', new Date());
+                              }}
                               onChange={changeCharacteristic}
                               type="radio"
                               name={ch.id}
@@ -240,6 +288,9 @@ export const CreateReview = ({ children }) => {
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}4`}>4</label>
                             <input
+                              onClick={(e) => {
+                                trackClick(e, 'review widget', new Date());
+                              }}
                               onChange={changeCharacteristic}
                               type="radio"
                               name={ch.id}
@@ -250,6 +301,9 @@ export const CreateReview = ({ children }) => {
                           <div className={styles.radioChoice}>
                             <label htmlFor={`${ch.name}5`}>5</label>
                             <input
+                              onClick={(e) => {
+                                trackClick(e, 'review widget', new Date());
+                              }}
                               onChange={changeCharacteristic}
                               type="radio"
                               name={ch.id}
@@ -272,6 +326,9 @@ export const CreateReview = ({ children }) => {
                   <input
                     type="file"
                     id="upload"
+                    onClick={(e) => {
+                      trackClick(e, 'review widget', new Date());
+                    }}
                     onChange={handleImageUpload}
                   />
                 </label>
