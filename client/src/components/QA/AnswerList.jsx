@@ -7,7 +7,7 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { AnswerContext } from '../../state/contexts/AnswersContext';
 
 var AnswerList = (props) => {
-  const { getAnswersByQuestionId, markAnswerAsHelpful, reportAnswer } = useContext(APIContext);
+  const { getAnswersByQuestionId, markAnswerAsHelpful, reportAnswer, trackClick } = useContext(APIContext);
   const { answers, setAnswers } = useContext(AnswerContext);
 
   const[clicked, setClicked] = useState(false);
@@ -52,8 +52,8 @@ var AnswerList = (props) => {
       </div>
       {enoughAnswers ?
         clicked
-          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={() => setClicked(false)}>Collapse answers</button>
-          : <button id='moreAnswers' className={styles.feedbutton} onClick={() => setClicked(true)}>Load more answers</button>
+          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(false)}}>Collapse answers</button>
+          : <button id='moreAnswers' className={styles.feedbutton} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(true)}}>Load more answers</button>
         : <div/>
       }
     </div>

@@ -11,7 +11,7 @@ import { QuestionContext } from '../../state/contexts/QuestionsContext';
 import { ProductContext } from '../../state/contexts/ProductContext';
 
 const QASection = () => {
-  const { getQuestionsByProductId, getProductById } = useContext(APIContext);
+  const { getQuestionsByProductId, getProductById, trackClick } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
 
@@ -81,7 +81,7 @@ const QASection = () => {
         <h2>QUESTIONS & ANSWERS</h2>
       </div>
       <form className={styles.searchdiv}>
-        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
+        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onClick={(e) => {trackClick(e, 'Q&A', new Date())}} onChange={() => {searchFunc($('#searchbar').val());}}/>
       </form>
       <div className={styles.feed}>
         {noResults
@@ -93,18 +93,18 @@ const QASection = () => {
         {enoughQuestions
           ? <span>
               {clicked
-                ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-                : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
+                ? <button id='fewerQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(false)}}>Fewer Answered Questions</button>
+                : <button id='moreQuestions' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(true)}}>More Answered Questions</button>
                 }
             </span>
           : null
         }
-        <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+        <button id='addQuestion' className={styles.button} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setShowModal(true)}}>Add a Question +</button>
       </div>
       <div id='questionModalDiv'>
         {showModal
           ? <div className={styles.modal}>
-              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
+              <span className={styles.modalclose} onClick={(e) => {trackClick(e, 'Q&A', new Date()); closeQuestionModal()}}><i className="far fa-times-circle" /></span>
               <QuestionModal id='questionModal' productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null
