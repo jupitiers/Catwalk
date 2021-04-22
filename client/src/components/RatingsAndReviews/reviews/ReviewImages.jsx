@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import styles from './reviewImages.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
+import { APIContext } from '../../../state/contexts/APIContext';
 
 const ReviewImages = ({ images }) => {
   const {
     display, selectedImage, openOverlay, closeOverlay,
   } = useContext(ReviewContext);
+  const { trackClick } = useContext(APIContext);
   const showHideClassName = display ? styles.show : styles.hide;
   return (
     <>
@@ -25,7 +27,10 @@ const ReviewImages = ({ images }) => {
       <div className={styles.imagesContainer}>
         {images.map((image) => (
           <div
-            onClick={() => openOverlay(image.url)}
+            onClick={(e) => {
+              trackClick(e, 'reviews widget', new Date());
+              openOverlay(image.url);
+            }}
             key={image.id}
             className={styles.imageWrapper}
             style={{ backgroundImage: `url(${image.url})` }}

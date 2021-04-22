@@ -10,7 +10,7 @@ const RatingsAndReviews = () => {
   const {
     reviews, reviewsShowing, setReviewsShowing, showMoreReviews, openCreate, setReviews,
   } = useContext(ReviewContext);
-  const { getReviewsByProductId } = useContext(APIContext);
+  const { getReviewsByProductId, trackClick } = useContext(APIContext);
 
   useEffect(() => {
     getReviewsByProductId();
@@ -25,10 +25,21 @@ const RatingsAndReviews = () => {
           <div className={styles.reviews}><Reviews /></div>
           <div className={styles.reviewActions}>
             {(reviews.length > 2 && reviews.length > reviewsShowing) && (
-            <button onClick={showMoreReviews} className={styles.moreReviews}>More Reviews</button>
+            <button
+              onClick={(e) => {
+                trackClick(e, 'reviews widget', new Date());
+                showMoreReviews();
+              }}
+              className={styles.moreReviews}
+            >
+              More Reviews
+            </button>
             )}
             <button
-              onClick={openCreate}
+              onClick={(e) => {
+                trackClick(e, 'reviews widget', new Date());
+                openCreate();
+              }}
               className={styles.reviewButton}
             >
               Add A Review +
@@ -39,7 +50,10 @@ const RatingsAndReviews = () => {
         : (
           <>
             <button
-              onClick={openCreate}
+              onClick={(e) => {
+                trackClick(e, 'reviews widget', new Date());
+                openCreate();
+              }}
               className={styles.firstReviewButton}
             >
               Be the first to add a review
