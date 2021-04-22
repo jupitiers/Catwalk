@@ -5,13 +5,21 @@ import { APIContext } from '../../../state/contexts/APIContext';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
-  const { getReviewsByProductId, trackClick } = useContext(APIContext);
+  // context imports
   const {
-    reviews, reviewsShowing, setSortTerm, sortTerm, starFilter, getShowCount,
+    getReviewsByProductId,
+    trackClick,
+  } = useContext(APIContext);
+  const {
+    reviews,
+    reviewsShowing,
+    setSortTerm,
+    sortTerm,
+    starFilter,
+    getShowCount,
   } = useContext(ReviewContext);
 
-  // get reviews on load
-  // TODO change the api call to use dynamic id
+  // get reviews on sort term change
   useEffect(() => {
     getReviewsByProductId();
   }, [sortTerm]);

@@ -5,10 +5,16 @@ import { getStarPercents } from '../../../helpers/ratingsHelpers';
 import { APIContext } from '../../../state/contexts/APIContext';
 
 const RatingsBreakdown = () => {
+  // context imports
   const {
-    metaData, filterByStars, starSorting, starFilter, clearFilter,
+    metaData,
+    filterByStars,
+    starSorting,
+    starFilter,
+    clearFilter,
   } = useContext(ReviewContext);
   const { trackClick } = useContext(APIContext);
+  // using helper functions
   const percents = getStarPercents(metaData.ratings);
 
   return (
@@ -26,7 +32,6 @@ const RatingsBreakdown = () => {
                 </b>
               ))}
               {' '}
-
               Star
               {' '}
               Reviews

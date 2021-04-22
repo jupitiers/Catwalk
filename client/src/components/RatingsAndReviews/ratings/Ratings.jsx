@@ -5,10 +5,11 @@ import RatingsBreakdown from './RatingsBreakdown';
 import RatingsFactors from './RatingsFactors';
 import { APIContext } from '../../../state/contexts/APIContext';
 
-// Rating summary
 const Ratings = () => {
+  // context imports
   const { getReviewMetaDataByProductId } = useContext(APIContext);
 
+  // get current review metadata on initial render
   useEffect(() => {
     getReviewMetaDataByProductId();
   }, []);

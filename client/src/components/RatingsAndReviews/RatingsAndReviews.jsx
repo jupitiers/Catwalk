@@ -7,11 +7,19 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { CreateReview } from './createReview/CreateReview';
 
 const RatingsAndReviews = () => {
+  // context imports
   const {
-    reviews, reviewsShowing, showMoreReviews, openCreate,
+    reviews,
+    reviewsShowing,
+    showMoreReviews,
+    openCreate,
   } = useContext(ReviewContext);
-  const { getReviewsByProductId, trackClick } = useContext(APIContext);
+  const {
+    getReviewsByProductId,
+    trackClick,
+  } = useContext(APIContext);
 
+  // Get all reviews by product Id
   useEffect(() => {
     getReviewsByProductId();
   }, []);

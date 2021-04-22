@@ -4,10 +4,15 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { APIContext } from '../../../state/contexts/APIContext';
 
 const ReviewImages = ({ images }) => {
+  // context imports
   const {
-    display, selectedImage, openOverlay, closeOverlay,
+    display,
+    selectedImage,
+    openOverlay,
+    closeOverlay,
   } = useContext(ReviewContext);
   const { trackClick } = useContext(APIContext);
+  // overlay class for show / hide styles
   const showHideClassName = display ? styles.show : styles.hide;
   return (
     <>

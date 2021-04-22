@@ -10,7 +10,7 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const {
-    setReviews, setFeedbackAlreadyGiven, feedback,
+    setReviews, feedback,
     setFeedback, sortTerm, setMetaData, newReview,
   } = useContext(ReviewContext);
   const { setQuestions } = useContext(QuestionContext);
@@ -170,7 +170,6 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackAlreadyGiven(true);
       setFeedback({
         ...feedback,
         [reviewId]: true,
@@ -185,7 +184,6 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       getReviewsByProductId();
-      setFeedbackAlreadyGiven(true);
     } catch (err) {
       console.log(err);
     }
