@@ -227,7 +227,6 @@ const APIProvider = ({ children }) => {
       const res = await axios.post(`${baseURL}/interactions`, data, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      console.log(res);
     } catch (err) {
       console.log(err);
     }
