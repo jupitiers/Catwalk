@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
-import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsHelpers';
+import { createStarArray } from '../../helpers/ratingsHelpers';
 // default reviews for testing
 const defaultReviews = [
   {
@@ -40,7 +40,7 @@ const defaultReviews = [
     photos: [],
   },
 ];
-
+// default metaData for testing
 const defaultMetaData = {
   product_id: '2',
   ratings: {
@@ -73,18 +73,27 @@ const defaultMetaData = {
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
+  // general review state
   const [reviews, setReviews] = useState(defaultReviews);
-  const [feedback, setFeedback] = useState({});
-  const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
-  const [display, setDisplay] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
+  // review card state
+  const [showMoreBody, setShowMoreBody] = useState(false);
+  const [feedback, setFeedback] = useState({});
+  // review images state
+  const [display, setDisplay] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+  // ratings state
   const [metaData, setMetaData] = useState(defaultMetaData);
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
+  const [loading, setLoading] = useState(false);
   const [stars, setStars] = useState(createStarArray(0));
+  const [ratingText, setRatingText] = useState();
+  const [recommend, setRecommend] = useState(false);
+  const [bodyCountDown, setBodyCountDown] = useState(50);
+  const [showCreate, setShowCreate] = useState(false);
   const ratingDescriptions = {
     1: 'Poor',
     2: 'Fair',
@@ -92,10 +101,6 @@ const ReviewProvider = ({ children }) => {
     4: 'Good',
     5: 'Great',
   };
-  const [ratingText, setRatingText] = useState();
-  const [recommend, setRecommend] = useState(false);
-  const [bodyCountDown, setBodyCountDown] = useState(50);
-  const [showCreate, setShowCreate] = useState(false);
   const [newReview, setNewReview] = useState({
     product_id: '',
     name: '',
@@ -114,24 +119,9 @@ const ReviewProvider = ({ children }) => {
     rating: '',
   });
 
-  // reviewImages logic
-  const openOverlay = (imageUrl) => {
-    setDisplay(true);
-    setSelectedImage(imageUrl);
-  };
-  const closeOverlay = () => {
-    setDisplay(false);
-    setSelectedImage('');
-  };
-
-  // ratingsAndReviews logic
+  // reviews logic
   const showMoreReviews = () => {
     setReviewsShowing(reviewsShowing + 2);
-  };
-
-  const clearFilter = () => {
-    setStarSorting(false);
-    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   const getShowCount = () => {
@@ -142,6 +132,22 @@ const ReviewProvider = ({ children }) => {
         }
       });
     return filtered.length;
+  };
+
+  // reviewImages logic
+  const openOverlay = (imageUrl) => {
+    setDisplay(true);
+    setSelectedImage(imageUrl);
+  };
+  const closeOverlay = () => {
+    setDisplay(false);
+    setSelectedImage('');
+  };
+
+  // ratings logic
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   const filterByStars = (star) => {
@@ -299,8 +305,6 @@ const ReviewProvider = ({ children }) => {
       value={{
         reviews,
         setReviews,
-        feedbackAlreadyGiven,
-        setFeedbackAlreadyGiven,
         display,
         setDisplay,
         openOverlay,
@@ -342,6 +346,10 @@ const ReviewProvider = ({ children }) => {
         getShowCount,
         feedback,
         setFeedback,
+        loading,
+        setLoading,
+        showMoreBody,
+        setShowMoreBody,
       }}
     >
       {children}

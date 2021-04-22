@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Ratings from './ratings/Ratings';
 import Reviews from './reviews/Reviews';
 import styles from './ratingsAndReviews.module.css';
@@ -7,11 +7,19 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { CreateReview } from './createReview/CreateReview';
 
 const RatingsAndReviews = () => {
+  // context imports
   const {
-    reviews, reviewsShowing, setReviewsShowing, showMoreReviews, openCreate, setReviews,
+    reviews,
+    reviewsShowing,
+    showMoreReviews,
+    openCreate,
   } = useContext(ReviewContext);
-  const { getReviewsByProductId, trackClick } = useContext(APIContext);
+  const {
+    getReviewsByProductId,
+    trackClick,
+  } = useContext(APIContext);
 
+  // Get all reviews by product Id
   useEffect(() => {
     getReviewsByProductId();
   }, []);

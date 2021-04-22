@@ -2,6 +2,7 @@ import {
   emptyStar, fullStar, quarterStar, halfStar, threeQuarterStar,
 } from './starRatings';
 
+// creating array of dynamicly filled stars based on review rating
 export const createStarArray = (rating) => {
 // get whole number and percent number
   const fullStars = Math.floor(rating);
@@ -43,10 +44,10 @@ export const createStarArray = (rating) => {
       stars.push(emptyStar);
     }
   }
-
   return stars;
 };
 
+// get the average star rating for a review
 export const getAvgRating = (allRatings) => {
   const ratings = [];
   let avg = 0;
@@ -59,6 +60,7 @@ export const getAvgRating = (allRatings) => {
   return avg.toFixed(1);
 };
 
+// get the percent of recommendations for a product
 export const getRecommendPercent = (totals = {}) => {
   if (Object.keys(totals).length) {
     const total = parseInt(totals.true) + parseInt(totals.false);
@@ -68,6 +70,7 @@ export const getRecommendPercent = (totals = {}) => {
   return 0;
 };
 
+// get the percents of star ratings 1 - 5 for a product
 export const getStarPercents = (data) => {
   const totals = [];
   const ratings = {
@@ -77,9 +80,7 @@ export const getStarPercents = (data) => {
     4: data['4'] || 0,
     5: data['5'] || 0,
   };
-  let avg = 0;
   for (const key in ratings) {
-    avg += parseInt(key) + parseInt(ratings[key]);
     totals.push(parseInt(ratings[key]));
   }
   const total = totals.reduce((a, b) => parseInt(a) + parseInt(b), 0);
@@ -90,6 +91,8 @@ export const getStarPercents = (data) => {
   return percents.reverse();
 };
 
+// create an object containing all possible descriptions
+// for a given characteristic in order from lowes to highest
 const getDescriptions = (char) => {
   let descriptions;
   switch (char) {
@@ -153,6 +156,8 @@ const getDescriptions = (char) => {
   return descriptions;
 };
 
+// create an array of characteristic objects containing name and
+// descriptions for a set of a given products characteristics
 export const getCharacteristicsArray = (chars) => {
   const arr = [];
   for (const key in chars) {
