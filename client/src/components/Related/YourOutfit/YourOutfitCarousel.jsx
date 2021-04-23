@@ -3,10 +3,24 @@ import AddCard from './AddCard.jsx';
 import OutfitCard from './OutfitCard.jsx';
 import styles from './yourOutfitCarousel.module.css';
 
+import { APIContext } from '../../../state/contexts/APIContext.js';
+import { ProductContext } from '../../../state/contexts/ProductContext.js';
+import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
+
 const YourOutfitCarousel = props => {
+  const { pId, getProductById, getAllOutfitStyles, getAllRelatedReviewMetaData } = useContext(APIContext);
+  const { selectedProduct } = useContext(ProductContext);
+  const { outfitStyle, setOutfitStyle } = useContext(RelatedContext);
+
+  const[outfitItemsIds, setOutfitItemsIds] = useState([]);
+  const[outfitItemsInfo, setOutfitItemsInfo] = useState([]);
+  const[outfitItemStyles, setOutfitItemStyles] = useState([]);
+  const[reviewData, setReviewData] = useState([]);
+  const[isLoading, setIsLoading] = useState(true);
+
   // track left most outfitcard index
   const [leftIndex, setLeftIndex] = useState(0);
-  let outfitItems = props.data.sampleRelatedId;
+  let outfitItems = outfitItemsIds;
   let displayedItems = outfitItems.slice(leftIndex, leftIndex + 3);
 
   // onclick function for right arrow button
@@ -18,14 +32,27 @@ const YourOutfitCarousel = props => {
     setLeftIndex(leftIndex === 0 ? leftIndex - 0: leftIndex - 1);
   };
 
+  let addCurrentItem = async () => {
+    outfitItemsIds.push(pId);
+    outfitItemsInfo.push(selectedProduct);
+    setIsLoading(true);
+    await getAllOutfitStyles(outfitItemsIds).then(data => {
+      outfitItemStyles.push(data);
+    });
+    await getAllRelatedReviewMetaData(outfitItemsIds).then(data => {
+      reviewData.push(data);
+    })
+    setIsLoading(false);
+  };
+
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
-      <AddCard />
-      {displayedItems.map((id, index) => {
-        return <OutfitCard key={index} outfitId={id} data={props.data}/>
+      <AddCard addCurrentItem={addCurrentItem}/>
+      {isLoading ? null : outfitItemsIds.length > 0 && outfitItemsIds.map((id, index) => {
+        return <OutfitCard key={index} outfitId={id} itemsInfo={outfitItemsInfo} itemStyle={outfitItemStyles} reviews={reviewData}/>
       })}
-      {leftIndex === outfitItems.length - 3 ?
+      {(leftIndex === outfitItems.length - 3 || outfitItems.length < 4) ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>
       }
     </div>

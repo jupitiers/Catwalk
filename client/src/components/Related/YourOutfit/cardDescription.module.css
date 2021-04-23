@@ -11,3 +11,8 @@
   grid-template-rows: 1fr 2fr 1fr 1fr;
   font-family: 'Open Sans', sans-serif;
 }
+
+.starsContainer {
+  display: flex;
+  flex-direction: row;
+}
