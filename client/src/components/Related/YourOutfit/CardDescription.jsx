@@ -1,25 +1,27 @@
 import React from 'react';
 import styles from './cardDescription.module.css';
 
-const CardDescription = props => {
-  let id = props.outfitId;
-  let data = props.data;
-  let category = '', name = '', price, stars;
+import { createStarArray } from '../../../helpers/ratingsHelpers';
 
-  for (let i = 0; i < data.sampleRelatedInfo.length; i++) {
-    if (data.sampleRelatedInfo[i].id === id) {
-      category = data.sampleRelatedInfo[i].category;
-      name = data.sampleRelatedInfo[i].name;
-      price = data.sampleRelatedInfo[i].default_price;
+const CardDescription = props => {
+  let category, name, price;
+
+  for (let i = 0; i < props.itemsInfo.length; i++) {
+    if (props.itemsInfo[i].id == props.outfitId) {
+      category = props.itemsInfo[i].category;
+      name = props.itemsInfo[i].name;
+      price = props.itemsInfo[i].default_price;
     }
   }
 
+  const stars = createStarArray(props.rating);
+
   return (
     <div className={styles.description}>
-      <span>{category}</span>
-      <span>{name}</span>
-      <span>{`$${price}`}</span>
-      <span>Stars</span>
+      <div>{category}</div>
+      <div>{name}</div>
+      <div>{`$${price}`}</div>
+      <div className={styles.starsContainer}>{stars.map((star, idx) => <div key={idx}>{star}</div>)}</div>
     </div>
   )
 }
