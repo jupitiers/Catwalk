@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import RelatedItemsCarousel from './RelatedItems/RelatedItemsCarousel.jsx';
 import YourOutfitCarousel from './YourOutfit/YourOutfitCarousel.jsx';
 import styles from './index.module.css';
@@ -10,7 +10,7 @@ const RelatedItemsAndOutfit = () => {
   return (
     <div className={styles.CarouselsContainer}>
       <span className={styles.relatedTitle}><b>Related Items</b></span>
-      <RelatedItemsCarousel data={sampleData}/>
+      <RelatedItemsCarousel/>
       <span className={styles.outfitTitle}><b>Your Outfit</b></span>
       <YourOutfitCarousel data={sampleData}/>
     </div>

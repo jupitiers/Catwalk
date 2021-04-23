@@ -18,7 +18,7 @@ const ModalButton = props => {
   return (
     <div>
       <button className={styles.modalButton} onClick={openModal}><i className={"far fa-star"}></i></button>
-      {showModal ? <ComparisonModal showModal={showModal} setShowModal={setShowModal} onClick={closeOpenModal} relatedId={props.relatedId} data={props.data} index={props.index} movement={props.movement}/> : null}
+      {showModal ? <ComparisonModal onClick={closeOpenModal} relatedId={props.relatedId}/> : null}
     </div>
   )
 }

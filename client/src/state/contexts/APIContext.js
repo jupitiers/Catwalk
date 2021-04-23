@@ -5,6 +5,7 @@ import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
 import { AnswerContext } from './AnswersContext';
 import { ProductContext } from './ProductContext';
+import { RelatedContext } from './RelatedContext';
 
 export const APIContext = createContext({});
 
@@ -20,7 +21,17 @@ const APIProvider = ({ children }) => {
   } = useContext(ReviewContext);
   const { setQuestions } = useContext(QuestionContext);
   const { setAnswers } = useContext(AnswerContext);
-  const { setSelectedProduct } = useContext(ProductContext);
+  const {
+    setRelatedProducts,
+    setRelatedProductInfo,
+    setAllRelatedProductInfo,
+    setRelatedReviewMetaData,
+    setRelatedProductStyles,
+    setOutfitStyle,
+  } = useContext(RelatedContext);
+
+  const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
+
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
   const pId = '17067';
@@ -38,14 +49,99 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductById = async () => {
+  const getProductById = async (relatedId) => {
     try {
-      const product = await axios.get(`${baseURL}/products/${pId}`, {
+      const product = await axios.get(`${baseURL}/products/${relatedId || pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setSelectedProduct(product.data);
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const getRelatedProducts = async () => {
+    try {
+      const products = await axios.get(`${baseURL}/products/${pId}/related`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setRelatedProducts(products.data);
+      return (products.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getRelatedProductInfoById = async (id) => {
+    try {
+      const product = await axios.get(`${baseURL}/products/${id}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setRelatedProductInfo(product.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getAllRelatedProductInfo = async (ids) => {
+    const productsInfo = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      productsInfo.push(product.data);
+    }
+    setAllRelatedProductInfo(productsInfo);
+  };
+
+  const getAllRelatedReviewMetaData = async (ids) => {
+    const reviewInfo = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      reviewInfo.push(product.data);
+    }
+    setRelatedReviewMetaData(reviewInfo);
+    return reviewInfo;
+  };
+
+  const getAllRelatedStyles = async (ids) => {
+    const styles = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      styles.push(product.data);
+    }
+    setRelatedProductStyles(styles);
+  };
+
+  const getAllOutfitStyles = async (ids) => {
+    const styles = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      styles.push(product.data);
+    }
+    setOutfitStyle(styles);
+    return styles;
+  };
+  const getProductStyles = async () => {
+    try {
+      const getStyles = await axios.get(`${baseURL}/products/${pId}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setStyleList(getStyles.data);
+      setStyleSelected(getStyles.data.results[0]);
+      return getStyles.data;
+    } catch (err) {
+      console.log({ err });
     }
   };
 
@@ -251,6 +347,14 @@ const APIProvider = ({ children }) => {
         // Products
         getAllProducts,
         getProductById,
+        getRelatedProducts,
+        getRelatedProductInfoById,
+        getAllRelatedProductInfo,
+        getAllRelatedReviewMetaData,
+        getAllRelatedStyles,
+        getAllOutfitStyles,
+        getProductStyles,
+        pId,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
