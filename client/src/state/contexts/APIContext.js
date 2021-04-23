@@ -22,7 +22,7 @@ const APIProvider = ({ children }) => {
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
-  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo, allRelatedProductInfo, setAllRelatedProductInfo, relatedReviewMetaData, setRelatedReviewMetaData } = useContext(RelatedContext);
+  const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo, allRelatedProductInfo, setAllRelatedProductInfo, relatedReviewMetaData, setRelatedReviewMetaData, relatedProductStyles, setRelatedProductStyles } = useContext(RelatedContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
@@ -97,6 +97,18 @@ const APIProvider = ({ children }) => {
       reviewInfo.push(product.data);
     }
     setRelatedReviewMetaData(reviewInfo);
+  };
+
+  const getAllRelatedStyles = async (ids) => {
+    let styles = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      styles.push(product.data);
+    }
+    setRelatedProductStyles(styles);
   };
 
   /** ****************************************************************************
@@ -287,6 +299,7 @@ const APIProvider = ({ children }) => {
         getRelatedProductInfoById,
         getAllRelatedProductInfo,
         getAllRelatedReviewMetaData,
+        getAllRelatedStyles,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,

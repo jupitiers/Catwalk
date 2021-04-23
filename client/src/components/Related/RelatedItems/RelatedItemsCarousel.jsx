@@ -11,6 +11,7 @@ const RelatedItemsCarousel = props => {
     getRelatedProductInfoById,
     getAllRelatedProductInfo,
     getAllRelatedReviewMetaData,
+    getAllRelatedStyles,
   } = useContext(APIContext);
   const {
     relatedProducts,
@@ -19,12 +20,15 @@ const RelatedItemsCarousel = props => {
     setAllRelatedProductInfo,
     relatedReviewMetaData,
     setRelatedReviewMetaData,
+    relatedProductStyles,
+    setRelatedProductStyles,
   } = useContext(RelatedContext);
 
   useEffect(() => {
     getRelatedProducts().then(data => {
       getAllRelatedProductInfo(data)
       getAllRelatedReviewMetaData(data)
+      getAllRelatedStyles(data)
     })
   }, []);
 
@@ -55,7 +59,7 @@ const RelatedItemsCarousel = props => {
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
       {displayedItems.length > 0 && displayedItems.map((product, index) => {
-        return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData}/>
+        return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles}/>
       })}
       {leftIndex === relatedItems.length - 4 ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>

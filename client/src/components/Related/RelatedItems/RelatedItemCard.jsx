@@ -19,9 +19,16 @@ const RelatedItemCard = props => {
   }
   let avgRating = getAvgRating(ratings);
 
+  let thumbnailUrl;
+  for (let i = 0; i < props.allStyles.length; i++) {
+    if (props.allStyles[i].product_id == id) {
+      thumbnailUrl = props.allStyles[i].results[0].photos[0].thumbnail_url;
+    }
+  }
+
   return (
     <div className={styles.itemCard} onClick={() => console.log(props.relatedId)}>
-      <CardPicture relatedId={props.relatedId}/>
+      <CardPicture relatedId={props.relatedId} thumbnailUrl={thumbnailUrl}/>
       <CardDescription relatedId={props.relatedId} data={props.data} rating={avgRating}/>
     </div>
   )
