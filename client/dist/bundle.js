@@ -2163,7 +2163,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _QA_QAindex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QA/QAindex */ "./client/src/components/QA/QAindex.jsx");
 /* harmony import */ var _RatingsAndReviews_RatingsAndReviews__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RatingsAndReviews/RatingsAndReviews */ "./client/src/components/RatingsAndReviews/RatingsAndReviews.jsx");
 /* harmony import */ var _Related_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Related/index */ "./client/src/components/Related/index.jsx");
-/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
 
  // context imports
 // import components
@@ -2174,16 +2173,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var App = function App() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_7__.APIContext),
-      trackClick = _useContext.trackClick;
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: _app_module_css__WEBPACK_IMPORTED_MODULE_1__.default.appContainer,
-    onClick: function onClick(e) {
-      return trackClick(e);
-    }
+    className: _app_module_css__WEBPACK_IMPORTED_MODULE_1__.default.appContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "overview"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_index__WEBPACK_IMPORTED_MODULE_2__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OverView_index__WEBPACK_IMPORTED_MODULE_3__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2198,6 +2190,37 @@ var App = function App() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./client/src/components/ClickTracker.jsx":
+/*!************************************************!*\
+  !*** ./client/src/components/ClickTracker.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+
+
+
+var ClickTracker = function ClickTracker(_ref) {
+  var render = _ref.render;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_1__.APIContext),
+      trackClick = _useContext.trackClick;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    onClick: trackClick
+  }, render(null));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ClickTracker);
 
 /***/ }),
 
@@ -2471,12 +2494,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+
 
 
 
 
 var Answer = function Answer(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_3__.APIContext),
+      trackClick = _useContext.trackClick;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
       helpful = _useState2[0],
@@ -2487,49 +2515,81 @@ var Answer = function Answer(props) {
       reported = _useState4[0],
       setReported = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState5, 2),
+      selectedPhoto = _useState6[0],
+      setSelectedPhoto = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState7, 2),
+      showPhoto = _useState8[0],
+      setShowPhoto = _useState8[1];
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerentry
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerentry
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answer
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answer
   }, props.answer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerlogistics
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerlogistics
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerauthor
-  }, "by", ' ', props.author, ",", ' ', props.date), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerauthor
+  }, "by", ' ', props.author.toLowerCase() === 'seller' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+    style: {
+      fontWeight: 'bold'
+    }
+  }, "Seller") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, props.author), ",", ' ', props.date), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv
   }, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     id: "helpfulButton",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv,
+    onClick: function onClick(e) {
       props.helpfulnessClick(props.id, helpful);
       setHelpful(true);
     }
   }, helpful ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
     id: "helpfulClick",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractionclicked
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractionclicked
   }, "Yes ") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
     id: "helpful",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeraction
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeraction
   }, "Yes "), ' ', "(", props.helpfulness, ")"), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     id: "reportButton",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractiondiv,
+    onClick: function onClick(e) {
       props.reportClick(props.id, reported);
       setReported(true);
     }
   }, reported ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
     id: "reported",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractionclicked
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeractionclicked
   }, "Reported") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
     id: "report",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeraction
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answeraction
   }, "Report"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, props.photos.map(function (photo, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
       key: idx,
-      className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerimage,
-      src: photo
+      className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.answerimage,
+      src: photo,
+      onClick: function onClick() {
+        setSelectedPhoto(photo);
+        setShowPhoto(true);
+      }
     });
-  })));
+  }), showPhoto ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalclose,
+    onClick: function onClick() {
+      setShowPhoto(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
+    className: "far fa-times-circle"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalcontent
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalphoto,
+    src: selectedPhoto
+  }))) : null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Answer);
@@ -2550,7 +2610,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Answer_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Answer.jsx */ "./client/src/components/QA/Answer.jsx");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
@@ -2567,7 +2627,8 @@ var AnswerList = function AnswerList(props) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__.APIContext),
       getAnswersByQuestionId = _useContext.getAnswersByQuestionId,
       markAnswerAsHelpful = _useContext.markAnswerAsHelpful,
-      reportAnswer = _useContext.reportAnswer;
+      reportAnswer = _useContext.reportAnswer,
+      trackClick = _useContext.trackClick;
 
   var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_AnswersContext__WEBPACK_IMPORTED_MODULE_6__.AnswerContext),
       answers = _useContext2.answers,
@@ -2633,15 +2694,15 @@ var AnswerList = function AnswerList(props) {
     });
   })), enoughAnswers ? clicked ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     id: "collapseAnswers",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedbutton,
-    onClick: function onClick() {
-      return setClicked(false);
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedbutton,
+    onClick: function onClick(e) {
+      setClicked(false);
     }
   }, "Collapse answers") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     id: "moreAnswers",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedbutton,
-    onClick: function onClick() {
-      return setClicked(true);
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedbutton,
+    onClick: function onClick(e) {
+      setClicked(true);
     }
   }, "Load more answers") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null));
 };
@@ -2666,7 +2727,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
@@ -2685,12 +2746,13 @@ __webpack_require__.r(__webpack_exports__);
 var AnswerModal = function AnswerModal(props) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_6__.APIContext),
       getQuestionsByProductId = _useContext.getQuestionsByProductId,
-      addAnswer = _useContext.addAnswer;
+      addAnswer = _useContext.addAnswer,
+      trackClick = _useContext.trackClick;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
-      questionAuth = _useState2[0],
-      setQuestionAuth = _useState2[1];
+      answerAuth = _useState2[0],
+      setAnswerAuth = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
       _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState3, 2),
@@ -2712,7 +2774,7 @@ var AnswerModal = function AnswerModal(props) {
       photos = _useState10[0],
       setPhotos = _useState10[1];
 
-  var questionSubmit = true;
+  var answerSubmit = true;
   var nicknameSubmit = true;
   var emailSubmit = true;
 
@@ -2783,24 +2845,22 @@ var AnswerModal = function AnswerModal(props) {
   }();
 
   var submit = function submit(questionId, data) {
-    if (questionSubmit && nicknameSubmit && emailSubmit) {
+    if (answerSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
-      console.log('submittable');
       addAnswer(questionId, data);
       props.closeModal();
     } else {
       setSubmittable(false);
-      console.log('not');
     }
   };
 
-  var checkAuth = function checkAuth(question, nickname, email) {
-    if (question && question.length > 0) {
-      setQuestionAuth(true);
-      questionSubmit = true;
-    } else if (!question || question.length === 0) {
-      setQuestionAuth(false);
-      questionSubmit = false;
+  var checkAuth = function checkAuth(answer, nickname, email) {
+    if (answer && answer.length > 0) {
+      setAnswerAuth(true);
+      answerSubmit = true;
+    } else if (!answer || answer.length === 0) {
+      setAnswerAuth(false);
+      answerSubmit = false;
     }
 
     if (nickname && nickname.length > 0) {
@@ -2820,7 +2880,7 @@ var AnswerModal = function AnswerModal(props) {
     }
 
     var answerData = {
-      body: question,
+      body: answer,
       name: nickname,
       email: email,
       photos: photos
@@ -2829,92 +2889,89 @@ var AnswerModal = function AnswerModal(props) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalcontent
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalcontent
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("h2", {
     id: "title"
   }, "Submit Your Answer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("h4", {
     id: "subtitle"
   }, props.productData.name, ": ", props.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, submittable ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("p", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.submiterror
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.submiterror
   }, "You must enter the following: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
-  }, questionAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Your Answer: *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("textarea", {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
+  }, answerAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Your Answer: *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("textarea", {
     id: "answer",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalquestion,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalquestion,
     maxLength: "1000",
     placeholder: "Write your answer here (1000 character max)"
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
   }, "Question: *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("textarea", {
     id: "answerCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalquestioncheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalquestioncheck,
     maxLength: "1000",
     placeholder: "Write your answer here (1000 character max)"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
   }, nicknameAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "What is your nickname: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "text",
     id: "nickname",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaluser,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaluser,
     maxLength: "60",
     placeholder: "Example: jack543!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "For privacy reasons, do not use your full name or email address")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
   }, "Nickname: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "text",
     id: "nicknameCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalusercheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalusercheck,
     maxLength: "60",
     placeholder: "Example: jack543!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "For privacy reasons, do not use your full name or email address"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
   }, emailAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Your email: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "text",
     id: "email",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaluser,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaluser,
     maxLength: "60",
     placeholder: "Example: jack@email.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "For authentication purposes, you will not be emailed")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaltitlecheck
   }, "Email: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "text",
     id: "emailCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalusercheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalusercheck,
     maxLength: "60",
     placeholder: "Example: jack@email.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "For authentication purposes, you will not be emailed"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modaldiv
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Upload your photos: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "text",
     id: "photoUrl",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalphotos,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.modalphotos,
     placeholder: "Place your photo URL here"
   }), photos.length < 5 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.addphoto,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.addphoto,
     onClick: function onClick() {
-      return addPhoto(jquery__WEBPACK_IMPORTED_MODULE_5___default()('#photoUrl').val());
+      addPhoto(jquery__WEBPACK_IMPORTED_MODULE_5___default()('#photoUrl').val());
     }
   }, "Add photo") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Max photos added"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null), photos.length < 5 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.uploadphoto
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.uploadphoto
   }, "Upload a photo", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("input", {
     type: "file",
     id: "photoUpload",
     placeholder: "Upload a photo",
     onChange: uploadPhoto
-  })) // <button className={styles.addphoto} onClick={() => console.log('Adding photo')}>Select photo from your computer</button>
-  :
-  /*#__PURE__*/
-  react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Max photos added"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, photos.map(function (url) {
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", null, "Max photos added"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, photos.map(function (url) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("img", {
-      className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.answerimage,
+      className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.answerimage,
       key: url,
       src: url
     });
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
     id: "answersubmit",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_4__.default.questionsubmit,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_4__.default.questionsubmit,
     onClick: function onClick() {
-      checkAuth(jquery__WEBPACK_IMPORTED_MODULE_5___default()('#question').val(), jquery__WEBPACK_IMPORTED_MODULE_5___default()('#nickname').val(), jquery__WEBPACK_IMPORTED_MODULE_5___default()('#email').val());
+      checkAuth(jquery__WEBPACK_IMPORTED_MODULE_5___default()('#answer').val(), jquery__WEBPACK_IMPORTED_MODULE_5___default()('#nickname').val(), jquery__WEBPACK_IMPORTED_MODULE_5___default()('#email').val());
     }
   }, "Submit answer"))));
 };
@@ -2937,8 +2994,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _AnswerList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AnswerList.jsx */ "./client/src/components/QA/AnswerList.jsx");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
 /* harmony import */ var _AnswerModal_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AnswerModal.jsx */ "./client/src/components/QA/AnswerModal.jsx");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+
 
 
 
@@ -2946,6 +3005,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QA = function QA(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_5__.APIContext),
+      getAnswersByQuestionId = _useContext.getAnswersByQuestionId,
+      markQuestionAsHelpful = _useContext.markQuestionAsHelpful,
+      reportQuestion = _useContext.reportQuestion,
+      trackClick = _useContext.trackClick;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
       helpful = _useState2[0],
@@ -2965,41 +3030,52 @@ var QA = function QA(props) {
     setShowModal(false);
   };
 
+  var questionHelpfulnessClick = function questionHelpfulnessClick(questionId, helpful) {
+    if (!helpful) {
+      markQuestionAsHelpful(questionId);
+    }
+  }; // var reportQuestionClick = function(questionId, reported) {
+  //   if (!reported) {
+  //     reportQuestion(questionId);
+  //   }
+  // }
+
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedentry
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feedentry
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qasection
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qasection
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qatitle
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qatitle
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h4", null, "Q: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qacontent
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qacontent
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h4", null, props.question)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactionsection
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactionsection
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv
   }, "Helpful?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv,
-    onClick: function onClick() {
-      props.helpfulnessClick(props.id, helpful);
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv,
+    onClick: function onClick(e) {
+      questionHelpfulnessClick(props.id, helpful);
       setHelpful(true);
     }
   }, helpful ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactionclicked
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactionclicked
   }, "Yes ") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionaction
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionaction
   }, "Yes "), " (", props.helpfulness, ")"), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionactiondiv
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionaction,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.questionaction,
     id: "addAnswer",
-    onClick: function onClick() {
+    onClick: function onClick(e) {
       setShowModal(true);
     }
   }, "Add Answer")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modal
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modalclose,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modalclose,
+    onClick: function onClick(e) {
       closeAnswerModal();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
@@ -3011,11 +3087,11 @@ var QA = function QA(props) {
     productData: props.productData,
     closeModal: closeAnswerModal
   })) : null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qasection
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qasection
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qatitle
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qatitle
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h4", null, "A: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qacontent
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.qacontent
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_AnswerList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "answerList",
     answers: props.answers,
@@ -3056,18 +3132,6 @@ var QAList = function QAList(props) {
       markQuestionAsHelpful = _useContext.markQuestionAsHelpful,
       reportQuestion = _useContext.reportQuestion;
 
-  var questionHelpfulnessClick = function questionHelpfulnessClick(questionId, helpful) {
-    if (!helpful) {
-      markQuestionAsHelpful(questionId);
-    }
-  };
-
-  var reportQuestionClick = function reportQuestionClick(questionId, reported) {
-    if (!reported) {
-      reportQuestion(questionId);
-    }
-  };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "QAEntryList"
   }, props.questionData.map(function (entry) {
@@ -3081,9 +3145,7 @@ var QAList = function QAList(props) {
       author: entry.asker_name,
       helpfulness: entry.question_helpfulness,
       reported: entry.reported,
-      answers: entry.answers,
-      helpfulnessClick: questionHelpfulnessClick,
-      reportClick: reportQuestionClick
+      answers: entry.answers
     });
   }));
 };
@@ -3106,20 +3168,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _QAList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QAList.jsx */ "./client/src/components/QA/QAList.jsx");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _QuestionModal_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./QuestionModal.jsx */ "./client/src/components/QA/QuestionModal.jsx");
-/* harmony import */ var _qaSampleData_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./qaSampleData.js */ "./client/src/components/QA/qaSampleData.js");
-/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
-/* harmony import */ var _state_contexts_QuestionsContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../state/contexts/QuestionsContext */ "./client/src/state/contexts/QuestionsContext.js");
-/* harmony import */ var _state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../state/contexts/ProductContext */ "./client/src/state/contexts/ProductContext.js");
+/* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
+/* harmony import */ var _state_contexts_QuestionsContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../state/contexts/QuestionsContext */ "./client/src/state/contexts/QuestionsContext.js");
+/* harmony import */ var _state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../state/contexts/ProductContext */ "./client/src/state/contexts/ProductContext.js");
 
 
 
 
-
- //sample data
 
 
 
@@ -3127,14 +3186,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var QASection = function QASection() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_7__.APIContext),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_6__.APIContext),
       getQuestionsByProductId = _useContext.getQuestionsByProductId,
-      getProductById = _useContext.getProductById;
+      getProductById = _useContext.getProductById,
+      trackClick = _useContext.trackClick;
 
-  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_QuestionsContext__WEBPACK_IMPORTED_MODULE_8__.QuestionContext),
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_QuestionsContext__WEBPACK_IMPORTED_MODULE_7__.QuestionContext),
       questions = _useContext2.questions;
 
-  var _useContext3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_9__.ProductContext),
+  var _useContext3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_ProductContext__WEBPACK_IMPORTED_MODULE_8__.ProductContext),
       selectedProduct = _useContext3.selectedProduct,
       setSelectedProduct = _useContext3.setSelectedProduct;
 
@@ -3163,13 +3223,12 @@ var QASection = function QASection() {
     getProductById();
   }, []);
   var questionList = questions.slice();
+  var enoughQuestions = questionList.length > 2;
   questionList.sort(function (obj1, obj2) {
     return obj2.helpfulness - obj1.helpfulness;
   });
-
-  var closeQuestionModal = function closeQuestionModal() {
-    setShowModal(false);
-  };
+  var initialQuestions = questionList.slice(0, 2);
+  var usedQuestions;
 
   var searchFunc = function searchFunc(query) {
     if (query.length > 2) {
@@ -3196,12 +3255,9 @@ var QASection = function QASection() {
     }
   };
 
-  var initialQuestions = questionList.slice(0, 4);
-  var usedQuestions;
-
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
-    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
+    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 2);
 
     if (clicked) {
       usedQuestions = searchedQuestionsList;
@@ -3217,14 +3273,18 @@ var QASection = function QASection() {
     }
   }
 
+  var closeQuestionModal = function closeQuestionModal() {
+    setShowModal(false);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.section
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.section
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.title
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.title
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h2", null, "QUESTIONS & ANSWERS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.searchdiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.searchdiv
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.searchbar,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.searchbar,
     id: "searchbar",
     type: "text",
     placeholder: "Have a question? Search for answers...",
@@ -3232,40 +3292,40 @@ var QASection = function QASection() {
       searchFunc(jquery__WEBPACK_IMPORTED_MODULE_4___default()('#searchbar').val());
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feed
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.feed
   }, noResults ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
     id: "noResults"
   }, "Sorry, no related questions could be found...") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_QAList_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {
     id: "QAlist",
     questionData: usedQuestions,
     productData: selectedProduct
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: "QA-button"
-  }, clicked ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
+    id: "moreQuestionsButton"
+  }, enoughQuestions ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, clicked ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     id: "fewerQuestions",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
-    onClick: function onClick() {
-      return setClicked(false);
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
+    onClick: function onClick(e) {
+      setClicked(false);
     }
   }, "Fewer Answered Questions") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     id: "moreQuestions",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
-    onClick: function onClick() {
-      return setClicked(true);
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
+    onClick: function onClick(e) {
+      setClicked(true);
     }
-  }, "More Answered Questions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+  }, "More Answered Questions")) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     id: "addQuestion",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.button,
+    onClick: function onClick(e) {
       setShowModal(true);
     }
-  }, "Add a Question +")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  }, "Add a Question +"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     id: "questionModalDiv"
   }, showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modal
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modal
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modalclose,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_3__.default.modalclose,
+    onClick: function onClick(e) {
       closeQuestionModal();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("i", {
@@ -3294,7 +3354,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _qa_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./qa.module.css */ "./client/src/components/QA/qa.module.css");
+/* harmony import */ var _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./qaLight.module.css */ "./client/src/components/QA/qaLight.module.css");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../state/contexts/APIContext */ "./client/src/state/contexts/APIContext.js");
@@ -3307,7 +3367,8 @@ __webpack_require__.r(__webpack_exports__);
 var QuestionModal = function QuestionModal(props) {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_state_contexts_APIContext__WEBPACK_IMPORTED_MODULE_4__.APIContext),
       getQuestionsByProductId = _useContext.getQuestionsByProductId,
-      addQuestion = _useContext.addQuestion;
+      addQuestion = _useContext.addQuestion,
+      trackClick = _useContext.trackClick;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
@@ -3379,137 +3440,68 @@ var QuestionModal = function QuestionModal(props) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalcontent
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalcontent
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h2", {
     id: "title"
   }, "Ask Your Question"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h4", {
     id: "subtitle"
   }, "About the ", props.productName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, submittable ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.submiterror
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.submiterror
   }, "You must enter the following: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
   }, questionAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "Your Question: *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
     id: "question",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalquestion,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalquestion,
     maxLength: "1000",
     placeholder: "Write your question here (1000 character max)"
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
   }, "Question: *"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
     id: "questionCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalquestioncheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalquestioncheck,
     maxLength: "1000",
     placeholder: "Write your question here (1000 character max)"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
   }, nicknameAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "What is your nickname: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     id: "nickname",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaluser,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaluser,
     maxLength: "60",
     placeholder: "Example: jackson11!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "For privacy reasons, do not use your full name or email address")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
   }, "Nickname: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     id: "nicknameCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalusercheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalusercheck,
     maxLength: "60",
     placeholder: "Example: jackson11!"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "For privacy reasons, do not use your full name or email address"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaldiv
   }, emailAuth ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "Your email: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     id: "email",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaluser,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaluser,
     maxLength: "60",
     placeholder: "Example: jackson11@gmail.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "For authentication purposes, you will not be emailed")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modaltitlecheck
   }, "Email: * "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     id: "emailCheck",
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalusercheck,
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.modalusercheck,
     maxLength: "60",
     placeholder: "Example: jackson11@gmail.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("span", null, "For authentication purposes, you will not be emailed"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
-    className: _qa_module_css__WEBPACK_IMPORTED_MODULE_2__.default.questionsubmit,
-    onClick: function onClick() {
+    className: _qaLight_module_css__WEBPACK_IMPORTED_MODULE_2__.default.questionsubmit,
+    onClick: function onClick(e) {
       checkAuth(jquery__WEBPACK_IMPORTED_MODULE_3___default()('#question').val(), jquery__WEBPACK_IMPORTED_MODULE_3___default()('#nickname').val(), jquery__WEBPACK_IMPORTED_MODULE_3___default()('#email').val());
     }
   }, "Submit question"))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionModal);
-
-/***/ }),
-
-/***/ "./client/src/components/QA/qaSampleData.js":
-/*!**************************************************!*\
-  !*** ./client/src/components/QA/qaSampleData.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-var qaSampleData = {
-  "product_id": "5",
-  "results": [{
-    "question_id": 37,
-    "question_body": "Why is this product cheaper here than other sites?",
-    "question_date": "2018-10-18T00:00:00.000Z",
-    "asker_name": "williamsmith",
-    "question_helpfulness": 4,
-    "reported": false,
-    "answers": {
-      68: {
-        "id": 68,
-        "body": "We are selling it here without any markup from the middleman!",
-        "date": "2018-08-18T00:00:00.000Z",
-        "answerer_name": "Seller",
-        "helpfulness": 4,
-        "photos": []
-      }
-    }
-  }, {
-    "question_id": 38,
-    "question_body": "How long does it last?",
-    "question_date": "2019-06-28T00:00:00.000Z",
-    "asker_name": "funnygirl",
-    "question_helpfulness": 2,
-    "reported": false,
-    "answers": {
-      70: {
-        "id": 70,
-        "body": "Some of the seams started splitting the first time I wore it!",
-        "date": "2019-11-28T00:00:00.000Z",
-        "answerer_name": "sillyguy",
-        "helpfulness": 6,
-        "photos": []
-      },
-      78: {
-        "id": 78,
-        "body": "9 lives",
-        "date": "2019-11-12T00:00:00.000Z",
-        "answerer_name": "iluvdogz",
-        "helpfulness": 31,
-        "photos": []
-      },
-      79: {
-        "id": 79,
-        "body": "Additional answer to test rendering of 'Load more answers' button",
-        "date": "2019-11-12T00:00:00.000Z",
-        "answerer_name": "daniel",
-        "helpfulness": 100000000000000,
-        "photos": []
-      }
-    }
-  }]
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (qaSampleData);
 
 /***/ }),
 
@@ -5265,7 +5257,7 @@ var getAvgRating = function getAvgRating(allRatings) {
   var avg = 0;
 
   for (var key in allRatings) {
-    avg += parseInt(key) + parseInt(allRatings[key]);
+    avg += parseInt(key) * parseInt(allRatings[key]);
     ratings.push(parseInt(allRatings[key]));
   }
 
@@ -5677,7 +5669,7 @@ var APIProvider = function APIProvider(_ref) {
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().get("".concat(baseURL, "/qa/questions?product_id=").concat(pId), {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().get("".concat(baseURL, "/qa/questions?product_id=").concat(pId, "&count=100"), {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_5__.REACT_APP_API_KEY
                 }
@@ -5901,33 +5893,32 @@ var APIProvider = function APIProvider(_ref) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              console.log(questionData);
-              _context9.prev = 1;
-              _context9.next = 4;
+              _context9.prev = 0;
+              _context9.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_4___default().post("".concat(baseURL, "/qa/questions"), questionData, {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_5__.REACT_APP_API_KEY
                 }
               });
 
-            case 4:
+            case 3:
               data = _context9.sent;
               console.log(data);
               getQuestionsByProductId();
-              _context9.next = 12;
+              _context9.next = 11;
               break;
 
-            case 9:
-              _context9.prev = 9;
-              _context9.t0 = _context9["catch"](1);
+            case 8:
+              _context9.prev = 8;
+              _context9.t0 = _context9["catch"](0);
               console.log(_context9.t0);
 
-            case 12:
+            case 11:
             case "end":
               return _context9.stop();
           }
         }
-      }, _callee9, null, [[1, 9]]);
+      }, _callee9, null, [[0, 8]]);
     }));
 
     return function addQuestion(_x6) {
@@ -5942,34 +5933,32 @@ var APIProvider = function APIProvider(_ref) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
-              console.log(questionId);
-              console.log(answerData);
-              _context10.prev = 2;
-              _context10.next = 5;
+              _context10.prev = 0;
+              _context10.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_4___default().post("".concat(baseURL, "/qa/questions/").concat(questionId, "/answers"), answerData, {
                 headers: {
                   Authorization: _config_config__WEBPACK_IMPORTED_MODULE_5__.REACT_APP_API_KEY
                 }
               });
 
-            case 5:
+            case 3:
               data = _context10.sent;
               console.log(data);
               getQuestionsByProductId();
-              _context10.next = 13;
+              _context10.next = 11;
               break;
 
-            case 10:
-              _context10.prev = 10;
-              _context10.t0 = _context10["catch"](2);
+            case 8:
+              _context10.prev = 8;
+              _context10.t0 = _context10["catch"](0);
               console.log(_context10.t0);
 
-            case 13:
+            case 11:
             case "end":
               return _context10.stop();
           }
         }
-      }, _callee10, null, [[2, 10]]);
+      }, _callee10, null, [[0, 8]]);
     }));
 
     return function addAnswer(_x7, _x8) {
@@ -6403,8 +6392,60 @@ var QuestionContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createC
 
 var QuestionProvider = function QuestionProvider(_ref) {
   var children = _ref.children;
+  var sampleQuestions = [{
+    "question_id": 1,
+    "question_body": "1",
+    "question_date": "2018-10-18T00:00:00.000Z",
+    "asker_name": "1",
+    "question_helpfulness": 1,
+    "reported": false,
+    "answers": {
+      1: {
+        "id": 1,
+        "body": "1",
+        "date": "2018-08-18T00:00:00.000Z",
+        "answerer_name": "1",
+        "helpfulness": 1,
+        "photos": []
+      }
+    }
+  }, {
+    "question_id": 2,
+    "question_body": "2",
+    "question_date": "2018-10-18T00:00:00.000Z",
+    "asker_name": "2",
+    "question_helpfulness": 2,
+    "reported": false,
+    "answers": {
+      2: {
+        "id": 2,
+        "body": "2",
+        "date": "2018-08-18T00:00:00.000Z",
+        "answerer_name": "2",
+        "helpfulness": 2,
+        "photos": []
+      }
+    }
+  }, {
+    "question_id": 3,
+    "question_body": "3",
+    "question_date": "2018-10-18T00:00:00.000Z",
+    "asker_name": "3",
+    "question_helpfulness": 3,
+    "reported": false,
+    "answers": {
+      3: {
+        "id": 3,
+        "body": "3",
+        "date": "2018-08-18T00:00:00.000Z",
+        "answerer_name": "3",
+        "helpfulness": 3,
+        "photos": []
+      }
+    }
+  }];
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(sampleQuestions),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
       questions = _useState2[0],
       setQuestions = _useState2[1];
@@ -7037,10 +7078,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./client/src/components/QA/qa.module.css":
-/*!************************************************!*\
-  !*** ./client/src/components/QA/qa.module.css ***!
-  \************************************************/
+/***/ "./client/src/components/QA/qaLight.module.css":
+/*!*****************************************************!*\
+  !*** ./client/src/components/QA/qaLight.module.css ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7050,14 +7091,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qa_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./qa.module.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qa.module.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qaLight_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./qaLight.module.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qaLight.module.css");
 
 
 var options = {};
 options.insert = "head";
 options.singleton = false;
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qa_module_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qaLight_module_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_use_1_qaLight_module_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -7741,10 +7782,10 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qa.module.css":
-/*!******************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qa.module.css ***!
-  \******************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qaLight.module.css":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./client/src/components/QA/qaLight.module.css ***!
+  \***********************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7761,46 +7802,47 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "._12EdSXn2vpvBdogw5J1DcP {\n  /* background-color: #FAEBD2; */\n  /* width: 90%; */\n  margin: 0 auto;\n  color: #525252;\n  font-size: 100%;\n  /* border: 3px solid #5FD9BD; */\n  word-wrap: normal;\n}\n\n.E5hJcvAhA9IXh4fiVicvY{\n  padding-left: 3%;\n  padding-top: 3%;\n  font-family: 'Dela Gothic One', cursive;  color: #525252;\n}\n\n.RTgMXOuWkn0DGCfMV3h5_ {\n  width: 90%;\n  /* padding: 2%; */\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n._4Lqos1a_vevfbrCXhvN6y {\n  width: 100%;\n  height: 50px;\n}\n\n.lkLE0Mob05y3cASNbAzm8 {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  min-height: 0px;\n  max-height: 500px;\n  overflow-y: scroll;\n  font-family: 'Raleway', sans-serif;\n  margin-top: 2%;\n  margin-bottom: 2%;\n}\n\n._3GSbaXW1m1YsmQxXP2FyUc, .YCqkg5Wu2g8Hn7lE3VxZu {\n  margin: 5px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  border-width: 1px;\n  font-size: clamp(2px, 1vw, 15px);\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t, ._3mr33sbMQmQG1O7XowZQQD{\n  width: 20%;\n  height: 50px;\n  font-size: clamp(2px, 1vw, 20px);\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #525252;\n  margin: 15px;\n  padding: 5px;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._2qNGbitDivVZ8_Y6NnG16t:active, ._2qNGbitDivVZ8_Y6NnG16t:hover,\n._3GSbaXW1m1YsmQxXP2FyUc:active, ._3GSbaXW1m1YsmQxXP2FyUc:hover,\n._3mr33sbMQmQG1O7XowZQQD:active, ._3mr33sbMQmQG1O7XowZQQD:hover,\n.YCqkg5Wu2g8Hn7lE3VxZu:active, .YCqkg5Wu2g8Hn7lE3VxZu:hover,\n.Ea30nTHZm_8Q8i4uTgI0q:active, .Ea30nTHZm_8Q8i4uTgI0q:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n\n._11tcdAgnO7enki4KQiUFhp {\n  display: block;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.4);\n}\n\n._3h3HOxCJN7imykJk3f-E0_ {\n  background-color: #fefefe;\n  margin: 5% auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 60%;\n  height: 80%;\n}\n\n._1nfI843t1geNRZfW9gR5E3 {\n  color:#641373;\n  float: right;\n  margin-right: 20%;\n  margin-top: 6%;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n._1nfI843t1geNRZfW9gR5E3:hover, ._1nfI843t1geNRZfW9gR5E3:focus {\n  color: #5FD9BD;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n._2UtFCxJI84pQJ55q81rmR5 {\n  margin: 15px;\n}\n\n._2ijm2D1jQfPwCX9HbcDR3k {\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.RL0NpDFfvUESD81zAbxky, ._2ePq2VQtHnxM86UghgGig {\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n._22Vo3X3nuZVhOH0fSKR_c5 {\n  color: red;\n}\n\n._2OX1XXh1CR5NB4ZLLoNwGL {\n  border: 2px solid red;\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n._3LpgNfJdDCoeg7-r0s3gAg {\n  border: 2px solid red;\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n._3mr33sbMQmQG1O7XowZQQD {\n  margin-left: 15px;\n}\n\n._3LOivmjSqPzfxxpa4TEqKD {\n  color: red;\n}\n\n\n\n._13UlOQsqEMHY2IEP4bQ-1w {\n  margin-top: 25px;\n}\n\n.GBsCxikuhHI2wzRz6UwXb {\n  margin-bottom: 10px;\n}\n\n._1E8QDF2zKy8kPwzlYqN_7X {\n  display: inline-block\n}\n\n._1E8QDF2zKy8kPwzlYqN_7X:before{\n  content: ' ';\n  white-space: pre;\n}\n\n._3s6rYsaGdSDunPi6A6dqd6 {\n  margin-left: 5px;\n  width: 100%;\n  display: inline-block;\n}\n\n.Fkm25SByN_u69WhKlQCX2 {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 10px;\n}\n\n._2-Jb-916ukdN4nu0ZQvi5A {\n  float: right;\n}\n\n._18RCpzXoXt7rbJ7LzzxrG1, ._1x3m6LvxF5fazFaBQuv-9E {\n  font-size: 80%;\n  display: inline-block;\n  align-items: right;\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n\n._1UmTihhYbjpqvx5MZ13Ihg, ._9BFdxxOajjdmMeEVYU1uQ {\n  text-decoration: underline;\n  color:#641373;\n}\n\n._1UmTihhYbjpqvx5MZ13Ihg:hover, ._9BFdxxOajjdmMeEVYU1uQ:hover {\n  color: #5FD9BD;\n  cursor: pointer;\n}\n\n._1UmTihhYbjpqvx5MZ13Ihg:active, ._9BFdxxOajjdmMeEVYU1uQ:active {\n  font-weight: bold;\n  cursor: pointer;\n}\n\n._1PIkRggjmB3Rzd9h0jn5ra, ._2ELGJxfYIXNUpwIbp6qJuQ {\n  text-decoration: underline;\n  font-weight: bold;\n  color:#641373;\n}\n\ninput[type=\"file\"] {\n  display: none;\n}\n\n.Ea30nTHZm_8Q8i4uTgI0q {\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  cursor: pointer;\n  font-size: clamp(2px, 1vw, 15px);\n}\n\n._3XgeRW-UR-VRY8KyZhNkhf {\n  width: 50px;\n  height: 50px;\n}\n\n.PoWpIRPQbXG-i8Mc9QrZ_ {\n  display: inline-block;\n  width: 100%;\n  font-size: clamp(5px, 2vw, 20px);\n}\n\n._3W0vOP0TXXTkSQj_f87XWf {\n  float: left;\n  margin-bottom: -1.33em;\n  margin-top: -1em;\n}\n\n._2s5g7J23LWljsZ4MvusYbY {\n  float: left;\n  margin-left: 0.5%;\n  margin-top: -0.95em;\n}\n\n.GBsCxikuhHI2wzRz6UwXb {\n  margin-top: 0.33em;\n  margin-left: 2%;\n}", "",{"version":3,"sources":["webpack://./client/src/components/QA/qa.module.css"],"names":[],"mappings":"AAAA;EACE,+BAA+B;EAC/B,gBAAgB;EAChB,cAAc;EACd,cAAc;EACd,eAAe;EACf,+BAA+B;EAC/B,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,uCAAuC,GAAG,cAAc;AAC1D;;AAEA;EACE,UAAU;EACV,iBAAiB;EACjB,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,YAAY;AACd;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;EACd,eAAe;EACf,iBAAiB;EACjB,kBAAkB;EAClB,kCAAkC;EAClC,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,yBAAyB;EACzB,yBAAyB;EACzB,iBAAiB;EACjB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,gCAAgC;EAChC,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,iBAAiB;EACjB,oCAAoC;AACtC;;AAEA;;;;;EAKE,sBAAsB;EACtB,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,UAAU;EACV,OAAO;EACP,MAAM;EACN,WAAW;EACX,YAAY;EACZ,iCAAiC;AACnC;;AAEA;EACE,yBAAyB;EACzB,eAAe;EACf,aAAa;EACb,sBAAsB;EACtB,UAAU;EACV,WAAW;AACb;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,qBAAqB;EACrB,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,qBAAqB;EACrB,UAAU;EACV,YAAY;EACZ,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,UAAU;AACZ;;;;AAIA;EACE,gBAAgB;AAClB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,qBAAqB;AACvB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,kBAAkB;AACpB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,kBAAkB;EAClB,gBAAgB;EAChB,iBAAiB;AACnB;;;AAGA;EACE,0BAA0B;EAC1B,aAAa;AACf;;AAEA;EACE,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,eAAe;AACjB;;AAEA;EACE,0BAA0B;EAC1B,iBAAiB;EACjB,aAAa;AACf;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,yBAAyB;EACzB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;EACE,WAAW;EACX,YAAY;AACd;;AAEA;EACE,qBAAqB;EACrB,WAAW;EACX,gCAAgC;AAClC;;AAEA;EACE,WAAW;EACX,sBAAsB;EACtB,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;EAClB,eAAe;AACjB","sourcesContent":[".section {\n  /* background-color: #FAEBD2; */\n  /* width: 90%; */\n  margin: 0 auto;\n  color: #525252;\n  font-size: 100%;\n  /* border: 3px solid #5FD9BD; */\n  word-wrap: normal;\n}\n\n.title{\n  padding-left: 3%;\n  padding-top: 3%;\n  font-family: 'Dela Gothic One', cursive;  color: #525252;\n}\n\n.searchdiv {\n  width: 90%;\n  /* padding: 2%; */\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n.searchbar {\n  width: 100%;\n  height: 50px;\n}\n\n.feed {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  min-height: 0px;\n  max-height: 500px;\n  overflow-y: scroll;\n  font-family: 'Raleway', sans-serif;\n  margin-top: 2%;\n  margin-bottom: 2%;\n}\n\n.feedbutton, .addphoto {\n  margin: 5px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  border-width: 1px;\n  font-size: clamp(2px, 1vw, 15px);\n  font-family: 'Open Sans', sans-serif;\n}\n\n.button, .questionsubmit{\n  width: 20%;\n  height: 50px;\n  font-size: clamp(2px, 1vw, 20px);\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #525252;\n  margin: 15px;\n  padding: 5px;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.button:active, .button:hover,\n.feedbutton:active, .feedbutton:hover,\n.questionsubmit:active, .questionsubmit:hover,\n.addphoto:active, .addphoto:hover,\n.uploadphoto:active, .uploadphoto:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n\n.modal {\n  display: block;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.4);\n}\n\n.modalcontent {\n  background-color: #fefefe;\n  margin: 5% auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 60%;\n  height: 80%;\n}\n\n.modalclose {\n  color:#641373;\n  float: right;\n  margin-right: 20%;\n  margin-top: 6%;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.modalclose:hover, .modalclose:focus {\n  color: #5FD9BD;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modaldiv {\n  margin: 15px;\n}\n\n.modalquestion {\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.modaluser, .modalphotos {\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n.modaltitlecheck {\n  color: red;\n}\n\n.modalquestioncheck {\n  border: 2px solid red;\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.modalusercheck {\n  border: 2px solid red;\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n.questionsubmit {\n  margin-left: 15px;\n}\n\n.submiterror {\n  color: red;\n}\n\n\n\n.feedentry {\n  margin-top: 25px;\n}\n\n.answerentry {\n  margin-bottom: 10px;\n}\n\n.answer {\n  display: inline-block\n}\n\n.answer:before{\n  content: ' ';\n  white-space: pre;\n}\n\n.answerlogistics {\n  margin-left: 5px;\n  width: 100%;\n  display: inline-block;\n}\n\n.answerauthor {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 10px;\n}\n\n.questionactionsection {\n  float: right;\n}\n\n.answeractiondiv, .questionactiondiv {\n  font-size: 80%;\n  display: inline-block;\n  align-items: right;\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n\n.answeraction, .questionaction {\n  text-decoration: underline;\n  color:#641373;\n}\n\n.answeraction:hover, .questionaction:hover {\n  color: #5FD9BD;\n  cursor: pointer;\n}\n\n.answeraction:active, .questionaction:active {\n  font-weight: bold;\n  cursor: pointer;\n}\n\n.answeractionclicked, .questionactionclicked {\n  text-decoration: underline;\n  font-weight: bold;\n  color:#641373;\n}\n\ninput[type=\"file\"] {\n  display: none;\n}\n\n.uploadphoto {\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  cursor: pointer;\n  font-size: clamp(2px, 1vw, 15px);\n}\n\n.answerimage {\n  width: 50px;\n  height: 50px;\n}\n\n.qasection {\n  display: inline-block;\n  width: 100%;\n  font-size: clamp(5px, 2vw, 20px);\n}\n\n.qatitle {\n  float: left;\n  margin-bottom: -1.33em;\n  margin-top: -1em;\n}\n\n.qacontent {\n  float: left;\n  margin-left: 0.5%;\n  margin-top: -0.95em;\n}\n\n.answerentry {\n  margin-top: 0.33em;\n  margin-left: 2%;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "._1VSSa0XACgLqgddjgy4OsE {\n  /* background-color: #FAEBD2; */\n  /* width: 90%; */\n  margin: 0 auto;\n  color: #525252;\n  font-size: 100%;\n  /* border: 3px solid #5FD9BD; */\n  word-wrap: normal;\n}\n\n.mN2OmMnjtJHwF3Rhimf8d{\n  padding-left: 3%;\n  padding-top: 3%;\n  font-family: 'Dela Gothic One', cursive;  color: #525252;\n}\n\n._2CpifrTcv5i8QiN8GmY4Oj {\n  width: 90%;\n  /* padding: 2%; */\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n._1lsVs-M4PIWy3ta1-xeNQk {\n  width: 100%;\n  height: 50px;\n}\n\n._3l9pf2UpGjJuTVs7DJPzyg {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  min-height: 0px;\n  max-height: 500px;\n  overflow-y: scroll;\n  font-family: 'Raleway', sans-serif;\n  margin-top: 2%;\n  margin-bottom: 2%;\n}\n\n.ebcoiHoJFqdgy4xFYGNYK, .vibmvgrbGF0mPv381F4iL {\n  margin: 5px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  border-width: 1px;\n  font-size: clamp(2px, 1vw, 15px);\n  font-family: 'Open Sans', sans-serif;\n}\n\n._3CkjzmUIG50ufKS5vBs2YN, ._2_TwtizgBjPcihx3txbPWu{\n  width: 20%;\n  height: 50px;\n  font-size: clamp(2px, 1vw, 20px);\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #525252;\n  margin: 15px;\n  padding: 5px;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n}\n\n._3CkjzmUIG50ufKS5vBs2YN:active, ._3CkjzmUIG50ufKS5vBs2YN:hover,\n.ebcoiHoJFqdgy4xFYGNYK:active, .ebcoiHoJFqdgy4xFYGNYK:hover,\n._2_TwtizgBjPcihx3txbPWu:active, ._2_TwtizgBjPcihx3txbPWu:hover,\n.vibmvgrbGF0mPv381F4iL:active, .vibmvgrbGF0mPv381F4iL:hover,\n._1b0LigHxQMdVall1S_oiMF:active, ._1b0LigHxQMdVall1S_oiMF:hover,\n._1UggaAoXQ9A7QjHXwKbkb-:active, ._1UggaAoXQ9A7QjHXwKbkb-:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n\n._27SkUT3sRvgU-57GoR9vu4 {\n  display: block;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.4);\n}\n\n._1e7GXdEy0sdOpaKkVPl2bZ {\n  background-color: #fefefe;\n  margin: 5% auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 60%;\n  height: 80%;\n}\n\n._2u-I9UXMIu4XCqSl_tasU7 {\n  display: block;\n  position: fixed;\n  margin: 5% auto;\n  width: 60%;\n  height: 60%;\n}\n\n._1wRJoFGGvN-fnfw64xGnB0 {\n  color:#641373;\n  float: right;\n  margin-right: 20%;\n  margin-top: 6%;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n._1wRJoFGGvN-fnfw64xGnB0:hover, ._1wRJoFGGvN-fnfw64xGnB0:focus {\n  color: #5FD9BD;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.irFmjRjRyTG8KEIz6rphF {\n  margin: 15px;\n}\n\n._1p1pwhP44TZvJpcEMNbdn_ {\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.zRAnc_X8PVeYaOrlCCWeR, ._1Urd3Vvdj0g8s6uh16Pded {\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n._1pcuU-RZmdDOYPglZDdNVp {\n  color: red;\n}\n\n.MaYcXqmWESuaLaNPr0BuL {\n  border: 2px solid red;\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n._1gIg2sL9oeDHydfSltX-Z {\n  border: 2px solid red;\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n._2_TwtizgBjPcihx3txbPWu {\n  margin-left: 15px;\n}\n\n.BWz0-JsvFt_dY2D4-rg_- {\n  color: red;\n}\n\n\n\n._2IJr1UEmlOJDaUq3ONZQul {\n  margin-bottom: 25px;\n}\n\n._1l-5iJU0EkdLymG1wXF3P5 {\n  margin-bottom: 10px;\n}\n\n._2lXrfQryvs25aeWYashZz4 {\n  display: inline-block\n}\n\n._2lXrfQryvs25aeWYashZz4:before{\n  content: ' ';\n  white-space: pre;\n}\n\n._38MkjTDJqwDXewh6X3dhxD {\n  margin-left: 5px;\n  width: 100%;\n  display: inline-block;\n}\n\n._3d6EzRJhnAZ8EWG12bmljO {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 10px;\n}\n\n._1m33opjdUWWJ9EWItgRqHA {\n  float: right;\n}\n\n._3TgbjXu0To5AtXs_7-F_LA, ._2U0yekBXqYbpnJ559Q-cst {\n  font-size: 80%;\n  display: inline-block;\n  align-items: right;\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n\n._2ZTtqRUYnGdX1Gg4a0vMtQ, ._3uFKd95J3_hlpPAiEr1Ocr {\n  text-decoration: underline;\n  color:#641373;\n}\n\n._2ZTtqRUYnGdX1Gg4a0vMtQ:hover, ._3uFKd95J3_hlpPAiEr1Ocr:hover {\n  color: #5FD9BD;\n  cursor: pointer;\n}\n\n._2ZTtqRUYnGdX1Gg4a0vMtQ:active, ._3uFKd95J3_hlpPAiEr1Ocr:active {\n  font-weight: bold;\n  cursor: pointer;\n}\n\n.smzIGOxZZfHY082R-6MPZ, ._2rT2OrZkGRAMT5V63N_JGI {\n  text-decoration: underline;\n  font-weight: bold;\n  color:#641373;\n}\n\ninput[type=\"file\"] {\n  display: none;\n}\n\n._1b0LigHxQMdVall1S_oiMF {\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  cursor: pointer;\n  font-size: clamp(2px, 1vw, 15px);\n}\n\n._1UggaAoXQ9A7QjHXwKbkb- {\n  width: 50px;\n  height: 50px;\n  margin: 2px;\n}\n\n._3pqppk-GParbPmemKQ3XHm {\n  display: inline-block;\n  width: 100%;\n  font-size: clamp(5px, 2vw, 20px);\n}\n\n._H8eCoLua18Y43RRydeAl {\n  float: left;\n  margin-bottom: -1.33em;\n  margin-top: -1em;\n}\n\n._1KCyGRJ3KPS7hJkPuny1AJ {\n  float: left;\n  margin-left: 0.5%;\n  margin-top: -0.95em;\n}\n\n._1l-5iJU0EkdLymG1wXF3P5 {\n  margin-top: 0.33em;\n  margin-left: 2%;\n}", "",{"version":3,"sources":["webpack://./client/src/components/QA/qaLight.module.css"],"names":[],"mappings":"AAAA;EACE,+BAA+B;EAC/B,gBAAgB;EAChB,cAAc;EACd,cAAc;EACd,eAAe;EACf,+BAA+B;EAC/B,iBAAiB;AACnB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,uCAAuC,GAAG,cAAc;AAC1D;;AAEA;EACE,UAAU;EACV,iBAAiB;EACjB,cAAc;EACd,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,YAAY;AACd;;AAEA;EACE,UAAU;EACV,WAAW;EACX,cAAc;EACd,eAAe;EACf,iBAAiB;EACjB,kBAAkB;EAClB,kCAAkC;EAClC,cAAc;EACd,iBAAiB;AACnB;;AAEA;EACE,WAAW;EACX,yBAAyB;EACzB,yBAAyB;EACzB,iBAAiB;EACjB,gCAAgC;EAChC,oCAAoC;AACtC;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,gCAAgC;EAChC,yBAAyB;EACzB,yBAAyB;EACzB,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,iBAAiB;EACjB,oCAAoC;AACtC;;AAEA;;;;;;EAME,sBAAsB;EACtB,eAAe;AACjB;;AAEA;EACE,cAAc;EACd,eAAe;EACf,UAAU;EACV,OAAO;EACP,MAAM;EACN,WAAW;EACX,YAAY;EACZ,iCAAiC;AACnC;;AAEA;EACE,yBAAyB;EACzB,eAAe;EACf,aAAa;EACb,sBAAsB;EACtB,UAAU;EACV,WAAW;AACb;;AAEA;EACE,cAAc;EACd,eAAe;EACf,eAAe;EACf,UAAU;EACV,WAAW;AACb;;AAEA;EACE,aAAa;EACb,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,qBAAqB;EACrB,UAAU;EACV,YAAY;EACZ,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,qBAAqB;EACrB,UAAU;EACV,YAAY;EACZ,eAAe;EACf,kBAAkB;AACpB;;AAEA;EACE,iBAAiB;AACnB;;AAEA;EACE,UAAU;AACZ;;;;AAIA;EACE,mBAAmB;AACrB;;AAEA;EACE,mBAAmB;AACrB;;AAEA;EACE;AACF;;AAEA;EACE,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE,gBAAgB;EAChB,WAAW;EACX,qBAAqB;AACvB;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,kBAAkB;AACpB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,cAAc;EACd,qBAAqB;EACrB,kBAAkB;EAClB,gBAAgB;EAChB,iBAAiB;AACnB;;;AAGA;EACE,0BAA0B;EAC1B,aAAa;AACf;;AAEA;EACE,cAAc;EACd,eAAe;AACjB;;AAEA;EACE,iBAAiB;EACjB,eAAe;AACjB;;AAEA;EACE,0BAA0B;EAC1B,iBAAiB;EACjB,aAAa;AACf;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,yBAAyB;EACzB,yBAAyB;EACzB,eAAe;EACf,gCAAgC;AAClC;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,WAAW;AACb;;AAEA;EACE,qBAAqB;EACrB,WAAW;EACX,gCAAgC;AAClC;;AAEA;EACE,WAAW;EACX,sBAAsB;EACtB,gBAAgB;AAClB;;AAEA;EACE,WAAW;EACX,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,kBAAkB;EAClB,eAAe;AACjB","sourcesContent":[".section {\n  /* background-color: #FAEBD2; */\n  /* width: 90%; */\n  margin: 0 auto;\n  color: #525252;\n  font-size: 100%;\n  /* border: 3px solid #5FD9BD; */\n  word-wrap: normal;\n}\n\n.title{\n  padding-left: 3%;\n  padding-top: 3%;\n  font-family: 'Dela Gothic One', cursive;  color: #525252;\n}\n\n.searchdiv {\n  width: 90%;\n  /* padding: 2%; */\n  margin: 0 auto;\n  margin-top: 2%;\n}\n\n.searchbar {\n  width: 100%;\n  height: 50px;\n}\n\n.feed {\n  width: 90%;\n  padding: 2%;\n  margin: 0 auto;\n  min-height: 0px;\n  max-height: 500px;\n  overflow-y: scroll;\n  font-family: 'Raleway', sans-serif;\n  margin-top: 2%;\n  margin-bottom: 2%;\n}\n\n.feedbutton, .addphoto {\n  margin: 5px;\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  border-width: 1px;\n  font-size: clamp(2px, 1vw, 15px);\n  font-family: 'Open Sans', sans-serif;\n}\n\n.button, .questionsubmit{\n  width: 20%;\n  height: 50px;\n  font-size: clamp(2px, 1vw, 20px);\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  color: #525252;\n  margin: 15px;\n  padding: 5px;\n  font-weight: bold;\n  font-family: 'Open Sans', sans-serif;\n}\n\n.button:active, .button:hover,\n.feedbutton:active, .feedbutton:hover,\n.questionsubmit:active, .questionsubmit:hover,\n.addphoto:active, .addphoto:hover,\n.uploadphoto:active, .uploadphoto:hover,\n.answerimage:active, .answerimage:hover {\n  transform: scale(0.95);\n  cursor: pointer;\n}\n\n.modal {\n  display: block;\n  position: fixed;\n  z-index: 1;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.4);\n}\n\n.modalcontent {\n  background-color: #fefefe;\n  margin: 5% auto;\n  padding: 20px;\n  border: 1px solid #888;\n  width: 60%;\n  height: 80%;\n}\n\n.modalphoto {\n  display: block;\n  position: fixed;\n  margin: 5% auto;\n  width: 60%;\n  height: 60%;\n}\n\n.modalclose {\n  color:#641373;\n  float: right;\n  margin-right: 20%;\n  margin-top: 6%;\n  font-size: 28px;\n  font-weight: bold;\n}\n\n.modalclose:hover, .modalclose:focus {\n  color: #5FD9BD;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modaldiv {\n  margin: 15px;\n}\n\n.modalquestion {\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.modaluser, .modalphotos {\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n.modaltitlecheck {\n  color: red;\n}\n\n.modalquestioncheck {\n  border: 2px solid red;\n  width: 80%;\n  height: 80px;\n  overflow-wrap: break-word;\n  margin-top: 5px;\n}\n\n.modalusercheck {\n  border: 2px solid red;\n  width: 40%;\n  height: 30px;\n  margin-top: 5px;\n  margin-bottom: 5px;\n}\n\n.questionsubmit {\n  margin-left: 15px;\n}\n\n.submiterror {\n  color: red;\n}\n\n\n\n.feedentry {\n  margin-bottom: 25px;\n}\n\n.answerentry {\n  margin-bottom: 10px;\n}\n\n.answer {\n  display: inline-block\n}\n\n.answer:before{\n  content: ' ';\n  white-space: pre;\n}\n\n.answerlogistics {\n  margin-left: 5px;\n  width: 100%;\n  display: inline-block;\n}\n\n.answerauthor {\n  font-size: 80%;\n  display: inline-block;\n  margin-right: 10px;\n}\n\n.questionactionsection {\n  float: right;\n}\n\n.answeractiondiv, .questionactiondiv {\n  font-size: 80%;\n  display: inline-block;\n  align-items: right;\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n\n.answeraction, .questionaction {\n  text-decoration: underline;\n  color:#641373;\n}\n\n.answeraction:hover, .questionaction:hover {\n  color: #5FD9BD;\n  cursor: pointer;\n}\n\n.answeraction:active, .questionaction:active {\n  font-weight: bold;\n  cursor: pointer;\n}\n\n.answeractionclicked, .questionactionclicked {\n  text-decoration: underline;\n  font-weight: bold;\n  color:#641373;\n}\n\ninput[type=\"file\"] {\n  display: none;\n}\n\n.uploadphoto {\n  background-color: #5FD9BD;\n  border: 1px solid #15332C;\n  cursor: pointer;\n  font-size: clamp(2px, 1vw, 15px);\n}\n\n.answerimage {\n  width: 50px;\n  height: 50px;\n  margin: 2px;\n}\n\n.qasection {\n  display: inline-block;\n  width: 100%;\n  font-size: clamp(5px, 2vw, 20px);\n}\n\n.qatitle {\n  float: left;\n  margin-bottom: -1.33em;\n  margin-top: -1em;\n}\n\n.qacontent {\n  float: left;\n  margin-left: 0.5%;\n  margin-top: -0.95em;\n}\n\n.answerentry {\n  margin-top: 0.33em;\n  margin-left: 2%;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"section": "_12EdSXn2vpvBdogw5J1DcP",
-	"title": "E5hJcvAhA9IXh4fiVicvY",
-	"searchdiv": "RTgMXOuWkn0DGCfMV3h5_",
-	"searchbar": "_4Lqos1a_vevfbrCXhvN6y",
-	"feed": "lkLE0Mob05y3cASNbAzm8",
-	"feedbutton": "_3GSbaXW1m1YsmQxXP2FyUc",
-	"addphoto": "YCqkg5Wu2g8Hn7lE3VxZu",
-	"button": "_2qNGbitDivVZ8_Y6NnG16t",
-	"questionsubmit": "_3mr33sbMQmQG1O7XowZQQD",
-	"uploadphoto": "Ea30nTHZm_8Q8i4uTgI0q",
-	"modal": "_11tcdAgnO7enki4KQiUFhp",
-	"modalcontent": "_3h3HOxCJN7imykJk3f-E0_",
-	"modalclose": "_1nfI843t1geNRZfW9gR5E3",
-	"modaldiv": "_2UtFCxJI84pQJ55q81rmR5",
-	"modalquestion": "_2ijm2D1jQfPwCX9HbcDR3k",
-	"modaluser": "RL0NpDFfvUESD81zAbxky",
-	"modalphotos": "_2ePq2VQtHnxM86UghgGig",
-	"modaltitlecheck": "_22Vo3X3nuZVhOH0fSKR_c5",
-	"modalquestioncheck": "_2OX1XXh1CR5NB4ZLLoNwGL",
-	"modalusercheck": "_3LpgNfJdDCoeg7-r0s3gAg",
-	"submiterror": "_3LOivmjSqPzfxxpa4TEqKD",
-	"feedentry": "_13UlOQsqEMHY2IEP4bQ-1w",
-	"answerentry": "GBsCxikuhHI2wzRz6UwXb",
-	"answer": "_1E8QDF2zKy8kPwzlYqN_7X",
-	"answerlogistics": "_3s6rYsaGdSDunPi6A6dqd6",
-	"answerauthor": "Fkm25SByN_u69WhKlQCX2",
-	"questionactionsection": "_2-Jb-916ukdN4nu0ZQvi5A",
-	"answeractiondiv": "_18RCpzXoXt7rbJ7LzzxrG1",
-	"questionactiondiv": "_1x3m6LvxF5fazFaBQuv-9E",
-	"answeraction": "_1UmTihhYbjpqvx5MZ13Ihg",
-	"questionaction": "_9BFdxxOajjdmMeEVYU1uQ",
-	"answeractionclicked": "_1PIkRggjmB3Rzd9h0jn5ra",
-	"questionactionclicked": "_2ELGJxfYIXNUpwIbp6qJuQ",
-	"answerimage": "_3XgeRW-UR-VRY8KyZhNkhf",
-	"qasection": "PoWpIRPQbXG-i8Mc9QrZ_",
-	"qatitle": "_3W0vOP0TXXTkSQj_f87XWf",
-	"qacontent": "_2s5g7J23LWljsZ4MvusYbY"
+	"section": "_1VSSa0XACgLqgddjgy4OsE",
+	"title": "mN2OmMnjtJHwF3Rhimf8d",
+	"searchdiv": "_2CpifrTcv5i8QiN8GmY4Oj",
+	"searchbar": "_1lsVs-M4PIWy3ta1-xeNQk",
+	"feed": "_3l9pf2UpGjJuTVs7DJPzyg",
+	"feedbutton": "ebcoiHoJFqdgy4xFYGNYK",
+	"addphoto": "vibmvgrbGF0mPv381F4iL",
+	"button": "_3CkjzmUIG50ufKS5vBs2YN",
+	"questionsubmit": "_2_TwtizgBjPcihx3txbPWu",
+	"uploadphoto": "_1b0LigHxQMdVall1S_oiMF",
+	"answerimage": "_1UggaAoXQ9A7QjHXwKbkb-",
+	"modal": "_27SkUT3sRvgU-57GoR9vu4",
+	"modalcontent": "_1e7GXdEy0sdOpaKkVPl2bZ",
+	"modalphoto": "_2u-I9UXMIu4XCqSl_tasU7",
+	"modalclose": "_1wRJoFGGvN-fnfw64xGnB0",
+	"modaldiv": "irFmjRjRyTG8KEIz6rphF",
+	"modalquestion": "_1p1pwhP44TZvJpcEMNbdn_",
+	"modaluser": "zRAnc_X8PVeYaOrlCCWeR",
+	"modalphotos": "_1Urd3Vvdj0g8s6uh16Pded",
+	"modaltitlecheck": "_1pcuU-RZmdDOYPglZDdNVp",
+	"modalquestioncheck": "MaYcXqmWESuaLaNPr0BuL",
+	"modalusercheck": "_1gIg2sL9oeDHydfSltX-Z",
+	"submiterror": "BWz0-JsvFt_dY2D4-rg_-",
+	"feedentry": "_2IJr1UEmlOJDaUq3ONZQul",
+	"answerentry": "_1l-5iJU0EkdLymG1wXF3P5",
+	"answer": "_2lXrfQryvs25aeWYashZz4",
+	"answerlogistics": "_38MkjTDJqwDXewh6X3dhxD",
+	"answerauthor": "_3d6EzRJhnAZ8EWG12bmljO",
+	"questionactionsection": "_1m33opjdUWWJ9EWItgRqHA",
+	"answeractiondiv": "_3TgbjXu0To5AtXs_7-F_LA",
+	"questionactiondiv": "_2U0yekBXqYbpnJ559Q-cst",
+	"answeraction": "_2ZTtqRUYnGdX1Gg4a0vMtQ",
+	"questionaction": "_3uFKd95J3_hlpPAiEr1Ocr",
+	"answeractionclicked": "smzIGOxZZfHY082R-6MPZ",
+	"questionactionclicked": "_2rT2OrZkGRAMT5V63N_JGI",
+	"qasection": "_3pqppk-GParbPmemKQ3XHm",
+	"qatitle": "_H8eCoLua18Y43RRydeAl",
+	"qacontent": "_1KCyGRJ3KPS7hJkPuny1AJ"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -71938,12 +71980,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./client/src/components/App.jsx");
 /* harmony import */ var _state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./state/contexts/RootContext */ "./client/src/state/contexts/RootContext.js");
+/* harmony import */ var _components_ClickTracker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ClickTracker */ "./client/src/components/ClickTracker.jsx");
 
 
  // context import
 
+ // render props
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__.RootProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__.default, null)), document.getElementById('app'));
+
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_state_contexts_RootContext__WEBPACK_IMPORTED_MODULE_3__.RootProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ClickTracker__WEBPACK_IMPORTED_MODULE_4__.default, {
+  render: function render() {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__.default, null);
+  }
+})), document.getElementById('app'));
 })();
 
 /******/ })()
