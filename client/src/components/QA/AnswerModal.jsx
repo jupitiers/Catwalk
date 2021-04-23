@@ -11,13 +11,13 @@ import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
 const AnswerModal = (props) => {
   const { getQuestionsByProductId, addAnswer, trackClick } = useContext(APIContext);
 
-  const [questionAuth, setQuestionAuth] = useState(true);
+  const [answerAuth, setAnswerAuth] = useState(true);
   const [nicknameAuth, setNicknameAuth] = useState(true);
   const [emailAuth, setEmailAuth] = useState(true);
   const [submittable, setSubmittable] = useState(true);
   const [photos, setPhotos] = useState([]);
 
-  var questionSubmit = true;
+  var answerSubmit = true;
   var nicknameSubmit = true;
   var emailSubmit = true;
 
@@ -54,7 +54,7 @@ const AnswerModal = (props) => {
   };
 
   var submit = function(questionId, data) {
-    if (questionSubmit && nicknameSubmit && emailSubmit) {
+    if (answerSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
       addAnswer(questionId, data);
       props.closeModal();
@@ -63,13 +63,13 @@ const AnswerModal = (props) => {
     }
   }
 
-  var checkAuth = function(question, nickname, email) {
-    if (question && question.length > 0) {
-      setQuestionAuth(true);
-      questionSubmit = true;
-    } else if (!question || question.length === 0) {
-      setQuestionAuth(false);
-      questionSubmit = false;
+  var checkAuth = function(answer, nickname, email) {
+    if (answer && answer.length > 0) {
+      setAnswerAuth(true);
+      answerSubmit = true;
+    } else if (!answer || answer.length === 0) {
+      setAnswerAuth(false);
+      answerSubmit = false;
     }
 
     if (nickname && nickname.length > 0) {
@@ -89,7 +89,7 @@ const AnswerModal = (props) => {
     }
 
     var answerData = {
-      body: question,
+      body: answer,
       name: nickname,
       email: email,
       photos: photos
@@ -110,7 +110,7 @@ const AnswerModal = (props) => {
           }
         </div>
         <div className={lightStyles.modaldiv}>
-          {questionAuth
+          {answerAuth
             ? <div>
                 <span>Your Answer: *</span><br/>
                 <textarea id='answer' className={lightStyles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
@@ -154,7 +154,7 @@ const AnswerModal = (props) => {
             <span>Upload your photos: </span><br/>
             <input type='text' id='photoUrl' className={lightStyles.modalphotos} placeholder='Place your photo URL here'/>
             {photos.length < 5
-              ? <button className={lightStyles.addphoto} onClick={(e) => {addPhoto($('#photoUrl').val())}}>Add photo</button>
+              ? <button className={lightStyles.addphoto} onClick={() => {addPhoto($('#photoUrl').val())}}>Add photo</button>
               : <span>Max photos added</span>
             } <br/>
             {photos.length < 5
@@ -172,7 +172,7 @@ const AnswerModal = (props) => {
           </div>
         </div>
         <div>
-          <button id='answersubmit' className={lightStyles.questionsubmit} onClick={(e) => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
+          <button id='answersubmit' className={lightStyles.questionsubmit} onClick={() => {checkAuth($('#answer').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
         </div>
       </div>
     </div>
