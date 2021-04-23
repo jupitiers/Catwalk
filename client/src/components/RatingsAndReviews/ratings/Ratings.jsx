@@ -4,25 +4,25 @@ import RatingSummary from './RatingSummary';
 import RatingsBreakdown from './RatingsBreakdown';
 import RatingsFactors from './RatingsFactors';
 import { APIContext } from '../../../state/contexts/APIContext';
-import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
-// Rating summary
 const Ratings = () => {
+  // context imports
   const { getReviewMetaDataByProductId } = useContext(APIContext);
 
+  // get current review metadata on initial render
   useEffect(() => {
     getReviewMetaDataByProductId();
   }, []);
 
   return (
     <div className={styles.ratingsContainer}>
-      <div className={styles.ratingsItem}>
+      <div className={styles.summary}>
         <RatingSummary />
       </div>
-      <div className={styles.ratingsItem}>
+      <div className={styles.breakdown}>
         <RatingsBreakdown />
       </div>
-      <div className={styles.ratingsItem}>
+      <div className={styles.factors}>
         <RatingsFactors />
       </div>
     </div>

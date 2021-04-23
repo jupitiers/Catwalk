@@ -1,17 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './reviews.module.css';
 import ReviewCard from './ReviewCard';
 import { APIContext } from '../../../state/contexts/APIContext';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const Reviews = () => {
-  const { getReviewsByProductId, getProductById } = useContext(APIContext);
+  // context imports
   const {
-    reviews, reviewsShowing, setSortTerm, sortTerm, starFilter,
+    getReviewsByProductId,
+  } = useContext(APIContext);
+  const {
+    reviews,
+    reviewsShowing,
+    setSortTerm,
+    sortTerm,
+    starFilter,
+    getShowCount,
   } = useContext(ReviewContext);
 
-  // get reviews on load
-  // TODO change the api call to use dynamic id
+  // get reviews on sort term change
   useEffect(() => {
     getReviewsByProductId();
   }, [sortTerm]);
@@ -22,8 +29,7 @@ const Reviews = () => {
         <p>
           Viewing
           {' '}
-          {reviewsShowing <= reviews.length
-            ? reviewsShowing : reviews.length}
+          { getShowCount() }
           {' '}
           of
           {' '}
@@ -31,7 +37,11 @@ const Reviews = () => {
           {' '}
           Reviews, sorted by
         </p>
-        <select name="sort-by" id="sort-by" onChange={(e) => { setSortTerm(e.target.value); }}>
+        <select
+          name="sort-by"
+          id="sort-by"
+          onChange={(e) => { setSortTerm(e.target.value); }}
+        >
           <option value="relevant">Relevance</option>
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>

@@ -4,7 +4,9 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { getAvgRating, createStarArray, getRecommendPercent } from '../../../helpers/ratingsHelpers';
 
 const RatingSummary = () => {
+  // context imports
   const { metaData } = useContext(ReviewContext);
+  // using helper functions
   const avgRating = getAvgRating(metaData.ratings);
   const stars = createStarArray(avgRating);
   const percent = getRecommendPercent(metaData.recommended);

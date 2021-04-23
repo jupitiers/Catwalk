@@ -58,6 +58,7 @@ const AnswerModal = (props) => {
       setSubmittable(true);
       console.log('submittable');
       addAnswer(questionId, data);
+      props.closeModal();
     } else {
       setSubmittable(false);
       console.log('not');
@@ -65,26 +66,26 @@ const AnswerModal = (props) => {
   }
 
   var checkAuth = function(question, nickname, email) {
-    if (question.length > 0) {
+    if (question && question.length > 0) {
       setQuestionAuth(true);
       questionSubmit = true;
-    } else if (question.length === 0) {
+    } else if (!question || question.length === 0) {
       setQuestionAuth(false);
       questionSubmit = false;
     }
 
-    if (nickname.length > 0) {
+    if (nickname && nickname.length > 0) {
       setNicknameAuth(true);
       nicknameSubmit = true;
-    } else if (nickname.length === 0) {
+    } else if (!nickname || nickname.length === 0) {
       setNicknameAuth(false);
       nicknameSubmit = false;
     }
 
-    if (email.indexOf('@') > 0 && email.indexOf('.com') > 0) {
+    if (email && email.indexOf('@') > 0) {
       setEmailAuth(true);
       emailSubmit = true;
-    } else if (email.indexOf('@') < 0 || email.indexOf('.com') < 0) {
+    } else if (!email || email.indexOf('@') < 0) {
       setEmailAuth(false);
       emailSubmit = false;
     }
@@ -101,18 +102,24 @@ const AnswerModal = (props) => {
 
   return(
     <div className={styles.modalcontent}>
-      <h2>Submit Your Answer</h2>
-      <h4>{props.productData.name}: {props.question}</h4>
+      <h2 id='title'>Submit Your Answer</h2>
+      <h4 id='subtitle'>{props.productData.name}: {props.question}</h4>
       <div>
+        <div>
+          {submittable
+            ? null
+            : <p className={styles.submiterror}>You must enter the following: </p>
+          }
+        </div>
         <div className={styles.modaldiv}>
           {questionAuth
             ? <div>
                 <span>Your Answer: *</span><br/>
-                <textarea id='question' className={styles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
+                <textarea id='answer' className={styles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Question: *</span><br/>
-                <textarea id='question' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
+                <textarea id='answerCheck' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
           }
         </div>
@@ -125,7 +132,7 @@ const AnswerModal = (props) => {
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack543!'/><br/>
+                <input type='text' id='nicknameCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack543!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
           }
@@ -139,7 +146,7 @@ const AnswerModal = (props) => {
               </div>
             : <div>
                 <span className={styles.modaltitlecheck}>Email: * </span><br/>
-                <input type='text' id='email' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack@email.com'/><br/>
+                <input type='text' id='emailCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack@email.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
           }
@@ -168,13 +175,7 @@ const AnswerModal = (props) => {
           </div>
         </div>
         <div>
-          {submittable
-            ? null
-            : <p className={styles.submiterror}>Please check your entries</p>
-          }
-        </div>
-        <div>
-          <button className={styles.questionsubmit} onClick={() => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
+          <button id='answersubmit' className={styles.questionsubmit} onClick={() => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
         </div>
       </div>
     </div>

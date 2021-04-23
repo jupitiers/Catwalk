@@ -1,13 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './reviewImages.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 const ReviewImages = ({ images }) => {
+  // context imports
   const {
-    display, selectedImage, openOverlay, closeOverlay,
+    display,
+    selectedImage,
+    openOverlay,
+    closeOverlay,
   } = useContext(ReviewContext);
+  // overlay class for show / hide styles
   const showHideClassName = display ? styles.show : styles.hide;
-  console.log(showHideClassName);
   return (
     <>
       <p>

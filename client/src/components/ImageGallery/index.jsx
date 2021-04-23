@@ -120,8 +120,8 @@ const ImageGallery = () => {
         ?
         <div className={styles.modalWrapper} ref={modalWrapper} onClick={closeModal}>
           <div className={styles.modalDiv}>
-            <img src={mainImg.url} className={styles.modalImg} />
             <p className={styles.close} onClick={closeModal}>X</p>
+            <img src={mainImg.url} className={styles.modalImg} />
           </div>
         </div>
         :
@@ -143,7 +143,7 @@ const ImageGallery = () => {
         <div className={styles.arrowDiv}>
           <i className={`fas fa-arrow-left ${styles.arrowLeft}`} onClick={moveLeft}></i>
           <div className={styles.mainImgDiv}>
-            <img src={mainImg && mainImg.url} className={styles.mainImg} />
+            <img src={mainImg && mainImg.url} className={styles.mainImg} onClick={openModal}/>
           </div>
           <i className={`fas fa-arrow-right ${styles.arrowRight}`} onClick={moveRight}></i>
         </div>
