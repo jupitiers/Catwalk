@@ -33,7 +33,7 @@ const Answer = (props) => {
         <div
           id = 'helpfulButton'
           className={styles.answeractiondiv}
-          onClick={(e) => {trackClick(e, 'Q&A', new Date()); props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
+          onClick={(e) => {props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
         >
           {helpful
             ? <span id='helpfulClick' className={styles.answeractionclicked}>Yes </span>
@@ -47,7 +47,7 @@ const Answer = (props) => {
         <div
           id = 'reportButton'
           className={styles.answeractiondiv}
-          onClick={(e) => {trackClick(e, 'Q&A', new Date()); props.reportClick(props.id, reported); setReported(true); }}
+          onClick={(e) => {props.reportClick(props.id, reported); setReported(true); }}
         >
           {reported
             ? <p id='reported' className={styles.answeractionclicked}>Reported</p>

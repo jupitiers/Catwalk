@@ -115,7 +115,7 @@ const QuestionModal = (props) => {
           }
         </div>
         <div>
-          <button className={styles.questionsubmit} onClick={(e) => {trackClick(e, 'Q&A', new Date()); checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit question</button>
+          <button className={styles.questionsubmit} onClick={(e) => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit question</button>
         </div>
       </div>
     </div>

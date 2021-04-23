@@ -52,8 +52,8 @@ var AnswerList = (props) => {
       </div>
       {enoughAnswers ?
         clicked
-          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(false)}}>Collapse answers</button>
-          : <button id='moreAnswers' className={styles.feedbutton} onClick={(e) => {trackClick(e, 'Q&A', new Date()); setClicked(true)}}>Load more answers</button>
+          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={(e) => {setClicked(false)}}>Collapse answers</button>
+          : <button id='moreAnswers' className={styles.feedbutton} onClick={(e) => {setClicked(true)}}>Load more answers</button>
         : <div/>
       }
     </div>

@@ -43,7 +43,7 @@ var QA = (props) => {
           <div className={styles.questionactiondiv}>
             Helpful?
           </div>
-          <div className={styles.questionactiondiv} onClick={(e) => {trackClick(e, 'Q&A', new Date()); questionHelpfulnessClick(props.id, helpful); setHelpful(true);}}>
+          <div className={styles.questionactiondiv} onClick={(e) => {questionHelpfulnessClick(props.id, helpful); setHelpful(true);}}>
             {helpful
               ? <span className={styles.questionactionclicked}>Yes </span>
               : <span className={styles.questionaction}>Yes </span>
@@ -56,12 +56,12 @@ var QA = (props) => {
             }
           </div>| */}
           <div className={styles.questionactiondiv}>
-            <p className={styles.questionaction} id='addAnswer' onClick={(e) => {trackClick(e, 'Q&A', new Date()); setShowModal(true)}}>Add Answer</p>
+            <p className={styles.questionaction} id='addAnswer' onClick={(e) => {setShowModal(true)}}>Add Answer</p>
           </div>
           <div>
             {showModal
             ? <div className={styles.modal}>
-                <span className={styles.modalclose} onClick={(e) => {trackClick(e, 'Q&A', new Date()); closeAnswerModal()}}><i className="far fa-times-circle" /></span>
+                <span className={styles.modalclose} onClick={(e) => {closeAnswerModal()}}><i className="far fa-times-circle" /></span>
                 <AnswerModal id='answerModal' questionId={props.id} question={props.question} productData={props.productData} closeModal={closeAnswerModal}/>
               </div>
             : null

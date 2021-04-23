@@ -156,13 +156,13 @@ const AnswerModal = (props) => {
             <span>Upload your photos: </span><br/>
             <input type='text' id='photoUrl' className={styles.modalphotos} placeholder='Place your photo URL here'/>
             {photos.length < 5
-              ? <button className={styles.addphoto} onClick={(e) => {trackClick(e, 'Q&A', new Date()); addPhoto($('#photoUrl').val())}}>Add photo</button>
+              ? <button className={styles.addphoto} onClick={(e) => {addPhoto($('#photoUrl').val())}}>Add photo</button>
               : <span>Max photos added</span>
             } <br/>
             {photos.length < 5
               ? <label className={styles.uploadphoto}>
                   Upload a photo
-                  <input type="file" id='photoUpload' placeholder='Upload a photo' onClick={(e) => trackClick(e, 'Q&A', new Date())} onChange={uploadPhoto}/>
+                  <input type="file" id='photoUpload' placeholder='Upload a photo' onChange={uploadPhoto}/>
                 </label>
               : <span>Max photos added</span>
             }
@@ -174,7 +174,7 @@ const AnswerModal = (props) => {
           </div>
         </div>
         <div>
-          <button id='answersubmit' className={styles.questionsubmit} onClick={(e) => {trackClick(e, 'Q&A', new Date()); checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
+          <button id='answersubmit' className={styles.questionsubmit} onClick={(e) => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
         </div>
       </div>
     </div>
