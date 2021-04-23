@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import styles from './app.module.css';
 // context imports
 import { ProductContext } from '../state/contexts/ProductContext';
+import { APIContext } from '../state/contexts/APIContext';
 
 // import components
 import Header from './Header/index';
@@ -19,9 +20,14 @@ const App = () => {
     someFunc,
   } = useContext(ProductContext);
 
+  const {
+    getProductById,
+    getProductStyles
+  } = useContext(APIContext);
+
   useEffect(() => {
-    // console.log({ sampleProduct });
-    // someFunc();
+    getProductById();
+    getProductStyles();
   }, []);
 
   return (

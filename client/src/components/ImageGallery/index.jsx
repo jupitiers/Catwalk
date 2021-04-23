@@ -6,20 +6,26 @@ import styles from './image.module.css';
 const ImageGallery = () => {
 
   const { getProductStyles } = useContext(APIContext);
-  const { styles, setStyles } = useContext(ProductContext);
+  const { styleSelected } = useContext(ProductContext);
+  const [ productStyles, setProductStyles ] = useState({});
   const [ images, setImages ] = useState([])
-  const [ mainImg, setMainImg ] = useState(images[0]);
+  const [ mainImg, setMainImg ] = useState({});
   const [ modal, setModal ] = useState(false)
   const modalWrapper = useRef()
 
   useEffect(() => {
-    (async() => {
-    const getStyles = await getProductStyles(17067)
-    setStyles(getStyles.results)
-    const images = {};
-
-    })()
-  },[])
+    console.log({styleSelected})
+    const images = styleSelected.photos && styleSelected.photos.map((img, i) => {
+      if(i === 0) {
+        img.active = true
+      } else {
+        img.active = false
+      }
+      return img
+    });
+    setImages(images)
+    setMainImg(images && images[0])
+  },[styleSelected])
 
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
@@ -104,7 +110,7 @@ const ImageGallery = () => {
     }
   }
 
-  console.log({styles})
+  // console.log({styleSelected, images})
 
   return (
     <div className={styles.wrapper}>
@@ -114,7 +120,7 @@ const ImageGallery = () => {
         ?
         <div className={styles.modalWrapper} ref={modalWrapper} onClick={closeModal}>
           <div className={styles.modalDiv}>
-            <img src={mainImg.src} className={styles.modalImg} />
+            <img src={mainImg.url} className={styles.modalImg} />
             <p className={styles.close} onClick={closeModal}>X</p>
           </div>
         </div>
@@ -124,10 +130,10 @@ const ImageGallery = () => {
         <div className={styles.imgDiv}>
         <div className={styles.thumbNailWrapper}>
           {
-            images.map((img, i) => {
+            images && images.map((img, i) => {
               return (
                 <div className={styles.thumbNailDiv} key={i}>
-                   <img src={img.src} className={img.active ? styles.active : styles.thumbNailImg} onClick={() => updateMainImg(i)}/>
+                   <img src={img.thumbnail_url} className={img.active ? styles.active : styles.thumbNailImg} onClick={() => updateMainImg(i)}/>
                 </div>
               )
             })
@@ -137,7 +143,7 @@ const ImageGallery = () => {
         <div className={styles.arrowDiv}>
           <i className={`fas fa-arrow-left ${styles.arrowLeft}`} onClick={moveLeft}></i>
           <div className={styles.mainImgDiv}>
-            <img src={mainImg.src} className={styles.mainImg} />
+            <img src={mainImg && mainImg.url} className={styles.mainImg} />
           </div>
           <i className={`fas fa-arrow-right ${styles.arrowRight}`} onClick={moveRight}></i>
         </div>

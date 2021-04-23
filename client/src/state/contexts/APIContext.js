@@ -14,7 +14,7 @@ const APIProvider = ({ children }) => {
   } = useContext(ReviewContext);
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   const pId = '17067';
@@ -47,11 +47,13 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductStyles = async (id) => {
+  const getProductStyles = async () => {
     try {
-      const getStyles = await axios.get(`${baseURL}/products/${id}/styles`, {
+      const getStyles = await axios.get(`${baseURL}/products/${pId}/styles`, {
         headers: { Authorization: REACT_APP_API_KEY }
       });
+      setStyleList(getStyles.data);
+      setStyleSelected(getStyles.data.results[0]);
       return getStyles.data;
     } catch(err) {
       console.log({err})
@@ -60,7 +62,7 @@ const APIProvider = ({ children }) => {
 
   const getRelatedProducts = async (id) => {
     try {
-      const relatedProducts = await axios.get(`${baseURL}/products/${id}/related`, {
+      const relatedProducts = await axios.get(`${baseURL}/products/${pId}/related`, {
         headers: { Authorization: REACT_APP_API_KEY }
       });
     } catch(err) {

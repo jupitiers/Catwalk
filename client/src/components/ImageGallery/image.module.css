@@ -1,6 +1,5 @@
 .wrapper {
   position: relative;
-  background: gray;
   height: 100%;
 }
 
@@ -29,16 +28,16 @@
 }
 
 .thumbNailDiv {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   padding-bottom: 3px;
   margin-bottom: 5px;
   border: 0px;
 }
 
 .thumbNailDiv img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   padding-bottom: 3px;
   margin-bottom: 5px;
 }
@@ -49,12 +48,12 @@
 
 .mainImgDiv {
   width: 600px;
-  height: 345px;
+  height: 542px;
 }
 
 .mainImg {
   width: 100%;
-  height: 100%;
+  height: 542px;
 }
 
 

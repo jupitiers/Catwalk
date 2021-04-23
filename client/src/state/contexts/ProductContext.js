@@ -8,17 +8,21 @@ const ProductProvider = ({ children }) => {
 
   const [productList, setProductList] = useState([]);
 
-  const [styles, setStyles] = useState({})
+  const [ styleList, setStyleList ] = useState({})
+
+  const [ styleSelected, setStyleSelected ]= useState({})
 
   return (
     <ProductContext.Provider
       value={{
         productList,
         selectedProduct,
-        styles,
+        styleList,
+        styleSelected,
         setProductList,
         setSelectedProduct,
-        setStyles
+        setStyleList,
+        setStyleSelected
       }}
     >
       {children}
