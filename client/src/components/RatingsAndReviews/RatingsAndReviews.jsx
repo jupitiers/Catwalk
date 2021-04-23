@@ -16,7 +16,6 @@ const RatingsAndReviews = () => {
   } = useContext(ReviewContext);
   const {
     getReviewsByProductId,
-    trackClick,
   } = useContext(APIContext);
 
   // Get all reviews by product Id
@@ -34,20 +33,14 @@ const RatingsAndReviews = () => {
           <div className={styles.reviewActions}>
             {(reviews.length > 2 && reviews.length > reviewsShowing) && (
             <button
-              onClick={(e) => {
-                trackClick(e, 'reviews widget', new Date());
-                showMoreReviews();
-              }}
+              onClick={showMoreReviews}
               className={styles.moreReviews}
             >
               More Reviews
             </button>
             )}
             <button
-              onClick={(e) => {
-                trackClick(e, 'reviews widget', new Date());
-                openCreate();
-              }}
+              onClick={openCreate}
               className={styles.reviewButton}
             >
               Add A Review +
@@ -58,10 +51,7 @@ const RatingsAndReviews = () => {
         : (
           <>
             <button
-              onClick={(e) => {
-                trackClick(e, 'reviews widget', new Date());
-                openCreate();
-              }}
+              onClick={openCreate}
               className={styles.firstReviewButton}
             >
               Be the first to add a review

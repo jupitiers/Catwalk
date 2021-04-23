@@ -12,7 +12,6 @@ const ReviewCard = ({ review }) => {
   const {
     markReviewAsHelpful,
     reportReview,
-    trackClick,
   } = useContext(APIContext);
   const {
     feedback,
@@ -48,10 +47,7 @@ const ReviewCard = ({ review }) => {
             ...
             <button
               className={styles.expandBodyButton}
-              onClick={(e) => {
-                trackClick(e, 'reviews widget', new Date());
-                setShowMoreBody(!showMoreBody);
-              }}
+              onClick={() => setShowMoreBody(!showMoreBody)}
             >
               Show More
             </button>
@@ -63,10 +59,7 @@ const ReviewCard = ({ review }) => {
         {(showMoreBody) && (
         <button
           className={[styles.expandBodyButton, styles.showLess].join(' ')}
-          onClick={(e) => {
-            trackClick(e, 'reviews widget', new Date());
-            setShowMoreBody(!showMoreBody);
-          }}
+          onClick={() => setShowMoreBody(!showMoreBody)}
         >
           Show Less
         </button>
@@ -90,12 +83,9 @@ const ReviewCard = ({ review }) => {
       <div className={styles.cardActions}>
         <p>Helpful?</p>
         <p
-          onClick={(e) => {
+          onClick={() => {
             if (!feedback[review.review_id]) {
-              trackClick(e, 'reviews widget', new Date());
               markReviewAsHelpful(review.review_id);
-            } else {
-              trackClick(e, 'reviews widget', new Date());
             }
           }}
           className={styles.action}
@@ -109,10 +99,7 @@ const ReviewCard = ({ review }) => {
         </p>
         <p>|</p>
         <p
-          onClick={(e) => {
-            reportReview(review.review_id);
-            trackClick(e, 'reviews widget', new Date());
-          }}
+          onClick={() => reportReview(review.review_id)}
           className={styles.action}
         >
           <span>Report</span>
