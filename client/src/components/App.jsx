@@ -11,20 +11,12 @@ import RelatedItemsAndOutfit from './Related/index';
 
 const App = () => (
   <div className={styles.appContainer}>
-    <div className="overview">
-      <Header />
-      <OverView />
-    </div>
+    <Header />
+    <OverView />
     <div className={styles.componentContainer}>
-      <div className="related">
-        <RelatedItemsAndOutfit />
-      </div>
-      <div className="questions">
-        <QASection />
-      </div>
-      <div className="reviews">
-        <RatingsAndReviews />
-      </div>
+      <RelatedItemsAndOutfit />
+      <QASection />
+      <RatingsAndReviews />
     </div>
   </div>
 );
