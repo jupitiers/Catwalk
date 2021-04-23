@@ -49,7 +49,6 @@ export const createStarArray = (rating) => {
 
 // get the average star rating for a review
 export const getAvgRating = (allRatings) => {
-  console.log(allRatings)
   const ratings = [];
   let avg = 0;
   for (const key in allRatings) {
