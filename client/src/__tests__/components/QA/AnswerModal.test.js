@@ -1,9 +1,11 @@
 import React from 'react';
 import { shallow, render, mount } from '../../../../../enzyme.setup';
 import { RootProvider } from '../../../state/contexts/RootContext';
-import AnswerModal, {checkAuth, submit} from '../../../components/QA/AnswerModal';
+import AnswerModal, {checkAuth, submit, addPhoto, trackClick, uploadPhoto} from '../../../components/QA/AnswerModal';
+import APIProvider from '../../../state/contexts/APIContext';
 
 describe('Answer Modal Component', () => {
+
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
@@ -18,7 +20,7 @@ describe('Answer Modal Component', () => {
             "description": "Whether you're a morning person or not. Whether you're gym bound or not. Everyone looks good in joggers.",
             "category": "Pants",
             "default_price": "40"
-        }}
+          }}
           />
       </RootProvider>,
     );
