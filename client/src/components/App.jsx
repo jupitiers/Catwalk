@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useContext, useEffect } from 'react';
-=======
-import React from 'react';
->>>>>>> master
 import styles from './app.module.css';
 // context imports
 import { ProductContext } from '../state/contexts/ProductContext';
@@ -15,7 +11,6 @@ import QASection from './QA/QAindex';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 import RelatedItemsAndOutfit from './Related/index';
 
-<<<<<<< HEAD
 const App = () => {
   const {
     sampleProduct,
@@ -37,32 +32,17 @@ const App = () => {
     getReviewsByProductId();
   },[]);
 
-  const { trackClick } = useContext(APIContext);
   return (
-    <div className={styles.appContainer} onClick={(e) => trackClick(e)}>
-      <div className="overview">
+    <div className={styles.appContainer}>
         <Header />
         <OverView />
-=======
-const App = () => (
-  <div className={styles.appContainer}>
-    <div className="overview">
-      <Header />
-      <OverView />
-    </div>
-    <div className={styles.componentContainer}>
-      <div className="related">
-        <RelatedItemsAndOutfit />
-      </div>
-      <div className="questions">
-        <QASection />
->>>>>>> master
-      </div>
-      <div className="reviews">
-        <RatingsAndReviews />
+      <div className={styles.componentContainer}>
+          <RelatedItemsAndOutfit />
+          <QASection />
+          <RatingsAndReviews />
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
