@@ -8,6 +8,8 @@ const Answer = (props) => {
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState('');
+  const [showPhoto, setShowPhoto] = useState(false);
 
   return (
     <div className={lightStyles.answerentry}>
@@ -56,12 +58,17 @@ const Answer = (props) => {
       </div>
       <div>
         {props.photos.map((photo, idx) => (
-          <img
-            key={idx}
-            className={lightStyles.answerimage}
-            src={photo}
-          />
+          <img key={idx} className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
         ))}
+        {showPhoto
+          ? <div className={lightStyles.modal}>
+              <span className={lightStyles.modalclose} onClick={() => {setShowPhoto(false)}}><i className="far fa-times-circle" /></span>
+              <div className={lightStyles.modalcontent}>
+                <img className={lightStyles.modalphoto} src={selectedPhoto}/>
+              </div>
+            </div>
+      : null
+        }
       </div>
     </div>
   );
