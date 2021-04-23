@@ -52,7 +52,7 @@ export const getAvgRating = (allRatings) => {
   const ratings = [];
   let avg = 0;
   for (const key in allRatings) {
-    avg += parseInt(key) + parseInt(allRatings[key]);
+    avg += parseInt(key) * parseInt(allRatings[key]);
     ratings.push(parseInt(allRatings[key]));
   }
   const divisor = ratings.reduce((a, b) => parseInt(a) + parseInt(b), 0);
