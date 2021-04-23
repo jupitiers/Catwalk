@@ -49,10 +49,11 @@ export const createStarArray = (rating) => {
 
 // get the average star rating for a review
 export const getAvgRating = (allRatings) => {
+  console.log(allRatings)
   const ratings = [];
   let avg = 0;
   for (const key in allRatings) {
-    avg += parseInt(key) + parseInt(allRatings[key]);
+    avg += parseInt(key) * parseInt(allRatings[key]);
     ratings.push(parseInt(allRatings[key]));
   }
   const divisor = ratings.reduce((a, b) => parseInt(a) + parseInt(b), 0);
