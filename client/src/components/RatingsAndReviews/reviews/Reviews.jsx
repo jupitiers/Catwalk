@@ -8,7 +8,6 @@ const Reviews = () => {
   // context imports
   const {
     getReviewsByProductId,
-    trackClick,
   } = useContext(APIContext);
   const {
     reviews,
@@ -41,9 +40,6 @@ const Reviews = () => {
         <select
           name="sort-by"
           id="sort-by"
-          onClick={(e) => {
-            trackClick(e, 'review widget', new Date());
-          }}
           onChange={(e) => { setSortTerm(e.target.value); }}
         >
           <option value="relevant">Relevance</option>

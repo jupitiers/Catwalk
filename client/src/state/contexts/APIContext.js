@@ -218,7 +218,7 @@ const APIProvider = ({ children }) => {
       widget: '',
       time: new Date(),
     };
-    // ! run check for closest for each widget return one that isnt null
+    // run check for closest for each widget return one that isnt null
     const elem = e.target;
     if (elem.closest('.overview')) {
       data.widget = 'overview';
@@ -229,7 +229,7 @@ const APIProvider = ({ children }) => {
     } else if (elem.closest('.reviews')) {
       data.widget = 'reviews';
     }
-    // ! if outerHTML is > 1000 chars elem is body
+    // if outerHTML is > 1000 chars elem is body
     const elemString = e.target.outerHTML;
     if (elemString.length > 1000) {
       data.element = '<body></body>';
