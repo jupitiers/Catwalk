@@ -10,12 +10,11 @@ const CardDescription = props => {
   const { getProductById, getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
   const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
 
-  const stars = createStarArray(props.rating);
-
+  let stars = createStarArray(props.rating);
   useEffect(() => {
     getRelatedProductInfoById(props.relatedId);
   }, [])
-
+  console.log(props.rating)
   return (
     <div className={styles.description}>
       <div>{props.data.category}</div>

@@ -54,9 +54,9 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductById = async () => {
+  const getProductById = async (relatedId) => {
     try {
-      const product = await axios.get(`${baseURL}/products/${pId}`, {
+      const product = await axios.get(`${baseURL}/products/${relatedId || pId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setSelectedProduct(product.data);
@@ -110,6 +110,7 @@ const APIProvider = ({ children }) => {
       reviewInfo.push(product.data);
     }
     setRelatedReviewMetaData(reviewInfo);
+    return reviewInfo;
   };
 
   const getAllRelatedStyles = async (ids) => {
@@ -124,15 +125,17 @@ const APIProvider = ({ children }) => {
     setRelatedProductStyles(styles);
   };
 
-  const getOutfitStyle = async () => {
-    try {
-      const product = await axios.get(`${baseURL}/products/${pId}/styles`, {
+  const getAllOutfitStyles = async (ids) => {
+    let styles = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      setOutfitStyle(product.data);
-    } catch (err) {
-      console.log(err);
+      styles.push(product.data);
     }
+    setOutfitStyle(styles);
+    return styles;
   }
 
   /** ****************************************************************************
@@ -325,7 +328,7 @@ const APIProvider = ({ children }) => {
         getAllRelatedReviewMetaData,
         getAllRelatedStyles,
         pId,
-        getOutfitStyle,
+        getAllOutfitStyles,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,

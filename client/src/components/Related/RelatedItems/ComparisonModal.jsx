@@ -1,4 +1,4 @@
-import React, {useEffect, useContext,useState} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import styles from './comparisonModal.module.css';
 
 import { APIContext } from '../../../state/contexts/APIContext.js';
