@@ -28,3 +28,18 @@
   margin: 0;
   font-family: 'Raleway', sans-serif;
 }
+
+@media (max-width: 830px) {
+  .avgRating h2 {
+    margin-bottom: 0;
+  }
+  .recommendPecent p {
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .avgRating h2 {
+    text-align: center;
+  }
+}
+

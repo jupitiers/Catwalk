@@ -1,9 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { shallow, render, mount } from '../../../../../enzyme.setup';
+import { mount } from '../../../../../enzyme.setup';
 import RatingsAndReviews from '../../../components/RatingsAndReviews/RatingsAndReviews';
 import { RootProvider } from '../../../state/contexts/RootContext';
-import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 
 describe('RatingsAndReviews Component', () => {
   let wrapper;

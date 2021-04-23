@@ -24,12 +24,13 @@ const Answer = (props) => {
           Helpful?
         </div>
         <div
+          id = 'helpfulButton'
           className={styles.answeractiondiv}
           onClick={() => { props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
         >
           {helpful
-            ? <span className={styles.answeractionclicked}>Yes </span>
-            : <span className={styles.answeraction}>Yes </span>}
+            ? <span id='helpfulClick' className={styles.answeractionclicked}>Yes </span>
+            : <span id='helpful' className={styles.answeraction}>Yes </span>}
           {' '}
           (
           {props.helpfulness}
@@ -37,12 +38,13 @@ const Answer = (props) => {
         </div>
         |
         <div
+          id = 'reportButton'
           className={styles.answeractiondiv}
           onClick={() => { props.reportClick(props.id, reported); setReported(true); }}
         >
           {reported
-            ? <p className={styles.answeractionclicked}>Reported</p>
-            : <p className={styles.answeraction}>Report</p>}
+            ? <p id='reported' className={styles.answeractionclicked}>Reported</p>
+            : <p id='report' className={styles.answeraction}>Report</p>}
         </div>
       </div>
       <div>

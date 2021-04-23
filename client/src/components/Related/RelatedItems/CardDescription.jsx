@@ -2,18 +2,14 @@ import React, {useEffect, useContext} from 'react';
 import styles from './cardDescription.module.css';
 
 const CardDescription = props => {
-  // console.log(props.data)
+  let index = props.index + props.movement;
   let id = props.relatedId;
   let data = props.data;
-  let category = '', name = '', price, stars;
 
-  for (let i = 0; i < data.sampleRelatedInfo.length; i++) {
-    if (data.sampleRelatedInfo[i].id === id) {
-      category = data.sampleRelatedInfo[i].category;
-      name = data.sampleRelatedInfo[i].name;
-      price = data.sampleRelatedInfo[i].default_price;
-    }
-  }
+  let category = data.sampleRelatedInfo[index].category;
+  let name = data.sampleRelatedInfo[index].name;
+  let price = data.sampleRelatedInfo[index].default_price;
+  let stars;
 
   return (
     <div className={styles.description}>

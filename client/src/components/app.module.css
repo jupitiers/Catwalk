@@ -5,3 +5,14 @@
 .componentContainer {
   padding: 2em;
 }
+
+@media (max-width: 850px) {
+  .componentContainer {
+    padding: 1em;
+  }
+}
+@media (max-width: 750px) {
+  .componentContainer {
+    padding: 0;
+  }
+}

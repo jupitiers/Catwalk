@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
-import { getCharacteristicsArray, createStarArray } from '../../helpers/ratingsHelpers';
+import { createStarArray } from '../../helpers/ratingsHelpers';
 // default reviews for testing
 const defaultReviews = [
   {
     review_id: 0,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -17,7 +17,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -29,7 +29,7 @@ const defaultReviews = [
   },
   {
     review_id: 3,
-    rating: 0,
+    rating: 5,
     summary: '',
     recommend: false,
     response: '',
@@ -40,22 +40,60 @@ const defaultReviews = [
     photos: [],
   },
 ];
+// default metaData for testing
+const defaultMetaData = {
+  product_id: '2',
+  ratings: {
+    2: 1,
+    3: 1,
+    4: 2,
+    // ...
+  },
+  recommended: {
+    0: 5,
+    // ...
+  },
+  characteristics: {
+    Size: {
+      id: 14,
+      value: '4.0000',
+    },
+    Width: {
+      id: 15,
+      value: '3.5000',
+    },
+    Comfort: {
+      id: 16,
+      value: '4.0000',
+    },
+    // ...
+  },
+};
 
 export const ReviewContext = createContext();
 
 const ReviewProvider = ({ children }) => {
-  // context imports
+  // general review state
   const [reviews, setReviews] = useState(defaultReviews);
-  const [feedbackAlreadyGiven, setFeedbackAlreadyGiven] = useState(false);
-  const [display, setDisplay] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
   const [reviewsShowing, setReviewsShowing] = useState(2);
   const [sortTerm, setSortTerm] = useState('relevant');
-  const [metaData, setMetaData] = useState({});
+  // review card state
+  const [showMoreBody, setShowMoreBody] = useState(false);
+  const [feedback, setFeedback] = useState({});
+  // review images state
+  const [display, setDisplay] = useState(false);
+  const [selectedImage, setSelectedImage] = useState('');
+  // ratings state
+  const [metaData, setMetaData] = useState(defaultMetaData);
   const [starSorting, setStarSorting] = useState(false);
   const [starFilter, setStarFilter] = useState(['1', '2', '3', '4', '5']);
   // createReview state
+  const [loading, setLoading] = useState(false);
   const [stars, setStars] = useState(createStarArray(0));
+  const [ratingText, setRatingText] = useState();
+  const [recommend, setRecommend] = useState(false);
+  const [bodyCountDown, setBodyCountDown] = useState(50);
+  const [showCreate, setShowCreate] = useState(false);
   const ratingDescriptions = {
     1: 'Poor',
     2: 'Fair',
@@ -63,10 +101,6 @@ const ReviewProvider = ({ children }) => {
     4: 'Good',
     5: 'Great',
   };
-  const [ratingText, setRatingText] = useState();
-  const [recommend, setRecommend] = useState(false);
-  const [bodyCountDown, setBodyCountDown] = useState(50);
-  const [showCreate, setShowCreate] = useState(false);
   const [newReview, setNewReview] = useState({
     product_id: '',
     name: '',
@@ -85,6 +119,21 @@ const ReviewProvider = ({ children }) => {
     rating: '',
   });
 
+  // reviews logic
+  const showMoreReviews = () => {
+    setReviewsShowing(reviewsShowing + 2);
+  };
+
+  const getShowCount = () => {
+    const filtered = reviews.slice(0, reviewsShowing)
+      .filter((review) => {
+        if (starFilter.includes(review.rating.toString())) {
+          return review;
+        }
+      });
+    return filtered.length;
+  };
+
   // reviewImages logic
   const openOverlay = (imageUrl) => {
     setDisplay(true);
@@ -95,19 +144,20 @@ const ReviewProvider = ({ children }) => {
     setSelectedImage('');
   };
 
-  // ratingsAndReviews logic
-  const showMoreReviews = () => {
-    setReviewsShowing(reviewsShowing + 2);
+  // ratings logic
+  const clearFilter = () => {
+    setStarSorting(false);
+    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   const filterByStars = (star) => {
     if (starSorting) {
       if (starFilter.includes(star)) {
-        let filteredStars = starFilter.filter((s) => s !== star);
-        if (filteredStars.length === 0) {
-          filteredStars = ['1', '2', '3', '4', '5'];
-        }
+        const filteredStars = starFilter.filter((s) => s !== star);
         setStarFilter(filteredStars);
+        if (filteredStars.length === 0) {
+          clearFilter();
+        }
       } else {
         setStarFilter([
           ...starFilter,
@@ -120,11 +170,6 @@ const ReviewProvider = ({ children }) => {
         star,
       ]);
     }
-  };
-
-  const clearFilter = () => {
-    setStarSorting(false);
-    setStarFilter(['1', '2', '3', '4', '5']);
   };
 
   // createReview logic
@@ -260,8 +305,6 @@ const ReviewProvider = ({ children }) => {
       value={{
         reviews,
         setReviews,
-        feedbackAlreadyGiven,
-        setFeedbackAlreadyGiven,
         display,
         setDisplay,
         openOverlay,
@@ -300,6 +343,13 @@ const ReviewProvider = ({ children }) => {
         errors,
         changeRecommendation,
         validateForm,
+        getShowCount,
+        feedback,
+        setFeedback,
+        loading,
+        setLoading,
+        showMoreBody,
+        setShowMoreBody,
       }}
     >
       {children}

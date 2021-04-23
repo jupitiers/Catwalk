@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render, mount } from '../../../../../enzyme.setup';
+import { mount } from '../../../../../enzyme.setup';
 import { RootProvider } from '../../../state/contexts/RootContext';
 import ReviewCard from '../../../components/RatingsAndReviews/reviews/ReviewCard';
 
@@ -35,5 +35,15 @@ describe('ReviewCard Component', () => {
   it('Should have show more button for body longer than 250 chars', () => {
     const button = wrapper.find('.expandBodyButton');
     expect(button.exists()).toBe(true);
+  });
+  it('Should have show less button after show more button is clicked', () => {
+    const moreButton = wrapper.find('.expandBodyButton');
+    moreButton.simulate('click');
+    const lessButton = wrapper.find('.showLess');
+    expect(lessButton.exists()).toBe(true);
+  });
+  it('Should have card actions', () => {
+    const actions = wrapper.find('.cardActions');
+    expect(actions.exists()).toBe(true);
   });
 });
