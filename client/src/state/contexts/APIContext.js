@@ -19,22 +19,16 @@ const APIProvider = ({ children }) => {
     setMetaData,
     newReview,
   } = useContext(ReviewContext);
-  const { questions, setQuestions } = useContext(QuestionContext);
-  const { answers, setAnswers } = useContext(AnswerContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { setQuestions } = useContext(QuestionContext);
+  const { setAnswers } = useContext(AnswerContext);
+  const { setSelectedProduct } = useContext(ProductContext);
   const {
-    relatedProducts,
     setRelatedProducts,
-    relatedProductInfo,
     setRelatedProductInfo,
-    allRelatedProductInfo,
     setAllRelatedProductInfo,
-    relatedReviewMetaData,
     setRelatedReviewMetaData,
-    relatedProductStyles,
     setRelatedProductStyles,
-    outfitStyle,
-    setOutfitStyle
+    setOutfitStyle,
   } = useContext(RelatedContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
@@ -71,7 +65,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setRelatedProducts(products.data);
-      return (products.data)
+      return (products.data);
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +83,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedProductInfo = async (ids) => {
-    let productsInfo = [];
+    const productsInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}`, {
@@ -101,7 +95,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedReviewMetaData = async (ids) => {
-    let reviewInfo = [];
+    const reviewInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
@@ -114,7 +108,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedStyles = async (ids) => {
-    let styles = [];
+    const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
@@ -126,7 +120,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllOutfitStyles = async (ids) => {
-    let styles = [];
+    const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
@@ -136,7 +130,7 @@ const APIProvider = ({ children }) => {
     }
     setOutfitStyle(styles);
     return styles;
-  }
+  };
 
   /** ****************************************************************************
   *                      API calls for QAs
