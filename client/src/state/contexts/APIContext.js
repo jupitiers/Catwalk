@@ -55,7 +55,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}`, {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}&count=100`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setQuestions(allQuestions.data.results);
