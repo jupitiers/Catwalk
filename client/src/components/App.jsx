@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './app.module.css';
 // context imports
+import { APIContext } from '../state/contexts/APIContext';
 
 // import components
 import Header from './Header/index';
@@ -9,16 +10,30 @@ import QASection from './QA/QAindex';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 import RelatedItemsAndOutfit from './Related/index';
 
-const App = () => (
-  <div className={styles.appContainer}>
-    <Header />
-    <OverView />
-    <div className={styles.componentContainer}>
-      <RelatedItemsAndOutfit />
-      <QASection />
-      <RatingsAndReviews />
+const App = () => {
+  const {
+    getProductById,
+    getProductStyles,
+    getReviewsByProductId,
+  } = useContext(APIContext);
+
+  useEffect(() => {
+    getProductById();
+    getProductStyles();
+    getReviewsByProductId();
+  }, []);
+
+  return (
+    <div className={styles.appContainer}>
+      <Header />
+      <OverView />
+      <div className={styles.componentContainer}>
+        <RelatedItemsAndOutfit />
+        <QASection />
+        <RatingsAndReviews />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default App;
