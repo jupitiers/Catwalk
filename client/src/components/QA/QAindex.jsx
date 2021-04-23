@@ -1,26 +1,22 @@
 import React, {useEffect, useContext, useState} from 'react';
 import QAList from './QAList.jsx';
-import styles from './qa.module.css';
+import lightStyles from './qaLight.module.css';
 import $ from 'jquery';
 import QuestionModal from './QuestionModal.jsx';
 
-//sample data
-import qaSampleData from './qaSampleData.js';
 import { APIContext } from '../../state/contexts/APIContext';
 import { QuestionContext } from '../../state/contexts/QuestionsContext';
 import { ProductContext } from '../../state/contexts/ProductContext';
 
 const QASection = () => {
-  const { getQuestionsByProductId, getProductById } = useContext(APIContext);
+  const { getQuestionsByProductId, getProductById, trackClick } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
-
 
   const[clicked, setClicked] = useState(false);
   const[noResults, setNoResults] = useState(false);
   const[searchResults, setSearchResults] = useState([]);
   const[showModal, setShowModal] = useState(false);
-
 
   useEffect(() => {
     getQuestionsByProductId();
@@ -28,11 +24,10 @@ const QASection = () => {
   }, []);
 
   var questionList = questions.slice();
+  var enoughQuestions = (questionList.length > 2);
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
-
-  var closeQuestionModal = function() {
-    setShowModal(false);
-  }
+  var initialQuestions = questionList.slice(0, 2);
+  var usedQuestions;
 
   var searchFunc = function(query) {
     if (query.length > 2) {
@@ -55,11 +50,9 @@ const QASection = () => {
     }
   }
 
-  var initialQuestions = questionList.slice(0, 4);
-  var usedQuestions;
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
-    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 4);
+    var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 2);
     if (clicked) {
       usedQuestions = searchedQuestionsList;
     } else {
@@ -73,32 +66,46 @@ const QASection = () => {
     }
   }
 
+  var closeQuestionModal = function() {
+    setShowModal(false);
+  }
+
+
 
   return(
-    <div className={styles.section}>
-      <div className={styles.title}>
+    <div className={lightStyles.section}>
+      <div className={lightStyles.title}>
         <h2>QUESTIONS & ANSWERS</h2>
       </div>
-      <form className={styles.searchdiv}>
-        <input className={styles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
+      <form className={lightStyles.searchdiv}>
+        <input className={lightStyles.searchbar} id='searchbar' type='text' placeholder='Have a question? Search for answers...' onChange={() => {searchFunc($('#searchbar').val());}}/>
       </form>
-      <div className={styles.feed}>
+      <div className={lightStyles.feed}>
         {noResults
           ? <p id='noResults'>Sorry, no related questions could be found...</p>
           : <QAList id='QAlist' questionData={usedQuestions} productData={selectedProduct}/>
         }
       </div>
-      <div className='QA-button'>
-        {clicked
-          ? <button id='fewerQuestions' className={styles.button} onClick={() => setClicked(false)}>Fewer Answered Questions</button>
-          : <button id='moreQuestions' className={styles.button} onClick={() => setClicked(true)}>More Answered Questions</button>
-        }
-        <button id='addQuestion' className={styles.button} onClick={() => {setShowModal(true)}}>Add a Question +</button>
+      <div>
+        <span id='moreQuestionsButton'>
+          {enoughQuestions
+            ? <span>
+                {clicked
+                  ? <button id='fewerQuestions' className={lightStyles.button} onClick={(e) => {setClicked(false)}}>Fewer Answered Questions</button>
+                  : <button id='moreQuestions' className={lightStyles.button} onClick={(e) => {setClicked(true)}}>More Answered Questions</button>
+                  }
+              </span>
+            : null
+          }
+        </span>
+        <span>
+          <button id='addQuestion' className={lightStyles.button} onClick={(e) => {setShowModal(true)}}>Add a Question +</button>
+        </span>
       </div>
       <div id='questionModalDiv'>
         {showModal
-          ? <div className={styles.modal}>
-              <span className={styles.modalclose} onClick={() => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
+          ? <div className={lightStyles.modal}>
+              <span className={lightStyles.modalclose} onClick={(e) => {closeQuestionModal()}}><i className="far fa-times-circle" /></span>
               <QuestionModal id='questionModal' productName={selectedProduct.name} closeModal={closeQuestionModal}/>
             </div>
           : null

@@ -1,16 +1,18 @@
 import React from 'react';
+import ReactDOM from "react-dom";
+import renderer from "react-test-renderer";
 import '@testing-library/jest-dom';
 import { shallow, render, mount } from '../../../../../enzyme.setup';
 import QAIndex, {searchFunc} from '../../../components/QA/QAindex';
 import { RootProvider } from '../../../state/contexts/RootContext';
-import { QuestionsContext, AnswersContext } from '../../../state/contexts/ReviewsContext';
+import { QuestionContext } from '../../../state/contexts/QuestionsContext';
 
 describe('QAIndex Component', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = mount(
       <RootProvider>
-        <QAIndex />
+        <QAIndex/>
       </RootProvider>,
     );
   });
@@ -27,21 +29,14 @@ describe('QAIndex Component', () => {
     expect(searchBar.exists()).toBe(true);
   });
   it('has a "More Answered Questions" button', () => {
-    const button = wrapper.find('#moreQuestions');
-    expect(button.exists()).toBe(true);
+    const section = wrapper.find('#moreQuestionsButton');
+    expect(section.exists()).toBe(true);
   });
-  it('has a "More Answered Questions" button that changes to "Fewer Answered Questions" on click', () => {
+  it('should change "More Answered Questions" to "Fewer Answered Questions" on click', () => {
     const button = wrapper.find('#moreQuestions');
     button.simulate('click');
-    const newbutton = wrapper.find('#fewerQuestions');
-    expect(newbutton.exists()).toBe(true);
-  });
-  it('has a "Fewer Answered Questions" button that changes to "More Answered Questions" on click', () => {
-    const button = wrapper.find('#moreQuestions');
-    button.simulate('click');
-    const newbutton = wrapper.find('#fewerQuestions');
-    newbutton.simulate('click');
-    expect(button.exists()).toBe(true);
+    const modal = wrapper.find('#fewerQuestions');
+    expect(modal.exists()).toBe(true);
   });
   it('has an "Add a Question" button', () => {
     const button = wrapper.find('#addQuestion');

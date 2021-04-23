@@ -82,7 +82,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}`, {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}&count=100`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setQuestions(allQuestions.data.results);
@@ -147,7 +147,6 @@ const APIProvider = ({ children }) => {
   };
 
   const addQuestion = async (questionData) => {
-    console.log(questionData);
     try {
       const data = await axios.post(`${baseURL}/qa/questions`, questionData, {
         headers: { Authorization: REACT_APP_API_KEY },
@@ -160,8 +159,6 @@ const APIProvider = ({ children }) => {
   };
 
   const addAnswer = async (questionId, answerData) => {
-    console.log(questionId);
-    console.log(answerData);
     try {
       const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
         headers: { Authorization: REACT_APP_API_KEY },

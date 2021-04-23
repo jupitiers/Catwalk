@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useContext, useEffect } from 'react';
+=======
+import React from 'react';
+>>>>>>> master
 import styles from './app.module.css';
 // context imports
 import { ProductContext } from '../state/contexts/ProductContext';
@@ -11,6 +15,7 @@ import QASection from './QA/QAindex';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews';
 import RelatedItemsAndOutfit from './Related/index';
 
+<<<<<<< HEAD
 const App = () => {
   const {
     sampleProduct,
@@ -38,20 +43,26 @@ const App = () => {
       <div className="overview">
         <Header />
         <OverView />
+=======
+const App = () => (
+  <div className={styles.appContainer}>
+    <div className="overview">
+      <Header />
+      <OverView />
+    </div>
+    <div className={styles.componentContainer}>
+      <div className="related">
+        <RelatedItemsAndOutfit />
       </div>
-      <div className={styles.componentContainer}>
-        <div className="related">
-          <RelatedItemsAndOutfit />
-        </div>
-        <div className="questions">
-          <QASection />
-        </div>
-        <div className="reviews">
-          <RatingsAndReviews />
-        </div>
+      <div className="questions">
+        <QASection />
+>>>>>>> master
+      </div>
+      <div className="reviews">
+        <RatingsAndReviews />
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default App;

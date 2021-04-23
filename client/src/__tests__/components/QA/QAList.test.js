@@ -39,6 +39,7 @@ describe('QAList Component', () => {
     );
   });
 
+
   it('Renders non-empty component without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
