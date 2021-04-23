@@ -24,7 +24,6 @@ const QASection = () => {
   }, []);
 
   var questionList = questions.slice();
-  console.log(questions);
   var enoughQuestions = (questionList.length > 2);
   questionList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);
   var initialQuestions = questionList.slice(0, 2);
