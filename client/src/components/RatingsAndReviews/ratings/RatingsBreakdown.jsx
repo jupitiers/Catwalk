@@ -4,9 +4,15 @@ import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { getStarPercents } from '../../../helpers/ratingsHelpers';
 
 const RatingsBreakdown = () => {
+  // context imports
   const {
-    metaData, filterByStars, starSorting, starFilter, clearFilter, getFilteredShowCount,
+    metaData,
+    filterByStars,
+    starSorting,
+    starFilter,
+    clearFilter,
   } = useContext(ReviewContext);
+  // using helper functions
   const percents = getStarPercents(metaData.ratings);
 
   return (
@@ -24,20 +30,24 @@ const RatingsBreakdown = () => {
                 </b>
               ))}
               {' '}
-
               Star
               {' '}
               Reviews
             </p>
-            <button className={styles.clearButton} onClick={clearFilter}>Clear</button>
+            <button
+              className={styles.clearButton}
+              onClick={clearFilter}
+            >
+              Clear
+            </button>
           </>
         )}
       </div>
       {percents.map((percent, idx) => (
         <div key={idx} className={styles.breakdownItem}>
-          <button onClick={() => {
-            filterByStars(percent.star);
-          }}
+          <button
+            className={styles.filterButton}
+            onClick={() => filterByStars(percent.star)}
           >
             {percent.star}
             {' '}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render, mount } from '../../../../../enzyme.setup';
+import { mount } from '../../../../../enzyme.setup';
 import { CreateReview } from '../../../components/RatingsAndReviews/createReview/CreateReview';
 import { RootProvider } from '../../../state/contexts/RootContext';
 

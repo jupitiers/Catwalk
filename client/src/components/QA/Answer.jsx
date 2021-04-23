@@ -1,36 +1,45 @@
 import React, { useEffect, useContext, useState } from 'react';
-import styles from './qa.module.css';
+import lightStyles from './qaLight.module.css';
+
+import { APIContext } from '../../state/contexts/APIContext';
 
 const Answer = (props) => {
+  const { trackClick } = useContext(APIContext);
+
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState('');
+  const [showPhoto, setShowPhoto] = useState(false);
 
   return (
-    <div className={styles.answerentry}>
-      <div className={styles.answer}>
+    <div className={lightStyles.answerentry}>
+      <div className={lightStyles.answer}>
         {props.answer}
       </div>
-      <div className={styles.answerlogistics}>
-        <div className={styles.answerauthor}>
+      <div className={lightStyles.answerlogistics}>
+        <div className={lightStyles.answerauthor}>
           by
           {' '}
-          {props.author}
+          {props.author.toLowerCase() === 'seller'
+            ? <span style={{fontWeight: 'bold'}}>Seller</span>
+            : <span>{props.author}</span>
+          }
           ,
           {' '}
           {props.date}
         </div>
         |
-        <div className={styles.answeractiondiv}>
+        <div className={lightStyles.answeractiondiv}>
           Helpful?
         </div>
         <div
           id = 'helpfulButton'
-          className={styles.answeractiondiv}
-          onClick={() => { props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
+          className={lightStyles.answeractiondiv}
+          onClick={(e) => {props.helpfulnessClick(props.id, helpful); setHelpful(true); }}
         >
           {helpful
-            ? <span id='helpfulClick' className={styles.answeractionclicked}>Yes </span>
-            : <span id='helpful' className={styles.answeraction}>Yes </span>}
+            ? <span id='helpfulClick' className={lightStyles.answeractionclicked}>Yes </span>
+            : <span id='helpful' className={lightStyles.answeraction}>Yes </span>}
           {' '}
           (
           {props.helpfulness}
@@ -39,22 +48,27 @@ const Answer = (props) => {
         |
         <div
           id = 'reportButton'
-          className={styles.answeractiondiv}
-          onClick={() => { props.reportClick(props.id, reported); setReported(true); }}
+          className={lightStyles.answeractiondiv}
+          onClick={(e) => {props.reportClick(props.id, reported); setReported(true); }}
         >
           {reported
-            ? <p id='reported' className={styles.answeractionclicked}>Reported</p>
-            : <p id='report' className={styles.answeraction}>Report</p>}
+            ? <p id='reported' className={lightStyles.answeractionclicked}>Reported</p>
+            : <p id='report' className={lightStyles.answeraction}>Report</p>}
         </div>
       </div>
       <div>
         {props.photos.map((photo, idx) => (
-          <img
-            key={idx}
-            className={styles.answerimage}
-            src={photo}
-          />
+          <img key={idx} className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
         ))}
+        {showPhoto
+          ? <div className={lightStyles.modal}>
+              <span className={lightStyles.modalclose} onClick={() => {setShowPhoto(false)}}><i className="far fa-times-circle" /></span>
+              <div className={lightStyles.modalcontent}>
+                <img className={lightStyles.modalphoto} src={selectedPhoto}/>
+              </div>
+            </div>
+      : null
+        }
       </div>
     </div>
   );

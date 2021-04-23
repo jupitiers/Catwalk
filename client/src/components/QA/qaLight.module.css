@@ -64,7 +64,8 @@
 .feedbutton:active, .feedbutton:hover,
 .questionsubmit:active, .questionsubmit:hover,
 .addphoto:active, .addphoto:hover,
-.uploadphoto:active, .uploadphoto:hover {
+.uploadphoto:active, .uploadphoto:hover,
+.answerimage:active, .answerimage:hover {
   transform: scale(0.95);
   cursor: pointer;
 }
@@ -87,6 +88,14 @@
   border: 1px solid #888;
   width: 60%;
   height: 80%;
+}
+
+.modalphoto {
+  display: block;
+  position: fixed;
+  margin: 5% auto;
+  width: 60%;
+  height: 60%;
 }
 
 .modalclose {
@@ -153,7 +162,7 @@
 
 
 .feedentry {
-  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .answerentry {
@@ -229,6 +238,7 @@ input[type="file"] {
 .answerimage {
   width: 50px;
   height: 50px;
+  margin: 2px;
 }
 
 .qasection {
