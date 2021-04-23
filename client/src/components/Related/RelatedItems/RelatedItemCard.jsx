@@ -10,6 +10,10 @@ import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 import { getAvgRating } from '../../../helpers/ratingsHelpers';
 
 const RelatedItemCard = props => {
+  useEffect(() => {
+
+  }, []);
+
   let id = props.relatedId;
   let ratings;
   for (let i = 0; i < props.allReviews.length; i++) {
@@ -25,6 +29,7 @@ const RelatedItemCard = props => {
       thumbnailUrl = props.allStyles[i].results[0].photos[0].thumbnail_url;
     }
   }
+  console.log(avgRating)
 
   return (
     <div className={styles.itemCard} onClick={() => props.updateCurrentItem(props.relatedId.toString())}>
