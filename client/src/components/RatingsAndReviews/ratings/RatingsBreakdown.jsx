@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styles from './ratingsBreakdown.module.css';
 import { ReviewContext } from '../../../state/contexts/ReviewsContext';
 import { getStarPercents } from '../../../helpers/ratingsHelpers';
-import { APIContext } from '../../../state/contexts/APIContext';
 
 const RatingsBreakdown = () => {
   // context imports
@@ -13,7 +12,6 @@ const RatingsBreakdown = () => {
     starFilter,
     clearFilter,
   } = useContext(ReviewContext);
-  const { trackClick } = useContext(APIContext);
   // using helper functions
   const percents = getStarPercents(metaData.ratings);
 
@@ -38,10 +36,7 @@ const RatingsBreakdown = () => {
             </p>
             <button
               className={styles.clearButton}
-              onClick={(e) => {
-                trackClick(e, 'reviews widget', new Date());
-                clearFilter();
-              }}
+              onClick={clearFilter}
             >
               Clear
             </button>
@@ -52,10 +47,7 @@ const RatingsBreakdown = () => {
         <div key={idx} className={styles.breakdownItem}>
           <button
             className={styles.filterButton}
-            onClick={(e) => {
-              trackClick(e, 'reviews widget', new Date());
-              filterByStars(percent.star);
-            }}
+            onClick={() => filterByStars(percent.star)}
           >
             {percent.star}
             {' '}
