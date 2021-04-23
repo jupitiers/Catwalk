@@ -21,7 +21,6 @@ const APIProvider = ({ children }) => {
   const { setQuestions } = useContext(QuestionContext);
   const { setAnswers } = useContext(AnswerContext);
   const { setSelectedProduct } = useContext(ProductContext);
-
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
   const pId = '17067';
@@ -213,18 +212,39 @@ const APIProvider = ({ children }) => {
   *                      API call for click-tracking
   ***************************************************************************** */
 
-  const trackClick = async (elem, widget, time) => {
+  const trackClick = async (e) => {
     const data = {
-      element: elem.target.outerHTML,
-      widget,
-      time,
+      element: '',
+      widget: '',
+      time: new Date(),
     };
-    try {
-      await axios.post(`${baseURL}/interactions`, data, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
-    } catch (err) {
-      console.log(err);
+    // ! run check for closest for each widget return one that isnt null
+    const elem = e.target;
+    if (elem.closest('.overview')) {
+      data.widget = 'overview';
+    } else if (elem.closest('.related')) {
+      data.widget = 'related';
+    } else if (elem.closest('.questions')) {
+      data.widget = 'questions';
+    } else if (elem.closest('.reviews')) {
+      data.widget = 'reviews';
+    }
+    // ! if outerHTML is > 1000 chars elem is body
+    const elemString = e.target.outerHTML;
+    if (elemString.length > 1000) {
+      data.element = '<body></body>';
+    } else {
+      data.element = elemString;
+    }
+    if (data.widget && data.element) {
+      try {
+        const res = await axios.post(`${baseURL}/interactions`, data, {
+          headers: { Authorization: REACT_APP_API_KEY },
+        });
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
