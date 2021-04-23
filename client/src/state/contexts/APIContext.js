@@ -19,7 +19,6 @@ const APIProvider = ({ children }) => {
     setMetaData,
     newReview,
   } = useContext(ReviewContext);
-<<<<<<< HEAD
   const { questions, setQuestions } = useContext(QuestionContext);
   const { answers, setAnswers } = useContext(AnswerContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
@@ -38,11 +37,6 @@ const APIProvider = ({ children }) => {
     setOutfitStyle
   } = useContext(RelatedContext);
 
-=======
-  const { setQuestions } = useContext(QuestionContext);
-  const { setAnswers } = useContext(AnswerContext);
-  const { setSelectedProduct } = useContext(ProductContext);
->>>>>>> origin
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
   const pId = '17067';
