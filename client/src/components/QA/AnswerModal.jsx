@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import styles from './qa.module.css';
+import lightStyles from './qaLight.module.css';
 import $ from 'jquery';
 
 import { APIContext } from '../../state/contexts/APIContext';
@@ -9,15 +9,15 @@ import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
 
 
 const AnswerModal = (props) => {
-  const { getQuestionsByProductId, addAnswer } = useContext(APIContext);
+  const { getQuestionsByProductId, addAnswer, trackClick } = useContext(APIContext);
 
-  const [questionAuth, setQuestionAuth] = useState(true);
+  const [answerAuth, setAnswerAuth] = useState(true);
   const [nicknameAuth, setNicknameAuth] = useState(true);
   const [emailAuth, setEmailAuth] = useState(true);
   const [submittable, setSubmittable] = useState(true);
   const [photos, setPhotos] = useState([]);
 
-  var questionSubmit = true;
+  var answerSubmit = true;
   var nicknameSubmit = true;
   var emailSubmit = true;
 
@@ -54,24 +54,22 @@ const AnswerModal = (props) => {
   };
 
   var submit = function(questionId, data) {
-    if (questionSubmit && nicknameSubmit && emailSubmit) {
+    if (answerSubmit && nicknameSubmit && emailSubmit) {
       setSubmittable(true);
-      console.log('submittable');
       addAnswer(questionId, data);
       props.closeModal();
     } else {
       setSubmittable(false);
-      console.log('not');
     }
   }
 
-  var checkAuth = function(question, nickname, email) {
-    if (question && question.length > 0) {
-      setQuestionAuth(true);
-      questionSubmit = true;
-    } else if (!question || question.length === 0) {
-      setQuestionAuth(false);
-      questionSubmit = false;
+  var checkAuth = function(answer, nickname, email) {
+    if (answer && answer.length > 0) {
+      setAnswerAuth(true);
+      answerSubmit = true;
+    } else if (!answer || answer.length === 0) {
+      setAnswerAuth(false);
+      answerSubmit = false;
     }
 
     if (nickname && nickname.length > 0) {
@@ -91,7 +89,7 @@ const AnswerModal = (props) => {
     }
 
     var answerData = {
-      body: question,
+      body: answer,
       name: nickname,
       email: email,
       photos: photos
@@ -101,81 +99,80 @@ const AnswerModal = (props) => {
   }
 
   return(
-    <div className={styles.modalcontent}>
+    <div className={lightStyles.modalcontent}>
       <h2 id='title'>Submit Your Answer</h2>
       <h4 id='subtitle'>{props.productData.name}: {props.question}</h4>
       <div>
         <div>
           {submittable
             ? null
-            : <p className={styles.submiterror}>You must enter the following: </p>
+            : <p className={lightStyles.submiterror}>You must enter the following: </p>
           }
         </div>
-        <div className={styles.modaldiv}>
-          {questionAuth
+        <div className={lightStyles.modaldiv}>
+          {answerAuth
             ? <div>
                 <span>Your Answer: *</span><br/>
-                <textarea id='answer' className={styles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
+                <textarea id='answer' className={lightStyles.modalquestion} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Question: *</span><br/>
-                <textarea id='answerCheck' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
+                <span className={lightStyles.modaltitlecheck}>Question: *</span><br/>
+                <textarea id='answerCheck' className={lightStyles.modalquestioncheck} maxLength='1000' placeholder='Write your answer here (1000 character max)'/>
               </div>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           {nicknameAuth
             ? <div>
                 <span>What is your nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modaluser} maxLength='60' placeholder='Example: jack543!'/><br/>
+                <input type='text' id='nickname' className={lightStyles.modaluser} maxLength='60' placeholder='Example: jack543!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Nickname: * </span><br/>
-                <input type='text' id='nicknameCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack543!'/><br/>
+                <span className={lightStyles.modaltitlecheck}>Nickname: * </span><br/>
+                <input type='text' id='nicknameCheck' className={lightStyles.modalusercheck} maxLength='60' placeholder='Example: jack543!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           {emailAuth
             ? <div>
                 <span>Your email: * </span><br/>
-                <input type='text' id='email' className={styles.modaluser} maxLength='60' placeholder='Example: jack@email.com'/><br/>
+                <input type='text' id='email' className={lightStyles.modaluser} maxLength='60' placeholder='Example: jack@email.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Email: * </span><br/>
-                <input type='text' id='emailCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jack@email.com'/><br/>
+                <span className={lightStyles.modaltitlecheck}>Email: * </span><br/>
+                <input type='text' id='emailCheck' className={lightStyles.modalusercheck} maxLength='60' placeholder='Example: jack@email.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           <div>
             <span>Upload your photos: </span><br/>
-            <input type='text' id='photoUrl' className={styles.modalphotos} placeholder='Place your photo URL here'/>
+            <input type='text' id='photoUrl' className={lightStyles.modalphotos} placeholder='Place your photo URL here'/>
             {photos.length < 5
-              ? <button className={styles.addphoto} onClick={() => addPhoto($('#photoUrl').val())}>Add photo</button>
+              ? <button className={lightStyles.addphoto} onClick={() => {addPhoto($('#photoUrl').val())}}>Add photo</button>
               : <span>Max photos added</span>
             } <br/>
             {photos.length < 5
-              ? <label className={styles.uploadphoto}>
+              ? <label className={lightStyles.uploadphoto}>
                   Upload a photo
                   <input type="file" id='photoUpload' placeholder='Upload a photo' onChange={uploadPhoto}/>
                 </label>
-              // <button className={styles.addphoto} onClick={() => console.log('Adding photo')}>Select photo from your computer</button>
               : <span>Max photos added</span>
             }
             <div>
               {photos.map(url =>
-                <img className={styles.answerimage} key={url} src={url}/>
+                <img className={lightStyles.answerimage} key={url} src={url}/>
               )}
             </div>
           </div>
         </div>
         <div>
-          <button id='answersubmit' className={styles.questionsubmit} onClick={() => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
+          <button id='answersubmit' className={lightStyles.questionsubmit} onClick={() => {checkAuth($('#answer').val(), $('#nickname').val(), $('#email').val())}}>Submit answer</button>
         </div>
       </div>
     </div>
