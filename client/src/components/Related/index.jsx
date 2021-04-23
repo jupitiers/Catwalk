@@ -10,7 +10,7 @@ const RelatedItemsAndOutfit = () => {
   return (
     <div className={styles.CarouselsContainer}>
       <span className={styles.relatedTitle}><b>Related Items</b></span>
-      <RelatedItemsCarousel data={sampleData}/>
+      <RelatedItemsCarousel/>
       <span className={styles.outfitTitle}><b>Your Outfit</b></span>
       <YourOutfitCarousel data={sampleData}/>
     </div>
