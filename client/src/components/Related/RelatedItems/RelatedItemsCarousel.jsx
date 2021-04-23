@@ -8,10 +8,10 @@ import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 const RelatedItemsCarousel = props => {
   const {
     getRelatedProducts,
-    getRelatedProductInfoById,
     getAllRelatedProductInfo,
     getAllRelatedReviewMetaData,
     getAllRelatedStyles,
+    pId,
   } = useContext(APIContext);
   const {
     relatedProducts,
@@ -55,11 +55,15 @@ const RelatedItemsCarousel = props => {
     setMovement(movement === 0 ? movement - 0 : movement - 1);
   };
 
+  let updateCurrentItem = (newId) => {
+    console.log(pId);
+  };
+
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
       {displayedItems.length > 0 && displayedItems.map((product, index) => {
-        return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles}/>
+        return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles} updateCurrentItem={updateCurrentItem}/>
       })}
       {leftIndex === relatedItems.length - 4 ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>
