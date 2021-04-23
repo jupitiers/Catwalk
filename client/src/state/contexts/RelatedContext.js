@@ -6,6 +6,7 @@ const RelatedProvider = ({ children }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [relatedProductInfo, setRelatedProductInfo] = useState([]);
   const [allRelatedProductInfo, setAllRelatedProductInfo] = useState([]);
+  const [relatedReviewMetaData, setRelatedReviewMetaData] = useState({});
 
   return (
     <RelatedContext.Provider
@@ -15,7 +16,9 @@ const RelatedProvider = ({ children }) => {
         relatedProductInfo,
         setRelatedProductInfo,
         allRelatedProductInfo,
-        setAllRelatedProductInfo
+        setAllRelatedProductInfo,
+        relatedReviewMetaData,
+        setRelatedReviewMetaData
       }}>
         {children}
     </RelatedContext.Provider>

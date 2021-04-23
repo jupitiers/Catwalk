@@ -4,27 +4,24 @@ import styles from './cardDescription.module.css';
 import { APIContext } from '../../../state/contexts/APIContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
+import { createStarArray } from '../../../helpers/ratingsHelpers';
+
 const CardDescription = props => {
   const { getProductById, getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
   const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
+
+  const stars = createStarArray(props.rating);
 
   useEffect(() => {
     getRelatedProductInfoById(props.relatedId);
   }, [])
 
-  let id = props.relatedId;
-
-  let category = relatedProductInfo.category;
-  let name = relatedProductInfo.name;
-  let price = relatedProductInfo.default_price;
-  let stars;
-
   return (
     <div className={styles.description}>
-      <span>{props.data.category}</span>
-      <span>{props.data.name}</span>
-      <span>{`$${props.data.default_price}`}</span>
-      <span>Stars</span>
+      <div>{props.data.category}</div>
+      <div>{props.data.name}</div>
+      <div>{`$${props.data.default_price}`}</div>
+      <div className={styles.starsContainer}>{stars.map((star, idx) => <div key={idx}>{star}</div>)}</div>
     </div>
   )
 }

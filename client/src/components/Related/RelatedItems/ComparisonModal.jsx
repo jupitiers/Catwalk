@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext,useState} from 'react';
 import styles from './comparisonModal.module.css';
 
 import { APIContext } from '../../../state/contexts/APIContext.js';
@@ -6,23 +6,23 @@ import { ProductContext } from '../../../state/contexts/ProductContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
 const ComparisonModal = props => {
-  const { getProductById, getRelatedProducts, getRelatedProductInfoById } = useContext(APIContext);
+  const { getRelatedProductInfoById } = useContext(APIContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
   const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    getRelatedProductInfoById(props.relatedId);
+  useEffect(async () => {
+    setIsLoading(true)
+    await getRelatedProductInfoById(props.relatedId);
+    setIsLoading(false);
   }, []);
 
   let currentId = selectedProduct.id;
   let comparedId = props.relatedId;
-  console.log(currentId)
-  console.log(comparedId)
 
   let currentFeatures = selectedProduct.features;
 
   let comparedFeatures = relatedProductInfo.features;
-  console.log(relatedProductInfo.features)
 
   // combined feature comparisons
   let featureComparison = [];
@@ -81,7 +81,7 @@ const ComparisonModal = props => {
 
   getComparison();
 
-  return (
+  return (isLoading ? null :
     <div className={styles.modal} onClick={e => {props.onClick(e)}} id="modalBackground">
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>

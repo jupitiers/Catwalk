@@ -6,11 +6,26 @@ import { APIContext } from '../../../state/contexts/APIContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
 const RelatedItemsCarousel = props => {
-  const { getRelatedProducts, getRelatedProductInfoById, getAllRelatedProductInfo } = useContext(APIContext);
-  const { relatedProducts, setRelatedProducts, allRelatedProductInfo, setAllRelatedProductInfo } = useContext(RelatedContext);
+  const {
+    getRelatedProducts,
+    getRelatedProductInfoById,
+    getAllRelatedProductInfo,
+    getAllRelatedReviewMetaData,
+  } = useContext(APIContext);
+  const {
+    relatedProducts,
+    setRelatedProducts,
+    allRelatedProductInfo,
+    setAllRelatedProductInfo,
+    relatedReviewMetaData,
+    setRelatedReviewMetaData,
+  } = useContext(RelatedContext);
 
   useEffect(() => {
-    getRelatedProducts().then(data => getAllRelatedProductInfo(data))
+    getRelatedProducts().then(data => {
+      getAllRelatedProductInfo(data)
+      getAllRelatedReviewMetaData(data)
+    })
   }, []);
 
   // track left most card index
@@ -36,13 +51,11 @@ const RelatedItemsCarousel = props => {
     setMovement(movement === 0 ? movement - 0 : movement - 1);
   };
 
-  console.log(allRelatedProductInfo)
-
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
       {displayedItems.length > 0 && displayedItems.map((product, index) => {
-        return <RelatedItemCard key={index} relatedId={product.id} data={product} index={index} movement={movement}/>
+        return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData}/>
       })}
       {leftIndex === relatedItems.length - 4 ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>
