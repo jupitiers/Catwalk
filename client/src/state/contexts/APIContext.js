@@ -19,23 +19,18 @@ const APIProvider = ({ children }) => {
     setMetaData,
     newReview,
   } = useContext(ReviewContext);
-  const { questions, setQuestions } = useContext(QuestionContext);
-  const { answers, setAnswers } = useContext(AnswerContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { setQuestions } = useContext(QuestionContext);
+  const { setAnswers } = useContext(AnswerContext);
   const {
-    relatedProducts,
     setRelatedProducts,
-    relatedProductInfo,
     setRelatedProductInfo,
-    allRelatedProductInfo,
     setAllRelatedProductInfo,
-    relatedReviewMetaData,
     setRelatedReviewMetaData,
-    relatedProductStyles,
     setRelatedProductStyles,
-    outfitStyle,
-    setOutfitStyle
+    setOutfitStyle,
   } = useContext(RelatedContext);
+
+  const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
@@ -71,7 +66,7 @@ const APIProvider = ({ children }) => {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setRelatedProducts(products.data);
-      return (products.data)
+      return (products.data);
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +84,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedProductInfo = async (ids) => {
-    let productsInfo = [];
+    const productsInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}`, {
@@ -101,7 +96,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedReviewMetaData = async (ids) => {
-    let reviewInfo = [];
+    const reviewInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
@@ -114,7 +109,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedStyles = async (ids) => {
-    let styles = [];
+    const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
@@ -126,7 +121,7 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllOutfitStyles = async (ids) => {
-    let styles = [];
+    const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
       product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
@@ -136,7 +131,19 @@ const APIProvider = ({ children }) => {
     }
     setOutfitStyle(styles);
     return styles;
-  }
+  };
+  const getProductStyles = async () => {
+    try {
+      const getStyles = await axios.get(`${baseURL}/products/${pId}/styles`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      setStyleList(getStyles.data);
+      setStyleSelected(getStyles.data.results[0]);
+      return getStyles.data;
+    } catch (err) {
+      console.log({ err });
+    }
+  };
 
   /** ****************************************************************************
   *                      API calls for QAs
@@ -345,8 +352,9 @@ const APIProvider = ({ children }) => {
         getAllRelatedProductInfo,
         getAllRelatedReviewMetaData,
         getAllRelatedStyles,
-        pId,
         getAllOutfitStyles,
+        getProductStyles,
+        pId,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,

@@ -1,11 +1,9 @@
 .wrapper {
   position: relative;
-  background: gray;
   height: 100%;
 }
 
 .expand {
-  position: absolute;
   position: absolute;
   right: 12px;
   top: 8px;
@@ -16,37 +14,98 @@
   height: 100%;
 }
 
-.active {
-  width: 50px;
-  height: 50px;
-  padding-bottom: 3px;
-  margin-bottom: 5px;
-  border: 0px;
-  border-bottom: 2px solid black;
-}
-
-.thumbNailImg {
-  width: 50px;
-  height: 50px;
-  padding-bottom: 3px;
-  margin-bottom: 5px;
-}
-
-.mainImg {
-  width: 81%;
-}
-
-.thumbNailDiv {
+.thumbNailWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 76%;
+  width: 15%;
   justify-content: center;
 }
+
+.thumbNailWrapper img, i {
+  cursor: pointer;
+}
+
+.thumbNailDiv {
+  width: 70px;
+  height: 70px;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  border: 0px;
+}
+
+.thumbNailDiv img {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
+.active {
+  border-bottom: 2px solid black;
+}
+
+.mainImgDiv {
+  width: 600px;
+  height: 542px;
+}
+
+.mainImg {
+  width: 100%;
+  height: 542px;
+}
+
 
 .arrowDiv {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 85%;
+}
+
+.arrowDiv i {
+  cursor: pointer;
+}
+
+.modalWrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000d1;
+}
+
+.modalActive {
+  display: block;
+}
+
+.modalDiv {
+  width: 700px;
+  height: 445px;
+  position: relative;
+}
+
+.modalImg {
+  width: 100%;
+  height: 100%;
+}
+
+.close {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: -36px;
+  top: -52px;
+  border: 1px solid white;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
