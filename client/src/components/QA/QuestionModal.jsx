@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import styles from './qa.module.css';
+import lightStyles from './qaLight.module.css';
 import $ from 'jquery';
 
 import { APIContext } from '../../state/contexts/APIContext';
@@ -64,58 +64,58 @@ const QuestionModal = (props) => {
   }
 
   return(
-    <div className={styles.modalcontent}>
+    <div className={lightStyles.modalcontent}>
       <h2 id='title'>Ask Your Question</h2>
       <h4 id='subtitle'>About the {props.productName}</h4>
       <div>
         <div>
           {submittable
             ? null
-            : <p className={styles.submiterror}>You must enter the following: </p>
+            : <p className={lightStyles.submiterror}>You must enter the following: </p>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           {questionAuth
             ? <div>
                 <span>Your Question: *</span><br/>
-                <textarea id='question' className={styles.modalquestion} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
+                <textarea id='question' className={lightStyles.modalquestion} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Question: *</span><br/>
-                <textarea id='questionCheck' className={styles.modalquestioncheck} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
+                <span className={lightStyles.modaltitlecheck}>Question: *</span><br/>
+                <textarea id='questionCheck' className={lightStyles.modalquestioncheck} maxLength='1000' placeholder='Write your question here (1000 character max)'/>
               </div>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           {nicknameAuth
             ? <div>
                 <span>What is your nickname: * </span><br/>
-                <input type='text' id='nickname' className={styles.modaluser} maxLength='60' placeholder='Example: jackson11!'/><br/>
+                <input type='text' id='nickname' className={lightStyles.modaluser} maxLength='60' placeholder='Example: jackson11!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Nickname: * </span><br/>
-                <input type='text' id='nicknameCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11!'/><br/>
+                <span className={lightStyles.modaltitlecheck}>Nickname: * </span><br/>
+                <input type='text' id='nicknameCheck' className={lightStyles.modalusercheck} maxLength='60' placeholder='Example: jackson11!'/><br/>
                 <span>For privacy reasons, do not use your full name or email address</span>
               </div>
           }
         </div>
-        <div className={styles.modaldiv}>
+        <div className={lightStyles.modaldiv}>
           {emailAuth
             ? <div>
                 <span>Your email: * </span><br/>
-                <input type='text' id='email' className={styles.modaluser} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
+                <input type='text' id='email' className={lightStyles.modaluser} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
             : <div>
-                <span className={styles.modaltitlecheck}>Email: * </span><br/>
-                <input type='text' id='emailCheck' className={styles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
+                <span className={lightStyles.modaltitlecheck}>Email: * </span><br/>
+                <input type='text' id='emailCheck' className={lightStyles.modalusercheck} maxLength='60' placeholder='Example: jackson11@gmail.com'/><br/>
                 <span>For authentication purposes, you will not be emailed</span>
               </div>
           }
         </div>
         <div>
-          <button className={styles.questionsubmit} onClick={(e) => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit question</button>
+          <button className={lightStyles.questionsubmit} onClick={(e) => {checkAuth($('#question').val(), $('#nickname').val(), $('#email').val())}}>Submit question</button>
         </div>
       </div>
     </div>

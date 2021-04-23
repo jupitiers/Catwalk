@@ -1,6 +1,6 @@
 import React, {useEffect, useContext, useState} from 'react';
 import Answer from './Answer.jsx';
-import styles from './qa.module.css';
+import lightStyles from './qaLight.module.css';
 import moment from 'moment';
 
 import { APIContext } from '../../state/contexts/APIContext';
@@ -52,8 +52,8 @@ var AnswerList = (props) => {
       </div>
       {enoughAnswers ?
         clicked
-          ? <button id='collapseAnswers' className={styles.feedbutton} onClick={(e) => {setClicked(false)}}>Collapse answers</button>
-          : <button id='moreAnswers' className={styles.feedbutton} onClick={(e) => {setClicked(true)}}>Load more answers</button>
+          ? <button id='collapseAnswers' className={lightStyles.feedbutton} onClick={(e) => {setClicked(false)}}>Collapse answers</button>
+          : <button id='moreAnswers' className={lightStyles.feedbutton} onClick={(e) => {setClicked(true)}}>Load more answers</button>
         : <div/>
       }
     </div>
