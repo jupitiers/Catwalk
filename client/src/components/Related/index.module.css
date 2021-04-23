@@ -1,6 +1,6 @@
 .CarouselsContainer {
   width: 800px;
-  height: 700px;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 25px 1fr 40px 1fr;
