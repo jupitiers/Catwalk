@@ -25,10 +25,9 @@ const RelatedItemCard = props => {
       thumbnailUrl = props.allStyles[i].results[0].photos[0].thumbnail_url;
     }
   }
-  console.log(avgRating)
 
   return (
-    <div className={styles.itemCard} onClick={() => props.updateCurrentItem(props.relatedId.toString())}>
+    <div className={styles.itemCard}>
       <CardPicture relatedId={props.relatedId} thumbnailUrl={thumbnailUrl}/>
       <CardDescription relatedId={props.relatedId} data={props.data} rating={avgRating}/>
     </div>

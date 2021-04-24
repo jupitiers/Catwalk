@@ -14,7 +14,7 @@ const CardDescription = props => {
   useEffect(() => {
     getRelatedProductInfoById(props.relatedId);
   }, [])
-  console.log(props.rating)
+
   return (
     <div className={styles.description}>
       <div>{props.data.category}</div>

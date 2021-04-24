@@ -35,7 +35,7 @@ const APIProvider = ({ children }) => {
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
-  const pId = '17067';
+  const pId = '17069';
 
   /** ****************************************************************************
   *                      API calls for products
@@ -50,9 +50,9 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductById = async (relatedId) => {
+  const getProductById = async (relatedId = pId) => {
     try {
-      const product = await axios.get(`${baseURL}/products/${relatedId || pId}`, {
+      const product = await axios.get(`${baseURL}/products/${relatedId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setSelectedProduct(product.data);
