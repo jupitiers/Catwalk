@@ -306,6 +306,7 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
 
   const trackClick = async (e) => {
+    console.log('tracking');
     const data = {
       element: '',
       widget: '',

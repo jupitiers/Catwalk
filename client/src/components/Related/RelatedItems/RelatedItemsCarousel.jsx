@@ -59,7 +59,6 @@ const RelatedItemsCarousel = props => {
     console.log(pId);
   };
 
-  console.log(relatedReviewMetaData)
 
   return (
     <div className={styles.carousel}>
