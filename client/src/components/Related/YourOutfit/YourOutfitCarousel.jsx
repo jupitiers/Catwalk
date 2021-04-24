@@ -33,15 +33,17 @@ const YourOutfitCarousel = props => {
   };
 
   let addCurrentItem = async () => {
-    outfitItemsIds.push(pId);
-    outfitItemsInfo.push(selectedProduct);
     setIsLoading(true);
-    await getAllOutfitStyles(outfitItemsIds).then(data => {
-      outfitItemStyles.push(data);
-    });
-    await getAllOutfitReviewMetaData(outfitItemsIds).then(data => {
-      reviewData.push(data);
-    })
+    if (!outfitItemsIds.includes(pId)) {
+      outfitItemsIds.push(pId);
+      outfitItemsInfo.push(selectedProduct);
+      await getAllOutfitStyles(outfitItemsIds).then(data => {
+        outfitItemStyles.push(data);
+      });
+      await getAllOutfitReviewMetaData(outfitItemsIds).then(data => {
+        reviewData.push(data);
+      });
+    }
     setIsLoading(false);
   };
 
