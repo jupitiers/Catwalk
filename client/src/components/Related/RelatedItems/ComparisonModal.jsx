@@ -18,9 +18,7 @@ const ComparisonModal = props => {
   }, []);
 
   let currentId = selectedProduct.id;
-  console.log(currentId)
   let comparedId = props.relatedId;
-  console.log(comparedId)
 
   let currentFeatures = selectedProduct.features;
 

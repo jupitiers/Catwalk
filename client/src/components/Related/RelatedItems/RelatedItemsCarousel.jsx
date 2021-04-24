@@ -27,6 +27,7 @@ const RelatedItemsCarousel = props => {
 
   useEffect(() => {
     getRelatedProducts().then(data => {
+      console.log(data)
       getAllRelatedProductInfo(data)
       getAllRelatedReviewMetaData(data)
       getAllRelatedStyles(data)

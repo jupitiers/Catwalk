@@ -47,12 +47,19 @@ const YourOutfitCarousel = props => {
     setIsLoading(false);
   };
 
+  let removeItem = (outfitId) => {
+    let itemIndex = outfitItemsIds.indexOf(outfitId);
+    let updatedOutfitItemsIds = outfitItemsIds.splice(itemIndex, 1);
+
+    console.log(outfitItemsIds)
+  };
+
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
       <AddCard addCurrentItem={addCurrentItem}/>
       {isLoading ? null : outfitItemsIds.length > 0 && outfitItemsIds.map((id, index) => {
-        return <OutfitCard key={index} outfitId={id} itemsInfo={outfitItemsInfo} itemStyle={outfitItemStyles} reviews={reviewData}/>
+        return <OutfitCard key={index} outfitId={id} itemsInfo={outfitItemsInfo} itemStyle={outfitItemStyles} reviews={reviewData} removeItem={removeItem}/>
       })}
       {(leftIndex === outfitItems.length - 3 || outfitItems.length < 4) ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>
