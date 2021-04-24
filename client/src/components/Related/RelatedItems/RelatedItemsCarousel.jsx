@@ -59,8 +59,6 @@ const RelatedItemsCarousel = props => {
     console.log(pId);
   };
 
-  console.log(relatedReviewMetaData)
-
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}

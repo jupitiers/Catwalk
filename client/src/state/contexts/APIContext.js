@@ -28,6 +28,7 @@ const APIProvider = ({ children }) => {
     setRelatedReviewMetaData,
     setRelatedProductStyles,
     setOutfitStyle,
+    setOutfitReviewMetaData
   } = useContext(RelatedContext);
 
   const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
@@ -105,6 +106,19 @@ const APIProvider = ({ children }) => {
       reviewInfo.push(product.data);
     }
     setRelatedReviewMetaData(reviewInfo);
+    return reviewInfo;
+  };
+
+  const getAllOutfitReviewMetaData = async (ids) => {
+    const reviewInfo = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      reviewInfo.push(product.data);
+    }
+    setOutfitReviewMetaData(reviewInfo);
     return reviewInfo;
   };
 
@@ -354,6 +368,7 @@ const APIProvider = ({ children }) => {
         getAllRelatedStyles,
         getAllOutfitStyles,
         getProductStyles,
+        getAllOutfitReviewMetaData,
         pId,
         // QAs
         getQuestionsByProductId,

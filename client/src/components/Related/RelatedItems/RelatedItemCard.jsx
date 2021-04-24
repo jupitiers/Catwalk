@@ -10,10 +10,6 @@ import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 import { getAvgRating } from '../../../helpers/ratingsHelpers';
 
 const RelatedItemCard = props => {
-  useEffect(() => {
-
-  }, []);
-
   let id = props.relatedId;
   let ratings;
   for (let i = 0; i < props.allReviews.length; i++) {
