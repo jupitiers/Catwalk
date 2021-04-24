@@ -9,6 +9,21 @@
   padding-right: 1em;
 }
 
+.category {
+  font-family: 'Dela Gothic One', cursive;
+  color: gray;
+  font-size: 12px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.price {
+  font-size: 12px;
+}
+
 .starsContainer {
   display: flex;
   flex-direction: row;

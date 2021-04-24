@@ -63,12 +63,12 @@ const RelatedItemsCarousel = props => {
 
   return (
     <div className={styles.carousel}>
-      {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left fa-3x"></i></button>}
+      {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left fa-2x"></i></button>}
       {displayedItems.length > 0 && displayedItems.map((product, index) => {
         return <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles}/>
       })}
       {leftIndex === relatedItems.length - 4 ?
-        null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right fa-3x"></i></button>
+        null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right fa-2x"></i></button>
       }
     </div>
   )
