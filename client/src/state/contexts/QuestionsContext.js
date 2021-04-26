@@ -7,7 +7,7 @@ const QuestionProvider = ({ children }) => {
     "question_body": "1",
     "question_date": "2018-10-18T00:00:00.000Z",
     "asker_name": "1",
-    "question_helpfulness": 1,
+    "question_helpfulness": 100,
     "reported": false,
     "answers": {
       1: {
@@ -24,7 +24,7 @@ const QuestionProvider = ({ children }) => {
     "question_body": "2",
     "question_date": "2018-10-18T00:00:00.000Z",
     "asker_name": "2",
-    "question_helpfulness": 2,
+    "question_helpfulness": 20,
     "reported": false,
     "answers": {
       2: {
@@ -54,6 +54,7 @@ const QuestionProvider = ({ children }) => {
       }
     }
   }];
+
   const [questions, setQuestions] = useState(sampleQuestions);
   const [qHelpfulnessMarked, setqHelpfulnessMarked] = useState(false);
 
