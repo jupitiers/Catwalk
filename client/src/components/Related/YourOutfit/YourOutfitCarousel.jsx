@@ -47,12 +47,8 @@ const YourOutfitCarousel = props => {
     setIsLoading(false);
   };
 
-  let removeItem = (outfitId) => {
-    console.log(outfitItemsIds)
-    let itemIndex = outfitItemsIds.indexOf(outfitId);
-    let updatedOutfitItemsIds = outfitItemsIds.splice(itemIndex, 1);
-
-    console.log(outfitItemsIds)
+  let removeItem = outfitId => {
+    setOutfitItemsIds(outfitItemsIds.filter(id => id !== outfitId));
   };
 
   return (
