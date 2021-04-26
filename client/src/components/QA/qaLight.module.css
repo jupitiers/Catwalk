@@ -255,11 +255,11 @@ input[type="file"] {
 
 .qacontent {
   float: left;
-  margin-left: 0.5%;
+  margin-left: 0.5em;
   margin-top: -0.95em;
 }
 
 .answerentry {
   margin-top: 0.33em;
-  margin-left: 2%;
+  margin-left: 1.2em;
 }
