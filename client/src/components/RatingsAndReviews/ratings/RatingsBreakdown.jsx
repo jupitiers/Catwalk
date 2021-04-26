@@ -15,6 +15,7 @@ const RatingsBreakdown = () => {
   // using helper functions
   const percents = getStarPercents(metaData.ratings);
 
+  console.log(metaData);
   return (
     <div className={styles.breakdownContainer}>
       <div className={styles.filterInfo}>
