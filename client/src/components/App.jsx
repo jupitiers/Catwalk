@@ -25,12 +25,20 @@ const App = () => {
 
   return (
     <div className={styles.appContainer}>
-      <Header />
-      <OverView />
+      <div className="overview">
+        <Header />
+        <OverView />
+      </div>
       <div className={styles.componentContainer}>
-        <RelatedItemsAndOutfit />
-        <QASection />
-        <RatingsAndReviews />
+        <div className="related">
+          <RelatedItemsAndOutfit />
+        </div>
+        <div className="questions">
+          <QASection />
+        </div>
+        <div className="reviews">
+          <RatingsAndReviews />
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const APIProvider = ({ children }) => {
     setRelatedReviewMetaData,
     setRelatedProductStyles,
     setOutfitStyle,
-    setOutfitReviewMetaData
+    setOutfitReviewMetaData,
   } = useContext(RelatedContext);
 
   const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
@@ -345,10 +345,9 @@ const APIProvider = ({ children }) => {
     }
     if (data.widget && data.element) {
       try {
-        const res = await axios.post(`${baseURL}/interactions`, data, {
+        await axios.post(`${baseURL}/interactions`, data, {
           headers: { Authorization: REACT_APP_API_KEY },
         });
-        console.log(res);
       } catch (err) {
         console.log(err);
       }

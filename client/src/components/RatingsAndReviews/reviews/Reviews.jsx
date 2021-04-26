@@ -49,12 +49,13 @@ const Reviews = () => {
       </div>
       {/* TODO these will not be hardcoded they will be dynamic */}
       <div className={styles.cardList}>
-        {reviews.length > 0 && reviews.slice(0, reviewsShowing)
+        {reviews.length > 0 && reviews
           .filter((review) => {
             if (starFilter.includes(review.rating.toString())) {
               return review;
             }
           })
+          .slice(0, reviewsShowing)
           .map((review, idx) => (
             <div key={idx} className={styles.review}><ReviewCard review={review} /></div>
           ))}
