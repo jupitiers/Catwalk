@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+
+// import context
 import { APIContext } from '../../state/contexts/APIContext';
 import { ProductContext } from '../../state/contexts/ProductContext';
+
+// import styles
 import styles from './image.module.css';
 
 const ImageGallery = () => {
 
+  // context state
   const { getProductStyles } = useContext(APIContext);
   const { styleSelected } = useContext(ProductContext);
+
+  // local state
   const [ productStyles, setProductStyles ] = useState({});
   const [ images, setImages ] = useState([])
   const [ mainImg, setMainImg ] = useState({});
   const [ modal, setModal ] = useState(false)
   const modalWrapper = useRef()
 
+  // update when the current style changes
   useEffect(() => {
-    console.log({styleSelected})
     const images = styleSelected.photos && styleSelected.photos.map((img, i) => {
       if(i === 0) {
         img.active = true
@@ -110,8 +117,6 @@ const ImageGallery = () => {
     }
   }
 
-  // console.log({styleSelected, images})
-
   return (
     <div className={styles.wrapper}>
       <i className={`fas fa-expand ${styles.expand}`} onClick={openModal}></i>
@@ -120,8 +125,9 @@ const ImageGallery = () => {
         ?
         <div className={styles.modalWrapper} ref={modalWrapper} onClick={closeModal}>
           <div className={styles.modalDiv}>
-            <p className={styles.close} onClick={closeModal}>X</p>
+            <i className={`fas fa-arrow-left ${styles.arrowLeft}`} onClick={moveLeft}></i>
             <img src={mainImg.url} className={styles.modalImg} />
+            <i className={`fas fa-arrow-right ${styles.arrowRight}`} onClick={moveRight}></i>
           </div>
         </div>
         :
