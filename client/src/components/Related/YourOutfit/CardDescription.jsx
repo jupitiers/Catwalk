@@ -18,9 +18,9 @@ const CardDescription = props => {
 
   return (
     <div className={styles.description}>
-      <div>{category}</div>
-      <div>{name}</div>
-      <div>{`$${price}`}</div>
+      <div className={styles.category}>{category}</div>
+      <div className={styles.name}>{name}</div>
+      <div className={styles.price}>{`$${price}`}</div>
       <div className={styles.starsContainer}>{stars.map((star, idx) => <div key={idx}>{star}</div>)}</div>
     </div>
   )

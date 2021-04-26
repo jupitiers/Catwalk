@@ -9,6 +9,7 @@ const RelatedProvider = ({ children }) => {
   const [relatedReviewMetaData, setRelatedReviewMetaData] = useState({});
   const [relatedProductStyles, setRelatedProductStyles] = useState([]);
   const [outfitStyle, setOutfitStyle] = useState([]);
+  const [outfitReviewMetaData, setOutfitReviewMetaData] = useState([]);
 
   return (
     <RelatedContext.Provider
@@ -24,7 +25,9 @@ const RelatedProvider = ({ children }) => {
         relatedProductStyles,
         setRelatedProductStyles,
         outfitStyle,
-        setOutfitStyle
+        setOutfitStyle,
+        outfitReviewMetaData,
+        setOutfitReviewMetaData
       }}>
         {children}
     </RelatedContext.Provider>

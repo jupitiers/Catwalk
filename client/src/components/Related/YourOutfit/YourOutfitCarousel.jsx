@@ -8,7 +8,7 @@ import { ProductContext } from '../../../state/contexts/ProductContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
 const YourOutfitCarousel = props => {
-  const { pId, getProductById, getAllOutfitStyles, getAllRelatedReviewMetaData } = useContext(APIContext);
+  const { pId, getProductById, getAllOutfitStyles, getAllOutfitReviewMetaData } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   const { outfitStyle, setOutfitStyle } = useContext(RelatedContext);
 
@@ -33,16 +33,25 @@ const YourOutfitCarousel = props => {
   };
 
   let addCurrentItem = async () => {
-    outfitItemsIds.push(pId);
-    outfitItemsInfo.push(selectedProduct);
     setIsLoading(true);
-    await getAllOutfitStyles(outfitItemsIds).then(data => {
-      outfitItemStyles.push(data);
-    });
-    await getAllRelatedReviewMetaData(outfitItemsIds).then(data => {
-      reviewData.push(data);
-    })
+    if (!outfitItemsIds.includes(pId)) {
+      outfitItemsIds.push(pId);
+      outfitItemsInfo.push(selectedProduct);
+      await getAllOutfitStyles(outfitItemsIds).then(data => {
+        outfitItemStyles.push(data);
+      });
+      await getAllOutfitReviewMetaData(outfitItemsIds).then(data => {
+        reviewData.push(data);
+      });
+    }
     setIsLoading(false);
+  };
+
+  let removeItem = (outfitId) => {
+    let itemIndex = outfitItemsIds.indexOf(outfitId);
+    let updatedOutfitItemsIds = outfitItemsIds.splice(itemIndex, 1);
+
+    console.log(outfitItemsIds)
   };
 
   return (
@@ -50,7 +59,7 @@ const YourOutfitCarousel = props => {
       {leftIndex === 0 ? <div></div> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left"></i></button>}
       <AddCard addCurrentItem={addCurrentItem}/>
       {isLoading ? null : outfitItemsIds.length > 0 && outfitItemsIds.map((id, index) => {
-        return <OutfitCard key={index} outfitId={id} itemsInfo={outfitItemsInfo} itemStyle={outfitItemStyles} reviews={reviewData}/>
+        return <OutfitCard key={index} outfitId={id} itemsInfo={outfitItemsInfo} itemStyle={outfitItemStyles} reviews={reviewData} removeItem={removeItem}/>
       })}
       {(leftIndex === outfitItems.length - 3 || outfitItems.length < 4) ?
         null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right"></i></button>

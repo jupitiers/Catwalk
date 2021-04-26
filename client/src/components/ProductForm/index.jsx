@@ -1,14 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
+
+// import context
 import { APIContext } from '../../state/contexts/APIContext';
 import { ProductContext } from '../../state/contexts/ProductContext';
 import { ReviewContext } from '../../state/contexts/ReviewsContext';
-import { createStarArray, getAvgRating } from '../../helpers/ratingsHelpers';
 
-import styles from './product.module.css';
+// import helpers ratings
+import { createStarArray, getAvgRating } from '../../helpers/ratingsHelpers';
 import { emptyStar, fullStar } from '../../helpers/starRatings';
+
+// import styles
+import styles from './product.module.css';
 
 
 const ProductForm = () => {
+
+  // context state
   const { getProductById } = useContext(APIContext);
   const { reviews } = useContext(ReviewContext);
   const {
@@ -17,23 +24,23 @@ const ProductForm = () => {
     styleSelected,
     setStyleSelected
   } = useContext(ProductContext);
+
+  // local state
   const [ stars, setStars ] = useState([]);
   const [ liked, setLiked ] = useState(false);
   const [ sizes, setSizes ] = useState([]);
   const [ quantity, setQuantity ] = useState(0);
 
-  const submit = (e) => {
-    e.preventDefault();
-  }
-
+  // used to update the reviews
   useEffect(() => {
     let total = 0;
     reviews.forEach(r => total += r.rating);
-    let avg = Math.floor(total / reviews.length);
+    let avg = total / reviews.length;
     let stars = createStarArray(avg);
     setStars(stars)
   },[reviews])
 
+  // used to update the sizes
   useEffect(() => {
     const size = [];
     for(const key in styleSelected.skus) {
@@ -42,7 +49,10 @@ const ProductForm = () => {
     setSizes(size);
   },[styleSelected])
 
-  // console.log({styleList, styleSelected, quantity})
+  const submit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.starDiv}>

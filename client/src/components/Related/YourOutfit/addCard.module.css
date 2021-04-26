@@ -1,25 +1,25 @@
 .itemCard {
   margin-left: 3%;
   margin-right: 3%;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .addButton {
-  margin:0 auto;
+  margin: 0 auto;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   background-color: #5fD9BD;
   border-radius: 50%;
-  border-width: thin;
+  border-color: transparent;
+  box-shadow: 5px 5px 6px #888888;
   cursor: pointer;
 }
 
 .addText {
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }

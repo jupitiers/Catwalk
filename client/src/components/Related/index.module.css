@@ -1,24 +1,21 @@
 .CarouselsContainer {
-  width: 800px;
+  width: 1000px;
   height: auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 25px 1fr 40px 1fr;
+  grid-template-rows: 75px 1fr 75px 1fr;
   margin-top: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .relatedTitle {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Dela Gothic One', cursive;
   color: #525252;
-  margin-bottom: 2%;
 }
 
 .outfitTitle{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Dela Gothic One', cursive;
   color: #525252;
-  margin-top: 2%;
-  margin-bottom: 3%;
 }

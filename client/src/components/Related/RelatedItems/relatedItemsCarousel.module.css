@@ -6,13 +6,15 @@
 }
 
 .carouselButton {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 60px;
   text-align: center;
   margin: auto;
   padding: 0px;
   background-color: #5fD9BD;
-  border-radius: 50%;
-  border-width: thin;
+  color: #641373;
+  border-radius: 5px;
+  border-color: transparent;
   cursor: pointer;
+  box-shadow: 5px 5px 6px #888888;
 }
