@@ -53,6 +53,8 @@ const ProductForm = () => {
     e.preventDefault();
   }
 
+  // add share buttons
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.starDiv}>
