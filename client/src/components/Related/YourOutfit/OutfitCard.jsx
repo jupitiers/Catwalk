@@ -18,7 +18,7 @@ const OutfitCard = props => {
 
   return (
     <div className={styles.itemCard}>
-      <CardImage outfitId={props.outfitId} itemStyle={props.itemStyle}/>
+      <CardImage outfitId={props.outfitId} itemStyle={props.itemStyle} removeItem={props.removeItem}/>
       <CardDescription outfitId={props.outfitId} itemsInfo={props.itemsInfo} rating={avgRating}/>
     </div>
   )
