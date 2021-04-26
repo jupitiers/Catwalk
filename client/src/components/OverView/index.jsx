@@ -1,8 +1,10 @@
 import React from 'react';
 
+// import Components
 import ImageGallery from '../ImageGallery/index.jsx';
 import ProductForm from '../ProductForm/index.jsx';
 
+// import styles
 import styles from './overview.module.css';
 
 const OverView = () => {
