@@ -63,11 +63,9 @@ const APIProvider = ({ children }) => {
 
   const getRelatedProducts = async () => {
     try {
-      console.log('bye')
       const products = await axios.get(`${baseURL}/products/${pId}/related`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
-      console.log('hi')
       setRelatedProducts(products.data);
       return (products.data);
     } catch (err) {
@@ -87,7 +85,6 @@ const APIProvider = ({ children }) => {
   };
 
   const getAllRelatedProductInfo = async (ids) => {
-    console.log(ids)
     const productsInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
@@ -318,9 +315,9 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  /******************************************************************************
+  /** ****************************************************************************
   *                      API call for click-tracking
-  ******************************************************************************/
+  ***************************************************************************** */
 
   const trackClick = async (e) => {
     const data = {
