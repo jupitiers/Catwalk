@@ -28,13 +28,14 @@ const APIProvider = ({ children }) => {
     setRelatedReviewMetaData,
     setRelatedProductStyles,
     setOutfitStyle,
+    setOutfitReviewMetaData
   } = useContext(RelatedContext);
 
   const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
 
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
-  const pId = '17067';
+  const pId = '17069';
 
   /** ****************************************************************************
   *                      API calls for products
@@ -49,9 +50,9 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductById = async (relatedId) => {
+  const getProductById = async (relatedId = pId) => {
     try {
-      const product = await axios.get(`${baseURL}/products/${relatedId || pId}`, {
+      const product = await axios.get(`${baseURL}/products/${relatedId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setSelectedProduct(product.data);
@@ -105,6 +106,19 @@ const APIProvider = ({ children }) => {
       reviewInfo.push(product.data);
     }
     setRelatedReviewMetaData(reviewInfo);
+    return reviewInfo;
+  };
+
+  const getAllOutfitReviewMetaData = async (ids) => {
+    const reviewInfo = [];
+    let product;
+    for (let i = 0; i < ids.length; i++) {
+      product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
+        headers: { Authorization: REACT_APP_API_KEY },
+      });
+      reviewInfo.push(product.data);
+    }
+    setOutfitReviewMetaData(reviewInfo);
     return reviewInfo;
   };
 
@@ -301,9 +315,9 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  /******************************************************************************
+  /** ****************************************************************************
   *                      API call for click-tracking
-  ******************************************************************************/
+  ***************************************************************************** */
 
   const trackClick = async (e) => {
     const data = {
@@ -354,6 +368,7 @@ const APIProvider = ({ children }) => {
         getAllRelatedStyles,
         getAllOutfitStyles,
         getProductStyles,
+        getAllOutfitReviewMetaData,
         pId,
         // QAs
         getQuestionsByProductId,
