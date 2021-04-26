@@ -125,12 +125,13 @@ const ReviewProvider = ({ children }) => {
   };
 
   const getShowCount = () => {
-    const filtered = reviews.slice(0, reviewsShowing)
+    const filtered = reviews
       .filter((review) => {
         if (starFilter.includes(review.rating.toString())) {
           return review;
         }
-      });
+      })
+      .slice(0, reviewsShowing);
     return filtered.length;
   };
 
