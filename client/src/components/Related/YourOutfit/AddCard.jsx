@@ -5,7 +5,7 @@ const AddCard = props => {
   return (
     <div className={styles.itemCard}>
       <div className={styles.cardContents}>
-        <button className={styles.addButton} onClick={() => props.addCurrentItem()}><i className="fas fa-plus"></i></button>
+        <button className={styles.addButton} onClick={() => props.addCurrentItem()}><i className="fas fa-plus fa-lg"></i></button>
         <br></br>
         <span className={styles.addText}>Add to Outfit</span>
       </div>
