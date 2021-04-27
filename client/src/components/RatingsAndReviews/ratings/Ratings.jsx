@@ -7,12 +7,12 @@ import { APIContext } from '../../../state/contexts/APIContext';
 
 const Ratings = () => {
   // context imports
-  const { getReviewMetaDataByProductId } = useContext(APIContext);
+  const { getReviewMetaDataByProductId, productId } = useContext(APIContext);
 
   // get current review metadata on initial render
   useEffect(() => {
     getReviewMetaDataByProductId();
-  }, []);
+  }, [productId]);
 
   return (
     <div className={styles.ratingsContainer}>

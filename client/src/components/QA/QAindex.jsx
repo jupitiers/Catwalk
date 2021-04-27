@@ -9,7 +9,7 @@ import { QuestionContext } from '../../state/contexts/QuestionsContext';
 import { ProductContext } from '../../state/contexts/ProductContext';
 
 const QASection = () => {
-  const { getQuestionsByProductId, getProductById, trackClick } = useContext(APIContext);
+  const { getQuestionsByProductId, getProductById, trackClick, productId } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
 
@@ -21,7 +21,7 @@ const QASection = () => {
   useEffect(() => {
     getQuestionsByProductId();
     getProductById();
-  }, []);
+  }, [productId]);
 
   var questionList = questions.slice();
   var enoughQuestions = (questionList.length > 2);

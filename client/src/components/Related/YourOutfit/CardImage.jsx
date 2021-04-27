@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './cardImage.module.css';
 
 const CardImage = props => {
+
   let thumbnailUrl;
   for (let i = 0; i < props.itemStyle.length; i++) {
     if (props.itemStyle[i][0].product_id == props.outfitId) {

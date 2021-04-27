@@ -16,12 +16,13 @@ const RatingsAndReviews = () => {
   } = useContext(ReviewContext);
   const {
     getReviewsByProductId,
+    productId
   } = useContext(APIContext);
 
   // Get all reviews by product Id
   useEffect(() => {
     getReviewsByProductId();
-  }, []);
+  }, [productId]);
 
   return (
     <div>
