@@ -57,14 +57,14 @@ const RelatedItemsCarousel = (props) => {
   };
 
   const updateCurrentItem = (newId) => {
-    // console.log(pId);
-    getProductById(newId);
+    console.log(newId);
+    // getProductById(newId);
   };
 
   return (
     <div className={styles.carousel}>
       {leftIndex === 0 ? <div /> : <button className={styles.carouselButton} onClick={previousItem}><i className="fas fa-angle-left fa-2x" /></button>}
-      {displayedItems.length > 0 && displayedItems.map((product, index) => <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles} />)}
+      {displayedItems.length > 0 && displayedItems.map((product, index) => <RelatedItemCard key={index} relatedId={product.id} data={product} allReviews={relatedReviewMetaData} allStyles={relatedProductStyles} updateCurrentItem={updateCurrentItem}/>)}
       {leftIndex === relatedItems.length - 4
         ? null : <button className={styles.carouselButton} onClick={nextItem}><i className="fas fa-angle-right fa-2x" /></button>}
     </div>

@@ -14,8 +14,9 @@ const CardDescription = props => {
   useEffect(() => {
     getRelatedProductInfoById(props.relatedId);
   }, [])
+
   return (
-    <div className={styles.description}>
+    <div className={styles.description} onClick={() => props.updateCurrentItem(props.relatedId)}>
       <div className={styles.category}>{props.data.category}</div>
       <div className={styles.name}>{props.data.name}</div>
       <div className={styles.price}>{`$${props.data.default_price}`}</div>
