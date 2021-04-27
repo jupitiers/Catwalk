@@ -8,3 +8,5 @@ client/src/config/config.js
 .vscode/settings.json
 
 coverage
+
+.env
