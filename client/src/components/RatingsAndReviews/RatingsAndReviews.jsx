@@ -16,7 +16,7 @@ const RatingsAndReviews = () => {
   } = useContext(ReviewContext);
   const {
     getReviewsByProductId,
-    productId
+    productId,
   } = useContext(APIContext);
 
   // Get all reviews by product Id
