@@ -68,7 +68,6 @@ const RelatedItemsCarousel = (props) => {
     }
     getProductById(newId.toString());
   };
-  console.log(selectedProduct)
 
   return (
     <div className={styles.carousel}>
