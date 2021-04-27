@@ -1,6 +1,7 @@
 import React, {useEffect, useContext, useState} from 'react';
 import QAList from './QAList.jsx';
 import lightStyles from './qaLight.module.css';
+import darkStyles from './qaDark.module.css';
 import $ from 'jquery';
 import QuestionModal from './QuestionModal.jsx';
 

@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import lightStyles from './qaLight.module.css';
+import darkStyles from './qaDark.module.css';
 import $ from 'jquery';
 
 import { APIContext } from '../../state/contexts/APIContext';
