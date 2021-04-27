@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
@@ -36,6 +36,7 @@ const APIProvider = ({ children }) => {
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
   const pId = '17069';
+  const [productId, setProductId] = useState('17069');
 
   /** ****************************************************************************
   *                      API calls for products
@@ -50,7 +51,7 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  const getProductById = async (relatedId = pId) => {
+  const getProductById = async (relatedId = productId) => { //changedpid
     try {
       const product = await axios.get(`${baseURL}/products/${relatedId}`, {
         headers: { Authorization: REACT_APP_API_KEY },
@@ -63,7 +64,7 @@ const APIProvider = ({ children }) => {
 
   const getRelatedProducts = async () => {
     try {
-      const products = await axios.get(`${baseURL}/products/${pId}/related`, {
+      const products = await axios.get(`${baseURL}/products/${productId}/related`, { //changedpid
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setRelatedProducts(products.data);
@@ -148,7 +149,7 @@ const APIProvider = ({ children }) => {
   };
   const getProductStyles = async () => {
     try {
-      const getStyles = await axios.get(`${baseURL}/products/${pId}/styles`, {
+      const getStyles = await axios.get(`${baseURL}/products/${productId}/styles`, { //changedpid
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setStyleList(getStyles.data);
@@ -165,7 +166,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${pId}&count=100`, {
+      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${productId}&count=100`, { //changedpid
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setQuestions(allQuestions.data.results);
@@ -259,7 +260,7 @@ const APIProvider = ({ children }) => {
 
   const getReviewsByProductId = async () => {
     try {
-      const allReviews = await axios.get(`${baseURL}/reviews?product_id=${pId}&count=100&sort=${sortTerm}`, {
+      const allReviews = await axios.get(`${baseURL}/reviews?product_id=${productId}&count=100&sort=${sortTerm}`, { //changedpid
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setReviews(allReviews.data.results);
@@ -295,7 +296,7 @@ const APIProvider = ({ children }) => {
 
   const getReviewMetaDataByProductId = async () => {
     try {
-      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${pId}`, {
+      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${productId}`, { //changedpid
         headers: { Authorization: REACT_APP_API_KEY },
       });
       setMetaData(data.data);
@@ -357,6 +358,8 @@ const APIProvider = ({ children }) => {
   return (
     <APIContext.Provider
       value={{
+        productId,
+        setProductId,
         // Products
         getAllProducts,
         getProductById,

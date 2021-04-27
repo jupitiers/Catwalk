@@ -16,7 +16,7 @@ import styles from './product.module.css';
 const ProductForm = () => {
 
   // context state
-  const { getProductById } = useContext(APIContext);
+  const { getProductById, productId } = useContext(APIContext);
   const { reviews } = useContext(ReviewContext);
   const {
     selectedProduct,
@@ -30,6 +30,10 @@ const ProductForm = () => {
   const [ liked, setLiked ] = useState(false);
   const [ sizes, setSizes ] = useState([]);
   const [ quantity, setQuantity ] = useState(0);
+
+  useEffect(() => {
+    getProductById(productId.toString());
+  }, [productId]);
 
   // used to update the reviews
   useEffect(() => {
