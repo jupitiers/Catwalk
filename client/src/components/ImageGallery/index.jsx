@@ -15,10 +15,10 @@ const ImageGallery = () => {
 
   // local state
   const [ productStyles, setProductStyles ] = useState({});
-  const [ images, setImages ] = useState([])
+  const [ images, setImages ] = useState([]);
   const [ mainImg, setMainImg ] = useState({});
-  const [ modal, setModal ] = useState(false)
-  const modalWrapper = useRef()
+  const [ modal, setModal ] = useState(false);
+  const modalWrapper = useRef();
 
   // update when the current style changes
   useEffect(() => {
@@ -30,9 +30,9 @@ const ImageGallery = () => {
       }
       return img
     });
-    setImages(images)
-    setMainImg(images && images[0])
-  },[styleSelected])
+    setImages(images);
+    setMainImg(images && images[0]);
+  },[styleSelected]);
 
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
@@ -52,7 +52,7 @@ const ImageGallery = () => {
     if(current === 0) {
       current = images.length - 1;
     } else {
-      current--
+      current--;
     }
     const updateImages = images.map((img, i) => {
       if(i === current) {
@@ -60,13 +60,13 @@ const ImageGallery = () => {
       } else {
         img.active = false;
       }
-      return img
+      return img;
     })
     setImages(updateImages);
     if(current == 0) {
-      setMainImg(images[current])
+      setMainImg(images[current]);
     } else {
-      setMainImg(images[current])
+      setMainImg(images[current]);
     }
   }
 
@@ -83,13 +83,13 @@ const ImageGallery = () => {
       } else {
         img.active = false;
       }
-      return img
+      return img;
     })
     setImages(updateImages);
     if(current == 0) {
-      setMainImg(images[current])
+      setMainImg(images[current]);
     } else {
-      setMainImg(images[current])
+      setMainImg(images[current]);
     }
   }
 

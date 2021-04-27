@@ -17,8 +17,13 @@ form *:focus {
   text-transform: uppercase;
 }
 
-.price {
+.divPrice {
+  height: 60px;
+}
 
+.priceDrop {
+  text-decoration: line-through;
+  color: red;
 }
 
 .selectStyle {

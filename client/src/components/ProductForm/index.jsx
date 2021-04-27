@@ -29,7 +29,7 @@ const ProductForm = () => {
   const [ stars, setStars ] = useState([]);
   const [ liked, setLiked ] = useState(false);
   const [ sizes, setSizes ] = useState([]);
-  const [ quantity, setQuantity ] = useState(0);
+  const [ quantity, setQuantity ] = useState({quantity: [], size: ''});
 
   // used to update the reviews
   useEffect(() => {
@@ -37,24 +37,34 @@ const ProductForm = () => {
     reviews.forEach(r => total += r.rating);
     let avg = total / reviews.length;
     let stars = createStarArray(avg);
-    setStars(stars)
-  },[reviews])
 
-  // used to update the sizes
-  useEffect(() => {
     const size = [];
     for(const key in styleSelected.skus) {
-      size.push(styleSelected.skus[key])
+      size.push(styleSelected.skus[key]);
     }
     setSizes(size);
-  },[styleSelected])
+    setStars(stars);
+  },[reviews, styleSelected]);
 
   const submit = (e) => {
     e.preventDefault();
   }
 
-  // add share buttons
+  const updateQuantity = (e) => {
+    const { value } = e.target;
+    for(const size of sizes) {
+      if(size.size === value) {
+        let q = size.quantity;
+        size.quantity = [];
+        for(let i = 1; i <= q; i++) {
+          size.quantity.push(i);
+        }
+        setQuantity(size);
+      }
+    }
+  }
 
+  console.log({selectedProduct, styleList, reviews, styleSelected, sizes, quantity}, Array(quantity.quantity))
   return (
     <div className={styles.wrapper}>
       <div className={styles.starDiv}>
@@ -62,7 +72,18 @@ const ProductForm = () => {
       </div>
       <h2 className={styles.h2}>{selectedProduct.category}</h2>
       <h1 className={styles.h1}>{selectedProduct.name}</h1>
-      <p className={styles.price}>${selectedProduct.default_price}</p>
+      <div className={styles.divPrice}>
+        {
+          styleSelected.sale_price
+          ?
+          <>
+          <p className={styles.price}>${styleSelected.original_price}</p>
+          <p className={styles.salePrice}>${styleSelected.sale_price}</p>
+          </>
+          :
+          <p className={styles.price}>${selectedProduct.default_price}</p>
+        }
+      </div>
       <p className={styles.selectStyle}><b className={styles.bold}>style ></b> selected style</p>
       <form onSubmit={submit}>
         <ul className={styles.ul}>
@@ -85,7 +106,7 @@ const ProductForm = () => {
       </ul>
       <div className={styles.divDropDown}>
           <div className={styles.divSelect}>
-              <select className={styles.selectSize}>
+              <select className={styles.selectSize} onChange={updateQuantity}>
                 <option className={styles.optionSize}>select size</option>
                 {
                   sizes && sizes.map((s, i) => {
@@ -96,10 +117,11 @@ const ProductForm = () => {
                 }
               </select>
               <select className={styles.selectNum}>
+                <option></option>
                 {
-                  [1,2,3,4,5].map((q, i) => {
+                 quantity.quantity.map((q, i) => {
                     return (
-                      <option className={styles.optionNum} key={i}>{q}</option>
+                      <option className={styles.optionNum} key={i}>{i}</option>
                     )
                   })
                 }
