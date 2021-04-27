@@ -43,19 +43,16 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
   const getAllProducts = async () => {
     try {
-      await axios.get(`${baseURL}/products`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const prods = await axios.get('/products');
+      console.log(prods);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const getProductById = async (relatedId = productId) => { //changedpid
+  const getProductById = async (relatedId = productId) => { // changedpid
     try {
-      const product = await axios.get(`${baseURL}/products/${relatedId}`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const product = await axios.get(`/products/${relatedId}`);
       setSelectedProduct(product.data);
     } catch (err) {
       console.log(err);
@@ -64,9 +61,7 @@ const APIProvider = ({ children }) => {
 
   const getRelatedProducts = async () => {
     try {
-      const products = await axios.get(`${baseURL}/products/${productId}/related`, { //changedpid
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const products = await axios.get(`/products/${productId}/related`);
       setRelatedProducts(products.data);
       return (products.data);
     } catch (err) {
@@ -76,9 +71,7 @@ const APIProvider = ({ children }) => {
 
   const getRelatedProductInfoById = async (id) => {
     try {
-      const product = await axios.get(`${baseURL}/products/${id}`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const product = await axios.get(`/products/${id}`);
       setRelatedProductInfo(product.data);
     } catch (err) {
       console.log(err);
@@ -89,9 +82,7 @@ const APIProvider = ({ children }) => {
     const productsInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
-      product = await axios.get(`${baseURL}/products/${ids[i]}`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      product = await axios.get(`/products/${ids[i]}`);
       productsInfo.push(product.data);
     }
     setAllRelatedProductInfo(productsInfo);
@@ -101,9 +92,7 @@ const APIProvider = ({ children }) => {
     const reviewInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
-      product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      product = await axios.get(`/reviews/meta/?product_id=${ids[i]}`);
       reviewInfo.push(product.data);
     }
     setRelatedReviewMetaData(reviewInfo);
@@ -114,9 +103,7 @@ const APIProvider = ({ children }) => {
     const reviewInfo = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
-      product = await axios.get(`${baseURL}/reviews/meta/?product_id=${ids[i]}`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      product = await axios.get(`/reviews/meta/?product_id=${ids[i]}`);
       reviewInfo.push(product.data);
     }
     setOutfitReviewMetaData(reviewInfo);
@@ -127,9 +114,7 @@ const APIProvider = ({ children }) => {
     const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
-      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      product = await axios.get(`/products/${ids[i]}/styles`);
       styles.push(product.data);
     }
     setRelatedProductStyles(styles);
@@ -139,9 +124,7 @@ const APIProvider = ({ children }) => {
     const styles = [];
     let product;
     for (let i = 0; i < ids.length; i++) {
-      product = await axios.get(`${baseURL}/products/${ids[i]}/styles`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      product = await axios.get(`/products/${ids[i]}/styles`);
       styles.push(product.data);
     }
     setOutfitStyle(styles);
@@ -149,9 +132,7 @@ const APIProvider = ({ children }) => {
   };
   const getProductStyles = async () => {
     try {
-      const getStyles = await axios.get(`${baseURL}/products/${productId}/styles`, { //changedpid
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const getStyles = await axios.get(`/products/${productId}/styles`);
       setStyleList(getStyles.data);
       setStyleSelected(getStyles.data.results[0]);
       return getStyles.data;
@@ -166,9 +147,7 @@ const APIProvider = ({ children }) => {
 
   const getQuestionsByProductId = async () => {
     try {
-      const allQuestions = await axios.get(`${baseURL}/qa/questions?product_id=${productId}&count=100`, { //changedpid
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const allQuestions = await axios.get(`/qa/questions?product_id=${productId}&count=100`);
       setQuestions(allQuestions.data.results);
     } catch (err) {
       console.log(err);
@@ -177,9 +156,7 @@ const APIProvider = ({ children }) => {
 
   const getAnswersByQuestionId = async (questionId) => {
     try {
-      const allAnswers = await axios.get(`${baseURL}/qa/questions/${questionId}/answers`, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const allAnswers = await axios.get(`/qa/questions/${questionId}/answers`);
       setAnswers(allAnswers.data.results);
     } catch (err) {
       console.log(err);
@@ -188,9 +165,7 @@ const APIProvider = ({ children }) => {
 
   const markQuestionAsHelpful = async (questionId) => {
     try {
-      await axios.put(`${baseURL}/qa/questions/${questionId}/helpful`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/qa/questions/${questionId}/helpful`, null);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -199,9 +174,7 @@ const APIProvider = ({ children }) => {
 
   const markAnswerAsHelpful = async (answerId) => {
     try {
-      await axios.put(`${baseURL}/qa/answers/${answerId}/helpful`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/qa/answers/${answerId}/helpful`, null);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -210,9 +183,7 @@ const APIProvider = ({ children }) => {
 
   const reportQuestion = async (questionId) => {
     try {
-      await axios.put(`${baseURL}/qa/questions/${questionId}/report`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/qa/questions/${questionId}/report`, null);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -221,9 +192,7 @@ const APIProvider = ({ children }) => {
 
   const reportAnswer = async (answerId) => {
     try {
-      await axios.put(`${baseURL}/qa/answers/${answerId}/report`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/qa/answers/${answerId}/report`, null);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -260,9 +229,7 @@ const APIProvider = ({ children }) => {
 
   const getReviewsByProductId = async () => {
     try {
-      const allReviews = await axios.get(`${baseURL}/reviews?product_id=${productId}&count=100&sort=${sortTerm}`, { //changedpid
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const allReviews = await axios.get(`/reviews?product_id=${productId}&count=100&sort=${sortTerm}`);
       setReviews(allReviews.data.results);
     } catch (err) {
       console.log(err);
@@ -271,9 +238,7 @@ const APIProvider = ({ children }) => {
 
   const markReviewAsHelpful = async (reviewId) => {
     try {
-      await axios.put(`${baseURL}/reviews/${reviewId}/helpful`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/reviews/${reviewId}/helpful`, null);
       getReviewsByProductId();
       setFeedback({
         ...feedback,
@@ -285,9 +250,7 @@ const APIProvider = ({ children }) => {
   };
   const reportReview = async (reviewId) => {
     try {
-      await axios.put(`${baseURL}/reviews/${reviewId}/report`, null, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      await axios.put(`/reviews/${reviewId}/report`, null);
       getReviewsByProductId();
     } catch (err) {
       console.log(err);
@@ -296,9 +259,7 @@ const APIProvider = ({ children }) => {
 
   const getReviewMetaDataByProductId = async () => {
     try {
-      const data = await axios.get(`${baseURL}/reviews/meta/?product_id=${productId}`, { //changedpid
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const data = await axios.get(`/reviews/meta/?product_id=${productId}`);
       setMetaData(data.data);
     } catch (err) {
       console.log(err);
