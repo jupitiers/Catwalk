@@ -4,6 +4,7 @@ import styles from './relatedItemsCarousel.module.css';
 
 import { APIContext } from '../../../state/contexts/APIContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
+import { ProductContext } from '../../../state/contexts/ProductContext.js';
 
 const RelatedItemsCarousel = (props) => {
   const {
@@ -11,7 +12,6 @@ const RelatedItemsCarousel = (props) => {
     getAllRelatedProductInfo,
     getAllRelatedReviewMetaData,
     getAllRelatedStyles,
-    pId,
     getProductById,
     productId,
     setProductId,
@@ -26,6 +26,8 @@ const RelatedItemsCarousel = (props) => {
     relatedProductStyles,
     setRelatedProductStyles,
   } = useContext(RelatedContext);
+
+  const {selectedProduct} = useContext(ProductContext);
 
   useEffect(() => {
     getRelatedProducts().then((data) => {
@@ -62,11 +64,11 @@ const RelatedItemsCarousel = (props) => {
     e.stopPropagation();
 
     if (e.target.id !== 'modalBackground' && e.target.id !== 'modalButton') {
-      console.log(newId)
       await setProductId(newId.toString());
-      console.log(productId)
     }
+    getProductById(newId.toString());
   };
+  console.log(selectedProduct)
 
   return (
     <div className={styles.carousel}>

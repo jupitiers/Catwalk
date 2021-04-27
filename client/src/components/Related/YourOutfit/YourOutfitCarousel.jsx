@@ -8,7 +8,7 @@ import { ProductContext } from '../../../state/contexts/ProductContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
 const YourOutfitCarousel = props => {
-  const { pId, getProductById, getAllOutfitStyles, getAllOutfitReviewMetaData } = useContext(APIContext);
+  const { getProductById, getAllOutfitStyles, getAllOutfitReviewMetaData, productId } = useContext(APIContext);
   const { selectedProduct } = useContext(ProductContext);
   const { outfitStyle, setOutfitStyle } = useContext(RelatedContext);
 
@@ -34,8 +34,9 @@ const YourOutfitCarousel = props => {
 
   let addCurrentItem = async () => {
     setIsLoading(true);
-    if (!outfitItemsIds.includes(pId)) {
-      outfitItemsIds.push(pId);
+    console.log(selectedProduct)
+    if (!outfitItemsIds.includes(productId)) {
+      outfitItemsIds.push(productId);
       outfitItemsInfo.push(selectedProduct);
       await getAllOutfitStyles(outfitItemsIds).then(data => {
         outfitItemStyles.push(data);
