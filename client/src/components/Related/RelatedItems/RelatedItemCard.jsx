@@ -27,7 +27,7 @@ const RelatedItemCard = props => {
   }
 
   return (
-    <div className={styles.itemCard}>
+    <div className={styles.itemCard} onClick={e => props.updateCurrentItem(e, props.relatedId)}>
       <CardPicture relatedId={props.relatedId} thumbnailUrl={thumbnailUrl}/>
       <CardDescription relatedId={props.relatedId} data={props.data} rating={avgRating} updateCurrentItem={props.updateCurrentItem}/>
     </div>

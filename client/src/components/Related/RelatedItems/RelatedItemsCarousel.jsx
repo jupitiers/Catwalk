@@ -56,9 +56,14 @@ const RelatedItemsCarousel = (props) => {
     setMovement(movement === 0 ? movement - 0 : movement - 1);
   };
 
-  const updateCurrentItem = (newId) => {
-    console.log(newId);
+  const updateCurrentItem = (e, newId) => {
+    e.stopPropagation();
+    console.log(newId)
+    console.log(e.target.id)
     // getProductById(newId);
+    if (e.target.id !== 'modalBackground' && e.target.id !== 'modalButton') {
+      console.log('hi')
+    }
   };
 
   return (

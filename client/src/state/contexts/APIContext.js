@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
@@ -36,6 +36,7 @@ const APIProvider = ({ children }) => {
   const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
   const pId = '17069';
+  const [productId, setProductId] = useState('17069');
 
   /** ****************************************************************************
   *                      API calls for products
