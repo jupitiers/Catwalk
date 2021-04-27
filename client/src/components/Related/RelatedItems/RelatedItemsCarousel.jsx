@@ -13,6 +13,8 @@ const RelatedItemsCarousel = (props) => {
     getAllRelatedStyles,
     pId,
     getProductById,
+    productId,
+    setProductId,
   } = useContext(APIContext);
   const {
     relatedProducts,
@@ -31,7 +33,7 @@ const RelatedItemsCarousel = (props) => {
       getAllRelatedReviewMetaData(data);
       getAllRelatedStyles(data);
     });
-  }, []);
+  }, [productId]);
 
   // track left most card index
   const [leftIndex, setLeftIndex] = useState(0);
@@ -56,13 +58,13 @@ const RelatedItemsCarousel = (props) => {
     setMovement(movement === 0 ? movement - 0 : movement - 1);
   };
 
-  const updateCurrentItem = (e, newId) => {
+  const updateCurrentItem = async (e, newId) => {
     e.stopPropagation();
-    console.log(newId)
-    console.log(e.target.id)
-    // getProductById(newId);
+
     if (e.target.id !== 'modalBackground' && e.target.id !== 'modalButton') {
-      console.log('hi')
+      console.log(newId)
+      await setProductId(newId.toString());
+      console.log(productId)
     }
   };
 
