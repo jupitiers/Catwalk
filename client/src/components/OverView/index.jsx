@@ -3,6 +3,7 @@ import React from 'react';
 // import Components
 import ImageGallery from '../ImageGallery/index.jsx';
 import ProductForm from '../ProductForm/index.jsx';
+import Social from '../Social/index.jsx';
 
 // import styles
 import styles from './overview.module.css';
@@ -17,6 +18,7 @@ const OverView = () => {
         </section>
         <section className={styles.secTwo}>
           <ProductForm />
+          <Social />
         </section>
       </div>
     </div>
