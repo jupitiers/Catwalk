@@ -126,11 +126,21 @@ const APIProvider = ({ children }) => {
     setOutfitStyle(styles);
     return styles;
   };
+
   const getProductStyles = async () => {
     try {
       const getStyles = await axios.get(`/products/${productId}/styles`);
       setStyleList(getStyles.data);
       setStyleSelected(getStyles.data.results[0]);
+      return getStyles.data;
+    } catch (err) {
+      console.log({ err });
+    }
+  };
+
+  const getModalCurrentProductInfo = async (id) => {
+    try {
+      const getStyles = await axios.get(`/products/${id}`);
       return getStyles.data;
     } catch (err) {
       console.log({ err });
@@ -319,6 +329,7 @@ const APIProvider = ({ children }) => {
         getAllOutfitStyles,
         getProductStyles,
         getAllOutfitReviewMetaData,
+        getModalCurrentProductInfo,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
