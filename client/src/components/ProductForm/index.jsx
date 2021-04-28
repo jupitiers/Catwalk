@@ -16,7 +16,7 @@ import styles from './product.module.css';
 const ProductForm = () => {
 
   // context state
-  const { getProductById } = useContext(APIContext);
+  const { getProductById, productId } = useContext(APIContext);
   const { reviews } = useContext(ReviewContext);
   const {
     selectedProduct,
@@ -29,7 +29,11 @@ const ProductForm = () => {
   const [ stars, setStars ] = useState([]);
   const [ liked, setLiked ] = useState(false);
   const [ sizes, setSizes ] = useState([]);
-  const [ quantity, setQuantity ] = useState({quantity: [], size: ''});
+  const [ quantity, setQuantity ] = useState({quantity: [1], size: ''});
+
+  useEffect(() => {
+    getProductById(productId.toString());
+  }, [productId]);
 
   // used to update the reviews
   useEffect(() => {
@@ -77,7 +81,7 @@ const ProductForm = () => {
           styleSelected.sale_price
           ?
           <>
-          <p className={styles.price}>${styleSelected.original_price}</p>
+          <p className={styles.priceDrop}>${styleSelected.original_price}</p>
           <p className={styles.salePrice}>${styleSelected.sale_price}</p>
           </>
           :
@@ -117,11 +121,10 @@ const ProductForm = () => {
                 }
               </select>
               <select className={styles.selectNum}>
-                <option></option>
                 {
                  quantity.quantity.map((q, i) => {
                     return (
-                      <option className={styles.optionNum} key={i}>{i}</option>
+                      <option className={styles.optionNum} key={i}>{q}</option>
                     )
                   })
                 }

@@ -67,6 +67,10 @@
   cursor: pointer;
 }
 
+.arrowDiv img {
+  cursor: zoom-in;
+}
+
 .modalWrapper {
   position: fixed;
   z-index: 2;
@@ -78,6 +82,10 @@
   align-items: center;
   justify-content: center;
   background-color: #000000ed;
+}
+
+.modalWrapper img {
+  cursor: crosshair;
 }
 
 .modalActive {

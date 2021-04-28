@@ -12,7 +12,7 @@ const ComparisonModal = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     await getRelatedProductInfoById(props.relatedId);
     setIsLoading(false);
   }, []);
