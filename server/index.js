@@ -39,10 +39,10 @@ app.put('/*', async (req, res) => {
 app.post('/*', async (req, res) => {
   const data = req.body;
   try {
-    const response = await axios.post(`${baseURL}${req.url}`, { data }, {
+    await axios.post(`${baseURL}${req.url}`, data, {
       headers: { Authorization: process.env.API_KEY },
     });
-    res.status(200).json(response.data);
+    res.sendStatus(201);
   } catch (err) {
     console.log(err);
   }
