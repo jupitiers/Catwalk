@@ -38,9 +38,6 @@ app.put('/*', async (req, res) => {
 
 app.post('/*', async (req, res) => {
   const data = req.body;
-  console.log(data);
-  console.log(req.url);
-  console.log(req.method);
   try {
     await axios.post(`${baseURL}${req.url}`, data, {
       headers: { Authorization: process.env.API_KEY },
