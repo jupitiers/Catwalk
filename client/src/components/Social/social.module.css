@@ -1,0 +1,12 @@
+.socialWrapper {
+  display: flex;
+  margin-top: 10px;
+}
+
+.divSocial {
+  width: 100px;
+}
+
+.divSocial * {
+  width: 100%;
+}
