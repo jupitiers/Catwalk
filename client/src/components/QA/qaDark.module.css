@@ -2,8 +2,7 @@
   /* background-color: #FAEBD2; */
   /* width: 90%; */
   margin: 0 auto;
-  background-color: #525252;
-  color: #f8f8ff;
+  color: #525252;
   font-size: 100%;
   /* border: 3px solid #5FD9BD; */
   word-wrap: normal;
@@ -12,7 +11,7 @@
 .title{
   padding-left: 3%;
   padding-top: 3%;
-  font-family: 'Dela Gothic One', cursive;  color: #f8f8ff;
+  font-family: 'Dela Gothic One', cursive;  color: #525252;
 }
 
 .searchdiv {
@@ -32,11 +31,11 @@
   padding: 2%;
   margin: 0 auto;
   min-height: 0px;
-  max-height: 500px;
+  max-height: 620px;
   overflow-y: scroll;
   font-family: 'Raleway', sans-serif;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  /* margin-top: 1%; */
+  /* margin-bottom: 2%; */
 }
 
 .feedbutton, .addphoto {
@@ -54,7 +53,7 @@
   font-size: clamp(2px, 1vw, 20px);
   background-color: #5FD9BD;
   border: 1px solid #15332C;
-  color: #f8f8ff;
+  color: #525252;
   margin: 15px;
   padding: 5px;
   font-weight: bold;
@@ -256,11 +255,11 @@ input[type="file"] {
 
 .qacontent {
   float: left;
-  margin-left: 0.5%;
+  margin-left: 0.5em;
   margin-top: -0.95em;
 }
 
 .answerentry {
   margin-top: 0.33em;
-  margin-left: 2%;
+  margin-left: 1.2em;
 }
