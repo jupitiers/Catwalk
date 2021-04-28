@@ -1,6 +1,7 @@
 const express = require('express');
-require('dotenv').config();
 const axios = require('axios');
+const logger = require('morgan');
+require('dotenv').config();
 
 const app = express();
 const path = require('path');
@@ -9,7 +10,7 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
@@ -20,7 +21,7 @@ app.get('/*', async (req, res) => {
     });
     res.status(200).json(response.data);
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ message: 'Error', err });
   }
 });
 
@@ -32,7 +33,7 @@ app.put('/*', async (req, res) => {
     });
     res.status(200).json(response.data);
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ message: 'Error', err });
   }
 });
 
@@ -44,7 +45,7 @@ app.post('/*', async (req, res) => {
     });
     res.sendStatus(201);
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ message: 'Error', err });
   }
 });
 
