@@ -40,8 +40,7 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
   const getAllProducts = async () => {
     try {
-      const prods = await axios.get('/products');
-      console.log(prods);
+      await axios.get('/products');
     } catch (err) {
       console.log(err);
     }

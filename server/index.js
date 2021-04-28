@@ -19,11 +19,14 @@ app.get('/*', async (req, res) => {
     res.sendStatus(200);
   } else {
     try {
+      console.log(process.env.API_KEY )
       const response = await axios.get(`${baseURL}${req.url}`, {
         headers: { Authorization: process.env.API_KEY },
       });
       res.status(200).json(response.data);
     } catch (err) {
+      console.log(err);
+
       res.status(500).json({ message: 'Error', err });
     }
   }
@@ -37,6 +40,8 @@ app.put('/*', async (req, res) => {
     });
     res.status(200).json(response.data);
   } catch (err) {
+    console.log(err);
+
     res.status(500).json({ message: 'Error', err });
   }
 });
@@ -49,6 +54,7 @@ app.post('/*', async (req, res) => {
     });
     res.sendStatus(201);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Error', err });
   }
 });
