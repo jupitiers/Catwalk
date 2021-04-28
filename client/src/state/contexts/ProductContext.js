@@ -4,13 +4,10 @@ export const ProductContext = createContext({});
 
 const ProductProvider = ({ children }) => {
 
-  const [selectedProduct, setSelectedProduct] = useState({});
-
-  const [productList, setProductList] = useState([]);
-
-  const [ styleList, setStyleList ] = useState({})
-
-  const [ styleSelected, setStyleSelected ]= useState({})
+  const [ selectedProduct, setSelectedProduct ] = useState({});
+  const [ productList, setProductList ] = useState([]);
+  const [ styleList, setStyleList ] = useState({});
+  const [ styleSelected, setStyleSelected ]= useState({});
 
   return (
     <ProductContext.Provider
@@ -22,7 +19,7 @@ const ProductProvider = ({ children }) => {
         setProductList,
         setSelectedProduct,
         setStyleList,
-        setStyleSelected
+        setStyleSelected,
       }}
     >
       {children}

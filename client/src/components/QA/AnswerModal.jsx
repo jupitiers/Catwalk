@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import lightStyles from './qaLight.module.css';
+import darkStyles from './qaDark.module.css';
 import $ from 'jquery';
 
 import { APIContext } from '../../state/contexts/APIContext';
 import { ReviewContext } from '../../state/contexts/ReviewsContext';
-import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
+import { REACT_APP_CLOUDINARY_URL, REACT_APP_CLOUDINARY_PRESET } from '../../config/config';
 
 
 
@@ -34,7 +35,7 @@ const AnswerModal = (props) => {
   var uploadPhoto = async (e) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
-    formData.append('upload_preset', 'jrdii220');
+    formData.append('upload_preset', REACT_APP_CLOUDINARY_PRESET);
     try {
       const res = await fetch(REACT_APP_CLOUDINARY_URL, {
         method: 'POST',
@@ -42,7 +43,6 @@ const AnswerModal = (props) => {
       });
       const file = await res.json();
       if (res) {
-        console.log(res);
         if (photos.length < 5 && file.url) {
           console.log(file);
           addPhoto(file.url);
