@@ -38,6 +38,10 @@ const ImageGallery = () => {
     getProductStyles(productId.toString());
   }, [productId]);
 
+  useEffect(() => {
+    getProductStyles(productId.toString());
+  }, [productId]);
+
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
       if(index == i) {

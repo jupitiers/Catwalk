@@ -35,6 +35,10 @@ const ProductForm = () => {
     getProductById(productId.toString());
   }, [productId]);
 
+  useEffect(() => {
+    getProductById(productId.toString());
+  }, [productId]);
+
   // used to update the reviews
   useEffect(() => {
     let total = 0;
