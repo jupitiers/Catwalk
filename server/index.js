@@ -25,6 +25,8 @@ app.get('/*', async (req, res) => {
       });
       res.status(200).json(response.data);
     } catch (err) {
+      console.log(err);
+
       res.status(500).json({ message: 'Error', err });
     }
   }
@@ -38,6 +40,8 @@ app.put('/*', async (req, res) => {
     });
     res.status(200).json(response.data);
   } catch (err) {
+    console.log(err);
+
     res.status(500).json({ message: 'Error', err });
   }
 });
@@ -50,6 +54,7 @@ app.post('/*', async (req, res) => {
     });
     res.sendStatus(201);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ message: 'Error', err });
   }
 });
