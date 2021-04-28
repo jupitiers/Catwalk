@@ -198,8 +198,7 @@ const APIProvider = ({ children }) => {
 
   const addQuestion = async (questionData) => {
     try {
-      const data = await axios.post('/qa/questions', questionData);
-      console.log(data);
+      await axios.post('/qa/questions', questionData);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
@@ -208,8 +207,7 @@ const APIProvider = ({ children }) => {
 
   const addAnswer = async (questionId, answerData) => {
     try {
-      const data = await axios.post(`/qa/questions/${questionId}/answers`, answerData);
-      console.log(data);
+      await axios.post(`/qa/questions/${questionId}/answers`, answerData);
       getQuestionsByProductId();
     } catch (err) {
       console.log(err);
