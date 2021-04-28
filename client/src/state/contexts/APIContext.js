@@ -198,6 +198,7 @@ const APIProvider = ({ children }) => {
 
   const addQuestion = async (questionData) => {
     try {
+      console.log(questionData);
       await axios.post('/qa/questions', questionData);
       getQuestionsByProductId();
     } catch (err) {

@@ -58,7 +58,7 @@ const QuestionModal = (props) => {
       body: question,
       name: nickname,
       email: email,
-      product_id: productId
+      product_id: parseInt(productId)
     }
 
     submit(questionData);
