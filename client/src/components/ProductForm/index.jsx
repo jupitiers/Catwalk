@@ -72,7 +72,6 @@ const ProductForm = () => {
     }
   }
 
-  console.log({selectedProduct, styleList, reviews, styleSelected, sizes, quantity}, Array(quantity.quantity))
   return (
     <div className={styles.wrapper}>
       <div className={styles.starDiv}>
