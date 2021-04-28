@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { REACT_APP_CLOUDINARY_URL } from '../../config/config';
+import { REACT_APP_CLOUDINARY_URL, REACT_APP_CLOUDINARY_PRESET } from '../../config/config';
 import { createStarArray } from '../../helpers/ratingsHelpers';
 // default reviews for testing
 const defaultReviews = [
@@ -185,7 +185,7 @@ const ReviewProvider = ({ children }) => {
   const handleImageUpload = async (e) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
-    formData.append('upload_preset', 'wq9qoqey');
+    formData.append('upload_preset', REACT_APP_CLOUDINARY_PRESET);
     formData.append('folder', 'catwalk');
     try {
       const res = await fetch(REACT_APP_CLOUDINARY_URL, {

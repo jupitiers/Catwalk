@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
-import { REACT_APP_API_KEY } from '../../config/config';
 import { ReviewContext } from './ReviewsContext';
 import { QuestionContext } from './QuestionsContext';
 import { AnswerContext } from './AnswersContext';
@@ -33,9 +32,7 @@ const APIProvider = ({ children }) => {
 
   const { setSelectedProduct, setStyleList, setStyleSelected } = useContext(ProductContext);
 
-  const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
   // hard coded product id for use in all components
-  const pId = '17069';
   const [productId, setProductId] = useState('17069');
 
   /** ****************************************************************************
@@ -201,9 +198,7 @@ const APIProvider = ({ children }) => {
 
   const addQuestion = async (questionData) => {
     try {
-      const data = await axios.post(`${baseURL}/qa/questions`, questionData, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const data = await axios.post('/qa/questions', questionData);
       console.log(data);
       getQuestionsByProductId();
     } catch (err) {
@@ -213,9 +208,7 @@ const APIProvider = ({ children }) => {
 
   const addAnswer = async (questionId, answerData) => {
     try {
-      const data = await axios.post(`${baseURL}/qa/questions/${questionId}/answers`, answerData, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const data = await axios.post(`/qa/questions/${questionId}/answers`, answerData);
       console.log(data);
       getQuestionsByProductId();
     } catch (err) {
@@ -268,9 +261,7 @@ const APIProvider = ({ children }) => {
 
   const createNewReview = async () => {
     try {
-      const data = await axios.post(`${baseURL}/reviews`, newReview, {
-        headers: { Authorization: REACT_APP_API_KEY },
-      });
+      const data = await axios.post('/reviews', newReview);
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -307,9 +298,7 @@ const APIProvider = ({ children }) => {
     }
     if (data.widget && data.element) {
       try {
-        await axios.post(`${baseURL}/interactions`, data, {
-          headers: { Authorization: REACT_APP_API_KEY },
-        });
+        await axios.post('/interactions', data);
       } catch (err) {
         console.log(err);
       }
@@ -332,7 +321,6 @@ const APIProvider = ({ children }) => {
         getAllOutfitStyles,
         getProductStyles,
         getAllOutfitReviewMetaData,
-        pId,
         // QAs
         getQuestionsByProductId,
         getAnswersByQuestionId,
