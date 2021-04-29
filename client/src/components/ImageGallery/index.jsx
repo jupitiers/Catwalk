@@ -10,7 +10,7 @@ import styles from './image.module.css';
 const ImageGallery = () => {
 
   // context state
-  const { getProductStyles } = useContext(APIContext);
+  const { getProductStyles, productId, getProductById } = useContext(APIContext);
   const { styleSelected } = useContext(ProductContext);
 
   // local state
@@ -34,6 +34,11 @@ const ImageGallery = () => {
     setImages(images);
     setMainImg(images && images[0]);
   },[styleSelected]);
+
+  useEffect(() => {
+    getProductById(productId.toString());
+    getProductStyles();
+  }, [productId]);
 
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
