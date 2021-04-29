@@ -59,8 +59,8 @@ const Answer = (props) => {
       </div>
       <div>
         {props.photos.map((photo, idx) => (
-          <div className={lightStyles.imageArea}>
-            <img key={idx} className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
+          <div key={idx} className={lightStyles.imageArea}>
+            <img className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
           </div>
         ))}
         {showPhoto
