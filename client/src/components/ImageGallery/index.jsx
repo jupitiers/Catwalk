@@ -10,7 +10,7 @@ import styles from './image.module.css';
 const ImageGallery = () => {
 
   // context state
-  const { getProductStyles, productId } = useContext(APIContext);
+  const { getProductStyles } = useContext(APIContext);
   const { styleSelected } = useContext(ProductContext);
 
   // local state
@@ -18,29 +18,22 @@ const ImageGallery = () => {
   const [ images, setImages ] = useState([]);
   const [ mainImg, setMainImg ] = useState({});
   const [ modal, setModal ] = useState(false);
+  const [ zoom, setZoom ] = useState(false);
   const modalWrapper = useRef();
 
   // update when the current style changes
   useEffect(() => {
     const images = styleSelected.photos && styleSelected.photos.map((img, i) => {
       if(i === 0) {
-        img.active = true
+        img.active = true;
       } else {
-        img.active = false
+        img.active = false;
       }
-      return img
+      return img;
     });
     setImages(images);
     setMainImg(images && images[0]);
   },[styleSelected]);
-
-  useEffect(() => {
-    getProductStyles(productId.toString());
-  }, [productId]);
-
-  useEffect(() => {
-    getProductStyles(productId.toString());
-  }, [productId]);
 
   const updateMainImg = (index) => {
     const updateImages = images.map((img, i) => {
@@ -56,6 +49,7 @@ const ImageGallery = () => {
   }
 
   const moveLeft = () => {
+    setZoom(false);
     let current = images.indexOf(mainImg);
     if(current === 0) {
       current = images.length - 1;
@@ -79,6 +73,7 @@ const ImageGallery = () => {
   }
 
   const moveRight = () => {
+    setZoom(false);
     let current = images.indexOf(mainImg);
     if(current === images.length - 1) {
       current = 0;
@@ -125,6 +120,14 @@ const ImageGallery = () => {
     }
   }
 
+  const handleZoomMove = (e) => {
+    let zoomDiv = document.getElementById('zoomDiv');
+    if(zoom) {
+      zoomDiv.scrollTop = zoomDiv.scrollTop + e.movementY * 2.5;
+      zoomDiv.scrollLeft = zoomDiv.scrollLeft + e.movementX * 2.5;
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <i className={`fas fa-expand ${styles.expand}`} onClick={openModal}></i>
@@ -134,7 +137,9 @@ const ImageGallery = () => {
         <div className={styles.modalWrapper} ref={modalWrapper} onClick={closeModal}>
           <div className={styles.modalDiv}>
             <i className={`fas fa-arrow-left ${styles.arrowLeft}`} onClick={moveLeft}></i>
-            <img src={mainImg.url} className={styles.modalImg} />
+            <div className={styles.zoomDiv} id='zoomDiv'>
+              <img src={mainImg.url} className={`${styles.modalImg} ${zoom ? styles.zoom : null}`} onClick={() => setZoom(!zoom)} onMouseMove={handleZoomMove}/>
+            </div>
             <i className={`fas fa-arrow-right ${styles.arrowRight}`} onClick={moveRight}></i>
           </div>
         </div>
