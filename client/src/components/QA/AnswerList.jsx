@@ -8,11 +8,9 @@ import { APIContext } from '../../state/contexts/APIContext';
 import { AnswerContext } from '../../state/contexts/AnswersContext';
 
 var AnswerList = (props) => {
-  const { getAnswersByQuestionId, markAnswerAsHelpful, reportAnswer, trackClick } = useContext(APIContext);
-  const { answers, setAnswers } = useContext(AnswerContext);
+  const { markAnswerAsHelpful, reportAnswer, trackClick } = useContext(APIContext);
 
   const[clicked, setClicked] = useState(false);
-  const[helpfulClicked, setHelpfulClicked] = useState({clickCount: 0});
 
   var answerList = [];
   for (var key in props.answers) {

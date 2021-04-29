@@ -12,7 +12,7 @@ import { ProductContext } from '../../state/contexts/ProductContext';
 const QASection = () => {
   const { getQuestionsByProductId, getProductById, trackClick, productId } = useContext(APIContext);
   const { questions } = useContext(QuestionContext);
-  const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
+  const { selectedProduct } = useContext(ProductContext);
 
   const[clicked, setClicked] = useState(false);
   const[noResults, setNoResults] = useState(false);

@@ -8,7 +8,7 @@ import { APIContext } from '../../state/contexts/APIContext';
 
 var QA = (props) => {
 
-  const { getAnswersByQuestionId, markQuestionAsHelpful, reportQuestion, trackClick } = useContext(APIContext);
+  const { markQuestionAsHelpful, reportQuestion, trackClick } = useContext(APIContext);
 
 
   const[helpful, setHelpful] = useState(false);
@@ -24,12 +24,11 @@ var QA = (props) => {
       markQuestionAsHelpful(questionId);
     }
   }
-
-  // var reportQuestionClick = function(questionId, reported) {
-  //   if (!reported) {
-  //     reportQuestion(questionId);
-  //   }
-  // }
+  var reportQuestionClick = function(questionId, reported) {
+    if (!reported) {
+      reportQuestion(questionId);
+    }
+  }
 
   return (
     <div className={lightStyles.feedentry}>
@@ -50,12 +49,12 @@ var QA = (props) => {
               : <span className={lightStyles.questionaction}>Yes </span>
             } ({props.helpfulness})
           </div>|
-          {/* <div className={lightStyles.questionactiondiv} onClick={() => {reportQuestionClick(props.id, reported); setReported(true);}}>
+          <div className={lightStyles.questionactiondiv} onClick={() => {reportQuestionClick(props.id, reported); setReported(true);}}>
             {reported
               ? <p className={lightStyles.questionactionclicked}>Reported</p>
               : <p className={lightStyles.questionaction}>Report</p>
             }
-          </div>| */}
+          </div>|
           <div className={lightStyles.questionactiondiv}>
             <p className={lightStyles.questionaction} id='addAnswer' onClick={(e) => {setShowModal(true)}}>Add Answer</p>
           </div>
