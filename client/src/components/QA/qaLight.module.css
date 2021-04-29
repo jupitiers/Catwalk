@@ -235,10 +235,16 @@ input[type="file"] {
   font-size: clamp(2px, 1vw, 15px);
 }
 
-.answerimage {
+.imageArea {
   width: 50px;
   height: 50px;
   margin: 2px;
+}
+
+.answerimage {
+  max-width: 50px;
+  max-height: 50px;
+  margin: 0 auto;
 }
 
 .qasection {

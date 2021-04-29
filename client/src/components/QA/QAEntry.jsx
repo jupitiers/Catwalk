@@ -8,11 +8,12 @@ import { APIContext } from '../../state/contexts/APIContext';
 
 var QA = (props) => {
 
-  const { getAnswersByQuestionId, markQuestionAsHelpful, reportQuestion, trackClick } = useContext(APIContext);
+  const { markQuestionAsHelpful, reportQuestion, trackClick } = useContext(APIContext);
 
 
   const[helpful, setHelpful] = useState(false);
-  const[reported, setReported] = useState(false);
+  // FOR REPORT QUESTION FUNCTIONALITY
+  // const[reported, setReported] = useState(false);
   const[showModal, setShowModal] = useState(false);
 
   var closeAnswerModal = function() {
@@ -24,7 +25,7 @@ var QA = (props) => {
       markQuestionAsHelpful(questionId);
     }
   }
-
+  // FOR REPORT QUESTION FUNCTIONALITY
   // var reportQuestionClick = function(questionId, reported) {
   //   if (!reported) {
   //     reportQuestion(questionId);
@@ -50,6 +51,7 @@ var QA = (props) => {
               : <span className={lightStyles.questionaction}>Yes </span>
             } ({props.helpfulness})
           </div>|
+          {/* FOR REPORT QUESTION FUNCTIONALITY */}
           {/* <div className={lightStyles.questionactiondiv} onClick={() => {reportQuestionClick(props.id, reported); setReported(true);}}>
             {reported
               ? <p className={lightStyles.questionactionclicked}>Reported</p>

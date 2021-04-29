@@ -7,7 +7,7 @@ import { APIContext } from '../../state/contexts/APIContext';
 
 
 const QuestionModal = (props) => {
-  const { getQuestionsByProductId, addQuestion, trackClick, productId } = useContext(APIContext);
+  const { addQuestion, trackClick, productId } = useContext(APIContext);
 
   const [questionAuth, setQuestionAuth] = useState(true);
   const [nicknameAuth, setNicknameAuth] = useState(true);

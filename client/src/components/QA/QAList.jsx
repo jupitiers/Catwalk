@@ -2,11 +2,7 @@ import React, {useEffect, useContext} from 'react';
 import QAEntry from './QAEntry.jsx';
 import moment from 'moment';
 
-import { APIContext } from '../../state/contexts/APIContext';
-import { QuestionContext } from '../../state/contexts/QuestionsContext';
-
 var QAList = (props) => {
-  const { getAnswersByQuestionId, markQuestionAsHelpful, reportQuestion } = useContext(APIContext);
 
   return (
     <div className='QAEntryList'>
