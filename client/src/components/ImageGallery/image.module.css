@@ -94,7 +94,7 @@
 
 .modalDiv {
   width: 900px;
-  height: 445px;
+  height: 500px;
   position: relative;
   display: flex;
   align-items: center;
@@ -111,6 +111,15 @@
 }
 
 .modalImg {
-  width: 700px;
-  height: 100%;
+  width: 600px;
+  height: 700px;
+}
+
+.zoomDiv {
+  overflow: hidden;
+  height: 600px;
+}
+
+.zoom {
+  zoom: 2.5;
 }
