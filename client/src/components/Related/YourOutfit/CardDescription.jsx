@@ -4,7 +4,7 @@ import styles from './cardDescription.module.css';
 import { createStarArray } from '../../../helpers/ratingsHelpers';
 
 const CardDescription = props => {
-  console.log(props.itemsInfo)
+
   let category, name, price;
 
   for (let i = 0; i < props.itemsInfo.length; i++) {

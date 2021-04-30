@@ -9,8 +9,8 @@ const OutfitCard = props => {
   let ratings;
 
   for (let i = 0; i < props.reviews.length; i++) {
-    if (props.reviews[i][0].product_id == props.outfitId) {
-      ratings = props.reviews[i][0].ratings;
+    if (props.reviews[i].product_id == props.outfitId) {
+      ratings = props.reviews[i].ratings;
     }
   }
 

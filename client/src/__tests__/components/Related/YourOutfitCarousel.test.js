@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 import '@testing-library/jest-dom';
 import { shallow, render, mount } from '../../../../../enzyme.setup';
 import { RootProvider } from '../../../state/contexts/RootContext';
-import Index from '../../../components/Related/index.jsx';
+import YourOutfitCarousel from '../../../components/Related/YourOutfit/YourOutfitCarousel.jsx';
 import { RelatedContext } from '../../../state/contexts/RelatedContext';
 
 describe('Related Items and Outfit Component', () => {
@@ -12,7 +12,7 @@ describe('Related Items and Outfit Component', () => {
   beforeEach(() => {
     wrapper = mount(
       <RootProvider >
-        <Index/>
+        <YourOutfitCarousel/>
       </RootProvider>,
     );
   });
