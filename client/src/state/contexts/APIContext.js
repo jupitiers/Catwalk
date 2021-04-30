@@ -40,7 +40,8 @@ const APIProvider = ({ children }) => {
   ***************************************************************************** */
   const getAllProducts = async () => {
     try {
-      await axios.get('/products');
+      const prods = await axios.get('/products');
+      console.log(prods);
     } catch (err) {
       console.log(err);
     }
@@ -190,7 +191,6 @@ const APIProvider = ({ children }) => {
   const reportQuestion = async (questionId) => {
     try {
       await axios.put(`/qa/questions/${questionId}/report`, null);
-      getQuestionsByProductId();
     } catch (err) {
       console.log(err);
     }
@@ -199,7 +199,6 @@ const APIProvider = ({ children }) => {
   const reportAnswer = async (answerId) => {
     try {
       await axios.put(`/qa/answers/${answerId}/report`, null);
-      getQuestionsByProductId();
     } catch (err) {
       console.log(err);
     }
@@ -207,7 +206,6 @@ const APIProvider = ({ children }) => {
 
   const addQuestion = async (questionData) => {
     try {
-      console.log(questionData);
       await axios.post('/qa/questions', questionData);
       getQuestionsByProductId();
     } catch (err) {
