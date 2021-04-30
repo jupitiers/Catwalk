@@ -191,7 +191,11 @@ const AnswerModal = (props) => {
               )
               : <span>Max photos added</span>}
             <div>
-              {photos.map((url) => <img className={lightStyles.answerimage} key={url} src={url} />)}
+              {photos.map((url) => (
+                <div className={lightStyles.imageArea}>
+                  <img className={lightStyles.answerimage} key={url} src={url} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
