@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.divHeader}>
-        <h1 className={styles.h1}><i class="fas fa-cat fa-lg"></i></h1>
+        <h1 className={styles.h1}><i className="fas fa-cat fa-lg"></i></h1>
       </div>
       <div className={styles.divForm}>
         <form onSubmit={search}>

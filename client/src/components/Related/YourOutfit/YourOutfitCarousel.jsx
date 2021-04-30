@@ -34,15 +34,15 @@ const YourOutfitCarousel = props => {
 
   let addCurrentItem = async () => {
     setIsLoading(true);
-    console.log(selectedProduct)
     if (!outfitItemsIds.includes(productId)) {
       outfitItemsIds.push(productId);
       outfitItemsInfo.push(selectedProduct);
+
       await getAllOutfitStyles(outfitItemsIds).then(data => {
         outfitItemStyles.push(data);
       });
       await getAllOutfitReviewMetaData(outfitItemsIds).then(data => {
-        reviewData.push(data);
+        setReviewData(data);
       });
     }
     setIsLoading(false);
