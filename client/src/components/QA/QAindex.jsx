@@ -41,6 +41,7 @@ const QASection = () => {
       }
       setSearchResults(searchedQuestions);
       if (searchedQuestions.length === 0) {
+        enoughQuestions = false;
         setNoResults(true);
       } else {
         setNoResults(false);
@@ -54,6 +55,11 @@ const QASection = () => {
   if (searchResults.length > 0) {
     var searchedQuestionsList = searchResults.slice();
     var shortenedSearchedQuestions = searchedQuestionsList.slice(0, 2);
+    if (searchedQuestionsList.length > 2) {
+      enoughQuestions = true;
+    } else {
+      enoughQuestions = false;
+    }
     if (clicked) {
       usedQuestions = searchedQuestionsList;
     } else {
@@ -71,8 +77,6 @@ const QASection = () => {
     setShowModal(false);
   }
 
-
-
   return(
     <div className={lightStyles.section}>
       <div className={lightStyles.title}>
@@ -89,7 +93,7 @@ const QASection = () => {
       </div>
       <div>
         <span id='moreQuestionsButton'>
-          {enoughQuestions
+          {enoughQuestions && !noResults
             ? <span>
                 {clicked
                   ? <button id='fewerQuestions' className={lightStyles.button} onClick={(e) => {setClicked(false)}}>Fewer Answered Questions</button>
