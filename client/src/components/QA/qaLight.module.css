@@ -6,6 +6,7 @@
   font-size: 100%;
   /* border: 3px solid #5FD9BD; */
   word-wrap: normal;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .title{

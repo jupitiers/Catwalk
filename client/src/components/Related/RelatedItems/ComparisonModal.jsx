@@ -6,21 +6,27 @@ import { ProductContext } from '../../../state/contexts/ProductContext.js';
 import { RelatedContext } from '../../../state/contexts/RelatedContext.js';
 
 const ComparisonModal = props => {
-  const { getRelatedProductInfoById } = useContext(APIContext);
+  const { getRelatedProductInfoById, productId, getModalCurrentProductInfo } = useContext(APIContext);
   const { selectedProduct, setSelectedProduct } = useContext(ProductContext);
   const { relatedProducts, setRelatedProducts, relatedProductInfo, setRelatedProductInfo } = useContext(RelatedContext);
+
   const [isLoading, setIsLoading] = useState(true);
+  const [currentProductInfo, setCurrentProductInfo] = useState([]);
+  const [currentProductName, setCurrentProductName] = useState('');
 
   useEffect(async () => {
     setIsLoading(true);
     await getRelatedProductInfoById(props.relatedId);
+    await getModalCurrentProductInfo(productId).then(data => {
+      setCurrentProductInfo(data.features);
+      setCurrentProductName(data.name);
+    });
     setIsLoading(false);
   }, []);
 
-  let currentId = selectedProduct.id;
   let comparedId = props.relatedId;
 
-  let currentFeatures = selectedProduct.features;
+  let currentFeatures = currentProductInfo;
 
   let comparedFeatures = relatedProductInfo.features;
 
@@ -87,7 +93,7 @@ const ComparisonModal = props => {
         <div className={styles.modalHeader}>
           <h4 className={styles.modalTitle}>COMPARING</h4>
           <div className={styles.productNames}>
-            <h5 className={styles.nameOne}>{selectedProduct.name}</h5>
+            <h5 className={styles.nameOne}>{currentProductName}</h5>
             <h5 className={styles.nameTwo}>{relatedProductInfo.name}</h5>
           </div>
         </div>
