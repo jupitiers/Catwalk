@@ -39,7 +39,8 @@ const YourOutfitCarousel = props => {
       outfitItemsInfo.push(selectedProduct);
 
       await getAllOutfitStyles(outfitItemsIds).then(data => {
-        outfitItemStyles.push(data);
+        setOutfitItemStyles(data);
+        console.log(outfitItemStyles)
       });
       await getAllOutfitReviewMetaData(outfitItemsIds).then(data => {
         setReviewData(data);

@@ -5,8 +5,8 @@ const CardImage = props => {
 
   let thumbnailUrl;
   for (let i = 0; i < props.itemStyle.length; i++) {
-    if (props.itemStyle[i][0].product_id == props.outfitId) {
-      thumbnailUrl = props.itemStyle[i][0].results[0].photos[0].thumbnail_url;
+    if (props.itemStyle[i].product_id == props.outfitId) {
+      thumbnailUrl = props.itemStyle[i].results[0].photos[0].thumbnail_url;
     }
   }
 
