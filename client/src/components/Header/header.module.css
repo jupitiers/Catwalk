@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   padding: 30px 30px 10px 30px;
-  background-color: gray;
-  color: #641373;
+  background-color: #641373;
+  color: #5fd9bd;
 }
 
 .divHeader {
@@ -20,8 +20,8 @@
 
 .input {
   border: 0px;
-  border-bottom: 1px solid white;
-  background-color: gray;
+  border-bottom: 1px solid #5fd9bd;
+  background-color: #641373;
 }
 
 .icon {
