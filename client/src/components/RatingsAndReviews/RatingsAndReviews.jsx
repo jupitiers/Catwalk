@@ -25,7 +25,7 @@ const RatingsAndReviews = () => {
   }, [productId]);
 
   return (
-    <div>
+    <div className={styles.sectionContainer}>
       <h2 className={styles.sectionTitle}>RATINGS & REVIEWS</h2>
       {reviews.length > 0 ? (
         <div className={styles.ratingsAndReviewsContainer}>
