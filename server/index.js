@@ -6,6 +6,8 @@ require('dotenv').config();
 const app = express();
 const path = require('path');
 
+const QA = require('./QA/queries.js');
+
 const PORT = 3000;
 
 app.use(express.json());
@@ -14,23 +16,24 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
-app.get('/*', async (req, res) => {
-  if (req.url.includes('favicon')) {
-    res.sendStatus(200);
-  } else {
-    try {
-      console.log(process.env.API_KEY )
-      const response = await axios.get(`${baseURL}${req.url}`, {
-        headers: { Authorization: process.env.API_KEY },
-      });
-      res.status(200).json(response.data);
-    } catch (err) {
-      console.log(err);
+// app.get('/*', async (req, res) => {
+//   if (req.url.includes('favicon')) {
+//     res.sendStatus(200);
+//   } else {
+//     try {
+//       console.log(process.env.API_KEY )
+//       const response = await axios.get(`${baseURL}${req.url}`, {
+//         headers: { Authorization: process.env.API_KEY },
+//       });
+//       res.status(200).json(response.data);
+//     } catch (err) {
+//       console.log(err);
 
-      res.status(500).json({ message: 'Error', err });
-    }
-  }
-});
+//       res.status(500).json({ message: 'Error', err });
+//     }
+//   }
+// });
+app.get('/*', QA.getInfo);
 
 app.put('/*', async (req, res) => {
   const data = req.body;
