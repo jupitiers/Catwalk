@@ -1,29 +1,29 @@
 CREATE SCHEMA qa;
 
 CREATE TABLE questions (
-  questionId integer PRIMARY KEY,
-  productId integer,
+  id varchar PRIMARY KEY,
+  product_id varchar,
   body varchar,
-  author varchar,
-  date varchar,
-  email varchar,
-  helpful integer,
-  reported boolean
+  date_written varchar,
+  asker_name varchar,
+  asker_email varchar,
+  reported varchar,
+  helpful varchar
 );
 
 CREATE TABLE answers (
-  answerId integer PRIMARY KEY,
-  questionId integer,
+  id varchar PRIMARY KEY,
+  question_id varchar,
   body varchar,
-  author varchar,
-  date varchar,
-  email varchar,
-  helpful integer,
-  reported boolean
+  date_written varchar,
+  answerer_name varchar,
+  answerer_email varchar,
+  reported varchar,
+  helpful varchar
 );
 
 CREATE TABLE answerImages (
-  imageId integer PRIMARY KEY,
-  answerId integer,
+  id varchar PRIMARY KEY,
+  answer_id varchar,
   url varchar
 );
