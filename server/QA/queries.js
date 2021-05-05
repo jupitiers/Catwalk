@@ -1,7 +1,7 @@
 const {Client, Pool} = require('pg');
 const {Sequelize, DataTypes} = require('sequelize');
 
-const connection = new Client({
+const connection = new Pool({
   user: 'postgres',
   password: 'postgres',
   host: 'localhost',
@@ -52,15 +52,49 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-const getInfo = (req, res) => {
-  connection.query('SELECT * FROM questions', (err, data) => {
-    if (err) {
-      throw err;
+const getQuestions = (request, response) => {
+  connection.query("SELECT * FROM questions WHERE product_id='1'", (error, results) => {
+    if (error) {
+      throw error;
     }
-    res.send(data);
+    results.rows.forEach(entry => {
+      if (entry.reported === '1') {
+        entry.reported = true;
+      } else if (entry.reported === '0') {
+        entry.reported = false;
+      }
+    })
+    response.status(200).json(results.rows);
+  })
+};
+
+const getAnswers = (request, response) => {
+  connection.query("SELECT * FROM answers WHERE question_id='1'", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    results.rows.forEach(entry => {
+      if (entry.reported === '1') {
+        entry.reported = true;
+      } else if (entry.reported === '0') {
+        entry.reported = false;
+      }
+    })
+    response.status(200).json(results.rows);
+  })
+};
+
+const getImages = (request, response) => {
+  connection.query("SELECT * FROM answerimages WHERE answer_id='5'", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
   })
 };
 
 module.exports = {
-  getInfo
+  getQuestions,
+  getAnswers,
+  getImages
 }

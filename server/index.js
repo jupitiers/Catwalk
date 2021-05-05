@@ -33,7 +33,9 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 //     }
 //   }
 // });
-app.get('/*', QA.getInfo);
+app.get('/questions', QA.getQuestions);
+app.get('/answers', QA.getAnswers);
+app.get('/images', QA.getImages);
 
 app.put('/*', async (req, res) => {
   const data = req.body;
