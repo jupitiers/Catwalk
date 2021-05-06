@@ -57,34 +57,113 @@ const getQuestions = (request, response) => {
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
 
-  connection.query("SELECT * FROM questions WHERE product_id='" + productId + "'", (error, results) => {
+  var questionQuery =
+  `select
+    json_build_object(
+        'results', json_agg(
+            json_build_object(
+                'question_id', q.id,
+                'question_body', q.body,
+                'question_date', q.date_written,
+                'asker_name', q.asker_name,
+                'question_helpfulness', q.helpful,
+                'reported', q.reported,
+                'answers', answers
+            )
+        )
+    ) results
+    from questions q
+    left join (
+        select
+            question_id,
+            json_agg(
+                json_build_object(
+                    'id', a.id,
+                    'body', a.body,
+                    'date', a.date_written,
+                    'answerer_name', a.answerer_name,
+                    'helpfulness', a.helpful,
+                    'photos', photos
+                    )
+                ) answers
+      from
+          answers a
+          left join (
+              select
+                  answer_id,
+                  json_agg(
+                      json_build_object(
+                          'id', p.id,
+                          'url', p.url
+                      )
+                  ) photos
+              from answerImages p
+              group by 1
+          ) p on a.id = p.answer_id
+      group by question_id
+  ) a on q.id = a.question_id WHERE q.product_id='` + productId + `'`;
+
+
+  connection.query(questionQuery, (error, results) => {
     if (error) {
       throw error;
     }
-    results.rows.forEach(entry => {
+    console.log(results.rows[0].results.results);
+    results.rows[0].results.results.forEach(entry => {
       if (entry.reported === '1') {
         entry.reported = true;
       } else if (entry.reported === '0') {
         entry.reported = false;
       }
     })
-    response.status(200).json(results.rows);
+    response.status(200).json(results.rows[0].results);
   })
 };
 
 const getAnswers = (request, response) => {
-  connection.query("SELECT * FROM answers WHERE question_id='1'", (error, results) => {
+  var questionId = request.url.substring(14, request.url.indexOf('/answers'));
+
+  var answerQuery =
+  `select
+    json_build_object(
+        'results', json_agg(
+              json_build_object(
+                  'answer_id', a.id,
+                  'body', a.body,
+                  'date', a.date_written,
+                  'answerer_name', a.answerer_name,
+                  'helpfulness', a.helpful,
+                  'photos', photos
+              )
+          )
+      ) results
+      from
+      answers a
+      left join (
+          select
+              answer_id,
+              json_agg(
+                  json_build_object(
+                      'id', p.id,
+                      'url', p.url
+                  )
+              ) photos
+          from answerImages p
+          group by 1
+      ) p on a.id = p.answer_id WHERE a.question_id='` + questionId + `'`
+
+  connection.query(answerQuery, (error, results) => {
     if (error) {
       throw error;
     }
-    results.rows.forEach(entry => {
-      if (entry.reported === '1') {
-        entry.reported = true;
-      } else if (entry.reported === '0') {
-        entry.reported = false;
-      }
-    })
-    response.status(200).json(results.rows);
+    // results.rows.forEach(entry => {
+    //   if (entry.reported === '1') {
+    //     entry.reported = true;
+    //   } else if (entry.reported === '0') {
+    //     entry.reported = false;
+    //   }
+    // })
+    response.status(200).json(results.rows[0].results);
   })
 };
 

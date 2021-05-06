@@ -8,7 +8,7 @@ CREATE TABLE questions (
   asker_name varchar,
   asker_email varchar,
   reported varchar,
-  helpful varchar
+  helpful varchar,
 );
 
 CREATE TABLE answers (
