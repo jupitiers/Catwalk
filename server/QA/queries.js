@@ -152,6 +152,8 @@ const getAnswers = (request, response) => {
   })
 };
 
+//Need post requests
+
 const questionHelpful = (request, response) => {
   connection.query("SELECT helpful FROM questions WHERE id='1'")
     .then(helpful => {

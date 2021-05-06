@@ -33,10 +33,16 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 //     }
 //   }
 // });
-app.get('/qa/questions?*', QA.getQuestions);
-// app.get('/qa/questions/*', QA.getAnswers);
-app.put('/qa/questions/helpful', QA.questionHelpful);
-app.put('/qa/questions/report', QA.questionReport);
+app.get('/qa/questions\?*', QA.getQuestions);
+app.get('/qa/questions/*/answers', QA.getAnswers);
+
+//Need post requests
+
+app.put('/qa/questions/*/helpful', QA.questionHelpful);
+app.put('/qa/questions/*/report', QA.questionReport);
+
+app.put('/qa/answers/*/helpful', QA.answerHelpful);
+app.put('/qa/answers/*/report', QA.answerReport);
 // app.put('/*', async (req, res) => {
 //   const data = req.body;
 //   try {
