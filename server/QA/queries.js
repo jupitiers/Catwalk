@@ -108,14 +108,6 @@ const getQuestions = (request, response) => {
     if (error) {
       throw error;
     }
-    console.log(results.rows[0].results.results);
-    results.rows[0].results.results.forEach(entry => {
-      if (entry.reported === '1') {
-        entry.reported = true;
-      } else if (entry.reported === '0') {
-        entry.reported = false;
-      }
-    })
     response.status(200).json(results.rows[0].results);
   })
 };
@@ -156,28 +148,63 @@ const getAnswers = (request, response) => {
     if (error) {
       throw error;
     }
-    // results.rows.forEach(entry => {
-    //   if (entry.reported === '1') {
-    //     entry.reported = true;
-    //   } else if (entry.reported === '0') {
-    //     entry.reported = false;
-    //   }
-    // })
     response.status(200).json(results.rows[0].results);
   })
 };
 
-const getImages = (request, response) => {
-  connection.query("SELECT * FROM answerimages WHERE answer_id='5'", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).json(results.rows);
-  })
-};
+const questionHelpful = (request, response) => {
+  connection.query("SELECT helpful FROM questions WHERE id='1'")
+    .then(helpful => {
+      var count = parseInt(helpful.rows[0].helpful);
+      count++;
+      connection.query("UPDATE questions SET helpful='" + count + "' WHERE id='1'")
+        .then(() => {
+          response.send('Question Helpfulness Updated');
+        })
+    });
+}
+
+const answerHelpful = (request, response) => {
+  connection.query("SELECT helpful FROM answers WHERE id='1'")
+    .then(helpful => {
+      var count = parseInt(helpful.rows[0].helpful);
+      count++;
+      connection.query("UPDATE answers SET helpful='" + count + "' WHERE id='1'")
+        .then(() => {
+          response.send('Answer Helpfulness Updated');
+        })
+    });
+}
+
+const questionReport = (request, response) => {
+  connection.query("SELECT reported FROM questions WHERE id='1'")
+  .then(reported => {
+    var reported = reported.rows[0].reported;
+    var updatedReport = !reported;
+    connection.query("UPDATE questions SET reported='" + updatedReport + "' WHERE id='1'")
+      .then(() => {
+        response.send('Question Reported');
+      })
+  });
+}
+
+const answerReport = (request, response) => {
+  connection.query("SELECT reported FROM answers WHERE id='1'")
+  .then(reported => {
+    var reported = reported.rows[0].reported;
+    var updatedReport = !reported;
+    connection.query("UPDATE answers SET reported='" + updatedReport + "' WHERE id='1'")
+      .then(() => {
+        response.send('Answer Reported');
+      })
+  });
+}
 
 module.exports = {
   getQuestions,
   getAnswers,
-  getImages
+  questionHelpful,
+  answerHelpful,
+  questionReport,
+  answerReport
 }

@@ -35,21 +35,21 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 // });
 app.get('/qa/questions?*', QA.getQuestions);
 // app.get('/qa/questions/*', QA.getAnswers);
-// app.get('/images', QA.getImages);
+app.put('/qa/questions/helpful', QA.questionHelpful);
+app.put('/qa/questions/report', QA.questionReport);
+// app.put('/*', async (req, res) => {
+//   const data = req.body;
+//   try {
+//     const response = await axios.put(`${baseURL}${req.url}`, { data }, {
+//       headers: { Authorization: process.env.API_KEY },
+//     });
+//     res.status(200).json(response.data);
+//   } catch (err) {
+//     console.log(err);
 
-app.put('/*', async (req, res) => {
-  const data = req.body;
-  try {
-    const response = await axios.put(`${baseURL}${req.url}`, { data }, {
-      headers: { Authorization: process.env.API_KEY },
-    });
-    res.status(200).json(response.data);
-  } catch (err) {
-    console.log(err);
-
-    res.status(500).json({ message: 'Error', err });
-  }
-});
+//     res.status(500).json({ message: 'Error', err });
+//   }
+// });
 
 app.post('/*', async (req, res) => {
   const data = req.body;
