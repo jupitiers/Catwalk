@@ -8,7 +8,8 @@
     "start": "nodemon server",
     "test": "jest",
     "test:watch": "jest --watchAll --verbose",
-    "test:coverage": "jest --verbose --coverage"
+    "test:coverage": "jest --verbose --coverage",
+    "seed": "node productSeed.js"
   },
   "keywords": [],
   "author": "",
@@ -29,8 +30,10 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
+    "pg": "^8.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "sequelize": "^6.6.2",
     "sinon": "^10.0.0",
     "webpack": "^5.32.0",
     "webpack-cli": "^4.6.0"
