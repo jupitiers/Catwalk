@@ -19,7 +19,7 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 // app.get('/*', async (req, res) => {
 //   if (req.url.includes('favicon')) {
 //     res.sendStatus(200);
-//   } else {
+//   } else if (req.url.includes('qa') === false) {
 //     try {
 //       console.log(process.env.API_KEY )
 //       const response = await axios.get(`${baseURL}${req.url}`, {
@@ -33,9 +33,9 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 //     }
 //   }
 // });
-app.get('/questions', QA.getQuestions);
-app.get('/answers', QA.getAnswers);
-app.get('/images', QA.getImages);
+app.get('/qa/questions*', QA.getQuestions);
+// app.get('/answers', QA.getAnswers);
+// app.get('/images', QA.getImages);
 
 app.put('/*', async (req, res) => {
   const data = req.body;

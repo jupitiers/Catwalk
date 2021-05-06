@@ -9,51 +9,55 @@ const connection = new Pool({
   port: 5432
 });
 
-const sequelize = new Sequelize('qa', 'postgres', 'postgres', {
-  host: 'localhost',
-  dialect: 'postgres'
-});
+// const sequelize = new Sequelize('qa', 'postgres', 'postgres', {
+//   host: 'localhost',
+//   dialect: 'postgres'
+// });
 
-const questions = sequelize.define('questions', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
-  },
-  product_id: {
-    type: DataTypes.INTEGER
-  },
-  body: {
-    type: DataTypes.TEXT
-  },
-  date_written: {
-    type: DataTypes.STRING
-  },
-  asker_name: {
-    type: DataTypes.STRING
-  },
-  asker_email: {
-    type: DataTypes.STRING
-  },
-  reported: {
-    type: DataTypes.BOOLEAN
-  },
-  helpful: {
-    type: DataTypes.INTEGER
-  }
-})
+// const questions = sequelize.define('questions', {
+//   id: {
+//     type: DataTypes.INTEGER,
+//     primaryKey: true
+//   },
+//   product_id: {
+//     type: DataTypes.INTEGER
+//   },
+//   body: {
+//     type: DataTypes.TEXT
+//   },
+//   date_written: {
+//     type: DataTypes.STRING
+//   },
+//   asker_name: {
+//     type: DataTypes.STRING
+//   },
+//   asker_email: {
+//     type: DataTypes.STRING
+//   },
+//   reported: {
+//     type: DataTypes.BOOLEAN
+//   },
+//   helpful: {
+//     type: DataTypes.INTEGER
+//   }
+// })
 
 connection.connect;
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
 
 const getQuestions = (request, response) => {
-  connection.query("SELECT * FROM questions WHERE product_id='1'", (error, results) => {
+  const query = request.url.substring(request.url.indexOf('?'));
+  const urlParams = new URLSearchParams(query);
+  const productId = urlParams.get('product_id');
+
+  connection.query("SELECT * FROM questions WHERE product_id='" + productId + "'", (error, results) => {
     if (error) {
       throw error;
     }
