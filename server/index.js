@@ -1,7 +1,9 @@
 const express = require('express');
 const axios = require('axios');
 const logger = require('morgan');
+const reviewsServices = require('./reviews/index.js');
 require('dotenv').config();
+reviewsServices();
 
 const app = express();
 const path = require('path');
