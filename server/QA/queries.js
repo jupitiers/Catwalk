@@ -2,55 +2,15 @@ const {Client, Pool} = require('pg');
 const {Sequelize, DataTypes} = require('sequelize');
 
 const connection = new Pool({
-  user: 'postgres',
+  user: 'daniel',
   password: 'postgres',
   host: 'localhost',
   database: 'qa',
   port: 5432
 });
 
-// const sequelize = new Sequelize('qa', 'postgres', 'postgres', {
-//   host: 'localhost',
-//   dialect: 'postgres'
-// });
-
-// const questions = sequelize.define('questions', {
-//   id: {
-//     type: DataTypes.INTEGER,
-//     primaryKey: true
-//   },
-//   product_id: {
-//     type: DataTypes.INTEGER
-//   },
-//   body: {
-//     type: DataTypes.TEXT
-//   },
-//   date_written: {
-//     type: DataTypes.STRING
-//   },
-//   asker_name: {
-//     type: DataTypes.STRING
-//   },
-//   asker_email: {
-//     type: DataTypes.STRING
-//   },
-//   reported: {
-//     type: DataTypes.BOOLEAN
-//   },
-//   helpful: {
-//     type: DataTypes.INTEGER
-//   }
-// })
-
 connection.connect;
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
+
 
 const getQuestions = (request, response) => {
   const query = request.url.substring(request.url.indexOf('?'));
@@ -59,8 +19,7 @@ const getQuestions = (request, response) => {
 
   var questionQuery =
   `select
-    json_build_object(
-        'results', json_agg(
+    json_agg(
             json_build_object(
                 'question_id', q.id,
                 'question_body', q.body,
@@ -69,13 +28,13 @@ const getQuestions = (request, response) => {
                 'question_helpfulness', q.helpful,
                 'reported', q.reported,
                 'answers', answers
-            )
+
         )
     ) results
     from questions q
     left join (
         select
-            question_id,
+            "questionId",
             json_agg(
                 json_build_object(
                     'id', a.id,
@@ -90,25 +49,33 @@ const getQuestions = (request, response) => {
           answers a
           left join (
               select
-                  answer_id,
+                  "answerId",
                   json_agg(
                       json_build_object(
                           'id', p.id,
                           'url', p.url
                       )
                   ) photos
-              from answerImages p
+              from "answerImages" p
               group by 1
-          ) p on a.id = p.answer_id
-      group by question_id
-  ) a on q.id = a.question_id WHERE q.product_id='` + productId + `'`;
+          ) p on a.id = p."answerId"
+      group by "questionId"
+  ) a on q.id = a."questionId" WHERE q.product_id='` + productId + `'`;
 
+  // var questionQuery = `SELECT *, (SELECT * FROM answers WHERE answers."questionId" = questions.id) AS answers FROM questions WHERE questions.product_id=${productId}`;
 
+  var data;
   connection.query(questionQuery, (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(200).json(results.rows[0].results);
+    data = results.rows[0];
+    results.rows.forEach(entry => {
+      //getAnswer(entry.id)
+      //Use entry id on getAnswers to get related answers
+    })
+
+    response.status(200).json(data);
   })
 };
 
