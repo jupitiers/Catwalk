@@ -5,5 +5,4 @@ const client = new cassandra.Client({
   localDataCenter: 'datacenter1'
 });
 
-
 module.exports = client;

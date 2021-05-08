@@ -31,10 +31,10 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
-    "node-csv": "^0.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sinon": "^10.0.0",
+    "uuid": "^8.3.2",
     "webpack": "^5.32.0",
     "webpack-cli": "^4.6.0"
   },

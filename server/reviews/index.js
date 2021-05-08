@@ -1,4 +1,5 @@
 const cassandraClient = require('./database/index.js');
+const uuid = require('uuid');
 
 async function reviewsServices() {
   try {
@@ -56,17 +57,17 @@ async function reviewsServices() {
       id int,
       product_id int,
       name text,
-      PRIMARY KEY (product_id, id)
+      PRIMARY KEY (product_id, name, id)
     );`;
 
     // create schema for characteristic
     const cqlCreateCharacteristicReviews = `
-    CREATE TABLE IF NOT EXISTS reviews.characteristics_reviews(
+    CREATE TABLE IF NOT EXISTS reviews.characteristics_reviews (
       id int,
       characteristic_id int,
       review_id int,
       value int,
-      PRIMARY KEY (review_id, characteristic_id)
+      PRIMARY KEY (characteristic_id, review_id)
     );`;
 
     const cqlCreateReviewPhotos = `
@@ -78,7 +79,6 @@ async function reviewsServices() {
     );`;
 
 
-
     async function createTables() {
       await cassandraClient.execute(cqlCreateReviews, []);
       await cassandraClient.execute(cqlCreateReviewItems, []);
@@ -86,18 +86,15 @@ async function reviewsServices() {
       await cassandraClient.execute(cqlCreateCharacteristicReviews, []);
       await cassandraClient.execute(cqlCreateReviewPhotos, []);
     }
-    // createTables();
+    createTables();
 
-    // COPY FROM REVIEWS
-    // cqlsh:reviews> COPY reviews.review_items (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness) from 'reviews.csv' WITH header=true and numprocesses=8 and chunksize=5000;
+
+
     const getAllReviews = 'select * from reviews.review_items';
     const getAllReviewsPhotos = 'select * from reviews.review_photos where review_id = ?';
-
-    // const reviews = await cassandraClient.execute(getAllReviews, []);
-    // const photos = await cassandraClient.execute(getAllReviewsPhotos, [84757], { prepare: true });
-
+    // Combine csv files with reviews and photos
     function joinReviewsWithPhotos() {
-      // iterate through each row in reviews
+      // create a cassandra stream - iterate through each row in reviews
       cassandraClient.eachRow(getAllReviews, [], { prepare: true, fetchSize: 1000, autoPage: true }, async function (n, reviewsRow) {
         try {
           const getPhotosByReviewId = 'select * from reviews.review_photos where review_id = ?';
@@ -128,38 +125,19 @@ async function reviewsServices() {
       }); // end of stream with cassandra client
     } // end of join reviews with photos
 
-    function joinMetaCharacteristics() {
-      // iterate through each row in reviews
-      cassandraClient.eachRow(getAllReviews, [], { prepare: true, fetchSize: 1000, autoPage: true }, async function (n, reviewsRow) {
+    const getReviewsOfProduct = 'select * from reviews.reviews where product_id = 17067';
+    cassandraClient.eachRow(getReviewsOfProduct, [], { prepare: true }, async function(n, review) {
+      const getCharacteristicReview = 'select * from reviews.characteristics where review_id = ?';
+      await cassandraClient.eachRow(getCharacteristicReview, [review.id], { prepare: true }, async function(n, characteristicReview) {
         try {
-          const getPhotosByReviewId = 'select * from reviews.review_photos where review_id = ?';
-          const photosRow = await cassandraClient.execute(getPhotosByReviewId, [reviewsRow.id], { prepare: true });
-          // get the photos
-          const photos = photosRow.rows;
-          // insert into the reviews.reviews table
-          const insertQuery = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-          // Populate the main reviews table
-          await cassandraClient.execute(insertQuery, [
-            reviewsRow.id,
-            reviewsRow.product_id,
-            reviewsRow.rating,
-            reviewsRow.date,
-            reviewsRow.summary,
-            reviewsRow.body,
-            reviewsRow.recommended,
-            reviewsRow.reported,
-            reviewsRow.reviewer_name,
-            reviewsRow.reviewer_email,
-            reviewsRow.response,
-            reviewsRow.helpfulness,
-            photos
-          ], { prepare: true });
-        } catch (err) {
+          // const characteristic = await cassandraClient.execute('select * from reviews.characteristics where product_id = ? and characteristic_id = ?',[review.product_id, characteristicReview.characteristic_id], {prepare: true});
+          console.log(characteristicReview, review.product_id)
+        } catch(err) {
           console.log(err)
         }
-      }); // end of stream with cassandra client
-    } // end of join reviews with photos
-
+      });
+      console.log('done')
+    });
   } catch (err) {
     console.log(err)
     console.log('Something failed with the database.')
