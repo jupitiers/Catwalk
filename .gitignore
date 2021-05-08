@@ -4,9 +4,7 @@ client/dist/bundle.js.map
  .DS_Store
 client/src/config/config.js
 .eslintrc.js
-.package-lock.json
+package-lock.json
 .vscode/settings.json
-
 coverage
-
 .env
