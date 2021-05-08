@@ -19,7 +19,6 @@ router.get('/meta/', async (req, res) => {
   const { product_id } = req.query;
   try {
     const characteristicObj = { product_id: product_id };
-
     // Calculate all of the ratings
     const getRatings = await cassandraClient.execute('select rating from reviews.reviews where product_id = ?', [product_id], { prepare: true });
     const ratings = { '1': 0, '2': 0, '3': 0, '4': 0, '5': 0 };
@@ -44,6 +43,7 @@ router.get('/meta/', async (req, res) => {
 
     const characteristcQuery = 'select * from reviews.characteristics where product_id = ?';
     let characteristicArr = [];
+    // Create a read strean for Cassandra's queries
     await cassandraClient.stream(characteristcQuery, [product_id], { prepare: true })
       .on('readable', function () {
         // 'readable' is emitted as soon a row is received and parsed
@@ -57,15 +57,16 @@ router.get('/meta/', async (req, res) => {
         // Stream ended, there aren't any more rows
         const characteristicMeta = [];
         for (let characteristic of characteristicArr) {
+          // intialize the characteristic object by each type
           const obj = {
             [characteristic.name]: true
           };
-          const value = await cassandraClient.execute('select * from reviews.characteristics_reviews where characteristic_id = ?', [characteristic.id], {prepare: true});
+          const value = await cassandraClient.execute('select * from reviews.characteristics_reviews where characteristic_id = ?', [characteristic.id], { prepare: true });
           let sum = 0;
           for (let row of value.rows) {
             sum += row.value;
           }
-
+          // check to see if the characteristic exists
           if (obj.hasOwnProperty(characteristic.name)) {
             obj['value'] = sum;
             obj['name'] = characteristic.name;
@@ -98,20 +99,23 @@ router.get('/meta/', async (req, res) => {
 // Add a review
 router.post('/', async (req, res) => {
   try {
-    const { id, product_id, rating, date,
+    const {
+      id, product_id, rating, date,
       summary, body, recommend, reported, reviewer_name,
-      reviewer_email, response, helpfulness, photos } = req.body;
-
-    const uniqueId = Math.floor((Math.random() * 100000) + 1);
-    const insertIntoRows = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-
-    const reviews = await cassandraClient.execute(insertIntoRows, [
-
-      id, product_id, rating, date, summary, body, recommend, reported, reviewer_name,
       reviewer_email, response, helpfulness, photos
-
+    } = req.body;
+    // get maximum counter from reviews counter table
+    const getMaxCounter = await cassandraClient.execute('select MAX(id) from reviews.reviews_counter');
+    const uniqueId = getMaxCounter.rows[0]['system.max(id)'];
+    // insert into reviews table new review
+    const insertIntoRows = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    // execute the cassandra drive
+    cassandraClient.execute(insertIntoRows, [
+      uniqueId + 1, product_id, rating, date, summary, body, recommend, reported, reviewer_name,
+      reviewer_email, response, helpfulness, photos
     ], { prepare: true });
-
+    // increment reviews counter
+    cassandraClient.execute('insert into reviews.reviews_counter (id) values (?) ', [uniqueId + 1], { prepare: true });
     res.status(201).json({ success: true, message: 'Successfully added review.' });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed adding a review.' });
@@ -122,7 +126,15 @@ router.post('/', async (req, res) => {
 router.put('/:review_id/helpful', async (req, res) => {
   const { review_id } = req.params;
   try {
-    res.status(204).json({ success: true, message: 'Successfully marked review helpful.' });
+    // get join table of reviews and products
+    const reviewProductsRow = await cassandraClient.execute('select * from reviews.reviews_products where review_id = ?', [review_id], { prepare: true });
+    // get the review by review id
+    const review = await cassandraClient.execute('select * from reviews.reviews where product_id = ? and id = ?', [reviewProductsRow.rows[0].product_id, reviewProductsRow.rows[0].review_id], { prepare: true });
+    // increment review's helpfulness
+    const newReviewHelpfulness = review.rows[0].helpfulness + 1;
+    // update review's helpfulness
+    await cassandraClient.execute('update reviews.reviews set helpfulness = ? where product_id = ? and id = ?', [newReviewHelpfulness, reviewProductsRow.rows[0].product_id, review.rows[0].id], { prepare: true });
+    res.status(200).json({ success: true, message: 'Successfully marked review helpful.' });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed marking a review helpful .' });
   }
@@ -132,12 +144,17 @@ router.put('/:review_id/helpful', async (req, res) => {
 router.put('/:review_id/report', async (req, res) => {
   const { review_id } = req.params;
   try {
-    res.status(204).json({ success: true, message: 'Successfully reported review.' });
+    // get join table of reviews and products
+    const reviewProductsRow = await cassandraClient.execute('select * from reviews.reviews_products where review_id = ?', [review_id], { prepare: true });
+    // get the review by review id
+    const review = await cassandraClient.execute('select * from reviews.reviews where product_id = ? and id = ?', [reviewProductsRow.rows[0].product_id, reviewProductsRow.rows[0].review_id], { prepare: true });
+    // update review's reported to true
+    await cassandraClient.execute('update reviews.reviews set reported = ? where product_id = ? and id = ?', [true, reviewProductsRow.rows[0].product_id, review.rows[0].id], { prepare: true });
+    res.status(200).json({ success: true, message: 'Successfully reported review.' });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Failed reporting a review.' });
+    res.status(500).json({ success: false, message: 'Failed reporting a review helpful .' });
   }
 });
 
-module.exports = router;
 module.exports = router;
 
