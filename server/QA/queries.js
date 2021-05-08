@@ -133,25 +133,46 @@ const getAnswers = (request, response) => {
 /*****************************************POST REQUESTS**************************************************/
 const addQuestion = (request, response) => {
   var data = request.body;
-  data.product_id = parseInt(data.product_id);
-  data.date_written = new Date().toISOString().split('T')[0];
+  data.date_written = new Date().toISOString().split('T')[0].toString();
   data.reported = 0;
   data.helpful = 0;
   console.log(data);
-  const addQuestionQuery = `INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful) VALUES (${data.product_id}, ${data.body}, ${data.date_written}, ${data.name}, ${data.email}, ${data.reported}, ${data.helpful})`;
 
 
-  connection.query(addQuestionQuery)
-    .then(() => {
+  connection.query('SELECT count FROM "questionCounters"', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    var questionCount = results.rows[0].count;
+    console.log(questionCount);
+    questionCount++;
+    console.log(questionCount);
+    const addQuestionQuery = `INSERT INTO "questions" (id, product_id, body, date_written, asker_name, asker_email, reported, helpful) VALUES (${questionCount}, ${data.product_id}, ${data.body}, '${data.date_written}'::DATE, ${data.name}, ${data.email}, ${data.reported}, ${data.helpful})`;
+    console.log(addQuestionQuery)
+
+    connection.query(addQuestionQuery, (error, results) => {
+      if (error) {
+        throw error;
+      }
+      var updateCountQuery = `UPDATE "questionCounters" SET count=${questionCount} WHERE id=1`;
+      connection.query(updateCountQuery, (error, results) => {
+        if (error) {
+          throw error;
+        }
+      })
       response.send('Question Added');
     })
-    .catch(err => {
-      console.error(err);
-    })
+
+  })
+
 
 }
 
 const addAnswer = (request, response) => {
+
+  var questionId = request.url.substring(14, request.url.indexOf('/answers'));
+  console.log(questionId);
+
   var data = request.body;
   data.date_written = new Date().toISOString().split('T')[0];
   data.reported = 0;
@@ -169,6 +190,30 @@ const addAnswer = (request, response) => {
   // var imageData = {
   //   url:
   // }
+  connection.query('SELECT count FROM "answerCounters"', (error, results) => {
+    if (error) {
+      throw error;
+    }
+    var answerCount = results.rows[0].count;
+    console.log(answerCount);
+    answerCount++;
+    console.log(answerCount);
+
+
+    // connection.query(, (error, results) => {
+    //   if (error) {
+    //     throw error;
+    //   }
+    //   var updateCountQuery = `UPDATE "answerCounters" SET count=${answerCount} WHERE id=1`;
+    //   connection.query(updateCountQuery, (error, results) => {
+    //     if (error) {
+    //       throw error;
+    //     }
+    //   })
+    //   response.send('Answer Added');
+    // })
+
+  })
 }
 
 

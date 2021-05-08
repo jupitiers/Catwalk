@@ -15,7 +15,7 @@ const Question = db.define('question', {
     type: Sequelize.TEXT
   },
   date_written: {
-    type: Sequelize.STRING
+    type: Sequelize.DATE
   },
   asker_name: {
     type: Sequelize.STRING
@@ -41,7 +41,7 @@ const Answer = db.define('answer', {
     type: Sequelize.TEXT
   },
   date_written: {
-    type: Sequelize.STRING
+    type: Sequelize.DATE
   },
   answerer_name: {
     type: Sequelize.STRING
@@ -75,6 +75,26 @@ const AnswerImage = db.define('answerImage', {
 AnswerImage.belongsTo(Answer);
 Answer.hasMany(AnswerImage);
 
+const QuestionCounter = db.define('questionCounter', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  count: {
+    type: Sequelize.INTEGER
+  }
+}, {timestamps: false})
+
+const AnswerCounter = db.define('answerCounter', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  count: {
+    type: Sequelize.INTEGER
+  }
+}, {timestamps: false})
+
 db
   .authenticate()
   .then(() => {
@@ -87,5 +107,7 @@ db
 module.exports = {
   Question,
   Answer,
-  AnswerImage
+  AnswerImage,
+  QuestionCounter,
+  AnswerCounter
 }
