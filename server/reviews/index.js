@@ -1,5 +1,4 @@
 const cassandraClient = require('./database/index.js');
-const uuid = require('uuid');
 
 async function reviewsServices() {
   try {
@@ -136,10 +135,6 @@ async function reviewsServices() {
             photos
           ], { prepare: true });
           console.log(n,' at n')
-          // increment the counter for reviews
-          // const currentCounter = await cassandraClient.execute('select id from reviews.reviews_counter', [], { prepare: true });
-          // console.log(currentCounter,'CURRENT COUNTER')
-          await cassandraClient.execute('insert into reviews.reviews_counter (id) values (?)', [reviewsRow.id + 1], { prepare: true });
           // combine the reviews and products id together (review_id, product_id)
           await cassandraClient.execute('insert into reviews.reviews_products (review_id, product_id) values (? , ?)', [reviewsRow.id, reviewsRow.product_id], { prepare: true });
         } catch (err) {
