@@ -105,17 +105,22 @@ router.post('/', async (req, res) => {
       reviewer_email, response, helpfulness, photos
     } = req.body;
     // get maximum counter from reviews counter table
-    const getMaxCounter = await cassandraClient.execute('select MAX(id) from reviews.reviews_counter');
-    const uniqueId = getMaxCounter.rows[0]['system.max(id)'];
+    const getReviewsCounter = await cassandraClient.execute('select * from reviews.reviews_counter');
+    // const uniqueId = getReviewsCounter.rows[0].id;
+    const nextGetReviewsCounter = getReviewsCounter.rows[0].counter + 1;
+    // update the counter table for review
+    await cassandraClient.execute('update reviews.reviews_counter set counter = ? where id = ?', [nextGetReviewsCounter, 1], { prepare: true });
     // insert into reviews table new review
     const insertIntoRows = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    // execute the cassandra drive
+    // execute the cassandra drive to save new product
     cassandraClient.execute(insertIntoRows, [
-      uniqueId + 1, product_id, rating, date, summary, body, recommend, reported, reviewer_name,
+      nextGetReviewsCounter, product_id, rating, date, summary, body, recommend, reported, reviewer_name,
       reviewer_email, response, helpfulness, photos
     ], { prepare: true });
-    // increment reviews counter
-    cassandraClient.execute('insert into reviews.reviews_counter (id) values (?) ', [uniqueId + 1], { prepare: true });
+
+    // update products and reviews join table row with the newest counter for product
+    await cassandraClient.execute('insert into reviews.reviews_products (review_id, product_id) values (? , ?)', [nextGetReviewsCounter, product_id], { prepare: true });
+
     res.status(201).json({ success: true, message: 'Successfully added review.' });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed adding a review.' });

@@ -81,6 +81,7 @@ async function reviewsServices() {
     const cqlCreateReviewsCounter = `
     CREATE TABLE IF NOT EXISTS reviews.reviews_counter (
       id int,
+      counter int,
       PRIMARY KEY (id)
     );`;
 
