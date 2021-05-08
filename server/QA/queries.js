@@ -131,14 +131,14 @@ const getAnswers = (request, response) => {
 
 /********************************************************************************************************/
 /*****************************************POST REQUESTS**************************************************/
-const addQuestion = (request, response) => {
+const addQuestion = async (request, response) => {
   var data = request.body;
   data.date_written = new Date().toISOString().split('T')[0];
   data.reported = 0;
   data.helpful = 0;
 
 
-  connection.query('SELECT count FROM "questionCounters"', (error, results) => {
+  await connection.query('SELECT count FROM "questionCounters"', (error, results) => {
     if (error) {
       throw error;
     }
@@ -165,7 +165,7 @@ const addQuestion = (request, response) => {
   })
 }
 
-const addAnswer = (request, response) => {
+const addAnswer = async (request, response) => {
 
   var questionId = request.url.substring(14, request.url.indexOf('/answers'));
 
@@ -174,7 +174,7 @@ const addAnswer = (request, response) => {
   data.reported = 0;
   data.helpful = 0;
 
-  connection.query('SELECT count FROM "answerCounters"', (error, results) => {
+  await connection.query('SELECT count FROM "answerCounters"', (error, results) => {
     if (error) {
       throw error;
     }
