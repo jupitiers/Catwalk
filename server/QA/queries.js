@@ -12,7 +12,7 @@ const connection = new Pool({
 connection.connect;
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
-const getQuestions = (request, response) => {
+const getQuestions = async (request, response) => {
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
@@ -65,7 +65,7 @@ const getQuestions = (request, response) => {
   // var questionQuery = `SELECT * FROM questions WHERE questions.product_id=${productId}`;
 
   var data;
-  connection.query(questionQuery, (error, results) => {
+  await connection.query(questionQuery, (error, results) => {
     if (error) {
       throw error;
     }
@@ -133,10 +133,9 @@ const getAnswers = (request, response) => {
 /*****************************************POST REQUESTS**************************************************/
 const addQuestion = (request, response) => {
   var data = request.body;
-  data.date_written = new Date().toISOString().split('T')[0].toString();
+  data.date_written = new Date().toISOString().split('T')[0];
   data.reported = 0;
   data.helpful = 0;
-  console.log(data);
 
 
   connection.query('SELECT count FROM "questionCounters"', (error, results) => {
@@ -147,7 +146,7 @@ const addQuestion = (request, response) => {
     console.log(questionCount);
     questionCount++;
     console.log(questionCount);
-    const addQuestionQuery = `INSERT INTO "questions" (id, product_id, body, date_written, asker_name, asker_email, reported, helpful) VALUES (${questionCount}, ${data.product_id}, ${data.body}, '${data.date_written}'::DATE, ${data.name}, ${data.email}, ${data.reported}, ${data.helpful})`;
+    const addQuestionQuery = `INSERT INTO "questions" (id, product_id, body, date_written, asker_name, asker_email, reported, helpful) VALUES (${questionCount}, ${data.product_id}, '${data.body}', '${data.date_written}'::DATE, '${data.name}', '${data.email}', ${data.reported}, ${data.helpful})`;
     console.log(addQuestionQuery)
 
     connection.query(addQuestionQuery, (error, results) => {
@@ -164,54 +163,61 @@ const addQuestion = (request, response) => {
     })
 
   })
-
-
 }
 
 const addAnswer = (request, response) => {
 
   var questionId = request.url.substring(14, request.url.indexOf('/answers'));
-  console.log(questionId);
 
   var data = request.body;
   data.date_written = new Date().toISOString().split('T')[0];
   data.reported = 0;
   data.helpful = 0;
-  console.log(data);
-  var answerData = {
-    body: data.body,
-    date_written: data.date_written,
-    answerer_name: data.name,
-    answerer_email: data.email,
-    reported: data.reported,
-    helpful: data.helpful
-  }
 
-  // var imageData = {
-  //   url:
-  // }
   connection.query('SELECT count FROM "answerCounters"', (error, results) => {
     if (error) {
       throw error;
     }
+    //For addAnswerQuery id AND addPhotoQuery answerId
     var answerCount = results.rows[0].count;
-    console.log(answerCount);
     answerCount++;
-    console.log(answerCount);
+
+    var addAnswerQuery = `INSERT INTO "answers" (id, body, date_written, answerer_name, answerer_email, reported, helpful, "questionId") VALUES (${answerCount}, '${data.body}', '${data.date_written}'::DATE, '${data.name}', '${data.email}', ${data.reported}, ${data.helpful}, ${questionId})`;
+
+    var photos = [];
+    data.photos.split(',').forEach(photo => {
+      photos.push(photo);
+    })
 
 
-    // connection.query(, (error, results) => {
-    //   if (error) {
-    //     throw error;
-    //   }
-    //   var updateCountQuery = `UPDATE "answerCounters" SET count=${answerCount} WHERE id=1`;
-    //   connection.query(updateCountQuery, (error, results) => {
-    //     if (error) {
-    //       throw error;
-    //     }
-    //   })
-    //   response.send('Answer Added');
-    // })
+    connection.query(addAnswerQuery, (error, results) => {
+      if (error) {
+        throw error;
+      }
+      var updateCountQuery = `UPDATE "answerCounters" SET count=${answerCount} WHERE id=1`;
+      connection.query(updateCountQuery, (error, results) => {
+        if (error) {
+          throw error;
+        }
+      })
+      connection.query('SELECT count FROM "imageCounters"', (error, results) => {
+        if (error) {
+          throw error;
+        }
+        //For addPhotoQuery id
+        var photoId = results.rows[0].count;
+        photos.forEach(url => {
+          photoId++;
+          var addPhotoQuery = `INSERT INTO "answerImages" (id, "answerId", url) VALUES (${photoId}, ${answerCount}, '${url}')`;
+          connection.query(addPhotoQuery, (error, results) => {
+            if (error) {
+              throw error
+            }
+          })
+        })
+      })
+      response.send('Answer Added');
+    })
 
   })
 }

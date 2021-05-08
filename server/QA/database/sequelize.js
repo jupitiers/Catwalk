@@ -95,6 +95,16 @@ const AnswerCounter = db.define('answerCounter', {
   }
 }, {timestamps: false})
 
+const ImageCounter = db.define('imageCounter', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  count: {
+    type: Sequelize.INTEGER
+  }
+}, {timestamps: false})
+
 db
   .authenticate()
   .then(() => {
@@ -109,5 +119,6 @@ module.exports = {
   Answer,
   AnswerImage,
   QuestionCounter,
-  AnswerCounter
+  AnswerCounter,
+  ImageCounter
 }

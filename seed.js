@@ -1,11 +1,12 @@
 const database = require('./server/QA/database/database.js');
-const {Question, Answer, AnswerImage, QuestionCounter, AnswerCounter} = require('./server/QA/database/sequelize.js');
+const {Question, Answer, AnswerImage, QuestionCounter, AnswerCounter, ImageCounter} = require('./server/QA/database/sequelize.js');
 
 var Questions = [];
 var Answers = [];
 var AnswerImages = [];
 var QuestionCount = [];
 var AnswerCount = [];
+var ImageCount = [];
 
 
 const seed = async () => {
@@ -24,6 +25,9 @@ const seed = async () => {
   }));
   await Promise.all(AnswerCount.map(answerCounter => {
     return AnswerCounter.create(answerCounter);
+  }));
+  await Promise.all(ImageCount.map(imageCounter => {
+    return ImageCounter.create(imageCounter);
   }));
   console.log('Database seeded successfully');
   database.close();
