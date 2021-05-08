@@ -10,8 +10,8 @@ const connection = new Pool({
 });
 
 connection.connect;
-
-
+/********************************************************************************************************/
+/*****************************************GET REQUESTS***************************************************/
 const getQuestions = (request, response) => {
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
@@ -60,20 +60,29 @@ const getQuestions = (request, response) => {
               group by 1
           ) p on a.id = p."answerId"
       group by "questionId"
-  ) a on q.id = a."questionId" WHERE q.product_id='` + productId + `'`;
+  ) a on q.id = a."questionId" WHERE q.product_id=${productId}`;
 
-  // var questionQuery = `SELECT *, (SELECT * FROM answers WHERE answers."questionId" = questions.id) AS answers FROM questions WHERE questions.product_id=${productId}`;
+  // var questionQuery = `SELECT * FROM questions WHERE questions.product_id=${productId}`;
 
   var data;
   connection.query(questionQuery, (error, results) => {
     if (error) {
       throw error;
     }
-    data = results.rows[0];
-    results.rows.forEach(entry => {
+    data = results.rows[0].results;
+    // data = results.rows;
+    // data.forEach(entry => {
       //getAnswer(entry.id)
       //Use entry id on getAnswers to get related answers
-    })
+      // var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${entry.id}`
+      // connection.query(answerQuery, (error, results) => {
+      //   if (error) {
+      //     throw error;
+      //   }
+      //   entry.answers=results;
+      // })
+
+    // })
 
     response.status(200).json(data);
   })
@@ -100,16 +109,16 @@ const getAnswers = (request, response) => {
       answers a
       left join (
           select
-              answer_id,
+              "answerId",
               json_agg(
                   json_build_object(
                       'id', p.id,
                       'url', p.url
                   )
               ) photos
-          from answerImages p
+          from "answerImages" p
           group by 1
-      ) p on a.id = p.answer_id WHERE a.question_id='` + questionId + `'`
+      ) p on a.id = p."answerId" WHERE a."questionId"=${questionId}`
 
   connection.query(answerQuery, (error, results) => {
     if (error) {
@@ -119,14 +128,60 @@ const getAnswers = (request, response) => {
   })
 };
 
-//Need post requests
 
+/********************************************************************************************************/
+/*****************************************POST REQUESTS**************************************************/
+const addQuestion = (request, response) => {
+  var data = request.body;
+  data.product_id = parseInt(data.product_id);
+  data.date_written = new Date().toISOString().split('T')[0];
+  data.reported = 0;
+  data.helpful = 0;
+  console.log(data);
+  const addQuestionQuery = `INSERT INTO questions (product_id, body, date_written, asker_name, asker_email, reported, helpful) VALUES (${data.product_id}, ${data.body}, ${data.date_written}, ${data.name}, ${data.email}, ${data.reported}, ${data.helpful})`;
+
+
+  connection.query(addQuestionQuery)
+    .then(() => {
+      response.send('Question Added');
+    })
+    .catch(err => {
+      console.error(err);
+    })
+
+}
+
+const addAnswer = (request, response) => {
+  var data = request.body;
+  data.date_written = new Date().toISOString().split('T')[0];
+  data.reported = 0;
+  data.helpful = 0;
+  console.log(data);
+  var answerData = {
+    body: data.body,
+    date_written: data.date_written,
+    answerer_name: data.name,
+    answerer_email: data.email,
+    reported: data.reported,
+    helpful: data.helpful
+  }
+
+  // var imageData = {
+  //   url:
+  // }
+}
+
+
+  /********************************************************************************************************/
+  /*****************************************PUT REQUESTS***************************************************/
 const questionHelpful = (request, response) => {
-  connection.query("SELECT helpful FROM questions WHERE id='1'")
+  var questionId = request.url.substring(14, request.url.indexOf('/helpful'));
+
+  connection.query(`SELECT helpful FROM questions WHERE id=${questionId}`)
     .then(helpful => {
       var count = parseInt(helpful.rows[0].helpful);
       count++;
-      connection.query("UPDATE questions SET helpful='" + count + "' WHERE id='1'")
+      connection.query(`UPDATE questions SET helpful=${count} WHERE id=${questionId}`)
         .then(() => {
           response.send('Question Helpfulness Updated');
         })
@@ -134,11 +189,13 @@ const questionHelpful = (request, response) => {
 }
 
 const answerHelpful = (request, response) => {
-  connection.query("SELECT helpful FROM answers WHERE id='1'")
+  var answerId = request.url.substring(12, request.url.indexOf('/helpful'));
+
+  connection.query(`SELECT helpful FROM answers WHERE id=${answerId}`)
     .then(helpful => {
       var count = parseInt(helpful.rows[0].helpful);
       count++;
-      connection.query("UPDATE answers SET helpful='" + count + "' WHERE id='1'")
+      connection.query(`UPDATE answers SET helpful=${count} WHERE id=${answerId}`)
         .then(() => {
           response.send('Answer Helpfulness Updated');
         })
@@ -146,11 +203,13 @@ const answerHelpful = (request, response) => {
 }
 
 const questionReport = (request, response) => {
-  connection.query("SELECT reported FROM questions WHERE id='1'")
+  var questionId = request.url.substring(14, request.url.indexOf('/report'));
+
+  connection.query(`SELECT reported FROM questions WHERE id=${questionId}`)
   .then(reported => {
     var reported = reported.rows[0].reported;
     var updatedReport = !reported;
-    connection.query("UPDATE questions SET reported='" + updatedReport + "' WHERE id='1'")
+    connection.query(`UPDATE questions SET reported=${updatedReport} WHERE id=${questionId}`)
       .then(() => {
         response.send('Question Reported');
       })
@@ -158,11 +217,13 @@ const questionReport = (request, response) => {
 }
 
 const answerReport = (request, response) => {
-  connection.query("SELECT reported FROM answers WHERE id='1'")
+  var answerId = request.url.substring(12, request.url.indexOf('/helpful'));
+
+  connection.query(`SELECT reported FROM answers WHERE id=${answerId}`)
   .then(reported => {
     var reported = reported.rows[0].reported;
     var updatedReport = !reported;
-    connection.query("UPDATE answers SET reported='" + updatedReport + "' WHERE id='1'")
+    connection.query(`UPDATE answers SET reported=${updatedReport} WHERE id=${answerId}`)
       .then(() => {
         response.send('Answer Reported');
       })
@@ -172,6 +233,8 @@ const answerReport = (request, response) => {
 module.exports = {
   getQuestions,
   getAnswers,
+  addQuestion,
+  addAnswer,
   questionHelpful,
   answerHelpful,
   questionReport,

@@ -91,8 +91,8 @@ const AnswerModal = (props) => {
     const answerData = {
       body: answer,
       name: nickname,
-      email,
-      photos,
+      email: email,
+      photos: photos
     };
 
     submit(props.questionId, answerData);

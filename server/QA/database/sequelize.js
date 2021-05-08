@@ -5,7 +5,8 @@ const db = require('./database.js');
 const Question = db.define('question', {
   id: {
     type: Sequelize.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   product_id: {
     type: Sequelize.INTEGER
@@ -14,7 +15,7 @@ const Question = db.define('question', {
     type: Sequelize.TEXT
   },
   date_written: {
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
   asker_name: {
     type: Sequelize.STRING
@@ -40,7 +41,7 @@ const Answer = db.define('answer', {
     type: Sequelize.TEXT
   },
   date_written: {
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
   answerer_name: {
     type: Sequelize.STRING

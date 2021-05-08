@@ -33,10 +33,11 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 //     }
 //   }
 // });
-app.get('/qa/questions\?*', QA.getQuestions);
+app.get('/qa/questions\?', QA.getQuestions);
 app.get('/qa/questions/*/answers', QA.getAnswers);
 
-//Need post requests
+app.post('/qa/questions', QA.addQuestion);
+app.post('/qa/questions/*/answers', QA.addAnswer);
 
 app.put('/qa/questions/*/helpful', QA.questionHelpful);
 app.put('/qa/questions/*/report', QA.questionReport);
@@ -57,18 +58,18 @@ app.put('/qa/answers/*/report', QA.answerReport);
 //   }
 // });
 
-app.post('/*', async (req, res) => {
-  const data = req.body;
-  try {
-    await axios.post(`${baseURL}${req.url}`, data, {
-      headers: { Authorization: process.env.API_KEY },
-    });
-    res.sendStatus(201);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: 'Error', err });
-  }
-});
+// app.post('/*', async (req, res) => {
+//   const data = req.body;
+//   try {
+//     await axios.post(`${baseURL}${req.url}`, data, {
+//       headers: { Authorization: process.env.API_KEY },
+//     });
+//     res.sendStatus(201);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ message: 'Error', err });
+//   }
+// });
 
 app.listen(PORT, () => {
   console.log(`Server listening at localhost:${PORT}!`);
