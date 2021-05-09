@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cassandraClient = require('../database/index.js');
+const Promise = require("bluebird");
 
 // Get reviews based off of product id
 router.get('/', async (req, res) => {
@@ -8,7 +9,8 @@ router.get('/', async (req, res) => {
     const { product_id } = req.query;
     const getReviewsByProductIdQuery = 'select * from reviews.reviews where product_id = ?';
     const reviews = await cassandraClient.execute(getReviewsByProductIdQuery, [product_id], { prepare: true });
-    res.status(200).json({ success: true, reviews: reviews.rows });
+    res.status(200).json({ success: true, results: reviews.rows });
+    // create a readable stream for reviews
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed getting reviews...' });
   }
@@ -31,15 +33,15 @@ router.get('/meta/', async (req, res) => {
     characteristicObj['ratings'] = ratings;
 
     // Calculate all of the recommended from reviews
-    const getRecommends = await cassandraClient.execute('select recommended from reviews.reviews where product_id = ?', [product_id], { prepare: true });
+    const getRecommends = await cassandraClient.execute('select recommend from reviews.reviews where product_id = ?', [product_id], { prepare: true });
     const recommend = { 'true': 0, 'false': 0 };
     // Iterate thru all the ratings and increment
     for (let obj of getRecommends.rows) {
-      if (recommend.hasOwnProperty(obj.recommended)) {
-        recommend[obj.recommended] += 1;
+      if (recommend.hasOwnProperty(obj.recommend)) {
+        recommend[obj.recommend] += 1;
       }
     }
-    characteristicObj['recommended'] = recommend;
+    characteristicObj['recommend'] = recommend;
 
     const characteristcQuery = 'select * from reviews.characteristics where product_id = ?';
     let characteristicArr = [];
@@ -104,6 +106,16 @@ router.post('/', async (req, res) => {
       summary, body, recommend, reported, reviewer_name,
       reviewer_email, response, helpfulness, photos
     } = req.body;
+
+    // create a user defined type for each photo in photos
+    for (let i = 0; i < photos.length; i++) {
+      const photoUDT = {
+        id: Math.random() * 1000,
+        url: photos[i]
+      };
+      // assign each element a UDT photo object
+      photos[i] = photoUDT;
+    }
     // get maximum counter from reviews counter table
     const getReviewsCounter = await cassandraClient.execute('select * from reviews.reviews_counter');
     // const uniqueId = getReviewsCounter.rows[0].id;
@@ -111,19 +123,19 @@ router.post('/', async (req, res) => {
     // update the counter table for review
     await cassandraClient.execute('update reviews.reviews_counter set counter = ? where id = ?', [nextGetReviewsCounter, 1], { prepare: true });
     // insert into reviews table new review
-    const insertIntoRows = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const insertIntoRows = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     // execute the cassandra drive to save new product
     cassandraClient.execute(insertIntoRows, [
       nextGetReviewsCounter, product_id, rating, date, summary, body, recommend, reported, reviewer_name,
       reviewer_email, response, helpfulness, photos
     ], { prepare: true });
-
     // update products and reviews join table row with the newest counter for product
     await cassandraClient.execute('insert into reviews.reviews_products (review_id, product_id) values (? , ?)', [nextGetReviewsCounter, product_id], { prepare: true });
 
     res.status(201).json({ success: true, message: 'Successfully added review.' });
   } catch (err) {
-    res.status(500).json({ success: false, message: 'Failed adding a review.' });
+    console.log(err)
+    res.status(500).json({ success: false, message: 'Failed adding a review.', err: err });
   }
 });
 

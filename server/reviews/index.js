@@ -8,21 +8,21 @@ async function reviewsServices() {
     });
     // create a User Defined Type
     const photosUDT = `
-    CREATE TYPE reviews.photos(
-      id int,
+    CREATE TYPE IF NOT EXISTS reviews.photos(
+      id double,
       url text
     );
     `;
     // crate schema for reviews
     const cqlCreateReviewItems = `
     CREATE TABLE IF NOT EXISTS reviews.review_items (
-      id int,
-      product_id int,
+      id double,
+      product_id double,
       rating int,
       date timestamp,
       summary text,
       body text,
-      recommended boolean,
+      recommend boolean,
       reported boolean,
       reviewer_name text,
       reviewer_email text,
@@ -34,13 +34,13 @@ async function reviewsServices() {
     // crate schema for reviews
     const cqlCreateReviews = `
     CREATE TABLE IF NOT EXISTS reviews.reviews (
-      id int,
-      product_id int,
+      id double,
+      product_id double,
       rating int,
       date timestamp,
       summary text,
       body text,
-      recommended boolean,
+      recommend boolean,
       reported boolean,
       reviewer_name text,
       reviewer_email text,
@@ -53,8 +53,8 @@ async function reviewsServices() {
     // create schema for characteristic
     const cqlCreateCharacteristics = `
     CREATE TABLE IF NOT EXISTS reviews.characteristics (
-      id int,
-      product_id int,
+      id double,
+      product_id double,
       name text,
       PRIMARY KEY (product_id, name, id)
     );`;
@@ -62,9 +62,9 @@ async function reviewsServices() {
     // create schema for characteristic
     const cqlCreateCharacteristicReviews = `
     CREATE TABLE IF NOT EXISTS reviews.characteristics_reviews (
-      id int,
-      characteristic_id int,
-      review_id int,
+      id double,
+      characteristic_id double,
+      review_id double,
       value int,
       PRIMARY KEY (characteristic_id, review_id)
     );`;
@@ -72,28 +72,29 @@ async function reviewsServices() {
     // create schema for join tables for review ids and tables
     const cqlCreateReviewsProducts = `
     CREATE TABLE IF NOT EXISTS reviews.reviews_products (
-      review_id int,
-      product_id int,
+      review_id double,
+      product_id double,
       PRIMARY KEY (review_id, product_id)
     );`;
 
     const cqlCreateReviewsCounter = `
     CREATE TABLE IF NOT EXISTS reviews.reviews_counter (
-      id int,
-      counter int,
+      id double,
+      counter double,
       PRIMARY KEY (id)
     );`;
 
     const cqlCreateReviewPhotos = `
     CREATE TABLE IF NOT EXISTS reviews.review_photos (
-      id int,
-      review_id int,
+      id double,
+      review_id double,
       url text,
       PRIMARY KEY (review_id, id)
     );`;
 
 
     async function createTables() {
+      await cassandraClient.execute(photosUDT, []);
       await cassandraClient.execute(cqlCreateReviews, []);
       await cassandraClient.execute(cqlCreateReviewItems, []);
       await cassandraClient.execute(cqlCreateCharacteristics, []);
@@ -103,12 +104,12 @@ async function reviewsServices() {
       await cassandraClient.execute(cqlCreateReviewsCounter, []);
 
     }
-    createTables();
+    //createTables();
 
     const getAllReviews = 'select * from reviews.review_items';
     const getAllReviewsPhotos = 'select * from reviews.review_photos where review_id = ?';
     // Combine csv files with reviews and photos
-    async function joinReviewsWithPhotos() {
+     async function joinReviewsWithPhotos() {
       // create a cassandra stream - iterate through each row in reviews
       cassandraClient.eachRow(getAllReviews, [], { prepare: true, fetchSize: 100, autoPage: true }, async function (n, reviewsRow) {
         try {
@@ -117,7 +118,7 @@ async function reviewsServices() {
           // get the photos
           const photos = photosRow.rows;
           // insert into the reviews.reviews table
-          const insertQuery = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommended, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+          const insertQuery = 'INSERT INTO reviews.reviews (id, product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness, photos ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
           // Populate the main reviews table
           await cassandraClient.execute(insertQuery, [
             reviewsRow.id,
@@ -126,7 +127,7 @@ async function reviewsServices() {
             reviewsRow.date,
             reviewsRow.summary,
             reviewsRow.body,
-            reviewsRow.recommended,
+            reviewsRow.recommend,
             reviewsRow.reported,
             reviewsRow.reviewer_name,
             reviewsRow.reviewer_email,
@@ -141,7 +142,7 @@ async function reviewsServices() {
           console.log(err)
         }
       }); // end of stream with cassandra client
-    } // end of join reviews with photos
+     } // end of join reviews with photos
 
   } catch (err) {
     console.log(err)
