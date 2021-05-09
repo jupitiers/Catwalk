@@ -68,7 +68,6 @@ const Answer = (props) => {
             </div>
           : null
         }
-
         {showPhoto
           ? <div className={lightStyles.modal}>
               <span className={lightStyles.modalclose} onClick={() => {setShowPhoto(false)}}><i className="far fa-times-circle" /></span>

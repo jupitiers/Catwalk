@@ -13,7 +13,6 @@ connection.connect;
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
 const getQuestions = (request, response) => {
-  console.log('Getting Questions');
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
@@ -21,47 +20,47 @@ const getQuestions = (request, response) => {
   var questionQuery =
   `select
     json_agg(
-            json_build_object(
-                'question_id', q.id,
-                'question_body', q.body,
-                'question_date', q.date_written,
-                'asker_name', q.asker_name,
-                'question_helpfulness', q.helpful,
-                'reported', q.reported,
-                'answers', answers
-
-        )
+      json_build_object(
+        'question_id', q.id,
+        'question_body', q.body,
+        'question_date', q.date_written,
+        'asker_name', q.asker_name,
+        'question_helpfulness', q.helpful,
+        'reported', q.reported,
+        'answers', answers
+      )
     ) results
     from questions q
     left join (
-        select
-            "questionId",
-            json_agg(
-                json_build_object(
-                    'id', a.id,
-                    'body', a.body,
-                    'date', a.date_written,
-                    'answerer_name', a.answerer_name,
-                    'helpfulness', a.helpful,
-                    'photos', photos
-                    )
-                ) answers
+      select
+        "questionId",
+        json_object_agg(
+          a.id,
+          json_build_object(
+            'id', a.id,
+            'body', a.body,
+            'date', a.date_written,
+            'answerer_name', a.answerer_name,
+            'helpfulness', a.helpful,
+            'photos', photos
+          )
+        ) answers
       from
-          answers a
-          left join (
-              select
-                  "answerId",
-                  json_agg(
-                      json_build_object(
-                          'id', p.id,
-                          'url', p.url
-                      )
-                  ) photos
-              from "answerImages" p
-              group by 1
-          ) p on a.id = p."answerId"
+        answers a
+        left join (
+          select
+            "answerId",
+            json_agg(
+              json_build_object(
+                'id', p.id,
+                'url', p.url
+              )
+            ) photos
+          from "answerImages" p
+          group by 1
+        ) p on a.id = p."answerId"
       group by "questionId"
-  ) a on q.id = a."questionId" WHERE q.product_id=${productId}`;
+    ) a on q.id = a."questionId" WHERE q.product_id=${productId} `;
 
   // var questionQuery = `SELECT * FROM questions WHERE product_id=${productId}`;
 
@@ -72,16 +71,23 @@ const getQuestions = (request, response) => {
     }
     data = results.rows[0];
     // data = results.rows;
-    // data.forEach(async entry => {
-    //   var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${entry.id}`
-    //   await connection.query(answerQuery, (error, results) => {
-    //     if (error) {
-    //       throw error;
+    // data.forEach(entry => {
+    //   // var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${entry.id}`
+    //   // await connection.query(answerQuery, (error, results) => {
+    //   //   if (error) {
+    //   //     throw error;
+    //   //   }
+    //   //   entry.answers = results.rows;
+    //   //   // entry.answers=results.rows ? results.rows : null;
+    //   //   // console.log(data);
+    //   // })
+    //   if (entry.answers) {
+    //     for (var key in entry.answers) {
+    //       if (entry.answers[key].photos === null) {
+    //         entry.answers[key].photos = [];
+    //       }
     //     }
-    //     entry.answers = results.rows;
-    //     // entry.answers=results.rows ? results.rows : null;
-    //     // console.log(data);
-    //   })
+    //   }
     // })
     response.status(200).json(data);
 
