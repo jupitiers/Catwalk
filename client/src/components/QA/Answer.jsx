@@ -58,11 +58,17 @@ const Answer = (props) => {
         </div>
       </div>
       <div>
-        {props.photos.map((photo, idx) => (
-          <div key={idx} className={lightStyles.imageArea}>
-            <img className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
-          </div>
-        ))}
+        {props.photos
+          ? <div>
+              {props.photos.map((photo, idx) => (
+                <div key={idx} className={lightStyles.imageArea}>
+                  <img className={lightStyles.answerimage} src={photo} onClick={() => {setSelectedPhoto(photo); setShowPhoto(true)}} />
+                </div>
+              ))}
+            </div>
+          : null
+        }
+
         {showPhoto
           ? <div className={lightStyles.modal}>
               <span className={lightStyles.modalclose} onClick={() => {setShowPhoto(false)}}><i className="far fa-times-circle" /></span>
@@ -70,7 +76,7 @@ const Answer = (props) => {
                 <img className={lightStyles.modalphoto} src={selectedPhoto}/>
               </div>
             </div>
-      : null
+          : null
         }
       </div>
     </div>

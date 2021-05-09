@@ -12,7 +12,8 @@ const connection = new Pool({
 connection.connect;
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
-const getQuestions = async (request, response) => {
+const getQuestions = (request, response) => {
+  console.log('Getting Questions');
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
@@ -62,30 +63,30 @@ const getQuestions = async (request, response) => {
       group by "questionId"
   ) a on q.id = a."questionId" WHERE q.product_id=${productId}`;
 
-  // var questionQuery = `SELECT * FROM questions WHERE questions.product_id=${productId}`;
+  // var questionQuery = `SELECT * FROM questions WHERE product_id=${productId}`;
 
   var data;
-  await connection.query(questionQuery, (error, results) => {
+  connection.query(questionQuery, (error, results) => {
     if (error) {
       throw error;
     }
-    data = results.rows[0].results;
+    data = results.rows[0];
     // data = results.rows;
-    // data.forEach(entry => {
-      //getAnswer(entry.id)
-      //Use entry id on getAnswers to get related answers
-      // var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${entry.id}`
-      // connection.query(answerQuery, (error, results) => {
-      //   if (error) {
-      //     throw error;
-      //   }
-      //   entry.answers=results;
-      // })
-
+    // data.forEach(async entry => {
+    //   var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${entry.id}`
+    //   await connection.query(answerQuery, (error, results) => {
+    //     if (error) {
+    //       throw error;
+    //     }
+    //     entry.answers = results.rows;
+    //     // entry.answers=results.rows ? results.rows : null;
+    //     // console.log(data);
+    //   })
     // })
-
     response.status(200).json(data);
+
   })
+
 };
 
 const getAnswers = (request, response) => {

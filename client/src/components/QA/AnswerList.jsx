@@ -13,8 +13,17 @@ var AnswerList = (props) => {
   const[clicked, setClicked] = useState(false);
 
   var answerList = [];
-  for (var key in props.answers) {
-    answerList.push(props.answers[key]);
+  if (props.answers) {
+    console.log(props.answers);
+    if (Array.isArray(props.answers)) {
+      props.answers.forEach(answer => {
+        answerList.push(answer);
+      })
+    } else {
+      for (var key in props.answers) {
+        answerList.push(props.answers[key]);
+      }
+    }
   }
 
   answerList.sort((obj1, obj2) => obj2.helpfulness - obj1.helpfulness);

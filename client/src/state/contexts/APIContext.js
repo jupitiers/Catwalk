@@ -156,6 +156,7 @@ const APIProvider = ({ children }) => {
     try {
       const allQuestions = await axios.get(`/qa/questions?product_id=${productId}&count=100`);
       setQuestions(allQuestions.data.results);
+      console.log(allQuestions.data.results);
     } catch (err) {
       console.log(err);
     }
