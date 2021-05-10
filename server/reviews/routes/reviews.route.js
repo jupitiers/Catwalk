@@ -1,17 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const cassandraClient = require('../database/index.js');
-const Promise = require("bluebird");
 
 // Get reviews based off of product id
 router.get('/', async (req, res) => {
   try {
     const { product_id } = req.query;
-    const getReviewsByProductIdQuery = 'select * from reviews.reviews where product_id = ?';
-    const reviews = await cassandraClient.execute(getReviewsByProductIdQuery, [product_id], { prepare: true });
-    res.status(200).json({ success: true, results: reviews.rows });
+    const page = req.query.page || 1;
+    const count = req.query.count || 5 ;
+    const getReviewsByProductIdQuery = 'select * from reviews.reviews where product_id = ? limit ?';
+    const reviews = await cassandraClient.execute(getReviewsByProductIdQuery, [product_id, count], { prepare: true });
+    // filter our reported
+    const filteredReviews = reviews.rows.filter(review => review.reported !== true);
+    res.status(200).json({ success: true, results: filteredReviews });
     // create a readable stream for reviews
   } catch (err) {
+    console.log(err)
     res.status(500).json({ success: false, message: 'Failed getting reviews...' });
   }
 });
@@ -104,7 +108,7 @@ router.post('/', async (req, res) => {
     const {
       id, product_id, rating, date,
       summary, body, recommend, reported, reviewer_name,
-      reviewer_email, response, helpfulness, photos
+      reviewer_email, response, helpfulness, photos,
     } = req.body;
 
     // create a user defined type for each photo in photos
