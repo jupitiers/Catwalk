@@ -14,7 +14,6 @@ var AnswerList = (props) => {
 
   var answerList = [];
   if (props.answers) {
-    console.log(props.answers);
     if (Array.isArray(props.answers)) {
       props.answers.forEach(answer => {
         answerList.push(answer);
