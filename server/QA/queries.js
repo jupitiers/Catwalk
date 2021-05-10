@@ -226,7 +226,7 @@ const getAnswers = (request, response) => {
 const addQuestion = async (request, response) => {
   var data = request.body;
   data.date_written = new Date().toISOString().split('T')[0];
-  data.reported = 0;
+  data.reported = false;
   data.helpful = 0;
 
 
@@ -263,7 +263,7 @@ const addAnswer = async (request, response) => {
 
   var data = request.body;
   data.date_written = new Date().toISOString().split('T')[0];
-  data.reported = 0;
+  data.reported = false;
   data.helpful = 0;
 
   await connection.query('SELECT count FROM "answerCounters"', (error, results) => {
@@ -305,6 +305,13 @@ const addAnswer = async (request, response) => {
             if (error) {
               throw error
             }
+            console.log(photoId);
+            var updatePhotoCountQuery = `UPDATE "imageCounters" SET count=${photoId} WHERE id=1`
+            connection.query(updatePhotoCountQuery, (error, results) => {
+              if (error) {
+                throw error
+              }
+            })
           })
         })
       })
