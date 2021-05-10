@@ -277,7 +277,8 @@ const addAnswer = async (request, response) => {
     var addAnswerQuery = `INSERT INTO "answers" (id, body, date_written, answerer_name, answerer_email, reported, helpful, "questionId") VALUES (${answerCount}, '${data.body}', '${data.date_written}'::DATE, '${data.name}', '${data.email}', ${data.reported}, ${data.helpful}, ${questionId})`;
 
     var photos = [];
-    data.photos.split(',').forEach(photo => {
+    var photoData = (data.photos.indexOf(',') >= 0) ? data.photos.split(',') : data.photos;
+    photoData.forEach(photo => {
       photos.push(photo);
     })
 
@@ -305,7 +306,6 @@ const addAnswer = async (request, response) => {
             if (error) {
               throw error
             }
-            console.log(photoId);
             var updatePhotoCountQuery = `UPDATE "imageCounters" SET count=${photoId} WHERE id=1`
             connection.query(updatePhotoCountQuery, (error, results) => {
               if (error) {
