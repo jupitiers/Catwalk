@@ -69,8 +69,10 @@ router.get('/meta/', async (req, res) => {
           };
           const value = await cassandraClient.execute('select * from reviews.characteristics_reviews where characteristic_id = ?', [characteristic.id], { prepare: true });
           let sum = 0;
+          let lenOfChar = value.rows.length;
           for (let row of value.rows) {
-            sum += row.value;
+            // Find the average for characteristic
+            sum += row.value / lenOfChar;
           }
           // check to see if the characteristic exists
           if (obj.hasOwnProperty(characteristic.name)) {
@@ -106,11 +108,11 @@ router.get('/meta/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const {
-      id, product_id, rating, date,
+      id, product_id, rating,
       summary, body, recommend, reported, reviewer_name,
-      reviewer_email, response, helpfulness, photos,
+      reviewer_email, response, helpfulness, photos, characteristics
     } = req.body;
-
+    const date = new Date();
     // create a user defined type for each photo in photos
     for (let i = 0; i < photos.length; i++) {
       const photoUDT = {
@@ -122,7 +124,6 @@ router.post('/', async (req, res) => {
     }
     // get maximum counter from reviews counter table
     const getReviewsCounter = await cassandraClient.execute('select * from reviews.reviews_counter');
-    // const uniqueId = getReviewsCounter.rows[0].id;
     const nextGetReviewsCounter = getReviewsCounter.rows[0].counter + 1;
     // update the counter table for review
     await cassandraClient.execute('update reviews.reviews_counter set counter = ? where id = ?', [nextGetReviewsCounter, 1], { prepare: true });
@@ -135,6 +136,16 @@ router.post('/', async (req, res) => {
     ], { prepare: true });
     // update products and reviews join table row with the newest counter for product
     await cassandraClient.execute('insert into reviews.reviews_products (review_id, product_id) values (? , ?)', [nextGetReviewsCounter, product_id], { prepare: true });
+
+    // // update characteristic
+    const keys = Object.keys(characteristics);
+    const randCharId = Math.random() * 1000;
+    // iterate for each characteristic inside object
+    for (let charId of keys) {
+      // add to the reviews characteristic table
+      await cassandraClient.execute('insert into reviews.characteristics_reviews (id, characteristic_id, review_id, value) values (? , ?, ?, ?)',
+      [randCharId.toFixed(2), charId, nextGetReviewsCounter, characteristics[charId]], { prepare: true });
+    }
 
     res.status(201).json({ success: true, message: 'Successfully added review.' });
   } catch (err) {
