@@ -17,113 +17,11 @@ const getQuestions = async (request, response) => {
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
 
-  /***********THIS WORKS. JUST SLOW (15-20s)*****************/
-  // var questionQuery =
-  // `select
-  //   json_agg(
-  //     json_build_object(
-  //       'question_id', q.id,
-  //       'question_body', q.body,
-  //       'question_date', q.date_written,
-  //       'asker_name', q.asker_name,
-  //       'question_helpfulness', q.helpful,
-  //       'reported', q.reported,
-  //       'answers', answers
-  //     )
-  //   ) results
-  //   from questions q
-  //   left join (
-  //     select
-  //       "questionId",
-  //       json_object_agg(
-  //         a.id,
-  //         json_build_object(
-  //           'id', a.id,
-  //           'body', a.body,
-  //           'date', a.date_written,
-  //           'answerer_name', a.answerer_name,
-  //           'helpfulness', a.helpful,
-  //           'photos', photos
-  //         )
-  //       ) answers
-  //     from
-  //       answers a
-  //       left join (
-  //         select
-  //           "answerId",
-  //           json_agg(
-  //             json_build_object(
-  //               'id', p.id,
-  //               'url', p.url
-  //             )
-  //           ) photos
-  //         from "answerImages" p
-  //         group by 1
-  //       ) p on a.id = p."answerId"
-  //     group by "questionId"
-  //   ) a on q.id = a."questionId" WHERE q.product_id=${productId} `;
-
-  // connection.query(questionQuery)
-  //   .catch(error => {
-  //     throw error;
-  //   })
-  //   .then(results => {
-  //     response.status(200).json(results.rows[0].results);
-  //   })
-  /**************************************************************************/
-
-  /****************IMPROVEMENT, BUT STILL NOT GOOD (8.5s)********************/
-
-  // var questionQuery =
-  //   `SELECT
-  //     questions.id question_id,
-  //     questions.body question_body,
-  //     questions.date_written question_date,
-  //     questions.asker_name asker_name,
-  //     questions.helpful question_helpfulness,
-  //     questions.reported reported,
-  //     (
-  //       SELECT json_object_agg(a.id, row_to_json(a))
-  //       FROM (
-  //         SELECT
-  //           answers.id id,
-  //           answers.body body,
-  //           answers.date_written date,
-  //           answers.answerer_name answerer_name,
-  //           answers.helpful helpfulness,
-  //           (
-  //             SELECT json_agg(row_to_json(p))
-  //             FROM (
-  //               SELECT
-  //                 "answerImages".id id,
-  //                 "answerImages".url url
-  //               FROM "answerImages"
-  //               WHERE "answerImages"."answerId" = answers.id
-  //             ) p
-  //           ) photos
-  //         FROM answers
-  //         WHERE answers."questionId" = questions.id
-  //       ) a
-  //     ) answers
-  //     FROM questions WHERE questions.product_id=${productId}`;
-
-  //   connection.query(questionQuery)
-  //   .catch(error => {
-  //     throw error;
-  //   })
-  //   .then(results => {
-  //     response.status(200).json(results.rows);
-  //   })
-
-    /*********************************************************************************************/
-
-  /*************************IMPROVEMENT, DOWN TO UNDER 5s************************************************/
-
-  var questionQuery = `SELECT q.id question_id, q.body question_body, q.date_written question_date, q.asker_name asker_name, q.helpful question_helpfulness, q.reported reported FROM questions q WHERE q.product_id=${productId}`;
+  var questionQuery = `SELECT q.id question_id, q.body question_body, q.date_written question_date, q.asker_name asker_name, q.helpful question_helpfulness, q.reported reported FROM questions q WHERE q.product_id = ${productId} AND q.reported = false`;
 
   var questions = await connection.query(questionQuery);
   for (var i = 0; i < questions.rows.length; i++) {
-    var answerQuery = `SELECT a.id id, a.body body, a.date_written date, a.answerer_name answerer_name, a.helpful helpfulness FROM answers a WHERE a."questionId" = ${questions.rows[i].question_id}`
+    var answerQuery = `SELECT a.id id, a.body body, a.date_written date, a.answerer_name answerer_name, a.helpful helpfulness FROM answers a WHERE a."questionId" = ${questions.rows[i].question_id} AND a.reported = false`
     var answers = await connection.query(answerQuery);
     questions.rows[i].answers = {};
     for (var j = 0; j < answers.rows.length; j++) {
@@ -135,89 +33,31 @@ const getQuestions = async (request, response) => {
       questions.rows[i].answers[answerId] = answers.rows[j];
     }
   }
-  var output = {results: questions.rows}
+  var output = {
+    product_id: productId,
+    results: questions.rows
+  }
   response.status(200).json(output);
-
-  /*********************************************************************************************/
-
-  // var getData = async (productId) => {
-
-  //   var questionQuery = `SELECT q.* FROM questions q WHERE product_id=${productId}`;
-
-  //   // //use json_agg or json_object_agg to create objects
-  //   // //Restructure data in code
-  //   var getAnswers = async (questionId) => {
-  //     var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${questionId}`
-  //     var answersList = await connection.query(answerQuery);
-  //     return answersList.rows;
-  //   }
-
-  //   var questionsList = await connection.query(questionQuery);
-  //   var data = questionsList.rows;
-  //   await data.forEach(async question => {
-  //     // var answerQuery = `SELECT id, body, date_written, answerer_name, reported, helpful FROM answers WHERE "questionId" = ${question.id}`
-  //     // var answersList = await connection.query(answerQuery);
-  //     question.answers = [];
-  //     var answersList = await getAnswers(question.id)
-  //     answersList.forEach(answer => {
-  //       question.answers.push(answer);
-  //     })
-  //     // console.log(question.answers);
-  //   })
-
-  //   return data;
-  // }
-  // var output
-  // getData(productId)
-  //   .catch(error => {
-  //     throw error
-  //   })
-  //   .then(result => {
-  //     console.log(result)
-  //   })
-  // // console.log(output);
-  // response.status(200).json(output);
 
 };
 
-const getAnswers = (request, response) => {
+const getAnswers = async (request, response) => {
   var questionId = request.url.substring(14, request.url.indexOf('/answers'));
 
-  var answerQuery =
-  `select
-    json_build_object(
-        'results', json_agg(
-              json_build_object(
-                  'answer_id', a.id,
-                  'body', a.body,
-                  'date', a.date_written,
-                  'answerer_name', a.answerer_name,
-                  'helpfulness', a.helpful,
-                  'photos', photos
-              )
-          )
-      ) results
-      from
-      answers a
-      left join (
-          select
-              "answerId",
-              json_agg(
-                  json_build_object(
-                      'id', p.id,
-                      'url', p.url
-                  )
-              ) photos
-          from "answerImages" p
-          group by 1
-      ) p on a.id = p."answerId" WHERE a."questionId"=${questionId}`
+  var answerQuery = `SELECT a.id id, a.body body, a.date_written date, a.answerer_name answerer_name, a.helpful helpfulness FROM answers a WHERE a."questionId" = ${questionId} AND a.reported = false`;
 
-  connection.query(answerQuery, (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).json(results.rows[0].results);
-  })
+  var answers = await connection.query(answerQuery);
+  for (var i = 0; i < answers.rows.length; i++) {
+    var photoQuery = `SELECT p.id id, p.url url FROM "answerImages" p WHERE p."answerId" = ${answers.rows[i].id}`;
+    var photos = await connection.query(photoQuery);
+    answers.rows[i].photos = photos.rows;
+  }
+
+  var output = {
+    question: questionId,
+    results: answers.rows
+  };
+  response.status(200).json(output);
 };
 
 
@@ -367,7 +207,7 @@ const questionReport = (request, response) => {
 }
 
 const answerReport = (request, response) => {
-  var answerId = request.url.substring(12, request.url.indexOf('/helpful'));
+  var answerId = request.url.substring(12, request.url.indexOf('/report'));
 
   connection.query(`SELECT reported FROM answers WHERE id=${answerId}`)
   .then(reported => {
