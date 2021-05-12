@@ -12,7 +12,12 @@ router.get('/', async (req, res) => {
     const reviews = await cassandraClient.execute(getReviewsByProductIdQuery, [product_id, count], { prepare: true });
     // filter our reported
     const filteredReviews = reviews.rows.filter(review => review.reported !== true);
-    res.status(200).json({ success: true, results: filteredReviews });
+    const results = {};
+    results.product;
+    results.page = page;
+    results.count = count;
+    results.results = filteredReviews
+    res.status(200).json({ ...results });
     // create a readable stream for reviews
   } catch (err) {
     console.log(err)
@@ -91,7 +96,7 @@ router.get('/meta/', async (req, res) => {
           }
         }
 
-        res.status(200).json({ success: true, meta: characteristicObj });
+        res.status(200).json({ ...characteristicObj });
       })
       .on('error', function (err) {
         // Something went wrong: err is a response error from Cassandra

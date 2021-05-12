@@ -6,6 +6,7 @@ async function reviewsServices() {
     await cassandraClient.connect(() => {
       console.log('Database with Cassandra is connected...');
     });
+    const createReviewsKeyspace = `CREATE KEYSPACE IF NOT EXISTS reviews WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':3};`
     // create a User Defined Type
     const photosUDT = `
     CREATE TYPE IF NOT EXISTS reviews.photos(
@@ -94,6 +95,7 @@ async function reviewsServices() {
 
 
     async function createTables() {
+      await cassandraClient.execute(createReviewsKeyspace, []);
       await cassandraClient.execute(photosUDT, []);
       await cassandraClient.execute(cqlCreateReviews, []);
       await cassandraClient.execute(cqlCreateReviewItems, []);
@@ -104,7 +106,7 @@ async function reviewsServices() {
       await cassandraClient.execute(cqlCreateReviewsCounter, []);
 
     }
-    //createTables();
+    createTables();
 
     const getAllReviews = 'select * from reviews.review_items';
     const getAllReviewsPhotos = 'select * from reviews.review_photos where review_id = ?';

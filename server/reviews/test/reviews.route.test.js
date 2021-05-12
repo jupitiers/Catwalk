@@ -19,7 +19,11 @@ const newReview = {
   "response": "Glad you're enjoying the product!",
   "reviewer_email": "first.last@gmail.com",
   "reviewer_name": "bigbrotherbenjamin",
-  "summary": "I am liking these glasses"
+  "summary": "I am liking these glasses",
+  "characteristics" : {
+    "id":1,
+    "value": 2
+  }
 };
 // Test reviews services
 describe('Reviews Services', function () {

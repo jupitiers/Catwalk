@@ -1,14 +1,16 @@
 const express = require('express');
 const reviewsServices = require('./reviews/index.js');
 const reviewsRouter = require('./reviews/routes/reviews.route.js');
+const cors = require('cors');
 // implement database
 reviewsServices();
 
 const app = express();
 const path = require('path');
 
-const PORT = 3000;
+const PORT = 8080;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/reviews', reviewsRouter);
