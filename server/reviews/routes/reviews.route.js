@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const { product_id } = req.query;
     const page = req.query.page || 1;
     const count = req.query.count || 5 ;
-    const getReviewsByProductIdQuery = 'select * from reviews.reviews where product_id = ? limit ?';
+    const getReviewsByProductIdQuery = 'select * from reviews.review_items where product_id = ? limit ?';
     const reviews = await cassandraClient.execute(getReviewsByProductIdQuery, [product_id, count], { prepare: true });
     // filter our reported
     const filteredReviews = reviews.rows.filter(review => review.reported !== true);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     results.product;
     results.page = page;
     results.count = count;
-    results.results = filteredReviews
+    results.results = filteredReviews;
     res.status(200).json({ ...results });
     // create a readable stream for reviews
   } catch (err) {

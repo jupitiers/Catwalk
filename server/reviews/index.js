@@ -111,7 +111,7 @@ async function reviewsServices() {
     const getAllReviews = 'select * from reviews.review_items';
     const getAllReviewsPhotos = 'select * from reviews.review_photos where review_id = ?';
     // Combine csv files with reviews and photos
-     async function joinReviewsWithPhotos() {
+    async function joinReviewsWithPhotos() {
       // create a cassandra stream - iterate through each row in reviews
       cassandraClient.eachRow(getAllReviews, [], { prepare: true, fetchSize: 100, autoPage: true }, async function (n, reviewsRow) {
         try {
@@ -137,14 +137,15 @@ async function reviewsServices() {
             reviewsRow.helpfulness,
             photos
           ], { prepare: true });
-          console.log(n,' at n')
           // combine the reviews and products id together (review_id, product_id)
           await cassandraClient.execute('insert into reviews.reviews_products (review_id, product_id) values (? , ?)', [reviewsRow.id, reviewsRow.product_id], { prepare: true });
+          console.log(n,' at n')
+
         } catch (err) {
           console.log(err)
         }
       }); // end of stream with cassandra client
-     } // end of join reviews with photos
+    } // end of join reviews with photos
 
   } catch (err) {
     console.log(err)

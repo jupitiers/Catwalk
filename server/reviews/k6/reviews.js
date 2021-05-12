@@ -37,17 +37,17 @@ export default function main() {
   }
 };
   // get products
-  response = http.get("http://localhost:3000/reviews/?product_id=2");
+  response = http.get("http://localhost:8080/reviews/?product_id=2");
   // get meta data for product
-  response2 = http.get("http://localhost:3000/reviews/meta/?product_id=2");
+  response2 = http.get("http://localhost:8080/reviews/meta/?product_id=2");
   // add a new review for product
-  response3 = http.post("http://localhost:3000/reviews/", JSON.stringify(newReview),{
-    headers: { 'Content-Type': 'application/json' }
-  });
-  // mark a review as helpful
-  response4 = http.put("http://localhost:3000/reviews/5777922/helpful");
-  // report a review
-  response5 = http.put("http://localhost:3000/reviews/5777922/report");
+  // response3 = http.post("http://localhost:8080/reviews/", JSON.stringify(newReview),{
+  //   headers: { 'Content-Type': 'application/json' }
+  // });
+  // // mark a review as helpful
+  // response4 = http.put("http://localhost:3000/reviews/5777922/helpful");
+  // // report a review
+  // response5 = http.put("http://localhost:3000/reviews/5777922/report");
 
   // console.log(JSON.stringify(response3))
 
