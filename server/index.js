@@ -1,4 +1,7 @@
 const express = require('express');
+const dotenv = require('dotenv');
+// run dot config env
+dotenv.config();
 const reviewsServices = require('./reviews/index.js');
 const reviewsRouter = require('./reviews/routes/reviews.route.js');
 const cors = require('cors');
