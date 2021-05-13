@@ -17,7 +17,13 @@ const connection = new Pool({
   port: 5432
 });
 
-connection.connect;
+connection.connect((err) => {
+  if (err) {
+    console.log('Error connecting to DB', err)
+    return
+  }
+  console.log('Connection established');
+});
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
 const getQuestions = async (request, response) => {
