@@ -12,7 +12,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 const connection = new Pool({
   user: 'postgres',
   password: 'postgres',
-  host: '20.84.97.78',
+  host: '20.84.96.176',
   database: 'qa',
   port: 5432
 });
