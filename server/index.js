@@ -17,7 +17,13 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
-app.get('/qa/questions\?', QA.getQuestions);
+var calledProducts = {};
+app.get('/qa/questions\?', (request, response) => {
+  if (Object.keys(calledProducts).length > 5) {
+    calledProducts = {};
+  }
+  QA.getQuestions(request, response, calledProducts);
+});
 app.get('/qa/questions/*/answers', QA.getAnswers);
 app.get('/*', async (req, res) => {
   if (req.url.includes('favicon')) {

@@ -26,7 +26,6 @@ connection.connect((err) => {
 });
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
-var calledProducts = {};
 const getQuestions = async (request, response, calledProducts) => {
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
