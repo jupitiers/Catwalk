@@ -19,10 +19,17 @@ const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 
 var calledProducts = {};
 app.get('/qa/questions\?', (request, response) => {
+  const query = request.url.substring(request.url.indexOf('?'));
+  const urlParams = new URLSearchParams(query);
+  const productId = urlParams.get('product_id');
   if (Object.keys(calledProducts).length > 5) {
     calledProducts = {};
   }
-  QA.getQuestions(request, response, calledProducts);
+  if (calledProducts[productId]) {
+    response.status(200).json(calledProducts[productId]);
+  } else {
+    QA.getQuestions(request, response, calledProducts);
+  }
 });
 app.get('/qa/questions/*/answers', QA.getAnswers);
 app.get('/*', async (req, res) => {

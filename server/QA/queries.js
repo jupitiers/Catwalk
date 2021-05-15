@@ -31,9 +31,9 @@ const getQuestions = async (request, response, calledProducts) => {
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
 
-  if (calledProducts[productId]) {
-    response.status(200).json(calledProducts[productId]);
-  } else {
+  // if (calledProducts[productId]) {
+  //   response.status(200).json(calledProducts[productId]);
+  // } else {
     var questionQuery = `SELECT q.id question_id, q.body question_body, q.date_written question_date, q.asker_name asker_name, q.helpful question_helpfulness, q.reported reported FROM questions q WHERE q.product_id = ${productId} AND q.reported = false`;
 
     var questions = await connection.query(questionQuery);
@@ -56,7 +56,7 @@ const getQuestions = async (request, response, calledProducts) => {
     }
     calledProducts[productId] = output;
     response.status(200).json(output);
-  }
+  // }
 
 
 };
