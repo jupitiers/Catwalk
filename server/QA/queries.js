@@ -26,32 +26,39 @@ connection.connect((err) => {
 });
 /********************************************************************************************************/
 /*****************************************GET REQUESTS***************************************************/
-const getQuestions = async (request, response) => {
+var calledProducts = {};
+const getQuestions = async (request, response, calledProducts) => {
   const query = request.url.substring(request.url.indexOf('?'));
   const urlParams = new URLSearchParams(query);
   const productId = urlParams.get('product_id');
 
-  var questionQuery = `SELECT q.id question_id, q.body question_body, q.date_written question_date, q.asker_name asker_name, q.helpful question_helpfulness, q.reported reported FROM questions q WHERE q.product_id = ${productId} AND q.reported = false`;
+  if (calledProducts[productId]) {
+    response.status(200).json(calledProducts[productId]);
+  } else {
+    var questionQuery = `SELECT q.id question_id, q.body question_body, q.date_written question_date, q.asker_name asker_name, q.helpful question_helpfulness, q.reported reported FROM questions q WHERE q.product_id = ${productId} AND q.reported = false`;
 
-  var questions = await connection.query(questionQuery);
-  for (var i = 0; i < questions.rows.length; i++) {
-    var answerQuery = `SELECT a.id id, a.body body, a.date_written date, a.answerer_name answerer_name, a.helpful helpfulness FROM answers a WHERE a."questionId" = ${questions.rows[i].question_id} AND a.reported = false`
-    var answers = await connection.query(answerQuery);
-    questions.rows[i].answers = {};
-    for (var j = 0; j < answers.rows.length; j++) {
-      var photoQuery = `SELECT p.id id, p.url url FROM "answerImages" p WHERE p."answerId" = ${answers.rows[j].id}`;
-      var photos = await connection.query(photoQuery);
-      answers.rows[j].photos = photos.rows;
+    var questions = await connection.query(questionQuery);
+    for (var i = 0; i < questions.rows.length; i++) {
+      var answerQuery = `SELECT a.id id, a.body body, a.date_written date, a.answerer_name answerer_name, a.helpful helpfulness FROM answers a WHERE a."questionId" = ${questions.rows[i].question_id} AND a.reported = false`
+      var answers = await connection.query(answerQuery);
+      questions.rows[i].answers = {};
+      for (var j = 0; j < answers.rows.length; j++) {
+        var photoQuery = `SELECT p.id id, p.url url FROM "answerImages" p WHERE p."answerId" = ${answers.rows[j].id}`;
+        var photos = await connection.query(photoQuery);
+        answers.rows[j].photos = photos.rows;
 
-      var answerId = answers.rows[j].id;
-      questions.rows[i].answers[answerId] = answers.rows[j];
+        var answerId = answers.rows[j].id;
+        questions.rows[i].answers[answerId] = answers.rows[j];
+      }
     }
+    var output = {
+      product_id: productId,
+      results: questions.rows
+    }
+    calledProducts[productId] = output;
+    response.status(200).json(output);
   }
-  var output = {
-    product_id: productId,
-    results: questions.rows
-  }
-  response.status(200).json(output);
+
 
 };
 
