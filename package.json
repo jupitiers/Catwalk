@@ -15,7 +15,9 @@
     "cassandra-driver": "^4.6.2",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mem-cache": "0.0.5",
+    "memcache": "^0.3.0"
   },
   "devDependencies": {
     "mocha": "^8.4.0",
